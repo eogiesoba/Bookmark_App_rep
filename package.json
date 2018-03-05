@@ -1,0 +1,26 @@
+{
+  "name": "bookmark_app_rep",
+  "version": "1.0.0",
+  "description": "Bookmark App integrating Google Chrome Bookmarks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eogiesoba/Bookmark_App_rep.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eogiesoba/Bookmark_App_rep/issues"
+  },
+  "homepage": "https://github.com/eogiesoba/Bookmark_App_rep#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mysql2": "^1.5.2",
+    "sequelize": "^4.35.2"
+  }
+}
