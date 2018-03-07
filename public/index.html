@@ -1,18 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Bookmark App</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-        </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bookmarks_Extension</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css"> 
 </head>
-
-
 <body>
 
+<div class="container">
+
+<header>
+    <h3>Bookmark Manager</h3>
+
+    <form>
+        <div class="form-group">
+            <p class="userLabel">User Name:<p>
+            <input type="text" class="form-control" id="userName" placeholder="Gmail Address">
+        </div>
+    </form>
+
+    <div class="row justify-content-center">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="radio1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">Existing User</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="radio2" value="option2">
+            <label class="form-check-label" for="inlineCheckbox2">New User</label>
+          </div>
+    </div>
+</header>
+
+<br/>
+
+<div class="row bookmarkButton">
+
+        <button type="button" class="btn btn-primary btn-lg" id="addBookmark">Add Bookmark</button>
+
+</div>
+
+<br/>
+
+<div class="row bookmarkWindow">
+
+    <button type="button" class="btn btn-primary btn-lg" id="bookmarkWidow">Bookmark Page</button>
+
+</div>
+
+
+
+
+</div>
+
+
+<<<<<<< HEAD
     <h1>Bookmark App</h1>
+=======
+</div>
+>>>>>>> b3210b357a2d47e0fff7a7847b63852183088407
 
 </body>
 

@@ -1,0 +1,45 @@
+body{
+    width: 400px;
+    height: 350px;
+    /* background: linear-gradient(to right, rgb(151, 154, 153), rgb(101, 103, 103)); */
+    font-family: 'Lato', sans-serif;
+}
+
+h3 {
+    color: #2b2a28;
+    font-size: 20px;
+    text-align: center;
+}
+
+header {
+    /* background-image: url("images/diamonds_@2X.png");
+    background-size: cover; */
+    background-color: aqua;
+    height: 175px;
+}
+
+.userLabel {
+    text-align: center;
+}
+
+#userName{
+    width: 60%;
+    margin: 0 auto;
+}
+
+#addBookmark {
+    background-color: slategray;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
+#bookmarkWidow {
+    background-color: slategray;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
+
+
+
+
