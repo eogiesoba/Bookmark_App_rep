@@ -1,20 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
-    user: {
+    bookmarkID: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    folder: {
+    name: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    tags: {
+    url: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
