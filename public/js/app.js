@@ -50,4 +50,15 @@ $(document).ready(function () {
         });
     }
 
+    var deleteBookmark = function(newArr){
+        $.ajax({
+            method : "DELETE",
+            url: "/api/posts" + id,
+            data: BookmarkArray
+        }).then(function(){
+            console.log("Your Bookmarks have been Imported!")
+        });
+    }
+
+
 });
