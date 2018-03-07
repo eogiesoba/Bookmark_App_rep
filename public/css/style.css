@@ -1,0 +1,17 @@
+body{
+    width: 600px;
+    height: 800px;
+    background: linear-gradient(to right, rgb(151, 154, 153), rgb(101, 103, 103));
+    font-family: 'Lato', sans-serif;
+}
+
+p .search {
+    color: #2b2a28;
+    font-size: 20px;
+    text-align: center;
+}
+
+#searchButton {
+    margin-left: 5px;
+    background-color: turquoise;
+}

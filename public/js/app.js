@@ -1,25 +1,36 @@
 $(document).ready(function() {
 
-    var pbj = 0;
-    var gc = 0;
-    var rb = 0;
-    var pbjClick = function() {
-        alert("snarky pbj stuff");
-        pbj++;
-        alert("You've eaten " + pbj + " peanut butter sandwich");
-    }
-    $("#pbj").on("click", pbjClick);
+    var query = $("search").val();
 
-    var grilledCheese = function() {
-        alert("snarky gc stuff");
-        gc++;
-        alert("You've eaten " + gc + " grilled cheese sandwich");
-    }
-    $("#gc").on("click", grilledCheese);
+// var dumpBookmarks = function(query) {
+//   console.log("function");
+// var bookmarkTreeNodes = chrome.bookmarks.getTree(
+//   function(bookmarkTreeNodes) {
+//       console.log("query", query);
+//       console.log("iT", $('#bookmarks').innerText)
+//       console.log("BTN", bookmarkTreeNodes);
+//       console.log("BTN-0", bookmarkTreeNodes[0].children[0].children[0].title);
+//       $('#bookmarks').append("<div>" + bookmarkTreeNodes[0].children[0].children[0].title + "</div>");
+//       $('#bookmarks').append("<div>" + bookmarkTreeNodes[0].children[0].children[1].title + "</div>");
+//   });
+// };
 
-    $("#rb").on("click", function() {
-        alert("snarky rb stuff");
-        rb++;
-        alert("You've eaten " + rb + " roast beef sandwich");
-    });
+// dumpBookmarks(query);
+
+
+var getBookmarks = function(query) {
+  // for (i = 0; i < 200; i++) {
+  //   var x = i.toString();
+var bookmarks = chrome.bookmarks.get("89", 
+  function(bookmarks) {
+      console.log("Bookmarks", bookmarks);
+      // var newDiv = $("<div>")
+      // newDiv
+      $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
+  });
+
+};
+
+getBookmarks(query);
+
 })
