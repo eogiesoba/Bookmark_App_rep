@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 $(document).ready(function () {
 
     var query = $("search").val();
@@ -40,3 +42,4 @@ $(document).ready(function () {
 
 
 });
+>>>>>>> b3210b357a2d47e0fff7a7847b63852183088407
