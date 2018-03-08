@@ -15,7 +15,7 @@ header {
     /* background-image: url("images/diamonds_@2X.png");
     background-size: cover; */
     background-color: aqua;
-    height: 200px;
+    height: 225px;
 }
 
 .userLabel {
@@ -54,7 +54,7 @@ header {
     margin: 0 auto;
 }
 
-#bookmarkWidow {
+#bookmarkWindow {
     background-color: slategray;
     border-radius: 12px;
     margin: 0 auto;
