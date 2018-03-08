@@ -1,29 +1,28 @@
 $(document).ready(function () {
 
-    function validateUser(){
+    // function validateUser(){
 
-        let loginName = $("#userName")[0].value;
-        if (loginName === "" || loginName.indexOf("@") === -1 || loginName.indexOf(".") === -1) {
-            alert("Please input your Gmail address.");
-        } else {
-            // localStorage.setItem("userEmail", loginName)
-            confirmUserStatus();
-        }
+        // let loginName = $("#userName")[0].value;
+        // if (loginName === "" || loginName.indexOf("@") === -1 || loginName.indexOf(".") === -1) {
+        //     alert("Please input your Gmail address.");
+        // } else {
+        //     // localStorage.setItem("userEmail", loginName)
+        //     confirmUserStatus();
+        // }
 
-        let confirmUserStatus = function() {
-        if (!$("#radio1")[0].checked && !$("#radio2")[0].checked) {
-            alert("Please select if you are a new or returning user");
-        } else if ($("#radio1")[0].checked && $("#radio2")[0].checked) {
-            alert("Please select either returning or new user.");
-        } else if ($("#radio1")[0].checked && !$("#radio2")[0].checked){
-            trigger api call to load existing bookmarks
-        } else if (!$("#radio1")[0].checked && $("#radio2")[0].checked){
-            trigger api call to post user name and pull bookmarks
-        }
+        // let confirmUserStatus = function() {
+        // if (!$("#radio1")[0].checked && !$("#radio2")[0].checked) {
+        //     alert("Please select if you are a new or returning user");
+        // } else if ($("#radio1")[0].checked && $("#radio2")[0].checked) {
+        //     alert("Please select either returning or new user.");
+        // } else if ($("#radio1")[0].checked && !$("#radio2")[0].checked){
+        //     // trigger api call to load existing bookmarks
+        // } else if (!$("#radio1")[0].checked && $("#radio2")[0].checked){
+        //     trigger api call to post user name and pull bookmarks
+        // }
 
-    }
-
-
+    // }
+   
 
 
 
@@ -72,27 +71,50 @@ $(document).ready(function () {
     };
 
     BookmarkArray = getBookmarks(query);
+  
+    console.log("hello");
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     var link = document.getElementById('bookmarkWindow');
+    //     // onClick's logic below:
+    //     link.addEventListener('click', function() {
+    //         console.log("hello");
+    //         // var loginName = $("#userName")[0].value;
+    //         // alert(loginName);
+    //     });
+    // });
 
-    $("#loginButton").on("submit", function UserSubmit(event){
-        event.preventDefault();
-
-        //Conditional to check if user input data
-        if (!titleInput.val().trim()) {
-            return;
-        }
-
-        var UserPost ={
-            user: UserInput.val().trim()
-        }
-
-        console.log(UserPost);
+    // document.querySelectorAll("#bookmarkWindow").addEvenListener("click", function (event){
+    //     event.preventDefault();
         
-        submitUser(UserPost);
-    });
+    //     var loginName = $("#userName")[0].value;
+    //     alert(loginName);
+    
+    //     //Conditional to check if user input data
+    //     if (!titleInput.val().trim()) {
+    //         return;
+    //     }
 
-    function submitUser(Post) {
-        $.post("/api/user/", User, function() {
-          window.location.href="/home";
+    //     var UserPost ={
+    //         user: loginName
+    //     }
+
+    //     console.log(UserPost);
+        
+    //     submitUser(UserPost);
+    // })
+
+    var UserPost ={
+        user: "tommy@gmail.com"
+    }
+    console.log(UserPost);
+    submitUser(UserPost);
+    function submitUser(User) {
+        $.ajax({
+            method : "POST",
+            url: "http://localhost:8080/api/users",
+            data: User
+        }).then(function(){
+            console.log("done!");
         });
     }
 
@@ -100,7 +122,7 @@ $(document).ready(function () {
     var importBookmark = function(newArr){
         $.ajax({
             method : "POST",
-            url: "/api/posts",
+            url: "https://localhost:8080/api/posts",
             data: BookmarkArray
         }).then(function(){
             console.log("Your Bookmarks have been Imported!");
