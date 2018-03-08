@@ -18,10 +18,6 @@ $(document).ready(function () {
     var BookmarkArray = [];
     var UserInput = $("#userName");
 
-    var UserPost ={
-        user: UserInput.val().trim()
-    }
-
 
 
     // var dumpBookmarks = function(query) {
@@ -106,77 +102,135 @@ $(document).ready(function () {
             method : "POST",
             url: "http://localhost:8080/api/users",
             data: User
-        }).then(function(){
-            console.log("done!");
+        }).then(function () {
+            window.location.href = "/home";
         });
     }
+
+    function getUserData(User) {
+        $.ajax({
+            method : "GET",
+            url: "http://localhost:8080/api/users",
+            data: User
+        }).then(function(data){
+            // var UserID = data.id;
+
+            // var newBookMarkObj = BookmarkArray;
+            for (var i = 0; i < data.length; i++){
+                var userEmail = data[i].user;
+                if(userEmail === newUser){
+                    var userID = data[i].id
+                }
+            }
+            BookmarkArray.shift(userID);
+            importBookmark(BookmarkArray);
+        });
+    }
+    //associate this with our folder and our bookmarks
+
+    // var UserObjectArray = getUserData();
+    // console.log(UserObjectArray);
 
 
     var importBookmark = function(newArr){
         $.ajax({
             method : "POST",
-            url: "https://localhost:8080/api/posts",
-            data: BookmarkArray
+            url: "https://localhost:8080/api/bookmarks",
+            data: newArr
         }).then(function(){
-            console.log("Your Bookmarks have been Imported!");
+            
         });
     }
 
-    var deleteBookmark = function(newArr){
+    function getBookmarks(User) {
         $.ajax({
-            method : "DELETE",
-            url: "/api/posts" + id,
+            method : "GET",
+            url: "http://localhost:8080/api/bookmarks",
+            data: User
         }).then(function(){
-            console.log("Your Bookmark had been Deleted");
-        });
-    }
-
-    function updateBookmark(newArr) {
-        $.ajax({
-          method: "PUT",
-          url: "/api/posts",
-          data: BookmarkArray
-        })
-        .then(function() {
-          window.location.href = "/home";
+            console.log("done!");
         });
     }
 
     var postFolders = function(newArr){
         $.ajax({
             method : "POST",
-            url: "/api/folders",
-        }).then(function(){
+            url: "https://localhost:8080/api/folders",
+            data: newArr
+        }).then(function(data){
+            
             
         });
     }
 
-    var deleteFolder = function(newArr){
+    function updateBookmark(newArr) {
         $.ajax({
-            method : "DELETE",
-            url: "/api/folders" + id,
-        }).then(function(){
-            console.log("Your Folder had been Deleted");
-        });
+            method: "PUT",
+            url: "/api/posts",
+            data: BookmarkArray
+        })
+            .then(function () {
+                window.location.href = "/home";
+            });
     }
 
-    var postUserData = function(newArr){
-        $.ajax({
-            method : "POST",
-            url: "/api/users",
-        }).then(function(){
+
+
+    // var deleteBookmark = function(newArr){
+    //     $.ajax({
+    //         method : "DELETE",
+    //         url: "/api/posts" + id,
+    //     }).then(function(){
+    //         console.log("Your Bookmark had been Deleted");
+    //     });
+    // }
+
+    // function updateBookmark(newArr) {
+    //     $.ajax({
+    //       method: "PUT",
+    //       url: "/api/posts",
+    //       data: BookmarkArray
+    //     })
+    //     .then(function() {
+    //       window.location.href = "/home";
+    //     });
+    // }
+
+    // var postFolders = function(newArr){
+    //     $.ajax({
+    //         method : "POST",
+    //         url: "/api/folders",
+    //     }).then(function(){
             
-        });
-    }
+    //     });
+    // }
 
-    var deleteUserData = function(newArr){
-        $.ajax({
-            method : "DELETE",
-            url: "/api/users" + id,
-        }).then(function(){
-            console.log("Your user had been Deleted");
-        });
-    }
+    // var deleteFolder = function(newArr){
+    //     $.ajax({
+    //         method : "DELETE",
+    //         url: "/api/folders" + id,
+    //     }).then(function(){
+    //         console.log("Your Folder had been Deleted");
+    //     });
+    // }
+
+    // var postUserData = function(newArr){
+    //     $.ajax({
+    //         method : "POST",
+    //         url: "/api/users",
+    //     }).then(function(){
+            
+    //     });
+    // }
+
+    // var deleteUserData = function(newArr){
+    //     $.ajax({
+    //         method : "DELETE",
+    //         url: "/api/users" + id,
+    //     }).then(function(){
+    //         console.log("Your user had been Deleted");
+    //     });
+    // }
 
 });
 

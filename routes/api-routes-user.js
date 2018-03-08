@@ -23,8 +23,7 @@ module.exports = function(app) {
   // POST route for saving a new post
   app.post("/api/users", function(req, res) {
     db.Users.create({
-      id: req.body.id,
-      name: req.body.name,
+      user: req.body.name,
       
     }).then(function(dbUser) {
       res.json(dbUsers);
