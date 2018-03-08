@@ -15,7 +15,7 @@ header {
     /* background-image: url("images/diamonds_@2X.png");
     background-size: cover; */
     background-color: aqua;
-    height: 160px;
+    height: 200px;
 }
 
 .userLabel {
@@ -27,6 +27,25 @@ header {
     margin: 0 auto;
 }
 
+#bookmarkWidow {
+    background-color: slategray;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
+#newUserButton {
+    background-color: red;
+    border-radius:6px;
+    margin: 0 auto;
+
+}
+
+#returnUserButton {
+    background-color: seagreen;
+    border-radius:6px;
+    margin: 0 auto;
+
+}
 
 
 #addBookmark {
@@ -80,10 +99,42 @@ header {
 }
 
 .main {
-    background: linear-gradient(rgb(150, 154, 150),rgb(101,104,101), rgb(150, 154, 150));
+    background-image: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url("../images/bookshelf.jpeg");
+    background-position: center center;
+    background-size: cover;
+    vertical-align: middle;
     height: 750px;
 }
 
+.bmBox {
+    height: 175px;
+    width: 150px;
+    background-color:greenyellow;
+    margin-top: 10px;
+    margin-left: 25px;
+    border-radius: 12px;
+}
+
+.bmTitleDiv {
+    background-color: salmon;
+    height:125px;
+}
+
+.bmTitle{
+    font-size: 16px;
+    text-align: center;
+}
+
+.bmFolderDiv {
+    background-color: blue;
+    height: 50px;
+    border-top: solid 2px black;
+}
+
+.bmFolder {
+    font-size: 16px;
+    text-align: center;
+}
 
 /* Bookmarks HTML Footer */
 
