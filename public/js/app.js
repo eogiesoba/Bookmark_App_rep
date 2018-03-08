@@ -56,7 +56,7 @@ $(document).ready(function () {
             url: "/api/posts" + id,
             data: BookmarkArray
         }).then(function(){
-            console.log("Your Bookmarks have been Imported!")
+            console.log("Your Bookmarks have been Deleted!")
         });
     }
 

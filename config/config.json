@@ -8,10 +8,11 @@
     },
     "test": {
       "username": "root",
-      "password": null,
-      "database": "database_test",
-      "host": "",
-      "dialect": "mysql"
+      "password": "root",
+      "database": "testBookmark",
+      "host": "127.0.0.1",
+      "dialect": "mysql",
+      "port": 8889
     },
     "production": {
       "username": "root",
