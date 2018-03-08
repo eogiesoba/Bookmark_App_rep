@@ -1,6 +1,6 @@
 body{
     width: 400px;
-    height: 350px;
+    height: 375px;
     /* background: linear-gradient(to right, rgb(151, 154, 153), rgb(101, 103, 103)); */
     font-family: 'Lato', sans-serif;
 }
@@ -12,8 +12,6 @@ h3 {
 }
 
 header {
-    /* background-image: url("images/diamonds_@2X.png");
-    background-size: cover; */
     background-color: aqua;
     height: 200px;
 }
@@ -54,7 +52,7 @@ header {
     margin: 0 auto;
 }
 
-#bookmarkWidow {
+#bookmarkWindow {
     background-color: slategray;
     border-radius: 12px;
     margin: 0 auto;
