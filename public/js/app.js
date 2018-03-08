@@ -48,12 +48,11 @@ $(document).ready(function () {
                     if(bookmarks[0] !== undefined){
                         newArr.push(bookmarks[0]);
                     }
-                    
                 });
         }
+
         console.log(newArr);
         return newArr;
-
     };
 
     BookmarkArray = getBookmarks(query);
@@ -88,8 +87,9 @@ $(document).ready(function () {
         
     //     submitUser(UserPost);
     // })
-    
-    document.getElementById('bookmarkWindow').addEventListener('click', function(){
+    var email = "oldTime@gmail.com";
+
+    document.getElementById('newUserButton').addEventListener('click', function(){
         
         console.log("Works!");
         var newUser = document.getElementById("userName").value;
@@ -98,6 +98,15 @@ $(document).ready(function () {
             user: newUser
         }
         submitUser(UserPost);
+    });
+
+    document.getElementById('bookmarkWindow').addEventListener('click', function(){
+         getUserData();  
+         console.log("Bookmark Array: ", BookmarkArray);
+         var bookObject = {
+             bookmarkArray: BookmarkArray
+         }
+         importBookmark(bookObject); 
     });
 
     function submitUser(User) {
@@ -116,16 +125,17 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/users",
         }).then(function(data){
             // var UserID = data.id;
-
+            console.log(data);
             // var newBookMarkObj = BookmarkArray;
+            var userID;
             for (var i = 0; i < data.length; i++){
                 var userEmail = data[i].user;
-                if(userEmail === newUser){
-                    var userID = data[i].id
+                if(userEmail === email){
+                    userID = data[i].id
                 }
             }
-            BookmarkArray.shift(userID);
-            importBookmark(BookmarkArray);
+            console.log(userID);
+            BookmarkArray.unshift(userID);
         });
     }
     //associate this with our folder and our bookmarks
@@ -135,12 +145,13 @@ $(document).ready(function () {
 
 
     var importBookmark = function(newArr){
+        console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method : "POST",
-            url: "https://localhost:8080/api/bookmarks",
+            url: "http://localhost:8080/api/bookmarks",
             data: newArr
         }).then(function(){
-            
+            console.log("You imported all Bookmarks!");
         });
     }
 
