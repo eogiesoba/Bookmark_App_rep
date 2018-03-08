@@ -111,7 +111,7 @@ $(document).ready(function () {
     function submitUser(User) {
         $.ajax({
             method : "POST",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
             data: User
         }).then(function(){
             console.log("done!");
