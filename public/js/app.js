@@ -1,11 +1,12 @@
 $(document).ready(function () {
 
-    $("loginButton").on('click', function(){
+    function validateUser(){
 
-        let loginName = $("#userName").val().trim();
+        let loginName = $("#userName")[0].value;
         if (loginName === "" || loginName.indexOf("@") === -1 || loginName.indexOf(".") === -1) {
             alert("Please input your Gmail address.");
         } else {
+            // localStorage.setItem("userEmail", loginName)
             confirmUserStatus();
         }
 
