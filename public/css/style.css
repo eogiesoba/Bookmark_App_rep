@@ -15,7 +15,7 @@ header {
     /* background-image: url("images/diamonds_@2X.png");
     background-size: cover; */
     background-color: aqua;
-    height: 175px;
+    height: 200px;
 }
 
 .userLabel {
@@ -25,6 +25,13 @@ header {
 #userName{
     width: 60%;
     margin: 0 auto;
+}
+
+#loginButton {
+    background-color: slategray;
+    border-radius: 6px;
+    margin: 0 auto;
+    margin-top: 5px;
 }
 
 #addBookmark {
@@ -38,7 +45,67 @@ header {
     border-radius: 12px;
     margin: 0 auto;
 }
+/* Bookmarkts HTML SideBar */
 
+.sidebar-brand {
+    text-align: center;
+}
+
+.form-group {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#folderSubmitBtn {
+    background-color: slategray;
+    border-radius: 6px;
+    width: 40%;
+    margin-left: 25%;
+    margin-top: 10px;
+}
+
+/* Bookmarks HTML Main Content */
+
+.header {
+  background-color: rgb(35, 33, 139);
+  border-bottom-color: black;
+  margin: 0 auto;
+}
+
+#menu-toggle {
+    margin-top: 10px;
+}
+#searchBookmarks {
+    width: 60%;
+    margin-left: 20%;
+}
+#searchBookmarksBtn {
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.main {
+    background: linear-gradient(rgb(150, 154, 150),rgb(101,104,101), rgb(150, 154, 150));
+    height: 750px;
+}
+
+
+/* Bookmarks HTML Footer */
+
+.footer {
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(35, 33, 139);
+    height: 50px;
+    bottom: 0;
+}
+
+.crtext {
+    font-size: 12px;
+    color: whitesmoke;
+    margin: 0 auto;
+    margin-top: 10px;
+}
 
 
 
