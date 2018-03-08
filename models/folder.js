@@ -8,6 +8,15 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
     });
+
+    Folder.associate = function(models) {
+       
+        Folder.belongsTo(models.User, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+    };
     
     return Folder;
   };

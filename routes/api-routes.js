@@ -12,10 +12,19 @@ var db = require("../models"); //tyep db.Post when using sequelize.
 // =============================================================
 module.exports = function(app) {
 
-  // GET route for getting all of the posts
-  app.get("/api/posts", function(req, res) {
-    // console.log(JSON.stringify(results));//Displays data that will be sent back to the front end.
-    // db.Post.findAll({}).then(results => res.json(results));
+  // POST route for importing all the users bookmarks into DB
+  app.post("/api/posts", function(req, res) {
+    var newArr = req.body;
+    var UserId = req.body[0]
+    for (var i=1; i < newArr.length; i++){
+      db.Bookmark.create({
+        title: newArr[i].title,
+        url: newArr[i].url,
+        UserId: UserId
+      }).then(function() {
+        res.end();
+      });
+    }
   });
 
   // Get route for returning posts of a specific category

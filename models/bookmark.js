@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Bookmark = sequelize.define("Bookmark", {
-      name: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
