@@ -72,7 +72,7 @@ $(document).ready(function () {
     var importBookmark = function(newArr){
         $.ajax({
             method : "POST",
-            url: "/api/posts",
+            url: "/api/bookmarks",
             data: BookmarkArray
         }).then(function(){
             console.log("Your Bookmarks have been Imported!");
@@ -82,6 +82,12 @@ $(document).ready(function () {
     var deleteBookmark = function(newArr){
         $.ajax({
             method : "DELETE",
+<<<<<<< HEAD
+            url: "/api/bookmarks" + id,
+            data: BookmarkArray
+        }).then(function(){
+            console.log("Your Bookmarks have been Deleted!")
+=======
             url: "/api/posts" + id,
         }).then(function(){
             console.log("Your Bookmark had been Deleted");
@@ -132,6 +138,7 @@ $(document).ready(function () {
             url: "/api/users" + id,
         }).then(function(){
             console.log("Your user had been Deleted");
+>>>>>>> 3a4911c18aab83335960b8b4283a651583c5928c
         });
     }
 
