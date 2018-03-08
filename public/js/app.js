@@ -1,30 +1,15 @@
 $(document).ready(function () {
 
-    function validateUser(){
-
-        let loginName = $("#userName")[0].value;
-        if (loginName === "" || loginName.indexOf("@") === -1 || loginName.indexOf(".") === -1) {
-            alert("Please input your Gmail address.");
-        } else {
-            // localStorage.setItem("userEmail", loginName)
-            confirmUserStatus();
-        }
-
-        let confirmUserStatus = function() {
-        if (!$("#radio1")[0].checked && !$("#radio2")[0].checked) {
-            alert("Please select if you are a new or returning user");
-        } else if ($("#radio1")[0].checked && $("#radio2")[0].checked) {
-            alert("Please select either returning or new user.");
-        } else if ($("#radio1")[0].checked && !$("#radio2")[0].checked){
-            trigger api call to load existing bookmarks
-        } else if (!$("#radio1")[0].checked && $("#radio2")[0].checked){
-            trigger api call to post user name and pull bookmarks
-        }
-
-    }
 
 
+        // var checkEmail = function() {
+        // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
+        //     alert("Please input your Gmail address.");
+        // } else {
+        //     confirmUserStatus();
+        // }
 
+        // checkEmail();
 
 
 
