@@ -61,7 +61,7 @@ $(document).ready(function () {
                     newArr.push(bookmarks[0]);
                 });
         }
-        // console.log(newArr);
+        console.log(newArr);
         return newArr;
 
     };
@@ -115,7 +115,9 @@ $(document).ready(function () {
             method : "POST",
             url: "http://localhost:8080/api/users",
             data: User
-        }).then(getUserData);
+        }).then(function () {
+            window.location.href = "/home";
+        });
     }
 
     function getUserData(User) {
@@ -124,13 +126,17 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/users",
             data: User
         }).then(function(data){
-            var UserID = data.id;
+            // var UserID = data.id;
 
-            var newBookMarkObj = BookmarkArray;
+            // var newBookMarkObj = BookmarkArray;
             for (var i = 0; i < data.length; i++){
-                newBookMarkObj[i].push(UserID);
+                var userEmail = data[i].user;
+                if(userEmail === newUser){
+                    var userID = data[i].id
+                }
             }
-            return newBookMarkObj;
+            BookmarkArray.shift(userID);
+            importBookmark(BookmarkArray);
         });
     }
     //associate this with our folder and our bookmarks
