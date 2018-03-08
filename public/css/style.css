@@ -15,7 +15,7 @@ header {
     /* background-image: url("images/diamonds_@2X.png");
     background-size: cover; */
     background-color: aqua;
-    height: 200px;
+    height: 160px;
 }
 
 .userLabel {
@@ -27,12 +27,7 @@ header {
     margin: 0 auto;
 }
 
-#loginButton {
-    background-color: slategray;
-    border-radius: 6px;
-    margin: 0 auto;
-    margin-top: 5px;
-}
+
 
 #addBookmark {
     background-color: slategray;
