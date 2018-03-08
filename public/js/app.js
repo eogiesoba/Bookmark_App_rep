@@ -4,10 +4,6 @@ $(document).ready(function () {
     var BookmarkArray = [];
     var UserInput = $("#userName");
 
-    var UserPost ={
-        user: UserInput.val().trim()
-    }
-
 
 
     // var dumpBookmarks = function(query) {
@@ -45,7 +41,7 @@ $(document).ready(function () {
 
     BookmarkArray = getBookmarks(query);
 
-    $("#loginButton").on("submit", function UserSubmit(event){
+    $("#addBookmark").on("submit", function UserSubmit(event){
         event.preventDefault();
 
         //Conditional to check if user input data
@@ -62,9 +58,9 @@ $(document).ready(function () {
         submitUser(UserPost);
     });
 
-    function submitUser(Post) {
-        $.post("/api/user/", User, function() {
-          window.location.href="/home";
+    function submitUser(User) {
+        $.post("/api/users", User, function() {
+          window.location.href = "/home";
         });
     }
 
@@ -72,7 +68,7 @@ $(document).ready(function () {
     var importBookmark = function(newArr){
         $.ajax({
             method : "POST",
-            url: "/api/bookmarks",
+            url: "/api/posts",
             data: BookmarkArray
         }).then(function(){
             console.log("Your Bookmarks have been Imported!");
@@ -82,12 +78,6 @@ $(document).ready(function () {
     var deleteBookmark = function(newArr){
         $.ajax({
             method : "DELETE",
-<<<<<<< HEAD
-            url: "/api/bookmarks" + id,
-            data: BookmarkArray
-        }).then(function(){
-            console.log("Your Bookmarks have been Deleted!")
-=======
             url: "/api/posts" + id,
         }).then(function(){
             console.log("Your Bookmark had been Deleted");
@@ -138,7 +128,6 @@ $(document).ready(function () {
             url: "/api/users" + id,
         }).then(function(){
             console.log("Your user had been Deleted");
->>>>>>> 3a4911c18aab83335960b8b4283a651583c5928c
         });
     }
 
