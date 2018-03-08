@@ -18,7 +18,6 @@ $(document).ready(function () {
 
     // dumpBookmarks(query);
 
-
     var getBookmarks = function (query) {
         var newArr = [];
         for (i = 0; i < 200; i++) {
@@ -39,26 +38,78 @@ $(document).ready(function () {
 
     BookmarkArray = getBookmarks(query);
 
-
     var importBookmark = function(newArr){
         $.ajax({
             method : "POST",
             url: "/api/bookmarks",
             data: BookmarkArray
         }).then(function(){
-            console.log("Your Bookmarks have been Imported!")
+            console.log("Your Bookmarks have been Imported!");
         });
     }
 
     var deleteBookmark = function(newArr){
         $.ajax({
             method : "DELETE",
+<<<<<<< HEAD
             url: "/api/bookmarks" + id,
             data: BookmarkArray
         }).then(function(){
             console.log("Your Bookmarks have been Deleted!")
+=======
+            url: "/api/posts" + id,
+        }).then(function(){
+            console.log("Your Bookmark had been Deleted");
         });
     }
 
+    function updateBookmark(newArr) {
+        $.ajax({
+          method: "PUT",
+          url: "/api/posts",
+          data: BookmarkArray
+        })
+        .then(function() {
+          window.location.href = "/home";
+        });
+    }
+
+    var postFolders = function(newArr){
+        $.ajax({
+            method : "POST",
+            url: "/api/folders",
+        }).then(function(){
+            
+        });
+    }
+
+    var deleteFolder = function(newArr){
+        $.ajax({
+            method : "DELETE",
+            url: "/api/folders" + id,
+        }).then(function(){
+            console.log("Your Folder had been Deleted");
+        });
+    }
+
+    var postUserData = function(newArr){
+        $.ajax({
+            method : "POST",
+            url: "/api/users",
+        }).then(function(){
+            
+        });
+    }
+
+    var deleteUserData = function(newArr){
+        $.ajax({
+            method : "DELETE",
+            url: "/api/users" + id,
+        }).then(function(){
+            console.log("Your user had been Deleted");
+>>>>>>> 3a4911c18aab83335960b8b4283a651583c5928c
+        });
+    }
 
 });
+
