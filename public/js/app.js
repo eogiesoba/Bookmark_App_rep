@@ -102,16 +102,22 @@ $(document).ready(function () {
         
     //     submitUser(UserPost);
     // })
+    
+    document.getElementById('bookmarkWindow').addEventListener('click', function(){
+        
+        console.log("Works!");
+        var newUser = document.getElementById("userName").value;
+        console.log(newUser);
+        var UserPost ={
+            user: newUser
+        }
+        submitUser(UserPost);
+    });
 
-    var UserPost ={
-        user: "tommy@gmail.com"
-    }
-    console.log(UserPost);
-    submitUser(UserPost);
     function submitUser(User) {
         $.ajax({
             method : "POST",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
+            url: "http://localhost:8080/api/users",
             data: User
         }).then(function(){
             console.log("done!");
