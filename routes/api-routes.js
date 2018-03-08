@@ -25,8 +25,9 @@ module.exports = function (app) {
 
   // POST route for importing all users bookmarks on table in DB - used with chrome extension as an AJAX request
   app.post("/api/bookmarks", function (req, res) {
-    var newArr = req.body;//Bookmark array
-    var UserId = req.body[0];//User's unique ID assuming UserID will be in the first index of the array.
+    console.log("Req.Body: ", req.body);
+    var newArr = req.body.bookmarkArray;//Bookmark array
+    var UserId = req.body.bookmarkArray[0];//User's unique ID assuming UserID will be in the first index of the array.
 
     for (var i = 1; i < newArr.length; i++) {
       db.Bookmark.create({
@@ -65,7 +66,9 @@ module.exports = function (app) {
   // Get route for returning all users
   app.get("/api/users", function (req, res) {
 
-    User.findAll({}).then(function (results) {
+    db.User.findAll({}).then(function (results, err) {
+      if(err){console.log(err)}
+      // console.log(results)
       // results are available to us inside the .then
       res.json(results);
     });
