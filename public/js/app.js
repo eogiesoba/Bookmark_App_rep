@@ -98,12 +98,18 @@ $(document).ready(function () {
         
     //     submitUser(UserPost);
     // })
+    
+    document.getElementById('bookmarkWindow').addEventListener('click', function(){
+        
+        console.log("Works!");
+        var newUser = document.getElementById("userName").value;
+        console.log(newUser);
+        var UserPost ={
+            user: newUser
+        }
+        submitUser(UserPost);
+    });
 
-    var UserPost ={
-        user: "tommy@gmail.com"
-    }
-    console.log(UserPost);
-    submitUser(UserPost);
     function submitUser(User) {
         $.ajax({
             method : "POST",
