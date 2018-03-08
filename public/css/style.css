@@ -38,7 +38,26 @@ header {
     border-radius: 12px;
     margin: 0 auto;
 }
+/* Bookmarkts HTML */
 
+.sidebar-brand {
+    text-align: center;
+}
+
+.form-group {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+
+#folderSubmitBtn {
+    background-color: slategray;
+    border-radius: 6px;
+    width: 40%;
+    margin-left: 25%;
+    margin-top: 10px;
+}
 
 
 
