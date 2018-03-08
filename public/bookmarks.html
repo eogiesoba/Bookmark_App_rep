@@ -59,14 +59,37 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1>Simple Sidebar</h1>
-                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+                <div class="row header">
+                    <div class="col-md-1">
+                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Bookmarks Bar</a>
+                    </div>
+                    <div class="col-md-10">
+                        <textarea type="input" class="form" id="searchBookmarks" placeholder="Search Bookmarks"></textarea>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="submit" class="btn btn-primary" id="searchBookmarksBtn">Search</button>
+                    </div>
+                </div>
+
+
+                <div class="main">
+                    <div class="row" id="bookmarksDisplay">
+                    </div>
+                </div>
+
+
+
+
+                <div class="row footer">
+                        <p class="crtext">&copy Copyright 2018 EO-FS-SL</p>
+                </div>
+
+
+
             </div>
+            <!-- container-fluid -->
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 
