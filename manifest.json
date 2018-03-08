@@ -14,7 +14,8 @@
   
   "permissions": [
       "bookmarks", 
-      "activeTab", 
+      "activeTab",
+      "all_urls", 
       "storage"
   ],
 

@@ -2,6 +2,7 @@ $(document).ready(function () {
 
 
 
+
         // var checkEmail = function() {
         // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
         //     alert("Please input your Gmail address.");
@@ -15,6 +16,13 @@ $(document).ready(function () {
 
     var query = $("search").val();
     var BookmarkArray = [];
+    var UserInput = $("#userName");
+
+    var UserPost ={
+        user: UserInput.val().trim()
+    }
+
+
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -50,11 +58,64 @@ $(document).ready(function () {
     };
 
     BookmarkArray = getBookmarks(query);
+  
+    console.log("hello");
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     var link = document.getElementById('bookmarkWindow');
+    //     // onClick's logic below:
+    //     link.addEventListener('click', function() {
+    //         console.log("hello");
+    //         // var loginName = $("#userName")[0].value;
+    //         // alert(loginName);
+    //     });
+    // });
+
+    // document.querySelectorAll("#bookmarkWindow").addEvenListener("click", function (event){
+    //     event.preventDefault();
+        
+    //     var loginName = $("#userName")[0].value;
+    //     alert(loginName);
+    
+    //     //Conditional to check if user input data
+    //     if (!titleInput.val().trim()) {
+    //         return;
+    //     }
+
+    //     var UserPost ={
+    //         user: loginName
+    //     }
+
+    //     console.log(UserPost);
+        
+    //     submitUser(UserPost);
+    // })
+    
+    document.getElementById('bookmarkWindow').addEventListener('click', function(){
+        
+        console.log("Works!");
+        var newUser = document.getElementById("userName").value;
+        console.log(newUser);
+        var UserPost ={
+            user: newUser
+        }
+        submitUser(UserPost);
+    });
+
+    function submitUser(User) {
+        $.ajax({
+            method : "POST",
+            url: "http://localhost:8080/api/users",
+            data: User
+        }).then(function(){
+            console.log("done!");
+        });
+    }
+
 
     var importBookmark = function(newArr){
         $.ajax({
             method : "POST",
-            url: "/api/bookmarks",
+            url: "https://localhost:8080/api/posts",
             data: BookmarkArray
         }).then(function(){
             console.log("Your Bookmarks have been Imported!");

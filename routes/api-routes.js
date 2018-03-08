@@ -10,60 +10,62 @@ var db = require("../models"); //tyep db.Post when using sequelize.
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function (app) {
+
+
 
   // POST route for adding a new user - used with chrome extension as an AJAX request
-  app.post("/api/users", function(req, res) {
+  app.post("/api/users", function (req, res) {
     db.User.create({
       user: req.body.user
-    }).then(function() {
+    }).then(function () {
       res.end();
     });
   });
 
   // POST route for importing all users bookmarks on table in DB - used with chrome extension as an AJAX request
-  app.post("/api/bookmarks", function(req, res) {
+  app.post("/api/bookmarks", function (req, res) {
     var newArr = req.body;//Bookmark array
     var UserId = req.body[0];//User's unique ID assuming UserID will be in the first index of the array.
 
-    for (var i=1; i < newArr.length; i++){
+    for (var i = 1; i < newArr.length; i++) {
       db.Bookmark.create({
         title: newArr[i].title,
         url: newArr[i].url,
         UserId: UserId
-      }).then(function() {
+      }).then(function () {
         res.end();
       });
     }
   });
 
   // POST route for adding folders on table in DB
-  app.post("/api/folders", function(req, res) {
-      db.Bookmark.create({
-        folder: req.body.Folder,
-        UserId: req.body.UserId
-      }).then(function() {
-        res.end();
-      });
+  app.post("/api/folders", function (req, res) {
+    db.Bookmark.create({
+      folder: req.body.Folder,
+      UserId: req.body.UserId
+    }).then(function () {
+      res.end();
+    });
   });
 
   // PUT route will update bookmark's folder
-  app.put("/api/posts", function(req, res) {
+  app.put("/api/posts", function (req, res) {
     db.Bookmark.update(
       req.body,
       {
         where: {
           id: req.body.id
         }
-      }).then(function() {
+      }).then(function () {
         res.end();
       });
   });
 
   // Get route for returning all users
-  app.get("/api/users", function(req, res) {
+  app.get("/api/users", function (req, res) {
 
-    User.findAll({}).then(function(results) {
+    User.findAll({}).then(function (results) {
       // results are available to us inside the .then
       res.json(results);
     });
@@ -71,9 +73,9 @@ module.exports = function(app) {
   });
 
   // Get route for returning all bookmarks
-  app.get("/api/bookmarks", function(req, res) {
+  app.get("/api/bookmarks", function (req, res) {
 
-    Bookmark.findAll({}).then(function(results) {
+    Bookmark.findAll({}).then(function (results) {
       // results are available to us inside the .then
       res.json(results);
     });
@@ -81,7 +83,7 @@ module.exports = function(app) {
   });
 
   // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
+  app.delete("/api/posts/:id", function (req, res) {
     // Add sequelize code to delete a post where the id is equal to req.params.id, 
     // then return the result to the user using res.json
   });
