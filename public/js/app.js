@@ -45,7 +45,10 @@ $(document).ready(function () {
                     // var newDiv = $("<div>")
                     // newDiv
                     // $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
-                    newArr.push(bookmarks[0]);
+                    if(bookmarks[0] !== undefined){
+                        newArr.push(bookmarks[0]);
+                    }
+                    
                 });
         }
         console.log(newArr);
@@ -107,11 +110,10 @@ $(document).ready(function () {
         });
     }
 
-    function getUserData(User) {
+    function getUserData() {
         $.ajax({
             method : "GET",
             url: "http://localhost:8080/api/users",
-            data: User
         }).then(function(data){
             // var UserID = data.id;
 
