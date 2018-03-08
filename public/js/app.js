@@ -1,5 +1,32 @@
 $(document).ready(function () {
 
+    $("loginButton").on('click', function(){
+
+        let loginName = $("#userName").val().trim();
+        if (loginName === "" || loginName.indexOf("@") === -1 || loginName.indexOf(".") === -1) {
+            alert("Please input your Gmail address.");
+        } else {
+            confirmUserStatus();
+        }
+
+        let confirmUserStatus = function() {
+        if (!$("#radio1")[0].checked && !$("#radio2")[0].checked) {
+            alert("Please select if you are a new or returning user");
+        } else if ($("#radio1")[0].checked && $("#radio2")[0].checked) {
+            alert("Please select either returning or new user.");
+        } else if ($("#radio1")[0].checked && !$("#radio2")[0].checked){
+            trigger api call to load existing bookmarks
+        } else if (!$("#radio1")[0].checked && $("#radio2")[0].checked){
+            trigger api call to post user name and pull bookmarks
+        }
+
+    }
+
+
+
+
+
+
     var query = $("search").val();
     var BookmarkArray = [];
 
