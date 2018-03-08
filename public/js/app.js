@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     var query = $("search").val();
+    var BookmarkArray = [];
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -27,7 +28,7 @@ $(document).ready(function () {
                     // console.log("Bookmarks", bookmarks);
                     // var newDiv = $("<div>")
                     // newDiv
-                    $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
+                    // $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
                     newArr.push(bookmarks[0]);
                 });
         }
@@ -36,7 +37,28 @@ $(document).ready(function () {
 
     };
 
-    getBookmarks(query);
+    BookmarkArray = getBookmarks(query);
+
+
+    var importBookmark = function(newArr){
+        $.ajax({
+            method : "POST",
+            url: "/api/posts",
+            data: BookmarkArray
+        }).then(function(){
+            console.log("Your Bookmarks have been Imported!")
+        });
+    }
+
+    var deleteBookmark = function(newArr){
+        $.ajax({
+            method : "DELETE",
+            url: "/api/posts" + id,
+            data: BookmarkArray
+        }).then(function(){
+            console.log("Your Bookmarks have been Imported!")
+        });
+    }
 
 
 });
