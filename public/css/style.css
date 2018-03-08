@@ -1,62 +1,90 @@
+
+/* Chrome Extension */
+
 body{
     width: 400px;
-    height: 375px;
-    /* background: linear-gradient(to right, rgb(151, 154, 153), rgb(101, 103, 103)); */
+    height: 300px;
+    background-image: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url("../images/bookshelf.jpeg");
     font-family: 'Lato', sans-serif;
 }
 
 h3 {
-    color: #2b2a28;
-    font-size: 20px;
+    color:whitesmoke;
+    font-size: 25px;
     text-align: center;
+    margin-top: 20px; 
 }
 
 header {
-    background-color: aqua;
-    height: 200px;
+    background-color: transparent;
+    height: 125px;
 }
 
 .userLabel {
     text-align: center;
 }
 
-#userName{
-    width: 60%;
+#userEmail {
+    width: 90%;
     margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
 }
 
 #bookmarkWidow {
     background-color: slategray;
     border-radius: 12px;
     margin: 0 auto;
+    text-align: center;
 }
 
+
 #newUserButton {
-    background-color: red;
+    background-color: orange;
+    font-size: 15px;
     border-radius:6px;
     margin: 0 auto;
 
 }
+
+#newUserButton:hover {
+    transform: scale(1.05, 1.05);
+    }
 
 #returnUserButton {
     background-color: seagreen;
-    border-radius:6px;
+    font-size: 15px;
+    border-radius: 6px;
     margin: 0 auto;
-
 }
+
+#returnUserButton:hover {
+    transform: scale(1.05, 1.05);
+    }
 
 
 #addBookmark {
-    background-color: slategray;
+    background-color: transparent;
     border-radius: 12px;
     margin: 0 auto;
 }
 
+#addBookmark:hover {
+    transform: scale(1.05, 1.05);
+    }
+
 #bookmarkWindow {
-    background-color: slategray;
+    background-color: transparent;
     border-radius: 12px;
     margin: 0 auto;
+    margin-top: 5px;
 }
+
+#bookmarkWindow:hover {
+    transform: scale(1.05, 1.05);
+    }
+
 /* Bookmarkts HTML SideBar */
 
 .sidebar-brand {
