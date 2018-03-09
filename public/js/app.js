@@ -12,7 +12,8 @@ $(document).ready(function () {
 
     // checkEmail();
 
-
+    var returningUser = localStorage.getItem("extensionUserEmail");
+    $("#userName")[0].value = returningUser;
 
     var query = $("search").val();
     var BookmarkArray = [];
@@ -95,6 +96,7 @@ $(document).ready(function () {
 
         console.log("Works!");
         var newUser = document.getElementById("userName").value;
+        localStorage.setItem("extensionUserEmail", newUser);
         console.log(newUser);
         var UserPost = {
             user: newUser
@@ -102,17 +104,6 @@ $(document).ready(function () {
         submitUser(UserPost);
     });
 
-<<<<<<< HEAD
-    document.getElementById('bookmarkWindow').addEventListener('click', function(){
-         getUserData();  
-         console.log("Bookmark Array: ", BookmarkArray);
-        //  for(var i=0; i < BookmarkArray.length; i++){
-            // BookmarkArray[3].userID = userID;
-            // console.log(BookmarkArray[3]);
-            // var bookObject = BookmarkArray[3];
-            // importBookmark(bookObject); 
-        //  }
-=======
     document.getElementById('bookmarkWindow').addEventListener('click', function () {
         getUserData();
         console.log("Bookmark Array: ", BookmarkArray);
@@ -123,15 +114,17 @@ $(document).ready(function () {
     });
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
+        console.log("folderButton pressed");
         getUserData();
         var newFolder = document.getElementById("addFolder").value;
+        console.log("newfoldername", newFolder);
         var userId = BookmarkArray[0];
+        console.log("userID", userID);
         var folderObj = {
             folder: newFolder,
             userID: userId
         }
         postFolders(folderObj);
->>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
     });
 
     function submitUser(User) {
@@ -140,11 +133,7 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/users",
             data: User
         }).then(function () {
-<<<<<<< HEAD
-            window.location.href = "http://localhost:8080/";
-=======
             // window.location.href = "/home";
->>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
         });
     }
 
@@ -156,15 +145,12 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
-<<<<<<< HEAD
-            for (var i = 0; i < data.length; i++){
-=======
             var userID;
             for (var i = 0; i < data.length; i++) {
->>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
+                    localStorage.setItem("extensionUserID", userID);
                 }
             }
             console.log(userID);
@@ -198,10 +184,38 @@ $(document).ready(function () {
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/bookmarks",
-        }).then(function () {
+        }).then(function (data) {
             console.log("done!");
+            createBookmarkDiv(data);
         });
     }
+
+    var createBookMarkDiv = function(bookmarkData){
+        for (var j = 0; j < bookmarkData.length; j++){
+        var bigBMDiv = $("<div>");
+        bigBMDiv.data("bookmark", bookmarkData);
+        bigBMDiv.addClass("col-md-3");
+        bigBMDiv.addClass("bmBox");
+
+        var urlDiv = $("<div>");
+        urlDiv.addClass("bmTitleDiv");
+        var bmTitle = bookmarkData[j].title;
+        urlDiv.append(bmTitle);
+        bigBDMDiv.append(urlDiv);
+
+        var folderDiv= $("div");
+        folderDiv.addClass("bmFolderDiv");
+        bigBMDiv.append(folderDiv);
+
+
+        bigBMDiv.attr("href", bookmarkData[j].url);
+        bigBMDiv.on("click", function () {
+            window.open($(this).attr("href"), '_blank');
+        });
+        $("#bookmarksDisplay").append(bigBMDiv);
+
+    }
+
 
     var postFolders = function (Folder) {
         $.ajax({
@@ -209,9 +223,17 @@ $(document).ready(function () {
             url: "https://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
-            console.log("Your folder has been made.")
+            console.log("Your folder has been made.");
+            createFolderRows(data);
 
         });
+    }
+
+    var createFolderRows = function(folderData){
+        var folderLine = $("<li>");
+        folderLine.data("folder", folderData);
+        folderLine.append("<li>" + folderData.type + "<a class='delete-folder'><span class='oi oi-trash'></span></a></li>");
+        $("#sidebar").append(folderLine);
     }
 
     function updateBookmark(newArr) {

@@ -134,10 +134,9 @@ header {
 
 .bmBox {
     height: 175px;
-    width: 150px;
     background-color:greenyellow;
     margin-top: 10px;
-    margin-left: 25px;
+    margin-right: 5px;
     border-radius: 12px;
 }
 
