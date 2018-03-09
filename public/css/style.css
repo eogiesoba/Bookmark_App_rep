@@ -74,16 +74,6 @@ header {
     transform: scale(1.05, 1.05);
     }
 
-#bookmarkWindow {
-    background-color: transparent;
-    border-radius: 12px;
-    margin: 0 auto;
-    margin-top: 5px;
-}
-
-#bookmarkWindow:hover {
-    transform: scale(1.05, 1.05);
-    }
 
 /* Bookmarkts HTML SideBar */
 
@@ -134,21 +124,39 @@ header {
 }
 
 .bmBox {
-    height: 175px;
+    height: 200px;
     background-color:greenyellow;
     margin-top: 10px;
     margin-left: 10px;
+    margin-right: 10px;
     border-radius: 12px;
 }
 
 .bmTitleDiv {
     background-color: salmon;
-    height:125px;
+    margin-top: 5px;
+    height:75px;
 }
 
 .bmTitle{
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
+}
+
+.btnStyle {
+    height: 50px;
+    margin: 0 auto;
+}
+
+.urlBtn {
+    height: 30px;
+    font-size: 16px;
+}
+
+.garbageBtn {
+    height:30px;
+    width: 20px;
+    margin-left: 10px;
 }
 
 .bmFolderDiv {
@@ -161,6 +169,14 @@ header {
     font-size: 16px;
     text-align: center;
 }
+
+.folderList{
+    color: whitesmoke;
+    font-size: 20px;
+    text-align: center;
+}
+
+
 
 /* Bookmarks HTML Footer */
 
