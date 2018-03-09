@@ -8,6 +8,7 @@ $(document).ready(function () {
         $.ajax({
             method: "GET",
             url: "/api/bookmarks",
+            // data: userObj
         }).then(function (data) {
             console.log(data)
             console.log("done!");

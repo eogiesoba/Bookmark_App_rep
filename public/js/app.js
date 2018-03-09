@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-
-
-
     // var checkEmail = function() {
     // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
     //     alert("Please input your Gmail address.");
@@ -15,11 +12,10 @@ $(document).ready(function () {
 
 
     var query = $("search").val();
-    var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
 
-
+    var globalVariable = 4;
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -56,8 +52,6 @@ $(document).ready(function () {
         return newArr;
     };
 
-    BookmarkArray = getBookmarks(query);
-
     console.log("hello");
     // document.addEventListener('DOMContentLoaded', function() {
     //     var link = document.getElementById('bookmarkWindow');
@@ -88,8 +82,8 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "123@gmail.com";
-    var userID;
+    var email = "mary@gmial.com";
+    var userObj = { userID: "default" };
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
@@ -105,17 +99,17 @@ $(document).ready(function () {
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Relocate page now!");
         // window.location.href = "http://localhost:8080/";
-        
+
     });
 
-    document.getElementById('bookmarkWindow').addEventListener('click', function(){
-         getUserData();  
-         console.log("Bookmark Array: ", BookmarkArray);
+    document.getElementById('bookmarkWindow').addEventListener('click', function () {
+        getUserData();
+        //  console.log("Bookmark Array: ", BookmarkArray);
         //  for(var i=0; i < BookmarkArray.length; i++){
-            // BookmarkArray[3].userID = userID;
-            // console.log(BookmarkArray[3]);
-            // var bookObject = BookmarkArray[3];
-            // importBookmark(bookObject); 
+        // BookmarkArray[3].userID = userID;
+        // console.log(BookmarkArray[3]);
+        // var bookObject = BookmarkArray[3];
+        // importBookmark(bookObject); 
         //  }
     });
 
@@ -137,16 +131,19 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
-            for (var i = 0; i < data.length; i++){
+            for (var i = 0; i < data.length; i++) {
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
                 }
             }
+            var BookmarkArray = [];
+            BookmarkArray = getBookmarks(query);
+            userObj.userID = userID; //This will update the user ID in a global varialbe that is an object
             console.log(userID);
             console.log(BookmarkArray);
 
-            for(var i=3; i < BookmarkArray.length; i++){//imports all bookmarks 1 at a time.
+            for (var i = 3; i < BookmarkArray.length; i++) {//imports all bookmarks 1 at a time.
                 BookmarkArray[i].userID = userID;
                 var bookObject = BookmarkArray[i];
                 importBookmark(bookObject);
@@ -190,16 +187,16 @@ $(document).ready(function () {
         });
     }
 
-    function updateBookmark(newArr) {
-        $.ajax({
-            method: "PUT",
-            url: "/api/posts",
-            data: BookmarkArray
-        })
-            .then(function () {
-                window.location.href = "/home";
-            });
-    }
+    // function updateBookmark(newArr) {
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "/api/posts",
+    //         data: BookmarkArray
+    //     })
+    //         .then(function () {
+    //             window.location.href = "/home";
+    //         });
+    // }
 
 
 
@@ -260,4 +257,3 @@ $(document).ready(function () {
     // }
 
 });
-
