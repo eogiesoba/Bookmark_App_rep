@@ -1,8 +1,4 @@
 $(document).ready(function () {
-
-
-
-
     // var checkEmail = function() {
     // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
     //     alert("Please input your Gmail address.");
@@ -19,8 +15,7 @@ $(document).ready(function () {
     var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
-
-
+    var appendArr = [];
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -89,7 +84,7 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "alex22@gmail.com";
+    var email = "oldTime@gmail.com";
     var userID;
 
     document.getElementById('newUserButton').addEventListener('click', function () {
@@ -110,7 +105,15 @@ $(document).ready(function () {
         var bookObject = {
             bookmarkArray: BookmarkArray
         }
-        importBookmark(bookObject);
+        importBookmark(JSON.parse(JSON.stringify(bookObject)));
+        
+    });
+
+    document.getElementById('addBookmark').addEventListener('click', function () {
+
+        console.log("adding Bookmarks to Index");
+        loadBookmarksIndex();
+        
     });
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
@@ -135,7 +138,7 @@ $(document).ready(function () {
         }).then(function () {
             // window.location.href = "/home";
         });
-    }
+    };
 
     function getUserData() {
         $.ajax({
@@ -162,35 +165,41 @@ $(document).ready(function () {
                 importBookmark(bookObject);
             }
         });
-    }
+    };
     //associate this with our folder and our bookmarks
 
     // var UserObjectArray = getUserData();
     // console.log(UserObjectArray);
 
+    //POST for Bookmarks
 
-    var importBookmark = function (newArr) {
+    function importBookmark(newArr) {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
             url: "http://localhost:8080/api/bookmarks",
             data: newArr
-        }).then(function () {
-            console.log("You imported all Bookmarks!");
+        }).then(function (data) {
+            console.log("You imported all Bookmarks!", data);
+          
         });
-    }
+    };
 
-    function getBookmarks() {
+    //Get for Bookmarks
+
+    function loadBookmarksIndex() {
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/bookmarks",
         }).then(function (data) {
+            console.log(data)
             console.log("done!");
-            createBookmarkDiv(data);
         });
-    }
+    };
 
-    var createBookMarkDiv = function(bookmarkData){
+    function createBookmarkDiv(bookmarkData){
+
+        console.log(bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++){
         var bigBMDiv = $("<div>");
         bigBMDiv.data("bookmark", bookmarkData);
@@ -213,11 +222,10 @@ $(document).ready(function () {
             window.open($(this).attr("href"), '_blank');
         });
         $("#bookmarksDisplay").append(bigBMDiv);
+    };
 
-    }
 
-
-    var postFolders = function (Folder) {
+    function postFolders(Folder) {
         $.ajax({
             method: "POST",
             url: "https://localhost:8080/api/folders",
@@ -227,14 +235,14 @@ $(document).ready(function () {
             createFolderRows(data);
 
         });
-    }
+    };
 
-    var createFolderRows = function(folderData){
+    function createFolderRows(folderData){
         var folderLine = $("<li>");
         folderLine.data("folder", folderData);
         folderLine.append("<li>" + folderData.type + "<a class='delete-folder'><span class='oi oi-trash'></span></a></li>");
         $("#sidebar").append(folderLine);
-    }
+    };
 
     function updateBookmark(newArr) {
         $.ajax({
@@ -245,7 +253,7 @@ $(document).ready(function () {
             .then(function () {
                 window.location.href = "/home";
             });
-    }
+    };
 
 
 
@@ -304,6 +312,6 @@ $(document).ready(function () {
     //         console.log("Your user had been Deleted");
     //     });
     // }
-
+    }
 });
 
