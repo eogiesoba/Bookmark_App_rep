@@ -80,7 +80,8 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "oldTime@gmail.com";
+    var email = "alex22@gmail.com";
+    var userID;
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
@@ -139,7 +140,13 @@ $(document).ready(function () {
                 }
             }
             console.log(userID);
-            BookmarkArray.unshift(userID);
+            console.log(BookmarkArray);
+
+            for(var i=3; i < BookmarkArray.length; i++){//imports all bookmarks 1 at a time.
+                BookmarkArray[i].userID = userID;
+                var bookObject = BookmarkArray[i];
+                importBookmark(bookObject);
+            }
         });
     };
     //associate this with our folder and our bookmarks
