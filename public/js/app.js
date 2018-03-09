@@ -102,6 +102,12 @@ $(document).ready(function () {
         submitUser(UserPost);
     });
 
+    document.getElementById('returnUserButton').addEventListener('click', function () {
+        console.log("Relocate page now!");
+        window.location.href = "http://localhost:8080/";
+        
+    });
+
     document.getElementById('bookmarkWindow').addEventListener('click', function(){
          getUserData();  
          console.log("Bookmark Array: ", BookmarkArray);
@@ -119,7 +125,7 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/users",
             data: User
         }).then(function () {
-            window.location.href = "http://localhost:8080/";
+            // window.location.href = "http://localhost:8080/";
         });
     }
 

@@ -75,7 +75,7 @@ module.exports = function (app) {
   // Get route for returning all bookmarks
   app.get("/api/bookmarks", function (req, res) {
 
-    Bookmark.findAll({}).then(function (results) {
+    db.Bookmark.findAll({}).then(function (results) {
       // results are available to us inside the .then
       res.json(results);
     });
