@@ -102,17 +102,6 @@ $(document).ready(function () {
         submitUser(UserPost);
     });
 
-<<<<<<< HEAD
-    document.getElementById('bookmarkWindow').addEventListener('click', function(){
-         getUserData();  
-         console.log("Bookmark Array: ", BookmarkArray);
-        //  for(var i=0; i < BookmarkArray.length; i++){
-            // BookmarkArray[3].userID = userID;
-            // console.log(BookmarkArray[3]);
-            // var bookObject = BookmarkArray[3];
-            // importBookmark(bookObject); 
-        //  }
-=======
     document.getElementById('bookmarkWindow').addEventListener('click', function () {
         getUserData();
         console.log("Bookmark Array: ", BookmarkArray);
@@ -131,7 +120,6 @@ $(document).ready(function () {
             userID: userId
         }
         postFolders(folderObj);
->>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
     });
 
     function submitUser(User) {
@@ -140,11 +128,7 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/users",
             data: User
         }).then(function () {
-<<<<<<< HEAD
-            window.location.href = "http://localhost:8080/";
-=======
             // window.location.href = "/home";
->>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
         });
     }
 
@@ -156,12 +140,7 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
-<<<<<<< HEAD
             for (var i = 0; i < data.length; i++){
-=======
-            var userID;
-            for (var i = 0; i < data.length; i++) {
->>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
