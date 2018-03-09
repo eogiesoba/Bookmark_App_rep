@@ -12,6 +12,7 @@ $(document).ready(function () {
             UserID = data[0].UserId;
 
             createBookmarkDiv(data);
+
         });
     };
 

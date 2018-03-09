@@ -98,9 +98,40 @@ module.exports = function (app) {
   });
 
   // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function (req, res) {
+  app.delete("/api/users", function (req, res) {
     // Add sequelize code to delete a post where the id is equal to req.params.id, 
     // then return the result to the user using res.json
+    db.User.destroy({
+      where: {
+        id: req.param.userID
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.delete("/api/bookmarks", function (req, res) {
+    // Add sequelize code to delete a post where the id is equal to req.params.id, 
+    // then return the result to the user using res.json
+    db.Bookmark.destroy({
+      where: {
+        id: req.param.userID
+      }
+    }).then(function(dbBookmark) {
+      res.json(dbBookmark);
+    });
+  });
+
+  app.delete("/api/folders", function (req, res) {
+    // Add sequelize code to delete a post where the id is equal to req.params.id, 
+    // then return the result to the user using res.json
+    db.Folder.destroy({
+      where: {
+        folder: req.param
+      }
+    }).then(function(dbFolder) {
+      res.json(dbFolder);
+    });
   });
 
 };

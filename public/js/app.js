@@ -88,7 +88,7 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "alex22@gmail.com";
+    var email = "123@gmail.com";
     var userID;
 
     document.getElementById('newUserButton').addEventListener('click', function () {
