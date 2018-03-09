@@ -1,13 +1,8 @@
 $(document).ready(function () {
 
-<<<<<<< HEAD
-    console.log(userObj);
-=======
     var UserID;
-    var folderDetails = [];
 
 
->>>>>>> 345af9049dcf150962155d6c93f5bcce69ad0280
     function loadBookmarksIndex() {
         $.ajax({
             method: "GET",
@@ -30,6 +25,7 @@ $(document).ready(function () {
             var bigBMDiv = $("<div>");
             bigBMDiv.addClass("col-md-2");
             bigBMDiv.addClass("bmBox");
+            bigBMDiv.attr("draggable", true);
 
             var titleDiv = $("<div>");
             titleDiv.addClass("bmTitleDiv");
@@ -54,10 +50,8 @@ $(document).ready(function () {
 
             $("#bookmarksDisplay").append(bigBMDiv);  
          }
-            // bigBMDiv.attr("href", bookmarkData[j].url);
-            // bigBMDiv.on("click", function () {
-            //     window.open($(this).attr("href"), '_blank');
-        $("#bookmarksDisplay").append(bigBMDiv);   // });
+
+        $("#bookmarksDisplay").append(bigBMDiv);   
 
         }
 
