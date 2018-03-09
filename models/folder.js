@@ -6,16 +6,17 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           len: [1]
         }
-      },
+      }
     });
 
     Folder.associate = function(models) {
        
         Folder.belongsTo(models.User, {
-          foreignKey: {
-            allowNull: false
-          }
+          constraints: false
         });
+        // Folder.hasMany(models.Bookmark, {
+        //   onDelete: "cascade"
+        // });
     };
     
     return Folder;

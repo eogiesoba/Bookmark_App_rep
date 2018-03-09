@@ -88,7 +88,8 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "oldTime@gmail.com";
+    var email = "alex22@gmail.com";
+    var userID;
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
@@ -101,6 +102,17 @@ $(document).ready(function () {
         submitUser(UserPost);
     });
 
+<<<<<<< HEAD
+    document.getElementById('bookmarkWindow').addEventListener('click', function(){
+         getUserData();  
+         console.log("Bookmark Array: ", BookmarkArray);
+        //  for(var i=0; i < BookmarkArray.length; i++){
+            // BookmarkArray[3].userID = userID;
+            // console.log(BookmarkArray[3]);
+            // var bookObject = BookmarkArray[3];
+            // importBookmark(bookObject); 
+        //  }
+=======
     document.getElementById('bookmarkWindow').addEventListener('click', function () {
         getUserData();
         console.log("Bookmark Array: ", BookmarkArray);
@@ -119,6 +131,7 @@ $(document).ready(function () {
             userID: userId
         }
         postFolders(folderObj);
+>>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
     });
 
     function submitUser(User) {
@@ -127,7 +140,11 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/users",
             data: User
         }).then(function () {
+<<<<<<< HEAD
+            window.location.href = "http://localhost:8080/";
+=======
             // window.location.href = "/home";
+>>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
         });
     }
 
@@ -139,15 +156,25 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
+<<<<<<< HEAD
+            for (var i = 0; i < data.length; i++){
+=======
             var userID;
             for (var i = 0; i < data.length; i++) {
+>>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
                 }
             }
             console.log(userID);
-            BookmarkArray.unshift(userID);
+            console.log(BookmarkArray);
+
+            for(var i=3; i < BookmarkArray.length; i++){//imports all bookmarks 1 at a time.
+                BookmarkArray[i].userID = userID;
+                var bookObject = BookmarkArray[i];
+                importBookmark(bookObject);
+            }
         });
     }
     //associate this with our folder and our bookmarks
