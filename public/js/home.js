@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+<<<<<<< HEAD
+=======
+    console.log(userObj);
+>>>>>>> 62ef8cab76ef02c751f66be3cc17c7ee5c99c29d
     var UserID;
 
 
