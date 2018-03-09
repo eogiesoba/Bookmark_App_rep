@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    console.log("in home.js function");
 
     function loadBookmarksIndex() {
         $.ajax({
@@ -17,8 +18,7 @@ $(document).ready(function () {
         console.log(bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
-            // bigBMDiv.data("bookmark", bookmarkData);
-            bigBMDiv.addClass("col-md-3");
+            bigBMDiv.addClass("col-md-2");
             bigBMDiv.addClass("bmBox");
 
             var titleDiv = $("<div>");
@@ -39,7 +39,8 @@ $(document).ready(function () {
             });
             $("#bookmarksDisplay").append(bigBMDiv);
         }
-    };
-
+    }
     loadBookmarksIndex();
-});
+    });
+
+    
