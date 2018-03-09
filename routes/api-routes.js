@@ -26,18 +26,15 @@ module.exports = function (app) {
   // POST route for importing all users bookmarks on table in DB - used with chrome extension as an AJAX request
   app.post("/api/bookmarks", function (req, res) {
     console.log("Req.Body: ", req.body);
-    var newArr = req.body.bookmarkArray;//Bookmark array
-    var UserId = req.body.bookmarkArray[0];//User's unique ID assuming UserID will be in the first index of the array.
-
-    for (var i = 1; i < newArr.length; i++) {
+    var Obj = req.body//Bookmark object
       db.Bookmark.create({
-        title: newArr[i].title,
-        url: newArr[i].url,
-        UserId: UserId
+        title: Obj.title,
+        url: Obj.url,
+        UserId: Obj.userID,
+        FolderId: null
       }).then(function () {
         res.end();
       });
-    }
   });
 
   // POST route for adding folders on table in DB
