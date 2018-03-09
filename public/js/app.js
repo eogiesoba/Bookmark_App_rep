@@ -165,16 +165,7 @@ $(document).ready(function () {
         });
     }
 
-    var postFolders = function(newArr){
-        $.ajax({
-            method : "POST",
-            url: "https://localhost:8080/api/folders",
-            data: newArr
-        }).then(function(data){
-            
-            
-        });
-    }
+
 
     function updateBookmark(newArr) {
         $.ajax({
