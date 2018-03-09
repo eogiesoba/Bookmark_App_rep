@@ -1,8 +1,4 @@
 $(document).ready(function () {
-
-
-
-
     // var checkEmail = function() {
     // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
     //     alert("Please input your Gmail address.");
@@ -12,14 +8,10 @@ $(document).ready(function () {
 
     // checkEmail();
 
-
-
     var query = $("search").val();
     var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
-
-
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -93,7 +85,7 @@ $(document).ready(function () {
     document.getElementById('newUserButton').addEventListener('click', function () {
 
         console.log("Works!");
-        var newUser = document.getElementById("userName").value;
+        var newUser = document.getElementById("userEmail").value;
         console.log(newUser);
         var UserPost = {
             user: newUser
@@ -107,7 +99,7 @@ $(document).ready(function () {
         var bookObject = {
             bookmarkArray: BookmarkArray
         }
-        importBookmark(bookObject);
+        importBookmark(JSON.parse(JSON.stringify(bookObject)));
     });
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
@@ -129,7 +121,7 @@ $(document).ready(function () {
         }).then(function () {
             // window.location.href = "/home";
         });
-    }
+    };
 
     function getUserData() {
         $.ajax({
@@ -149,23 +141,27 @@ $(document).ready(function () {
             console.log(userID);
             BookmarkArray.unshift(userID);
         });
-    }
+    };
     //associate this with our folder and our bookmarks
 
     // var UserObjectArray = getUserData();
     // console.log(UserObjectArray);
 
+    //POST for Bookmarks
 
-    var importBookmark = function (newArr) {
+    function importBookmark(newArr) {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
             url: "http://localhost:8080/api/bookmarks",
             data: newArr
-        }).then(function () {
-            console.log("You imported all Bookmarks!");
+        }).then(function (data) {
+            console.log("You imported all Bookmarks!", data);
+          
         });
-    }
+    };
+
+    //Get for Bookmarks
 
     function getBookmarks() {
         $.ajax({
@@ -174,9 +170,11 @@ $(document).ready(function () {
         }).then(function () {
             console.log("done!");
         });
-    }
+    };
 
-    var postFolders = function (Folder) {
+    //POST for Folders
+
+    function postFolders(Folder) {
         $.ajax({
             method: "POST",
             url: "https://localhost:8080/api/folders",
@@ -185,7 +183,7 @@ $(document).ready(function () {
             console.log("Your folder has been made.")
 
         });
-    }
+    };
 
     function updateBookmark(newArr) {
         $.ajax({
@@ -196,7 +194,7 @@ $(document).ready(function () {
             .then(function () {
                 window.location.href = "/home";
             });
-    }
+    };
 
 
 
