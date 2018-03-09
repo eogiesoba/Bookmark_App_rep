@@ -104,7 +104,7 @@ $(document).ready(function () {
 
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Relocate page now!");
-        window.location.href = "http://localhost:8080/";
+        // window.location.href = "http://localhost:8080/";
         
     });
 

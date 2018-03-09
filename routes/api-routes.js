@@ -39,11 +39,6 @@ module.exports = function (app) {
 
   // POST route for adding folders on table in DB
   app.post("/api/folders", function (req, res) {
-<<<<<<< HEAD
-    db.Folder.create({
-      folder: req.body.Folder,
-      UserId: req.body.UserId
-=======
     console.log("in api/folders route");
     console.log(req.body.userID);
     console.log(req.body.folder);
@@ -51,7 +46,6 @@ module.exports = function (app) {
     db.Folder.create({
       folder: req.body.folder,
       UserId: req.body.userID
->>>>>>> c4cf7c64630ab035bf9ff76601f935498f15df44
     }).then(function () {
       res.end();
     });

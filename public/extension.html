@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,51 +11,54 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-<header>
-    <h3>Bookmark Manager</h3>
+        <header>
+            <h3>Bookmark Manager</h3>
 
-    <form>
-        <div class="form-group">
-            <input type="text" class="form-control" id="userName" placeholder="Input Gmail Address for Login">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="userName" placeholder="Input Gmail Address for Login">
+                </div>
+            </form>
+
+            <div class="row justify-content-center">
+
+                <button type="button" class="btn btn-primary btn-lg" id="newUserButton">Register</button>
+                <a class="zh-btn-basic" href="http://localhost:8080/" target="_blank">
+                    <button type="button" class="btn btn-primary btn-lg" id="returnUserButton">Login</button>
+                </a>
+
+
+            </div>
+
+
+
+
+
+        </header>
+
+        <br/>
+
+        <div class="row bookmarkWindow">
+
+            <button type="button" class="btn btn-primary btn-lg" id="bookmarkWindow">Upload Existing Bookmarks</button>
+
         </div>
-    </form>
-
-    <div class="row justify-content-center">
-
-        <button type="button" class="btn btn-primary btn-lg" id="newUserButton">Register</button>
-        
-        <button type="button" class="btn btn-primary btn-lg" id="returnUserButton">Login</button>
-
-    </div>
 
 
-        
+        <br/>
 
+        <div class="row bookmarkButton">
 
-</header>
+            <button type="button" class="btn btn-primary btn-lg" id="addBookmark">Bookmark This Page</button>
 
-<br/>
-
-<div class="row bookmarkWindow">
-
-    <button type="button" class="btn btn-primary btn-lg" id="bookmarkWindow">Upload Existing Bookmarks</button>
-
-</div>
-
-
-<br/>
-
-<div class="row bookmarkButton">
-
-    <button type="button" class="btn btn-primary btn-lg" id="addBookmark">Bookmark This Page</button>
-
-</div>
+        </div>
 
 
 
