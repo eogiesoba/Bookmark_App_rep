@@ -52,7 +52,7 @@ header {
     transform: scale(1.05, 1.05);
     }
 
-#returnUserButton {
+#returnUserButton, a {
     background-color: seagreen;
     font-size: 15px;
     border-radius: 6px;
