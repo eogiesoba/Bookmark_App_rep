@@ -39,9 +39,19 @@ module.exports = function (app) {
 
   // POST route for adding folders on table in DB
   app.post("/api/folders", function (req, res) {
+<<<<<<< HEAD
     db.Folder.create({
       folder: req.body.Folder,
       UserId: req.body.UserId
+=======
+    console.log("in api/folders route");
+    console.log(req.body.userID);
+    console.log(req.body.folder);
+
+    db.Folder.create({
+      folder: req.body.folder,
+      UserId: req.body.userID
+>>>>>>> c4cf7c64630ab035bf9ff76601f935498f15df44
     }).then(function () {
       res.end();
     });
@@ -77,6 +87,17 @@ module.exports = function (app) {
 
     db.Bookmark.findAll({}).then(function (results) {
       // results are available to us inside the .then
+      res.json(results);
+    });
+
+  });
+
+  app.get("/api/folders", function (req, res) {
+    console.log("We are in GET folders");
+
+    db.Folder.findAll({}).then(function (results, err) {
+      // results are available to us inside the .then
+      if(err){console.log(err)}
       res.json(results);
     });
 

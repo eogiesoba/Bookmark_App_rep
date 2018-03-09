@@ -129,14 +129,15 @@ header {
     background-position: center center;
     background-size: cover;
     vertical-align: middle;
-    height: 750px;
+    height: 650px;
+    overflow: scroll;
 }
 
 .bmBox {
     height: 175px;
     background-color:greenyellow;
     margin-top: 10px;
-    margin-right: 5px;
+    margin-left: 10px;
     border-radius: 12px;
 }
 
