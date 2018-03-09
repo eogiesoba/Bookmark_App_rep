@@ -1,13 +1,18 @@
 $(document).ready(function () {
 
+<<<<<<< HEAD
+    console.log(userObj);
+=======
     var UserID;
     var folderDetails = [];
 
 
+>>>>>>> 345af9049dcf150962155d6c93f5bcce69ad0280
     function loadBookmarksIndex() {
         $.ajax({
             method: "GET",
             url: "/api/bookmarks",
+            // data: userObj
         }).then(function (data) {
             console.log(data)
             console.log("done!");

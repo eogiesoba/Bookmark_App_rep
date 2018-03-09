@@ -80,7 +80,9 @@ module.exports = function (app) {
   app.get("/api/bookmarks", function (req, res) {
 
     db.Bookmark.findAll({}).then(function (results) {
-      // results are available to us inside the .then
+      where: {
+        id: req.body.userID
+      }
       res.json(results);
     });
 
