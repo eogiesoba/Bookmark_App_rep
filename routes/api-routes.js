@@ -39,7 +39,7 @@ module.exports = function (app) {
 
   // POST route for adding folders on table in DB
   app.post("/api/folders", function (req, res) {
-    db.Bookmark.create({
+    db.Folder.create({
       folder: req.body.Folder,
       UserId: req.body.UserId
     }).then(function () {
@@ -48,7 +48,7 @@ module.exports = function (app) {
   });
 
   // PUT route will update bookmark's folder
-  app.put("/api/posts", function (req, res) {
+  app.put("/api/folders", function (req, res) {
     db.Bookmark.update(
       req.body,
       {
@@ -74,11 +74,9 @@ module.exports = function (app) {
 
   // Get route for returning all bookmarks
   app.get("/api/bookmarks", function (req, res) {
-    console.log("We are in GET");
 
-    db.Bookmark.findAll({}).then(function (results, err) {
+    Bookmark.findAll({}).then(function (results) {
       // results are available to us inside the .then
-      if(err){console.log(err)}
       res.json(results);
     });
 
