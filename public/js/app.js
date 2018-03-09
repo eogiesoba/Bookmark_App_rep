@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+
+
+
     // var checkEmail = function() {
     // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
     //     alert("Please input your Gmail address.");
@@ -8,14 +12,14 @@ $(document).ready(function () {
 
     // checkEmail();
 
-    var returningUser = localStorage.getItem("extensionUserEmail");
-    $("#userName")[0].value = returningUser;
+
 
     var query = $("search").val();
     var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
-    var appendArr = [];
+
+
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -84,14 +88,13 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "stormy@gmail.com";
+    var email = "alex22@gmail.com";
     var userID;
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
         console.log("Works!");
         var newUser = document.getElementById("userName").value;
-        localStorage.setItem("extensionUserEmail", newUser);
         console.log(newUser);
         var UserPost = {
             user: newUser
@@ -99,35 +102,21 @@ $(document).ready(function () {
         submitUser(UserPost);
     });
 
-    document.getElementById('bookmarkWindow').addEventListener('click', function () {
-        getUserData();
-        console.log("Bookmark Array: ", BookmarkArray);
-        var bookObject = {
-            bookmarkArray: BookmarkArray
-        }
-        importBookmark(JSON.parse(JSON.stringify(bookObject)));
+    document.getElementById('returnUserButton').addEventListener('click', function () {
+        console.log("Relocate page now!");
+        // window.location.href = "http://localhost:8080/";
         
     });
 
-    document.getElementById('addBookmark').addEventListener('click', function () {
-
-        console.log("adding Bookmarks to Index");
-        loadBookmarksIndex();
-        
-    });
-
-    document.getElementById('folderSubmitBtn').addEventListener('click', function () {
-        console.log("folderButton pressed");
-        getUserData();
-        var newFolder = document.getElementById("addFolder").value;
-        console.log("newfoldername", newFolder);
-        var userId = BookmarkArray[0];
-        console.log("userID", userID);
-        var folderObj = {
-            folder: newFolder,
-            userID: userId
-        }
-        postFolders(folderObj);
+    document.getElementById('bookmarkWindow').addEventListener('click', function(){
+         getUserData();  
+         console.log("Bookmark Array: ", BookmarkArray);
+        //  for(var i=0; i < BookmarkArray.length; i++){
+            // BookmarkArray[3].userID = userID;
+            // console.log(BookmarkArray[3]);
+            // var bookObject = BookmarkArray[3];
+            // importBookmark(bookObject); 
+        //  }
     });
 
     function submitUser(User) {
@@ -136,9 +125,9 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/users",
             data: User
         }).then(function () {
-            // window.location.href = "/home";
+            // window.location.href = "http://localhost:8080/";
         });
-    };
+    }
 
     function getUserData() {
         $.ajax({
@@ -148,12 +137,10 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
-            var userID;
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < data.length; i++){
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
-                    localStorage.setItem("extensionUserID", userID);
                 }
             }
             console.log(userID);
@@ -165,84 +152,43 @@ $(document).ready(function () {
                 importBookmark(bookObject);
             }
         });
-    };
+    }
     //associate this with our folder and our bookmarks
 
     // var UserObjectArray = getUserData();
     // console.log(UserObjectArray);
 
-    //POST for Bookmarks
 
-    function importBookmark(newArr) {
+    var importBookmark = function (newArr) {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
             url: "http://localhost:8080/api/bookmarks",
             data: newArr
-        }).then(function (data) {
-            console.log("You imported all Bookmarks!", data);
-          
+        }).then(function () {
+            console.log("You imported all Bookmarks!");
         });
-    };
+    }
 
-    //Get for Bookmarks
-
-    function loadBookmarksIndex() {
+    function getBookmarks() {
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/bookmarks",
-        }).then(function (data) {
-            console.log(data)
+        }).then(function () {
             console.log("done!");
         });
-    };
+    }
 
-    function createBookmarkDiv(bookmarkData){
-
-        console.log(bookmarkData);
-        for (var j = 0; j < bookmarkData.length; j++){
-        var bigBMDiv = $("<div>");
-        bigBMDiv.data("bookmark", bookmarkData);
-        bigBMDiv.addClass("col-md-3");
-        bigBMDiv.addClass("bmBox");
-
-        var urlDiv = $("<div>");
-        urlDiv.addClass("bmTitleDiv");
-        var bmTitle = bookmarkData[j].title;
-        urlDiv.append(bmTitle);
-        bigBDMDiv.append(urlDiv);
-
-        var folderDiv= $("div");
-        folderDiv.addClass("bmFolderDiv");
-        bigBMDiv.append(folderDiv);
-
-
-        bigBMDiv.attr("href", bookmarkData[j].url);
-        bigBMDiv.on("click", function () {
-            window.open($(this).attr("href"), '_blank');
-        });
-        $("#bookmarksDisplay").append(bigBMDiv);
-    };
-
-
-    function postFolders(Folder) {
+    var postFolders = function (Folder) {
         $.ajax({
             method: "POST",
             url: "https://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
-            console.log("Your folder has been made.");
-            createFolderRows(data);
+            console.log("Your folder has been made.")
 
         });
-    };
-
-    function createFolderRows(folderData){
-        var folderLine = $("<li>");
-        folderLine.data("folder", folderData);
-        folderLine.append("<li>" + folderData.type + "<a class='delete-folder'><span class='oi oi-trash'></span></a></li>");
-        $("#sidebar").append(folderLine);
-    };
+    }
 
     function updateBookmark(newArr) {
         $.ajax({
@@ -253,7 +199,7 @@ $(document).ready(function () {
             .then(function () {
                 window.location.href = "/home";
             });
-    };
+    }
 
 
 
@@ -312,6 +258,6 @@ $(document).ready(function () {
     //         console.log("Your user had been Deleted");
     //     });
     // }
-    }
+
 });
 
