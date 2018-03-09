@@ -3,20 +3,21 @@ $(document).ready(function () {
 
 
 
-        // var checkEmail = function() {
-        // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
-        //     alert("Please input your Gmail address.");
-        // } else {
-        //     confirmUserStatus();
-        // }
+    // var checkEmail = function() {
+    // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
+    //     alert("Please input your Gmail address.");
+    // } else {
+    //     confirmUserStatus();
+    // }
 
-        // checkEmail();
+    // checkEmail();
 
 
 
     var query = $("search").val();
     var BookmarkArray = [];
     var UserInput = $("#userName");
+    var folderArr = [];
 
 
 
@@ -45,7 +46,7 @@ $(document).ready(function () {
                     // var newDiv = $("<div>")
                     // newDiv
                     // $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
-                    if(bookmarks[0] !== undefined){
+                    if (bookmarks[0] !== undefined) {
                         newArr.push(bookmarks[0]);
                     }
                 });
@@ -56,7 +57,7 @@ $(document).ready(function () {
     };
 
     BookmarkArray = getBookmarks(query);
-  
+
     console.log("hello");
     // document.addEventListener('DOMContentLoaded', function() {
     //     var link = document.getElementById('bookmarkWindow');
@@ -70,10 +71,10 @@ $(document).ready(function () {
 
     // document.querySelectorAll("#bookmarkWindow").addEvenListener("click", function (event){
     //     event.preventDefault();
-        
+
     //     var loginName = $("#userName")[0].value;
     //     alert(loginName);
-    
+
     //     //Conditional to check if user input data
     //     if (!titleInput.val().trim()) {
     //         return;
@@ -84,23 +85,24 @@ $(document).ready(function () {
     //     }
 
     //     console.log(UserPost);
-        
+
     //     submitUser(UserPost);
     // })
     var email = "alex22@gmail.com";
     var userID;
 
-    document.getElementById('newUserButton').addEventListener('click', function(){
-        
+    document.getElementById('newUserButton').addEventListener('click', function () {
+
         console.log("Works!");
         var newUser = document.getElementById("userName").value;
         console.log(newUser);
-        var UserPost ={
+        var UserPost = {
             user: newUser
         }
         submitUser(UserPost);
     });
 
+<<<<<<< HEAD
     document.getElementById('bookmarkWindow').addEventListener('click', function(){
          getUserData();  
          console.log("Bookmark Array: ", BookmarkArray);
@@ -110,29 +112,58 @@ $(document).ready(function () {
             // var bookObject = BookmarkArray[3];
             // importBookmark(bookObject); 
         //  }
+=======
+    document.getElementById('bookmarkWindow').addEventListener('click', function () {
+        getUserData();
+        console.log("Bookmark Array: ", BookmarkArray);
+        var bookObject = {
+            bookmarkArray: BookmarkArray
+        }
+        importBookmark(bookObject);
+    });
+
+    document.getElementById('folderSubmitBtn').addEventListener('click', function () {
+        getUserData();
+        var newFolder = document.getElementById("addFolder").value;
+        var userId = BookmarkArray[0];
+        var folderObj = {
+            folder: newFolder,
+            userID: userId
+        }
+        postFolders(folderObj);
+>>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
     });
 
     function submitUser(User) {
         $.ajax({
-            method : "POST",
+            method: "POST",
             url: "http://localhost:8080/api/users",
             data: User
         }).then(function () {
+<<<<<<< HEAD
             window.location.href = "http://localhost:8080/";
+=======
+            // window.location.href = "/home";
+>>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
         });
     }
 
     function getUserData() {
         $.ajax({
-            method : "GET",
+            method: "GET",
             url: "http://localhost:8080/api/users",
-        }).then(function(data){
+        }).then(function (data) {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
+<<<<<<< HEAD
             for (var i = 0; i < data.length; i++){
+=======
+            var userID;
+            for (var i = 0; i < data.length; i++) {
+>>>>>>> 2b0d7edbed562a816b5c5577064adaa2ffd69e14
                 var userEmail = data[i].user;
-                if(userEmail === email){
+                if (userEmail === email) {
                     userID = data[i].id
                 }
             }
@@ -152,35 +183,34 @@ $(document).ready(function () {
     // console.log(UserObjectArray);
 
 
-    var importBookmark = function(newArr){
+    var importBookmark = function (newArr) {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
-            method : "POST",
+            method: "POST",
             url: "http://localhost:8080/api/bookmarks",
             data: newArr
-        }).then(function(){
+        }).then(function () {
             console.log("You imported all Bookmarks!");
         });
     }
 
-    function getBookmarks(User) {
+    function getBookmarks() {
         $.ajax({
-            method : "GET",
+            method: "GET",
             url: "http://localhost:8080/api/bookmarks",
-            data: User
-        }).then(function(){
+        }).then(function () {
             console.log("done!");
         });
     }
 
-    var postFolders = function(newArr){
+    var postFolders = function (Folder) {
         $.ajax({
-            method : "POST",
+            method: "POST",
             url: "https://localhost:8080/api/folders",
-            data: newArr
-        }).then(function(data){
-            
-            
+            data: Folder
+        }).then(function (data) {
+            console.log("Your folder has been made.")
+
         });
     }
 
@@ -222,7 +252,7 @@ $(document).ready(function () {
     //         method : "POST",
     //         url: "/api/folders",
     //     }).then(function(){
-            
+
     //     });
     // }
 
@@ -240,7 +270,7 @@ $(document).ready(function () {
     //         method : "POST",
     //         url: "/api/users",
     //     }).then(function(){
-            
+
     //     });
     // }
 
