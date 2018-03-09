@@ -4,7 +4,7 @@ $(document).ready(function () {
     function loadBookmarksIndex() {
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/bookmarks",
+            url: "/api/bookmarks",
         }).then(function (data) {
             console.log(data)
             console.log("done!");
@@ -17,19 +17,20 @@ $(document).ready(function () {
         console.log(bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
-            bigBMDiv.data("bookmark", bookmarkData);
+            // bigBMDiv.data("bookmark", bookmarkData);
             bigBMDiv.addClass("col-md-3");
             bigBMDiv.addClass("bmBox");
 
-            var urlDiv = $("<div>");
-            urlDiv.addClass("bmTitleDiv");
+            var titleDiv = $("<div>");
+            titleDiv.addClass("bmTitleDiv");
             var bmTitle = bookmarkData[j].title;
-            urlDiv.append(bmTitle);
-            bigBMDiv.append(urlDiv);
+            console.log("This is title: ", bmTitle);
+            titleDiv.append(bmTitle);
+            bigBMDiv.append(titleDiv);
 
-            var folderDiv = $("div");
-            folderDiv.addClass("bmFolderDiv");
-            bigBMDiv.append(folderDiv);
+            // var folderDiv = $("div");
+            // folderDiv.addClass("bmFolderDiv");
+            // bigBMDiv.append(folderDiv);
 
 
             bigBMDiv.attr("href", bookmarkData[j].url);
