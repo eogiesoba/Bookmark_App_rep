@@ -8,10 +8,14 @@ $(document).ready(function () {
 
     // checkEmail();
 
+    var returningUser = localStorage.getItem("extensionUserEmail");
+    $("#userName")[0].value = returningUser;
+
     var query = $("search").val();
     var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
+    var appendArr = [];
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -86,7 +90,8 @@ $(document).ready(function () {
     document.getElementById('newUserButton').addEventListener('click', function () {
 
         console.log("Works!");
-        var newUser = document.getElementById("userEmail").value;
+        var newUser = document.getElementById("userName").value;
+        localStorage.setItem("extensionUserEmail", newUser);
         console.log(newUser);
         var UserPost = {
             user: newUser
@@ -101,12 +106,23 @@ $(document).ready(function () {
             bookmarkArray: BookmarkArray
         }
         importBookmark(JSON.parse(JSON.stringify(bookObject)));
+        
+    });
+
+    document.getElementById('addBookmark').addEventListener('click', function () {
+
+        console.log("adding Bookmarks to Index");
+        loadBookmarksIndex();
+        
     });
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
+        console.log("folderButton pressed");
         getUserData();
         var newFolder = document.getElementById("addFolder").value;
+        console.log("newfoldername", newFolder);
         var userId = BookmarkArray[0];
+        console.log("userID", userID);
         var folderObj = {
             folder: newFolder,
             userID: userId
@@ -137,6 +153,7 @@ $(document).ready(function () {
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
+                    localStorage.setItem("extensionUserID", userID);
                 }
             }
             console.log(userID);
@@ -170,16 +187,43 @@ $(document).ready(function () {
 
     //Get for Bookmarks
 
-    function getBookmarks() {
+    function loadBookmarksIndex() {
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/bookmarks",
-        }).then(function () {
+        }).then(function (data) {
+            console.log(data)
             console.log("done!");
         });
     };
 
-    //POST for Folders
+    function createBookmarkDiv(bookmarkData){
+
+        console.log(bookmarkData);
+        for (var j = 0; j < bookmarkData.length; j++){
+        var bigBMDiv = $("<div>");
+        bigBMDiv.data("bookmark", bookmarkData);
+        bigBMDiv.addClass("col-md-3");
+        bigBMDiv.addClass("bmBox");
+
+        var urlDiv = $("<div>");
+        urlDiv.addClass("bmTitleDiv");
+        var bmTitle = bookmarkData[j].title;
+        urlDiv.append(bmTitle);
+        bigBDMDiv.append(urlDiv);
+
+        var folderDiv= $("div");
+        folderDiv.addClass("bmFolderDiv");
+        bigBMDiv.append(folderDiv);
+
+
+        bigBMDiv.attr("href", bookmarkData[j].url);
+        bigBMDiv.on("click", function () {
+            window.open($(this).attr("href"), '_blank');
+        });
+        $("#bookmarksDisplay").append(bigBMDiv);
+    };
+
 
     function postFolders(Folder) {
         $.ajax({
@@ -187,9 +231,17 @@ $(document).ready(function () {
             url: "https://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
-            console.log("Your folder has been made.")
+            console.log("Your folder has been made.");
+            createFolderRows(data);
 
         });
+    };
+
+    function createFolderRows(folderData){
+        var folderLine = $("<li>");
+        folderLine.data("folder", folderData);
+        folderLine.append("<li>" + folderData.type + "<a class='delete-folder'><span class='oi oi-trash'></span></a></li>");
+        $("#sidebar").append(folderLine);
     };
 
     function updateBookmark(newArr) {
@@ -260,6 +312,6 @@ $(document).ready(function () {
     //         console.log("Your user had been Deleted");
     //     });
     // }
-
+    }
 });
 

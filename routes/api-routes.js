@@ -74,9 +74,11 @@ module.exports = function (app) {
 
   // Get route for returning all bookmarks
   app.get("/api/bookmarks", function (req, res) {
+    console.log("We are in GET");
 
-    db.Bookmark.findAll({}).then(function (results) {
+    db.Bookmark.findAll({}).then(function (results, err) {
       // results are available to us inside the .then
+      if(err){console.log(err)}
       res.json(results);
     });
 
