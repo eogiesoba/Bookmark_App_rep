@@ -82,8 +82,8 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "mary@gmial.com";
-    // var userObj = { userID: "default" };
+    var email = "rabbit@gmial.com";
+    var userObj = { userID: "default" };
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
@@ -94,6 +94,7 @@ $(document).ready(function () {
             user: newUser
         }
         submitUser(UserPost);
+        getUserData();
     });
 
     document.getElementById('returnUserButton').addEventListener('click', function () {
@@ -105,13 +106,6 @@ $(document).ready(function () {
     document.getElementById('addBookmark').addEventListener('click', function () {
         console.log("buttonclicked");
         getUserData();
-        //  console.log("Bookmark Array: ", BookmarkArray);
-        //  for(var i=0; i < BookmarkArray.length; i++){
-        // BookmarkArray[3].userID = userID;
-        // console.log(BookmarkArray[3]);
-        // var bookObject = BookmarkArray[3];
-        // importBookmark(bookObject); 
-        //  }
     });
 
     function submitUser(User) {
