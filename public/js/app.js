@@ -103,14 +103,15 @@ $(document).ready(function () {
 
     });
 
-    document.getElementById('bookmarkWindow').addEventListener('click', function () {
+    document.getElementById('addBookmark').addEventListener('click', function () {
+        console.log("buttonclicked");
         getUserData();
     });
 
     function submitUser(User) {
         $.ajax({
             method: "POST",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
+            url: "http://localhost:8080/api/users",
             data: User
         }).then(function () {
             // window.location.href = "http://localhost:8080/";
@@ -120,7 +121,7 @@ $(document).ready(function () {
     function getUserData() {
         $.ajax({
             method: "GET",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
+            url: "http://localhost:8080/api/users",
         }).then(function (data) {
             // var UserID = data.id;
             console.log(data);
@@ -133,7 +134,7 @@ $(document).ready(function () {
             }
             var BookmarkArray = [];
             BookmarkArray = getBookmarks(query);
-            userObj.userID = userID; //This will update the user ID in a global varialbe that is an object
+            // userObj.userID = userID; //This will update the user ID in a global variable that is an object
             console.log(userID);
             console.log(BookmarkArray);
 
@@ -154,7 +155,7 @@ $(document).ready(function () {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
+            url: "http://localhost:8080/api/bookmarks",
             data: newArr
         }).then(function () {
             console.log("You imported all Bookmarks!");
@@ -164,7 +165,7 @@ $(document).ready(function () {
     function getBookmarks() {
         $.ajax({
             method: "GET",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
+            url: "http://localhost:8080/api/bookmarks",
         }).then(function () {
             console.log("done!");
         });
@@ -173,7 +174,7 @@ $(document).ready(function () {
     var postFolders = function (Folder) {
         $.ajax({
             method: "POST",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
+            url: "http://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
             console.log("Your folder has been made.")
