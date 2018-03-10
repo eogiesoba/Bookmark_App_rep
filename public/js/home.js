@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    console.log(userObj);
+    // console.log(userObj);
     var UserID;
     var folderDetails = [];
 
