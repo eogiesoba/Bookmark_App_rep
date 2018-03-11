@@ -103,11 +103,10 @@ $(document).ready(function () {
 
     });
 
-    // document.getElementById('returnUserButton').addEventListener('click', function () {
-    //     console.log("Relocate page now!");
-    //     // window.location.href = "http://localhost:8080/";
-        
-    // });
+    document.getElementById('addBookmark').addEventListener('click', function () {
+        console.log("buttonclicked");
+        // importUserData();
+    });
 
     function submitUser(User) {
         $.ajax({
@@ -182,7 +181,7 @@ $(document).ready(function () {
     var postFolders = function (Folder) {
         $.ajax({
             method: "POST",
-            url: "https://localhost:8080/api/folders",
+            url: "http://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
             console.log("Your folder has been made.")
