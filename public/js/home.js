@@ -6,7 +6,6 @@ $(document).ready(function () {
     // console.log(userObj);
     document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
     //Global variables
-    var UserID;
     var userID;//This is being used in a get request
     var email;
     var folderDetails = [];
@@ -89,8 +88,8 @@ $(document).ready(function () {
             console.log("done!");
 
 
-            UserID = data[0].UserId;
-            console.log(UserID);
+            userID = data[0].UserId;
+            console.log(userID);
 
             createBookmarkDiv(data);
 
@@ -143,10 +142,10 @@ $(document).ready(function () {
         console.log("folderButton pressed");
         var newFolder = document.getElementById("addFolder").value;
         console.log("newFolderName", newFolder);
-        console.log("userID", UserID);
+        console.log("userID", userID);
         var folderObj = {
             folder: newFolder,
-            userID: UserID
+            userID: userID
         }
         console.log(folderObj);
         postFolders(folderObj);
