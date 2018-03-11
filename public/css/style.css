@@ -17,6 +17,7 @@ h3 {
     font-size: 25px;
     text-align: center;
     margin-top: 20px; 
+
 }
 
 header {
@@ -199,9 +200,9 @@ a {
     margin-left: 5%;
 }
 
-.garbageBtn {
-    font-size: 25px;
-    margin-left: 15%;
+#garbageBtn {
+    font-size: 20px;
+    margin-left: 5%;
 }
 
 .bmFolderDiv {

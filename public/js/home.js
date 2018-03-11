@@ -118,15 +118,15 @@ $(document).ready(function () {
             btnDiv.addClass("btnStyle");
 
             btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a>");
-            btnDiv.append("<i class='fas fa-trash-alt garbageBtn'></i>");
+            btnDiv.append("<button id='garbageBtn'><i class='fas fa-trash-alt'></i></button>");
             bigBMDiv.append(btnDiv);
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-             if (bookmarkData[i].folderId !== null) {
-                 folderDiv.append("<p>" + bookmarkDetail[i].folderName + "</p>")
+             if (bookmarkData[j].folderId !== null) {
+                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].folderName + "</div>")
              } else {
-            folderDiv.append("<p>" + 'Assign a Folder' + "</p");
+            folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
              }
             bigBMDiv.append(folderDiv);
 
@@ -239,7 +239,7 @@ $(document).ready(function () {
                 searchIconDiv.addClass("col-sm-4")
                 searchIconDiv.addClass("searchIcon");
                 searchIconDiv.attr("folderId", folderData.id);
-                searchIconDiv.append("<i class='fas fa-search' id='folderSort'></i>");
+                searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
                 folderLine.append(searchIconDiv);
                 
                 
