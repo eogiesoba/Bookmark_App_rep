@@ -1,3 +1,5 @@
+var userID;
+
 $(document).ready(function () {
 
     // var checkEmail = function() {
@@ -9,13 +11,14 @@ $(document).ready(function () {
 
     // checkEmail();
 
-
-
-    var query = $("search").val();
+    // var query = $("search").val();
+    var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
 
-    var globalVariable = 4;
+    var universalVar = {animal: "Zebra"};
+
+
 
     // var dumpBookmarks = function(query) {
     //   console.log("function");
@@ -43,15 +46,18 @@ $(document).ready(function () {
                     // newDiv
                     // $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
                     if (bookmarks[0] !== undefined) {
-                        newArr.push(bookmarks[0]);
+                        if(bookmarks[0].title !== undefined && bookmarks[0].url !== undefined){
+                            newArr.push(bookmarks[0]);
+                        }
                     }
                 });
         }
-
-        console.log(newArr);
+        // console.log("Chrome bookmark extraction: ", newArr);
         return newArr;
     };
 
+    BookmarkArray = getBookmarks();
+    console.log("Chrome bookmark extraction: ", BookmarkArray);
     console.log("hello");
     // document.addEventListener('DOMContentLoaded', function() {
     //     var link = document.getElementById('bookmarkWindow');
@@ -82,30 +88,24 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "rabbit@gmial.com";
-    var userObj = { userID: "default" };
+    var email; 
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
         console.log("Works!");
-        var newUser = document.getElementById("userName").value;
-        console.log(newUser);
+        email = document.getElementById("userName").value;
+        console.log(email);
         var UserPost = {
-            user: newUser
+            user: email
         }
-        submitUser(UserPost);
-        getUserData();
-    });
-
-    document.getElementById('returnUserButton').addEventListener('click', function () {
-        console.log("Relocate page now!");
-        // window.location.href = "http://localhost:8080/";
+        submitUser(UserPost);//Creates new user in DB
+        importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
 
     });
 
     document.getElementById('addBookmark').addEventListener('click', function () {
         console.log("buttonclicked");
-        getUserData();
+        // importUserData();
     });
 
     function submitUser(User) {
@@ -118,7 +118,8 @@ $(document).ready(function () {
         });
     }
 
-    function getUserData() {
+    function importUserData() {
+        console.log("You are in the import function!")
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/users",
@@ -126,19 +127,16 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < data.length; i++){//Looks for userID associated with email
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
                 }
             }
-            var BookmarkArray = [];
-            BookmarkArray = getBookmarks(query);
-            // userObj.userID = userID; //This will update the user ID in a global variable that is an object
             console.log(userID);
             console.log(BookmarkArray);
 
-            for (var i = 3; i < BookmarkArray.length; i++) {//imports all bookmarks 1 at a time.
+            for(var i=0; i < BookmarkArray.length; i++){//imports all bookmarks 1 at a time.
                 BookmarkArray[i].userID = userID;
                 var bookObject = BookmarkArray[i];
                 importBookmark(bookObject);
@@ -171,6 +169,15 @@ $(document).ready(function () {
         });
     }
 
+    // function relocate() {
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/bookmarks",
+    //     }).then(function () {
+    //         console.log("done!");
+    //     });
+    // }
+
     var postFolders = function (Folder) {
         $.ajax({
             method: "POST",
@@ -182,16 +189,16 @@ $(document).ready(function () {
         });
     }
 
-    // function updateBookmark(newArr) {
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "/api/posts",
-    //         data: BookmarkArray
-    //     })
-    //         .then(function () {
-    //             window.location.href = "/home";
-    //         });
-    // }
+    function updateBookmark(newArr) {
+        $.ajax({
+            method: "PUT",
+            url: "/api/posts",
+            data: BookmarkArray
+        })
+            .then(function () {
+                window.location.href = "/home";
+            });
+    }
 
 
 
