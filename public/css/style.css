@@ -94,7 +94,7 @@ header {
     margin-top: 10px;
 }
 
-.folderList {
+.folderList, .AllBookmarks {
     height: 50px;
 }
 
@@ -180,7 +180,7 @@ header {
     text-align: center;
 }
 
-.folderList{
+.folderList, .AllBookmarks{
     color: whitesmoke;
     font-size: 20px;
     text-align: center;
