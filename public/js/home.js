@@ -2,9 +2,10 @@
 
 $(document).ready(function () {
 
+    if (localStorage.getItem("BookmarkUserEmail")) {
+        document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
+    }
 
-    // console.log(userObj);
-    document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
     var UserID;
     var email;
     var folderDetails = [];
@@ -42,10 +43,8 @@ $(document).ready(function () {
         console.log("dropping", data);
         dataArr = JSON.parse(data);
         console.log("parsed", dataArr);
-        document.getElementById("bookmarkDisplay").FolderId = dataArr[0];
-        $(target).attr("folderName", dataArr[1]);
-        $(target).append("<div class='folderNameDiv'>" + dataArr[1] + "</div>");
-        console.log("target", target);
+        target.innerText = dataArr[1];
+        target.attribute("FolderId", dataArr[1]);
     }
 
 
@@ -122,11 +121,13 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-             if (bookmarkData[j].folderId !== null) {
-                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].folderName + "</div>")
+            console.log("folderId", bookmarkData[j].FolderId);
+             if (bookmarkData[j].FolderId !== null) {
+                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].FolderId + "</div>")
              } else {
-            folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
+            folderDiv.append("<div id='folderNameDiv'>Assign a Folder</div>");
              }
+
             bigBMDiv.append(folderDiv);
 
             $("#bookmarksDisplay").append(bigBMDiv);  
