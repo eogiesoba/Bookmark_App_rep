@@ -1,15 +1,39 @@
 $(document).ready(function () {
 
-    // console.log(userObj);
     var UserID;
+    var userID;
+    var email;
     var folderDetails = [];
 
+    document.getElementById('returnUserButton').addEventListener('click', function () {
 
-    function loadBookmarksIndex() {
+        console.log("Works!");
+        email = document.getElementById("userName").value;
+        console.log(email);
+        renderBookmarks();
+
+    });
+    function renderBookmarks() {//Looks for userID associated with email
         $.ajax({
             method: "GET",
-            url: "/api/bookmarks",
-            // data: userObj
+            url: "http://localhost:8080/api/users",
+        }).then(function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var userEmail = data[i].user;
+                if (userEmail === email) {
+                    userID = data[i].id
+                }
+            }
+            console.log(userID);
+            loadBookmarksIndex(userID);
+        });
+    }
+
+    function loadBookmarksIndex(id) {//Renders bookmarks for userID associated with email
+        $.ajax({
+            method: "GET",
+            url: "/api/bookmarks/" + id,
         }).then(function (data) {
             console.log(data)
             console.log("done!");
@@ -20,7 +44,7 @@ $(document).ready(function () {
     };
 
     function createBookmarkDiv(bookmarkData) {
-        
+
         console.log("folderData in bkrender", folderDetails);
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
@@ -34,11 +58,11 @@ $(document).ready(function () {
             console.log("This is title: ", bmTitle);
             titleDiv.append(bmTitle);
             bigBMDiv.append(titleDiv);
-            
+
             var btnDiv = $("<div>");
             btnDiv.attr("delete");
             btnDiv.addClass("btnStyle");
-            
+
             btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>'Click to URL'</button></a>");
             btnDiv.append("<i class='fas fa-trash-alt garbageBtn'></i>");
             bigBMDiv.append(btnDiv);
@@ -49,18 +73,18 @@ $(document).ready(function () {
             folderDiv.append("<p>" + 'Assign a Folder' + "</p");
             bigBMDiv.append(folderDiv);
 
-            $("#bookmarksDisplay").append(bigBMDiv);  
-         }
-            // bigBMDiv.attr("href", bookmarkData[j].url);
-            // bigBMDiv.on("click", function () {
-            //     window.open($(this).attr("href"), '_blank');
+            $("#bookmarksDisplay").append(bigBMDiv);
+        }
+        // bigBMDiv.attr("href", bookmarkData[j].url);
+        // bigBMDiv.on("click", function () {
+        //     window.open($(this).attr("href"), '_blank');
         $("#bookmarksDisplay").append(bigBMDiv);   // });
 
-        }
+    }
 
-   
-        loadBookmarksIndex();
-  
+
+    loadBookmarksIndex();
+
     getFolders();
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
@@ -100,14 +124,14 @@ $(document).ready(function () {
             console.log("got arrays!");
             UserID = data[0].UserId;
             createFolderRows(data);
- 
+
         });
     };
-    
-    console.log("dets out", folderDetails);
 
-    function createFolderRows(folderData){
-        for(var i=0; i<folderData.length; i++){
+    console.log("gets out", folderDetails);
+
+    function createFolderRows(folderData) {
+        for (var i = 0; i < folderData.length; i++) {
             var folderLine = $("<li>");
             folderLine.addClass("folderList");
             folderLine.attr("userID", folderData[i].UserId);
@@ -119,7 +143,7 @@ $(document).ready(function () {
         }
     };
 
-    function loadFolderRows(folderData){
+    function loadFolderRows(folderData) {
         var folderLine = $("<div>");
         folderLine.addClass("folderList");
         console.log(folderData.folder);

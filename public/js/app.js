@@ -1,7 +1,6 @@
+var userID;
+
 $(document).ready(function () {
-
-
-
 
     // var checkEmail = function() {
     // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
@@ -12,12 +11,12 @@ $(document).ready(function () {
 
     // checkEmail();
 
-
-
     // var query = $("search").val();
     var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
+
+    var universalVar = {animal: "Zebra"};
 
 
 
@@ -57,7 +56,7 @@ $(document).ready(function () {
         return newArr;
     };
 
-    // BookmarkArray = getBookmarks(query);
+    BookmarkArray = getBookmarks();
     console.log("Chrome bookmark extraction: ", BookmarkArray);
     console.log("hello");
     // document.addEventListener('DOMContentLoaded', function() {
@@ -89,36 +88,26 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email = "alex22@gmail.com";
-    var userID;
+    var email; 
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
         console.log("Works!");
-        var newUser = document.getElementById("userName").value;
-        console.log(newUser);
+        email = document.getElementById("userName").value;
+        console.log(email);
         var UserPost = {
-            user: newUser
+            user: email
         }
-        submitUser(UserPost);
+        submitUser(UserPost);//Creates new user in DB
+        importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
+
     });
 
-    document.getElementById('returnUserButton').addEventListener('click', function () {
-        console.log("Relocate page now!");
-        // window.location.href = "http://localhost:8080/";
+    // document.getElementById('returnUserButton').addEventListener('click', function () {
+    //     console.log("Relocate page now!");
+    //     // window.location.href = "http://localhost:8080/";
         
-    });
-
-    document.getElementById('importButton').addEventListener('click', function(){
-         getUserData();  
-         console.log("Bookmark Array: ", BookmarkArray);
-        //  for(var i=0; i < BookmarkArray.length; i++){
-            // BookmarkArray[3].userID = userID;
-            // console.log(BookmarkArray[3]);
-            // var bookObject = BookmarkArray[3];
-            // importBookmark(bookObject); 
-        //  }
-    });
+    // });
 
     function submitUser(User) {
         $.ajax({
@@ -130,7 +119,8 @@ $(document).ready(function () {
         });
     }
 
-    function getUserData() {
+    function importUserData() {
+        console.log("You are in the import function!")
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/users",
@@ -138,7 +128,7 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
-            for (var i = 0; i < data.length; i++){
+            for (var i = 0; i < data.length; i++){//Looks for userID associated with email
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
@@ -179,6 +169,15 @@ $(document).ready(function () {
             console.log("done!");
         });
     }
+
+    // function relocate() {
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/bookmarks",
+    //     }).then(function () {
+    //         console.log("done!");
+    //     });
+    // }
 
     var postFolders = function (Folder) {
         $.ajax({
