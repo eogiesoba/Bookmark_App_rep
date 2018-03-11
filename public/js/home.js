@@ -268,6 +268,35 @@ $(document).ready(function () {
         $(".folderList").remove();
     }
 
+    function getFolderID(folderData){
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:8080/api/folders",
+        }).then(function (data) {
+
+            for(var i = 0; i < data.length; i++){
+
+                if(data[i] === folderData){
+                    var folderID = data[i].id;
+                    return folderID;
+                } 
+            }
+        });
+    }
+
+    function posFolderID(id){
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:8080/api/bookmarks/",
+            data: id
+        }).then(function (data) {
+            
+
+        });
+    }
+
+    
+
  
 
 
