@@ -97,6 +97,10 @@ a {
     height: 50px;
 }
 
+.folderLabelDiv {
+    margin: 0 auto;
+}
+
 
 /* Bookmarks HTML Main Content */
 
@@ -217,7 +221,6 @@ a {
 #folderNameDiv {
 
 }
-
 
 
 .folderList, .AllBookmarks {

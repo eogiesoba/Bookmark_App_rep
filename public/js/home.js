@@ -224,7 +224,7 @@ $(document).ready(function () {
                 folderLine.addClass("folderList");
 
                 var folderLabelDiv = $("<div>");
-                folderLabelDiv.addClass("col-sm-8");
+                // folderLabelDiv.addClass("col-sm-8");
                 folderLabelDiv.addClass("folderLabelDiv");
                 folderLabelDiv.attr("userID", folderData.UserId);
                 folderLabelDiv.attr("folderName", folderData.folder);
@@ -235,12 +235,12 @@ $(document).ready(function () {
                 folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
                 folderLine.append(folderLabelDiv);
 
-                var searchIconDiv = $("<div>");
-                searchIconDiv.addClass("col-sm-4")
-                searchIconDiv.addClass("searchIcon");
-                searchIconDiv.attr("folderId", folderData.id);
-                searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
-                folderLine.append(searchIconDiv);
+                // var searchIconDiv = $("<div>");
+                // searchIconDiv.addClass("col-sm-4")
+                // searchIconDiv.addClass("searchIcon");
+                // searchIconDiv.attr("folderId", folderData.id);
+                // searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
+                // folderLine.append(searchIconDiv);
                 
                 
                 $("#sidebar").append(folderLine);
@@ -273,6 +273,17 @@ $(document).ready(function () {
         $(".bmBox").remove();
         $(".folderList").remove();
     }
+
+
+//get bookmarks AIP call for search
+    document.getElementById('sidebar').addEventListener('click', function(ev){
+        console.log('Clicked');
+        target = ev.target;
+        console.log("target", target.innerText);
+        
+    })
+
+
 
  
 
