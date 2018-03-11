@@ -3,7 +3,7 @@
 
 body{
     width: 400px;
-    height: 300px;
+    height: 375px;
     background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
     font-family: 'Lato', sans-serif;
 }
@@ -33,7 +33,7 @@ header {
     margin: 0 auto;
     text-align: center;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #bookmarkWidow {
@@ -45,6 +45,7 @@ header {
 
 a {
     background-color: transparent;
+    margin: 0 auto;
 }
 
 #newUserButton {
@@ -54,12 +55,15 @@ a {
     margin: 0 auto;
 }
 
-/* #newUserButton:hover {
-    transform: scale(1.1, 1.1);
-    } */
+#homeBookmark {
+    background-color: transparent;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
 
 .bookmarkButton {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #addBookmark {
@@ -67,10 +71,6 @@ a {
     border-radius: 12px;
     margin: 0 auto;
 }
-
-/* #addBookmark:hover {
-    transform: scale(1.1, 1.1);
-    } */
 
 
 /* Bookmarkts HTML SideBar */

@@ -43,10 +43,10 @@ $(document).ready(function () {
         console.log("dropping", data);
         dataArr = JSON.parse(data);
         console.log("parsed", dataArr);
-        $(target).FolderId = dataArr[0];
+        document.getElementById("bookmarkDisplay").FolderId = dataArr[0];
         $(target).attr("folderName", dataArr[1]);
         $(target).append("<div class='folderNameDiv'>" + dataArr[1] + "</div>");
-        console.log($(target));
+        console.log("target", target);
     }
 
 
@@ -123,7 +123,11 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
+             if (bookmarkData[i].folderId !== null) {
+                 folderDiv.append("<p>" + bookmarkDetail[i].folderName + "</p>")
+             } else {
             folderDiv.append("<p>" + 'Assign a Folder' + "</p");
+             }
             bigBMDiv.append(folderDiv);
 
             $("#bookmarksDisplay").append(bigBMDiv);  
