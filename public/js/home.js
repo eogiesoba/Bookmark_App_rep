@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+<<<<<<< HEAD
+=======
+    console.log(userObj);
+>>>>>>> 55d9e2f372d014e0ac46e6ef65a959e9773d8f18
     var UserID;
     var folderDetails = [];
 
