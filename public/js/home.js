@@ -4,9 +4,8 @@ $(document).ready(function () {
 
 
     // console.log(userObj);
-
+    document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
     var UserID;
-    var userID;
     var email;
     var folderDetails = [];
     // console.log(userObj); 
@@ -16,9 +15,9 @@ $(document).ready(function () {
     document.drag = function(ev) {
         var target = ev.target;
         var dataArr = [];
-        var x = target.getAttribute("folderName");
+        var x = target.getAttribute("folderID");
         dataArr.push(x);
-        var y = target.getAttribute("folderID");
+        var y = target.getAttribute("folderName");
         dataArr.push(y);
         console.log("dataArr", dataArr);
         dataArr= JSON.stringify(dataArr);
@@ -43,23 +42,25 @@ $(document).ready(function () {
         console.log("dropping", data);
         dataArr = JSON.parse(data);
         console.log("parsed", dataArr);
-        $(target).attr("folderName", dataArr[0]);
-        $(target).attr("folderID", dataArr[1]);
-        $(target).append("<div class='folderNameDiv'>" + dataArr[0] + "</div>");
+        $(target).FolderId = dataArr[0];
+        $(target).attr("folderName", dataArr[1]);
+        $(target).append("<div class='folderNameDiv'>" + dataArr[1] + "</div>");
+        console.log($(target));
     }
 
 
-    document.getElementById('returnUserButton').addEventListener('click', function () {
 
+    document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Works!");
         clearDiv();
-        email = document.getElementById("userName").value;
+        email = document.getElementById("userName").value;  
+        localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
-
         renderBookmarks();
         getFolders();
 
     });
+
     function renderBookmarks() {//Looks for userID associated with email
         $.ajax({
             method: "GET",
@@ -115,7 +116,7 @@ $(document).ready(function () {
             btnDiv.attr("delete");
             btnDiv.addClass("btnStyle");
 
-            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>'Click to URL'</button></a>");
+            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a>");
             btnDiv.append("<i class='fas fa-trash-alt garbageBtn'></i>");
             bigBMDiv.append(btnDiv);
 
@@ -139,7 +140,7 @@ $(document).ready(function () {
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
         console.log("folderButton pressed");
         var newFolder = document.getElementById("addFolder").value;
-        console.log("newfoldername", newFolder);
+        console.log("newFolderName", newFolder);
         console.log("userID", UserID);
         var folderObj = {
             folder: newFolder,
@@ -151,7 +152,7 @@ $(document).ready(function () {
     });
 
     function postFolders(Folder) {
-        console.log("in postfolder:", Folder);
+        console.log("in postFolder:", Folder);
         $.ajax({
             method: "POST",
             url: "http://localhost:8080/api/folders",
@@ -174,7 +175,7 @@ $(document).ready(function () {
             console.log("got arrays!");
             for(var i=0;i<data.length;i++){
                 var folderUserID = data[i].UserId;
-                console.log("this is folderuserID: ", folderUserID);
+                console.log("this is folderUserID: ", folderUserID);
                 console.log("this is UserID: ", userID);
                 console.log("Folder Name: ", data[i].folder );
                 var foldername = data[i];
