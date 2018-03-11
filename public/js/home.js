@@ -121,11 +121,13 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-             if (bookmarkData[j].folderId !== null) {
-                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].folderName + "</div>")
+            console.log("folderId", bookmarkData[j].FolderId);
+             if (bookmarkData[j].FolderId !== null) {
+                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].FolderId + "</div>")
              } else {
-            folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
+            folderDiv.append("<div id='folderNameDiv'>Assign a Folder</div>");
              }
+
             bigBMDiv.append(folderDiv);
 
             $("#bookmarksDisplay").append(bigBMDiv);  
