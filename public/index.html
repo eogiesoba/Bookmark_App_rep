@@ -14,7 +14,6 @@
     <!-- <script src="js/app.js"></script> -->
     <script src="js/home.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-
     <link rel="stylesheet" href="css/simple-sidebar.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -36,6 +35,12 @@
                         <button type="submit" class="btn btn-primary btn-sm" id="folderSubmitBtn">Submit Folder</button>
                     </div>
                 </li>
+                <li>
+                    <p class="folderList">All Bookmarks</p>
+                </li>
+                <li>
+                    <p class="folderList" folderID="null">No Folder Assigned</p>
+                </li>
 
             </ul>
         </div>
@@ -45,14 +50,23 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row header">
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Bookmarks Bar</a>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                         <textarea type="input" class="form" id="searchBookmarks" placeholder="Search Bookmarks"></textarea>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary btn-lg" id="returnUserButton">Login</button>
+                        <br>
                         <button type="submit" class="btn btn-primary" id="searchBookmarksBtn">Search</button>
+                    </div>
+                    <div class="col-sm-2">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="userName" placeholder="Input Gmail Address for Login">
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -60,8 +74,8 @@
                 <div class="main">
                     <div class="row" id="bookmarksDisplay">
 
-                            <div class="bmBox">
-                            </div>
+                        <div class="bmBox">
+                        </div>
                     </div>
                 </div>
 
@@ -80,7 +94,6 @@
         <!-- /#page-content-wrapper -->
     </div>
     <!-- /#wrapper -->
-
 
     <!-- Menu Toggle Script -->
     <script>

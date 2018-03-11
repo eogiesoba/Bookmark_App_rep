@@ -77,15 +77,22 @@ module.exports = function (app) {
   });
 
   // Get route for returning all bookmarks
-  app.get("/api/bookmarks", function (req, res) {
+  // app.get("/api/bookmarks", function (req, res) {
 
-    db.Bookmark.findAll({}).then(function (results) {
+  //   db.Bookmark.findAll({}).then(function (results) {
+  //     res.json(results);
+  //   });
+
+  // });
+
+  app.get("/api/bookmarks/:id", function(req, res) {
+    db.Bookmark.findAll({
       where: {
-        id: req.body.userID
+        UserId: req.params.id
       }
+    }).then(function(results) {
       res.json(results);
     });
-
   });
 
   app.get("/api/folders", function (req, res) {
