@@ -182,7 +182,8 @@ $(document).ready(function () {
                 var folderUserID = data[i].UserId;
                 console.log("this is folderUserID: ", folderUserID);
                 console.log("this is UserID: ", userID);
-                console.log("Folder Name: ", data[i].folder );
+                console.log("Folder Name: ", data[i].folder )
+                console.log("FolderID: ", data[i].id);
                 var foldername = data[i];
 
                 if(folderUserID === userID){
@@ -244,6 +245,8 @@ $(document).ready(function () {
                 
                 
                 $("#sidebar").append(folderLine);
+                var BookmarkFolderId= getFolderID(folderData);
+                console.log("This is BookmarkFolderID:", BookmarkFolderId);
                 
             // }
             // folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData[i].folder + "</p>");
@@ -274,7 +277,44 @@ $(document).ready(function () {
         $(".folderList").remove();
     }
 
- 
+    function getFolderID(folderData){
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:8080/api/folders",
+        }).then(function (data) {
 
+            for(var i = 0; i < data.length; i++){
+
+                if(data[i] === folderData){
+                     ;
+                    console.log("This is GET folderID: ", data[i].id);
+                    return data[i].id;
+                } 
+            }
+        });
+    }
+
+    function updateFolderID(id){
+        $.ajax({
+            method: "PUT",
+            url: "http://localhost:8080/api/bookmarks/",
+            data: id
+        }).then(function (data) {
+            console.log("Update data: ", data);
+            return data;
+        });
+    }
+
+    function getBookmarkFolder(id) {//Renders bookmarks for userID associated with email
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:8080/api/bookmarks/" + id,
+        }).then(function (data) {
+            
+
+        });
+    };
+
+    
 
 });

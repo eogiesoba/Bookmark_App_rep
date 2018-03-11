@@ -52,12 +52,12 @@ module.exports = function (app) {
   });
 
   // PUT route will update bookmark's folder
-  app.put("/api/folders", function (req, res) {
+  app.put("/api/bookmarks", function (req, res) {
     db.Bookmark.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.body.FolderId
         }
       }).then(function () {
         res.end();
@@ -94,6 +94,8 @@ module.exports = function (app) {
       res.json(results);
     });
   });
+
+  
 
   app.get("/api/folders", function (req, res) {
     console.log("We are in GET folders");
