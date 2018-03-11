@@ -52,7 +52,7 @@ module.exports = function (app) {
   });
 
   // PUT route will update bookmark's folder
-  app.put("/api/folders", function (req, res) {
+  app.put("/api/bookmarks", function (req, res) {
     db.Bookmark.update(
       req.body,
       {

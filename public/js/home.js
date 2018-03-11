@@ -2,8 +2,7 @@
 
 $(document).ready(function () {
 
-
-    loadBookmarksIndex();//This our bookmark render function that runs when page is loaded. 
+    renderBookmarks();//This our bookmark render function that runs when page is loaded. 
     getFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
@@ -129,8 +128,11 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-             if (bookmarkData[j].folderId !== null) {
-                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].folderName + "</div>")
+             if (bookmarkData[j].FolderId !== null) {
+
+
+                //Where I'm currenty at in finishing project
+                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].FolderName + "</div>")
              } else {
             folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
              }
@@ -166,10 +168,27 @@ $(document).ready(function () {
         }).then(function (data) {
             console.log("Your folder has been made.");
             // console.log(data);
-            User
+            loadFolderRows(Folder);
         });
+    };
 
-        loadFolderRows(Folder);
+    function updateBookmarks(info) {
+        $.ajax({
+            method: "PUT",
+            url: "http://localhost:8080/api/bookmarks",
+            data: info
+        }).then(function (data) {
+            console.log("Your bookmark has been updated");
+            renderBookmarks();
+        });
+    };
+
+    function loadFolderRows(folderData) {
+        var folderLine = $("<div>");
+        folderLine.addClass("folderList");
+        console.log(folderData.folder);
+        folderLine.append("<div>" + folderData.folder + "</div>");
+        $("#sidebar").append(folderLine);
     };
 
     function getFolders() {
@@ -262,20 +281,9 @@ $(document).ready(function () {
         // }
     };
 
-    function loadFolderRows(folderData) {
-        var folderLine = $("<div>");
-        folderLine.addClass("folderList");
-        console.log(folderData.folder);
-        folderLine.append("<div>" + folderData.folder + "</div>");
-        $("#sidebar").append(folderLine);
-    };
-
     function clearDiv(){
         $(".bmBox").remove();
         $(".folderList").remove();
     }
-
- 
-
 
 });
