@@ -3,9 +3,13 @@
 
 body{
     width: 400px;
-    height: 300px;
-    background-image: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url("../images/bookshelf.jpeg");
+    height: 375px;
+    background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
     font-family: 'Lato', sans-serif;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1, 1.1);
 }
 
 h3 {
@@ -13,6 +17,7 @@ h3 {
     font-size: 25px;
     text-align: center;
     margin-top: 20px; 
+
 }
 
 header {
@@ -29,7 +34,7 @@ header {
     margin: 0 auto;
     text-align: center;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #bookmarkWidow {
@@ -39,40 +44,34 @@ header {
     text-align: center;
 }
 
+a {
+    background-color: transparent;
+    margin: 0 auto;
+}
 
 #newUserButton {
     background-color: orange;
     font-size: 15px;
     border-radius:6px;
     margin: 0 auto;
-
 }
 
-#newUserButton:hover {
-    transform: scale(1.05, 1.05);
-    }
-
-#returnUserButton, a {
-    background-color: seagreen;
-    font-size: 15px;
-    border-radius: 6px;
+#homeBookmark {
+    background-color: transparent;
+    border-radius: 12px;
     margin: 0 auto;
 }
 
-#returnUserButton:hover {
-    transform: scale(1.05, 1.05);
-    }
 
+.bookmarkButton {
+    margin-top: 10px;
+}
 
 #addBookmark {
     background-color: transparent;
     border-radius: 12px;
     margin: 0 auto;
 }
-
-#addBookmark:hover {
-    transform: scale(1.1, 1.1);
-    }
 
 
 /* Bookmarkts HTML SideBar */
@@ -82,7 +81,7 @@ header {
 }
 
 .form-group {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -98,13 +97,12 @@ header {
     height: 50px;
 }
 
-.folderLabelDiv {
-}
-
-.searchIcon {
-}
 
 /* Bookmarks HTML Main Content */
+
+/* .btn-primary:hover {
+    transform: scale(1.1, 1.1);
+} */
 
 .header {
   background-color: rgb(35, 33, 139);
@@ -113,19 +111,45 @@ header {
 }
 
 #menu-toggle {
-    margin-top: 10px;
+    margin-top: 10%;
+    border-radius: 6px;
 }
+.emailForm {
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+#userName {
+    margin-top: 5%;
+}
+
+.loginButton {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#returnUserButton {
+    background-color: rgb(4, 140, 21);
+    margin-top: 23%;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+/* #returnUserButton:hover {
+    transform: scale(1.1, 1.1);
+    } */
+
 #searchBookmarks {
-    width: 60%;
-    margin-left: 20%;
+    margin-top: 5%;
 }
+
 #searchBookmarksBtn {
-    margin-top: 10px;
+    margin-top: 25%;
     margin-left: -10px;
 }
 
 .main {
-    background-image: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)), url("../images/bookshelf.jpeg");
+    background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url("../images/bookshelf.jpeg");
     background-position: center center;
     background-size: cover;
     vertical-align: middle;
@@ -134,45 +158,59 @@ header {
 }
 
 .bmBox {
-    height: 200px;
-    background-color:greenyellow;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 12px;
+    height: 275px;
+    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(216, 216, 216));
+    margin-top: 1%;
+    margin-left: 2.5%;
+    border-radius: 3px;
+    border: 2px solid rgb(35, 33, 139); 
+    box-shadow: 5px 10px 6px rgb(24, 24, 24);
+    transition: all 0.3s ease-in-out;
 }
 
+.bmBox:hover {
+    transform: scale(1.10, 1.10);
+    }
+
 .bmTitleDiv {
-    background-color: salmon;
-    margin-top: 5px;
-    height:75px;
+    background: linear-gradient(to bottom, rgb(237, 147, 115), rgb(237, 80, 22));
+    margin: 5px 0px 5px 0px;
+    height: 100px;
+    border-radius: 5px;
+    text-align: center;
+    overflow: scroll;
 }
 
 .bmTitle{
     font-size: 20px;
-    text-align: center;
 }
 
 .btnStyle {
-    height: 50px;
-    margin: 0 auto;
+    background: linear-gradient(to bottom, rgb(95, 148, 223), rgb(7, 96, 223));
+    margin: 5% 0% 5% 0%;
+    height: 60px;
+    border-radius: 5px;
+    /* margin: 0 auto; */
 }
 
 .urlBtn {
     height: 30px;
     font-size: 16px;
+    margin-top: 5%;
+    margin-left: 5%;
 }
 
-.garbageBtn {
-    height:30px;
-    width: 20px;
-    margin-left: 10px;
+#garbageBtn {
+    font-size: 20px;
+    margin-left: 5%;
 }
 
 .bmFolderDiv {
-    background-color: blue;
-    height: 50px;
-    border-top: solid 2px black;
+    background: linear-gradient(to bottom, rgb(193, 255, 103), rgb(158, 208, 84));
+    margin: 5px 0px 5px 0px;
+    height: 75px;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .bmFolder {
