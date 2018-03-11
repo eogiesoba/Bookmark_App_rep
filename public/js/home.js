@@ -5,7 +5,9 @@ $(document).ready(function () {
 
     // console.log(userObj);
     document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
+    //Global variables
     var UserID;
+    var userID;//This is being used in a get request
     var email;
     var folderDetails = [];
     // console.log(userObj); 
