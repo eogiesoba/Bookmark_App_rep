@@ -289,9 +289,9 @@ $(document).ready(function () {
         });
     }
 
-    function posFolderID(id){
+    function updateFolderID(id){
         $.ajax({
-            method: "POST",
+            method: "PUT",
             url: "http://localhost:8080/api/bookmarks/",
             data: id
         }).then(function (data) {
