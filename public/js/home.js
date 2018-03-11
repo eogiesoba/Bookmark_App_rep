@@ -3,6 +3,9 @@
 $(document).ready(function () {
 
 
+    loadBookmarksIndex();//This our bookmark render function that runs when page is loaded. 
+    getFolders();//This is our folder render function that runs when page is loaded.
+
     // console.log(userObj);
     document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
     //Global variables
@@ -49,7 +52,8 @@ $(document).ready(function () {
         console.log("target", target);
     }
 
-
+    
+ 
 
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Works!");
@@ -59,6 +63,8 @@ $(document).ready(function () {
         console.log(email);
         renderBookmarks();
         getFolders();
+        var x = document.querySelectorAll("#bookmarksDisplay")[0];
+        console.log(x);
 
     });
 
@@ -136,11 +142,6 @@ $(document).ready(function () {
         $("#bookmarksDisplay").append(bigBMDiv);   
 
     }
-
-
-    loadBookmarksIndex();
-
-    getFolders();
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
         console.log("folderButton pressed");
