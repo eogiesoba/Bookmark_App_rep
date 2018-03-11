@@ -182,7 +182,8 @@ $(document).ready(function () {
                 var folderUserID = data[i].UserId;
                 console.log("this is folderUserID: ", folderUserID);
                 console.log("this is UserID: ", userID);
-                console.log("Folder Name: ", data[i].folder );
+                console.log("Folder Name: ", data[i].folder )
+                console.log("FolderID: ", data[i].id);
                 var foldername = data[i];
 
                 if(folderUserID === userID){
@@ -244,6 +245,8 @@ $(document).ready(function () {
                 
                 
                 $("#sidebar").append(folderLine);
+                var BookmarkFolderId= getFolderID(folderData);
+                console.log("This is BookmarkFolderID:", BookmarkFolderId);
                 
             // }
             // folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData[i].folder + "</p>");
@@ -287,5 +290,6 @@ $(document).ready(function () {
 
  
 
+    
 
 });
