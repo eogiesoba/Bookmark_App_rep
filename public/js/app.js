@@ -90,23 +90,41 @@ $(document).ready(function () {
     // })
     var email; 
 
-    document.getElementById('newUserButton').addEventListener('click', function () {
+    // document.getElementById('newUserButton').addEventListener('click', function () {
 
-        console.log("Works!");
-        email = document.getElementById("userName").value;
-        console.log(email);
-        var UserPost = {
-            user: email
-        }
-        submitUser(UserPost);//Creates new user in DB
-        importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
+    //     console.log("Works!");
+    //     email = document.getElementById("userName").value;
+    //     console.log(email);
+    //     var UserPost = {
+    //         user: email
+    //     }
+    //     submitUser(UserPost);//Creates new user in DB
+    //     importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
 
+    // });
+
+    document.getElementById('addBookmark').addEventListener('click', function() {
+        console.log("bookmarkAddbutton");
+        newBookmark = {};
+        chrome.tabs.getSelected(null, function(tab) {
+            var tabID = tab.id;
+            var tabUrl = tab.url;
+            newBookmark.url = tab.url
+            console.log("url", newBookmark.url);
+            newBookmark.title = document.querySelectorAll("#newBMTitle")[0].value;
+            console.log("QSA", document.querySelectorAll("#newBMTitle")[0].value);
+            console.log(newBookmark.title);
+            console.log("in", newBookmark);
+            
+        })
+        console.log("inout", newBookmark);
+        updateBookmark(newBookmark);
     });
 
-    document.getElementById('addBookmark').addEventListener('click', function () {
-        console.log("buttonclicked");
+    console.log("out", newBookmark);
+
         // importUserData();
-    });
+    // });
 
     function submitUser(User) {
         $.ajax({
@@ -199,6 +217,8 @@ $(document).ready(function () {
                 window.location.href = "/home";
             });
     }
+
+
 
 
 
