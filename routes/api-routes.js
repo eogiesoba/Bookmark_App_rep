@@ -55,7 +55,7 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.body.FolderId
         }
       }).then(function () {
         res.end();
