@@ -76,11 +76,12 @@ $(document).ready(function () {
             for (var i = 0; i < data.length; i++) {
                 var userEmail = data[i].user;
                 if (userEmail === email) {
-                    userID = data[i].id
+                    userID = data[i].id;
+                    loadBookmarksIndex(userID);
+                    break;
                 }
             }
             console.log(userID);
-            loadBookmarksIndex(userID);
         });
     }
 
