@@ -83,12 +83,6 @@ a {
     margin-bottom: 5px;
 }
 
-/* #newBMTitle, #newBMURL, #newURLSubmit {
-    visibility: hidden;
-} */
-
-
-
 /* Bookmarkts HTML SideBar */
 
 .sidebar-brand {
@@ -119,9 +113,6 @@ a {
 
 /* Bookmarks HTML Main Content */
 
-/* .btn-primary:hover {
-    transform: scale(1.1, 1.1);
-} */
 
 .header {
   background-color: rgb(35, 33, 139);
@@ -154,10 +145,6 @@ a {
     border-radius: 6px;
 }
 
-/* #returnUserButton:hover {
-    transform: scale(1.1, 1.1);
-    } */
-
 #searchBookmarks {
     margin-top: 5%;
 }
@@ -177,7 +164,7 @@ a {
 }
 
 .bmBox {
-    height: 260px;
+    height: 275px;
     background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(216, 216, 216));
     margin-top: 1%;
     margin-left: 2.5%;
@@ -228,7 +215,7 @@ a {
 .bmFolderDiv {
     background: linear-gradient(to bottom, rgb(193, 255, 103), rgb(158, 208, 84));
     margin: 5px 0px 5px 0px;
-    height: 50px;
+    height: 75px;
     border-radius: 5px;
     text-align: center;
     overflow: scroll;

@@ -237,6 +237,22 @@ $(document).ready(function () {
         $(".folderList").remove();
     }
 
+    document.getElementById("bookmarksDisplay").addEventListener('click', function(ev){
+        var x = ev.target.getAttribute("id");
+        console.log("canClicked", x);
+
+    })
+
+    document.getElementById("sidebar").addEventListener('click', function(ev){
+        var x = ev.target.getAttribute("folderID");
+        console.log("searchClicked", x);
+
+    })
+
+
+
+
+
 });
 
 
