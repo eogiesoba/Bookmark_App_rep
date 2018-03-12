@@ -5,13 +5,10 @@ $(document).ready(function () {
     renderBookmarks();//This our bookmark render function that runs when page is loaded. 
     renderFolders();//This is our folder render function that runs when page is loaded.
 
-    if (localStorage.getItem("BookmarkUserEmail")) {
-        document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
-    }
-
+    // console.log(userObj);
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
     //Global variables
-    var userID;
-    var UserID;
+    var userID;//This is being used in a get request
     var email;
     var folderDetails = [];
     // console.log(userObj); 
@@ -146,7 +143,7 @@ $(document).ready(function () {
                         break;//This will end the loop when a folderID match is found!
                     }
                 }
-                folderDiv.append("<div id='folderNameDiv'>" + BFN + "</div>")
+                folderDiv.html(BFN);
             } 
             else {
                 folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
@@ -195,8 +192,7 @@ $(document).ready(function () {
                 var folderUserID = data[i].UserId;
                 console.log("this is folderUserID: ", folderUserID);
                 console.log("this is UserID: ", userID);
-                console.log("Folder Name: ", data[i].folder )
-                console.log("FolderID: ", data[i].id);
+                console.log("Folder Name: ", data[i].folder);
                 var foldername = data[i];
 
                 if (folderUserID === userID) {
