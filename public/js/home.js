@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
     renderBookmarks();//This our bookmark render function that runs when page is loaded. 
-    getFolders();//This is our folder render function that runs when page is loaded.
+    renderFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
@@ -32,12 +32,11 @@ $(document).ready(function () {
         var bookmarkID = ev.target.id;
         console.log("dropped this folderID", folderID);
         console.log("in bookmarkID", bookmarkID);
-        //PUT REQUEST
         var bookmarkData = {
             id: bookmarkID,
             FolderId: folderID
         }
-        updateBookmarks(bookmarkData);
+        updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
     function updateBookmarks(info) {
@@ -58,44 +57,50 @@ $(document).ready(function () {
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
         renderBookmarks();
-        getFolders();
+        renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log(x);
 
     });
 
-    function renderBookmarks() {//Looks for userID associated with email
+    function renderBookmarks() {
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/users",
         }).then(function (data) {
             console.log(data);
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id;
-                    loadBookmarksIndex(userID);
-                    break;
+                    getBNF_Tables(userID);
+                    break;//This will end the loop when a userID match is found!
                 }
             }
             console.log(userID);
         });
     }
 
-    function loadBookmarksIndex(id) {//Renders bookmarks for userID associated with email
+
+    function getBNF_Tables(id) {//Renders bookmark and folder info for userID associated with email
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/bookmarks/" + id,
-        }).then(function (data) {
-            console.log(data)
+        }).then(function (b_Data) {
+            console.log(b_Data)
             console.log("done!");
-            userID = data[0].UserId;
+            userID = b_Data[0].UserId;
             console.log(userID);
-            createBookmarkDiv(data);
-        });
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/api/folders/" + id,
+            }).then(function (f_Data) {
+                createBookmarkDiv(b_Data, f_Data);
+            });
+        });       
     };
 
-    function createBookmarkDiv(bookmarkData) {
+    function createBookmarkDiv(bookmarkData, folderData) {
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
@@ -152,17 +157,6 @@ $(document).ready(function () {
 
     });
 
-    // function getFolderName(fid) {
-    //     $.ajax({
-    //         method: "GET",
-    //         url: "http://localhost:8080/api/BFN",
-    //         data: fid
-    //     }).then(function (data) {
-    //         var bfn = data.folder;
-    //     });
-    //     return bfn;
-    // };
-
     function postFolders(Folder) {
         console.log("in postFolder:", Folder);
         $.ajax({
@@ -170,11 +164,11 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
-            getFolders();
+            renderFolders();
         });
     };
 
-    function getFolders() {
+    function renderFolders() {
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/folders",

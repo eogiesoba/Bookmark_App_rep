@@ -12,8 +12,6 @@ var db = require("../models"); //tyep db.Post when using sequelize.
 // =============================================================
 module.exports = function (app) {
 
-
-
   // POST route for adding a new user - used with chrome extension as an AJAX request
   app.post("/api/users", function (req, res) {
     db.User.create({
@@ -76,17 +74,18 @@ module.exports = function (app) {
 
   });
 
-  // Get route for returning all bookmarks
-  // app.get("/api/bookmarks", function (req, res) {
-
-  //   db.Bookmark.findAll({}).then(function (results) {
-  //     res.json(results);
-  //   });
-
-  // });
-
   app.get("/api/bookmarks/:id", function(req, res) {
     db.Bookmark.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/folders/:id", function(req, res) {
+    db.Folder.findAll({
       where: {
         UserId: req.params.id
       }
@@ -105,16 +104,6 @@ module.exports = function (app) {
     });
 
   });
-
-  // app.get("/api/BFN", function (req, res) {
-  //   db.Folder.findAll({
-  //     where: {
-  //       id: req.body.id
-  //     }
-  //   }).then(function(results) {
-  //     res.json(results);
-  //   });
-  // });
 
   // DELETE route for deleting posts
   app.delete("/api/users", function (req, res) {
