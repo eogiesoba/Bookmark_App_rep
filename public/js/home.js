@@ -251,10 +251,6 @@ $(document).ready(function () {
     })
 
 
-
-
-
-
     // function getFolderID(folderData){
     //     $.ajax({
     //         method: "GET",
