@@ -46,7 +46,9 @@ $(document).ready(function () {
             data: info
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
+            clearDiv();
             renderBookmarks();
+            renderFolders();
         });
     };
 
@@ -97,10 +99,14 @@ $(document).ready(function () {
             }).then(function (f_Data) {
                 createBookmarkDiv(b_Data, f_Data);
             });
-        });       
+        });
     };
 
     function createBookmarkDiv(bookmarkData, folderData) {
+        var bookFID;
+        var tableFID;
+        var BFN;
+
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
@@ -128,16 +134,22 @@ $(document).ready(function () {
             folderDiv.attr("ondrop", "drop(event)");
 
             //---------------------------------------------Get folder names for each bookmark
-            // if (bookmarkData[j].FolderId !== null) {
-            //     var Fid = { 
-            //         id: bookmarkData[j].FolderId
-            //     };
-            //     var BFN = getFolderName(Fid);
-            //     folderDiv.append("<div id='folderNameDiv'>" + BFN + "</div>")
-            // } else {
-            //     folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
-            // }
+            if (bookmarkData[j].FolderId !== null) {
+                bookFID = bookmarkData[j].FolderId;
+                for (var i = 0; i < folderData.length; i++) {
+                    tableFID = folderData[i].id;
+                    if (bookFID === tableFID) {
+                        BFN = folderData[i].folder;//This will get the name of the matching folder.
+                        break;//This will end the loop when a folderID match is found!
+                    }
+                }
+                folderDiv.append("<div id='folderNameDiv'>" + BFN + "</div>")
+            } 
+            else {
+                folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
+            }
             //------------------------------------------------------------------------------
+
             bigBMDiv.append(folderDiv);
             $("#bookmarksDisplay").append(bigBMDiv);
         }
