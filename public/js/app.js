@@ -7,31 +7,6 @@ $(document).ready(function () {
     var folderArr = [];
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
 
-    document.getElementById('newUserButton').addEventListener('click', function () {
-
-        console.log("Works!");
-        email = document.getElementById("userName").value;
-        console.log(email);
-        var UserPost = {
-            user: email
-        }
-        submitUser(UserPost);//Creates new user in DB
-        importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
-
-    });
-
-
-    var checkEmail = function() {
-    if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
-        alert("Please input your Gmail address.");
-    } else {
-        confirmUserStatus();
-    }
-
-    checkEmail();
-
-
-
 
     var getBookmarks = function (query) {
         var newArr = [];
@@ -93,6 +68,11 @@ $(document).ready(function () {
 
         console.log("Works!");
         email = document.getElementById("userName").value;
+       
+        if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+            alert("Please input your Gmail address.");
+        } else {}
+
         localStorage.setItem("BookmarkUserEmail", email);
         console.log("email logged in: ", email);
         console.log(email);

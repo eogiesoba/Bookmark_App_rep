@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 
     document.drag = function (ev) {
-        var x = ev.target.getAttribute("folderID");
+        var x = ev.target.getAttribute("id");
         ev.dataTransfer.setData("text", x);
         console.log("dragging", x);
     }
@@ -30,6 +30,7 @@ $(document).ready(function () {
         ev.preventDefault();
         var folderID = ev.dataTransfer.getData("text");
         var bookmarkID = ev.target.id;
+        console.log("evttgtid", bookmarkID);
         console.log("dropped this folderID", folderID);
         console.log("in bookmarkID", bookmarkID);
         var bookmarkData = {
@@ -158,7 +159,8 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-            folderDiv.attr("folderid", bookmarkData[j].id);
+            folderDiv.attr("folderId", bookmarkData[j].FolderId);
+            folderDiv.attr("id", bookmarkData[j].id );
             folderDiv.attr("ondragover", "allowDrop(event)");
             folderDiv.attr("ondrop", "drop(event)");
 
@@ -238,20 +240,19 @@ $(document).ready(function () {
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
-        folderLabelDiv.attr("folderID", folderData.id);
+        folderLabelDiv.attr("id", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
 
         folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
 
-        var searchIconDiv = $("<div>");
-        searchIconDiv.addClass("col-sm-4");
-        searchIconDiv.addClass("searchIcon");
-        searchIconDiv.attr("data-folderID", folderData.id);
-        searchIconDiv.attr("folderId", folderData.id);
-        searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
-        folderLine.append(searchIconDiv);
+        // var searchIconDiv = $("<div>");
+        // searchIconDiv.addClass("col-sm-4 col-sm-offset-4");
+        // searchIconDiv.addClass("searchIcon");
+        // searchIconDiv.attr("data-folderID", folderData.id);
+        // searchIconDiv.attr("folderId", folderData.id);
+        // folderLine.append(searchIconDiv);
         $("#folderTable").append(folderLine);
     }; 
 
