@@ -6,7 +6,7 @@ $(document).ready(function () {
     getFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
-    document.getElementById("userName").value  = localStorage.getItem("BookmarkUserEmail");
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
     //Global variables
     var userID;//This is being used in a get request
     var email;
@@ -15,7 +15,7 @@ $(document).ready(function () {
     var dragSrcEl = null;
 
 
-    document.drag = function(ev) {
+    document.drag = function (ev) {
         var target = ev.target;
         var dataArr = [];
         var x = target.getAttribute("folderID");
@@ -23,7 +23,7 @@ $(document).ready(function () {
         var y = target.getAttribute("folderName");
         dataArr.push(y);
         console.log("dataArr", dataArr);
-        dataArr= JSON.stringify(dataArr);
+        dataArr = JSON.stringify(dataArr);
         console.log("stringDA", dataArr);
         ev.dataTransfer.setData("text", dataArr);
         ev.dataTransfer.effectAllowed = "copy";
@@ -31,12 +31,12 @@ $(document).ready(function () {
 
     }
 
-    document.allowDrop = function(ev){
+    document.allowDrop = function (ev) {
         ev.preventDefault();
         console.log("allowDrop");
     }
 
-    document.drop = function(ev) {
+    document.drop = function (ev) {
         ev.preventDefault();
         dataArr = [];
         var target = ev.target;
@@ -51,13 +51,13 @@ $(document).ready(function () {
         console.log("target", target);
     }
 
-    
- 
+
+
 
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Works!");
         clearDiv();
-        email = document.getElementById("userName").value;  
+        email = document.getElementById("userName").value;
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
         renderBookmarks();
@@ -91,18 +91,13 @@ $(document).ready(function () {
         }).then(function (data) {
             console.log(data)
             console.log("done!");
-
-
             userID = data[0].UserId;
             console.log(userID);
-
             createBookmarkDiv(data);
-
         });
     };
 
     function createBookmarkDiv(bookmarkData) {
-        
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
@@ -128,21 +123,18 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-             if (bookmarkData[j].FolderId !== null) {
+            if (bookmarkData[j].FolderId !== null) {
 
 
                 //Where I'm currenty at in finishing project
-                 folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].FolderName + "</div>")
-             } else {
-            folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
-             }
+                folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].FolderName + "</div>")
+            } else {
+                folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
+            }
             bigBMDiv.append(folderDiv);
 
-            $("#bookmarksDisplay").append(bigBMDiv);  
-         }
-
-        $("#bookmarksDisplay").append(bigBMDiv);   
-
+            $("#bookmarksDisplay").append(bigBMDiv);
+        }
     }
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
@@ -166,11 +158,17 @@ $(document).ready(function () {
             url: "http://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
-            console.log("Your folder has been made.");
-            // console.log(data);
-            loadFolderRows(Folder);
+            getFolders();
         });
     };
+
+    // function loadFolderRows(folderData) {
+    //     var folderLine = $("<div>");
+    //     folderLine.addClass("folderList");
+    //     console.log(folderData.folder);
+    //     folderLine.append("<div>" + folderData.folder + "</div>");
+    //     $("#sidebar").append(folderLine);
+    // };
 
     function updateBookmarks(info) {
         $.ajax({
@@ -183,105 +181,57 @@ $(document).ready(function () {
         });
     };
 
-    function loadFolderRows(folderData) {
-        var folderLine = $("<div>");
-        folderLine.addClass("folderList");
-        console.log(folderData.folder);
-        folderLine.append("<div>" + folderData.folder + "</div>");
-        $("#sidebar").append(folderLine);
-    };
-
     function getFolders() {
         $.ajax({
             method: "GET",
             url: "http://localhost:8080/api/folders",
         }).then(function (data) {
+            $("#folderTable").empty();
             console.log(data)
             console.log("got arrays!");
-            for(var i=0;i<data.length;i++){
+            for (var i = 0; i < data.length; i++) {
                 var folderUserID = data[i].UserId;
                 console.log("this is folderUserID: ", folderUserID);
                 console.log("this is UserID: ", userID);
-                console.log("Folder Name: ", data[i].folder );
+                console.log("Folder Name: ", data[i].folder);
                 var foldername = data[i];
 
-                if(folderUserID === userID){
+                if (folderUserID === userID) {
                     createFolderRows(foldername);
                 }
             }
-            // if(folderUserID === userID){
-            //     createFolderRows(data);
-            // }
-        
-            
-            // createFolderRows(data);
-
         });
     };
 
-    function createFolderRows(folderData){
+    function createFolderRows(folderData) {
+        console.log(folderData);
+        console.log("matching folder!")
+        var folderLine = $("<div>");
+        folderLine.addClass("row");
+        folderLine.addClass("folderList");
 
-        
-        // for(var i=0; i<folderData.length; i++) {
-            // var folderLine = $("<div>");
-            // folderLine.addClass("row");
-            // folderLine.addClass("folderList");
-            console.log(folderData);
+        var folderLabelDiv = $("<div>");
+        folderLabelDiv.addClass("col-sm-8");
+        folderLabelDiv.addClass("folderLabelDiv");
+        folderLabelDiv.attr("userID", folderData.UserId);
+        folderLabelDiv.attr("folderName", folderData.folder);
+        folderLabelDiv.attr("folderID", folderData.id);
+        folderLabelDiv.attr("draggable", true);
+        folderLabelDiv.attr("ondragstart", "drag(event)");
 
-            // var folderLabelDiv = $("<div>");
-            // folderLabelDiv.addClass("col-sm-8");
-            // folderLabelDiv.addClass("folderLabelDiv");
-            // folderLabelDiv.attr("userID", folderData[i].UserId);
-            // folderLabelDiv.attr("folderName", folderData[i].folder);
-            // folderLabelDiv.attr("folderID", folderData[i].id);
-            // console.log("folderLabelInfo UserID:", folderData[i].UserId,"Folder Name: ", folderData[i].folder, folderData[i].id );
-            // folderLabelDiv.attr("draggable", true);
-            // folderLabelDiv.attr("ondragstart", "drag(event)");
-            // if(folderData[i].UserId === userID){
-                console.log("matching folder!")
-                var folderLine = $("<div>");
-                folderLine.addClass("row");
-                folderLine.addClass("folderList");
+        folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
+        folderLine.append(folderLabelDiv);
 
-                var folderLabelDiv = $("<div>");
-                folderLabelDiv.addClass("col-sm-8");
-                folderLabelDiv.addClass("folderLabelDiv");
-                folderLabelDiv.attr("userID", folderData.UserId);
-                folderLabelDiv.attr("folderName", folderData.folder);
-                folderLabelDiv.attr("folderID", folderData.id);
-                folderLabelDiv.attr("draggable", true);
-                folderLabelDiv.attr("ondragstart", "drag(event)");
-
-                folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
-                folderLine.append(folderLabelDiv);
-
-                var searchIconDiv = $("<div>");
-                searchIconDiv.addClass("col-sm-4")
-                searchIconDiv.addClass("searchIcon");
-                searchIconDiv.attr("folderId", folderData.id);
-                searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
-                folderLine.append(searchIconDiv);
-                
-                
-                $("#sidebar").append(folderLine);
-                
-            // }
-            // folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData[i].folder + "</p>");
-            // folderLine.append(folderLabelDiv);
-            
-            // var searchIconDiv = $("<div>");
-            // searchIconDiv.addClass("col-sm-4")
-            // searchIconDiv.addClass("searchIcon");
-            // searchIconDiv.attr("folderId", folderData[i].id);
-            // searchIconDiv.append("<i class='fas fa-search' id='folderSort'></i>");
-            // folderLine.append(searchIconDiv);
-            
-            
-            // $("#sidebar").append(folderLine);
-        // }
+        var searchIconDiv = $("<div>");
+        searchIconDiv.addClass("col-sm-4")
+        searchIconDiv.addClass("searchIcon");
+        searchIconDiv.attr("folderId", folderData.id);
+        searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
+        folderLine.append(searchIconDiv);
+        $("#folderTable").append(folderLine);
     };
 
-    function clearDiv(){
+    function clearDiv() {
         $(".bmBox").remove();
         $(".folderList").remove();
     }
