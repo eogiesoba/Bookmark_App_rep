@@ -19,7 +19,7 @@ $(document).ready(function () {
                     // newDiv
                     // $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
                     if (bookmarks[0] !== undefined) {
-                        if(bookmarks[0].title !== undefined && bookmarks[0].url !== undefined){
+                        if (bookmarks[0].title !== undefined && bookmarks[0].url !== undefined) {
                             newArr.push(bookmarks[0]);
                         }
                     }
@@ -76,25 +76,25 @@ $(document).ready(function () {
         localStorage.setItem("BookmarkUserEmail", email);
         console.log("email logged in: ", email);
         console.log(email);
-       
+
         // submitUser(UserPost);//Creates new user in DB
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
         document.getElementById("userName").remove();
         document.getElementById("newUserButton").remove();
 
-        
+
         document.getElementById("header_div").append("User: " + email + " has logged in");
 
     });
 
-    document.getElementById('addBookmark').addEventListener('click', function() {
+    document.getElementById('addBookmark').addEventListener('click', function () {
         console.log("bookmarkAddButton");
         newBookmarkObj = {};
-        chrome.tabs.getSelected(null, function(tab) {
-            newBookmarkObj.id= tab.id;
+        chrome.tabs.getSelected(null, function (tab) {
+            newBookmarkObj.id = tab.id;
             newBookmarkObj.url = tab.url;
             newBookmarkObj.title = document.querySelectorAll("#newBMTitle")[0].value;
-            
+
         })
         console.log("new", newBookmarkObj);
         addNewBookmark(newBookmarkObj);
@@ -124,9 +124,9 @@ $(document).ready(function () {
             console.log(data);
             var newUser = true;
             // var newBookMarkObj = BookmarkArray;
-            for (var i = 0; i < data.length; i++){//Looks for userID associated with email
+            for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
-                
+
                 console.log("User Data Emails: ", userEmail);
                 console.log("email: ", email);
 
@@ -135,14 +135,14 @@ $(document).ready(function () {
                     newUser = false;
                     break;
                 }
-                else{
-                    userID = data[i].id+1;
+                else {
+                    userID = data[i].id + 1;
                 }
-                
+
             }
 
-            if(newUser === true){
-                for(var i=0; i < BookmarkArray.length; i++){//imports all bookmarks 1 at a time.
+            if (newUser === true) {
+                for (var i = 0; i < BookmarkArray.length; i++) {//imports all bookmarks 1 at a time.
                     BookmarkArray[i].userID = userID;
                     var bookObject = BookmarkArray[i];
                     importBookmark(bookObject);
@@ -153,7 +153,7 @@ $(document).ready(function () {
                 submitUser(UserPost);
             }
 
-            
+
             console.log(userID);
             console.log(BookmarkArray);
         });
@@ -207,21 +207,20 @@ $(document).ready(function () {
             // var UserID = data.id;
             console.log(data);
             // var newBookMarkObj = BookmarkArray;
-            for (var i = 0; i < data.length; i++){//Looks for userID associated with email
+            for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
                 }
             }
-            console.log()
             console.log(userID);
             console.log(newBookmarkObj);
 
-                newBookmarkObj.userID = userID;
-                console.log("bookObj", newBookmarkObj);
-                bookObject = newBookmarkObj;
-                importBookmark(bookObject);
-            }
-        )};
+            newBookmarkObj.userID = userID;
+            console.log("bookObj", newBookmarkObj);
+            bookObject = newBookmarkObj;
+            importBookmark(bookObject);
+        });
+    }
 
 });
