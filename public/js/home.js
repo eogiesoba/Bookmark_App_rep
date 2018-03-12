@@ -126,7 +126,8 @@ $(document).ready(function () {
             btnDiv.addClass("btnStyle");
 
             btnDiv.append("<div class='col-md-8'><a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a></div>");
-            btnDiv.append("<div class='col-md-4'><button id='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
+            btnDiv.append("<div class='col-md-4'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
+            btnDiv.attr("bookID", bookmarkData[j].id);
             bigBMDiv.append(btnDiv);
 
             var folderDiv = $("<div>");
