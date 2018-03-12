@@ -24,6 +24,12 @@ header {
     background-color: transparent;
     height: 125px;
 }
+#header_div{
+    color:whitesmoke;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
 
 .userLabel {
     text-align: center;

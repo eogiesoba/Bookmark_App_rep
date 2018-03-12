@@ -46,8 +46,4 @@
       "host": "hngomrlb3vfq3jcr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
       "dialect": "mysql"
     }
-<<<<<<< HEAD
-}
-=======
   }
->>>>>>> a70b5f03f74e4f1881bbdbf1b8a81cec76854401
