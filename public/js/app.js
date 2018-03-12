@@ -16,10 +16,6 @@ $(document).ready(function () {
     var UserInput = $("#userName");
     var folderArr = [];
 
-    var universalVar = {animal: "Zebra"};
-
-
-
     // var dumpBookmarks = function(query) {
     //   console.log("function");
     // var bookmarkTreeNodes = chrome.bookmarks.getTree(

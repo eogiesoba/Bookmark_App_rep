@@ -12,8 +12,6 @@ var db = require("../models"); //tyep db.Post when using sequelize.
 // =============================================================
 module.exports = function (app) {
 
-
-
   // POST route for adding a new user - used with chrome extension as an AJAX request
   app.post("/api/users", function (req, res) {
     db.User.create({
@@ -57,7 +55,7 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.FolderId
+          id: req.body.id
         }
       }).then(function () {
         res.end();
@@ -76,15 +74,6 @@ module.exports = function (app) {
 
   });
 
-  // Get route for returning all bookmarks
-  // app.get("/api/bookmarks", function (req, res) {
-
-  //   db.Bookmark.findAll({}).then(function (results) {
-  //     res.json(results);
-  //   });
-
-  // });
-
   app.get("/api/bookmarks/:id", function(req, res) {
     db.Bookmark.findAll({
       where: {
@@ -95,7 +84,15 @@ module.exports = function (app) {
     });
   });
 
-  
+  app.get("/api/folders/:id", function(req, res) {
+    db.Folder.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
 
   app.get("/api/folders", function (req, res) {
     console.log("We are in GET folders");
