@@ -79,12 +79,16 @@ $(document).ready(function () {
         console.log("Works!");
         email = document.getElementById("userName").value;
         localStorage.setItem("BookmarkUserEmail", email);
+        console.log("email logged in: ", email);
         console.log(email);
-        var UserPost = {
-            user: email
-        }
-        submitUser(UserPost);//Creates new user in DB
+       
+        // submitUser(UserPost);//Creates new user in DB
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
+        document.getElementById("userName").remove();
+        document.getElementById("newUserButton").remove();
+
+        
+        document.getElementById("header_div").append("User: " + email + " has logged in");
 
     });
 
@@ -123,21 +127,39 @@ $(document).ready(function () {
         }).then(function (data) {
             // var UserID = data.id;
             console.log(data);
+            var newUser = true;
             // var newBookMarkObj = BookmarkArray;
             for (var i = 0; i < data.length; i++){//Looks for userID associated with email
                 var userEmail = data[i].user;
+                
+                console.log("User Data Emails: ", userEmail);
+                console.log("email: ", email);
+
                 if (userEmail === email) {
-                    userID = data[i].id
+                    userID = data[i].id;
+                    newUser = false;
+                    break;
+                }
+                else{
+                    // userID = data[i].id;
                 }
             }
+
+            if(newUser === true){
+                for(var i=0; i < BookmarkArray.length; i++){//imports all bookmarks 1 at a time.
+                    BookmarkArray[i].userID = userID;
+                    var bookObject = BookmarkArray[i];
+                    importBookmark(bookObject);
+                }
+                var UserPost = {
+                    user: email
+                }
+                submitUser(UserPost);
+            }
+
+            
             console.log(userID);
             console.log(BookmarkArray);
-
-            for(var i=0; i < BookmarkArray.length; i++){//imports all bookmarks 1 at a time.
-                BookmarkArray[i].userID = userID;
-                var bookObject = BookmarkArray[i];
-                importBookmark(bookObject);
-            }
         });
     }
     //associate this with our folder and our bookmarks
