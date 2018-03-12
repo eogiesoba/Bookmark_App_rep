@@ -39,18 +39,6 @@ $(document).ready(function () {
         updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
-    function updateBookmarks(info) {
-        $.ajax({
-            method: "PUT",
-            url: "http://localhost:8080/api/bookmarks",
-            data: info
-        }).then(function (data) {
-            console.log("Your bookmark has been updated!");
-            clearDiv();
-            renderBookmarks();
-            renderFolders();
-        });
-    };
 
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Works!");
@@ -64,6 +52,45 @@ $(document).ready(function () {
         console.log(x);
 
     });
+
+    document.getElementById('folderSubmitBtn').addEventListener('click', function () {
+        console.log("folderButton pressed");
+        var newFolder = document.getElementById("addFolder").value;
+        console.log("newFolderName", newFolder);
+        console.log("userID", userID);
+        var folderObj = {
+            folder: newFolder,
+            userID: userID
+        }
+        console.log(folderObj);
+        postFolders(folderObj);
+
+    });
+
+    document.querySelector("#bookmarksDisplay").addEventListener('click', function(ev){
+        console.log("garbageClicked");
+        console.log("event", ev.target);
+        console.log("ev", ev.target.getAttribute("id"));
+        var id = ev.target.getAttribute('id');
+        console.log("id", id);
+        deleteBookmark(id);
+        renderBookmark();
+
+    })
+
+
+    function updateBookmarks(info) {
+        $.ajax({
+            method: "PUT",
+            url: "http://localhost:8080/api/bookmarks",
+            data: info
+        }).then(function (data) {
+            console.log("Your bookmark has been updated!");
+            clearDiv();
+            renderBookmarks();
+            renderFolders();
+        });
+    };
 
     function renderBookmarks() {
         $.ajax({
@@ -112,6 +139,8 @@ $(document).ready(function () {
             var bigBMDiv = $("<div>");
             bigBMDiv.addClass("col-md-2");
             bigBMDiv.addClass("bmBox");
+            bigBMDiv.attr("draggable", true);
+            bigBMDiv.attr("ondragstart", "drag(event)");
             var titleDiv = $("<div>");
             titleDiv.addClass("bmTitleDiv");
             var bmTitle = bookmarkData[j].title;
@@ -120,18 +149,16 @@ $(document).ready(function () {
             bigBMDiv.append(titleDiv);
             
             var btnDiv = $("<div>");
-        
             btnDiv.attr("delete");
-            btnDiv.addClass("row");
             btnDiv.addClass("btnStyle");
 
-            btnDiv.append("<div class='col-md-8'><a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a></div>");
-            btnDiv.append("<div class='col-md-4'><button id='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
+            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a></div>");
+
             bigBMDiv.append(btnDiv);
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-            folderDiv.attr("id", bookmarkData[j].id);
+            folderDiv.attr("folderid", bookmarkData[j].id);
             folderDiv.attr("ondragover", "allowDrop(event)");
             folderDiv.attr("ondrop", "drop(event)");
 
@@ -148,28 +175,23 @@ $(document).ready(function () {
                 folderDiv.html(BFN);
             } 
             else {
-                folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
+                folderDiv.append("<div class='folderNameDiv'>" + 'Assign a Folder' + "</div");
             }
             //------------------------------------------------------------------------------
-
             bigBMDiv.append(folderDiv);
+            
+            
+            garbageDiv = $("<div>");
+            garbageDiv.addClass("row")
+            garbageDiv.addClass("deleteStyle");
+            garbageDiv.append("<div class='col-md-3'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
+            garbageDiv.attr("id", bookmarkData[j].id);
+            bigBMDiv.append(garbageDiv);
+
             $("#bookmarksDisplay").append(bigBMDiv);
         }
     }
 
-    document.getElementById('folderSubmitBtn').addEventListener('click', function () {
-        console.log("folderButton pressed");
-        var newFolder = document.getElementById("addFolder").value;
-        console.log("newFolderName", newFolder);
-        console.log("userID", userID);
-        var folderObj = {
-            folder: newFolder,
-            userID: userID
-        }
-        console.log(folderObj);
-        postFolders(folderObj);
-
-    });
 
     function postFolders(Folder) {
         console.log("in postFolder:", Folder);
@@ -224,13 +246,30 @@ $(document).ready(function () {
         folderLine.append(folderLabelDiv);
 
         var searchIconDiv = $("<div>");
-        searchIconDiv.addClass("col-sm-4")
+        searchIconDiv.addClass("col-sm-4");
         searchIconDiv.addClass("searchIcon");
+        searchIconDiv.attr("data-folderID", folderData.id);
         searchIconDiv.attr("folderId", folderData.id);
         searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
         folderLine.append(searchIconDiv);
         $("#folderTable").append(folderLine);
-    };
+    }; 
+
+    function deleteBookmark(id) {
+        console.log("in deleteBookmark function", id);
+        $.ajax({
+            method: "DELETE",
+            url: "http://localhost:8080/api/bookmarks/" + id
+            // data: info
+        }).then(function (data) {
+            console.log("Your bookmark has been updated!");
+            clearDiv();
+            renderBookmarks();
+        });
+        
+        
+
+    }
 
     function clearDiv() {
         $(".bmBox").remove();
@@ -238,17 +277,7 @@ $(document).ready(function () {
     }
 
 
-    document.getElementById("bookmarksDisplay").addEventListener('click', function(ev){
-        var x = ev.target.getAttribute("id");
-        console.log("canClicked", x);
 
-    })
-
-    document.getElementById("sidebar").addEventListener('click', function(ev){
-        var x = ev.target.getAttribute("folderID");
-        console.log("searchClicked", x);
-
-    })
 
 
     // function getFolderID(folderData){

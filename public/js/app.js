@@ -2,20 +2,35 @@ var userID;
 
 $(document).ready(function () {
 
-    // var checkEmail = function() {
-    // if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
-    //     alert("Please input your Gmail address.");
-    // } else {
-    //     confirmUserStatus();
-    // }
-
-    // checkEmail();
-
-    // var query = $("search").val();
     var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+
+    document.getElementById('newUserButton').addEventListener('click', function () {
+
+        console.log("Works!");
+        email = document.getElementById("userName").value;
+        console.log(email);
+        var UserPost = {
+            user: email
+        }
+        submitUser(UserPost);//Creates new user in DB
+        importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
+
+    });
+
+
+    var checkEmail = function() {
+    if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
+        alert("Please input your Gmail address.");
+    } else {
+        confirmUserStatus();
+    }
+
+    checkEmail();
+
+
 
 
     var getBookmarks = function (query) {
