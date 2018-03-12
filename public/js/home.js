@@ -235,4 +235,43 @@ $(document).ready(function () {
         $(".folderList").remove();
     }
 
+
+    // function getFolderID(folderData){
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/folders",
+    //     }).then(function (data) {
+
+    //         for(var i = 0; i < data.length; i++){
+
+    //             if(data[i] === folderData){
+    //                  ;
+    //                 console.log("This is GET folderID: ", data[i].id);
+    //                 return data[i].id;
+    //             } 
+    //         }
+    //     });
+    // };
+
+    // function updateFolderID(id){
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "http://localhost:8080/api/bookmarks/",
+    //         data: id
+    //     }).then(function (data) {
+    //         console.log("Update data: ", data);
+    //         return data;
+    //     });
+    // };
+
+    // function getBookmarkFolder(id) {//Renders bookmarks for userID associated with email
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/bookmarks/" + id,
+    //     }).then(function (data) {
+            
+
+    //     });
+    // };
+
 });
