@@ -141,8 +141,9 @@ $(document).ready(function () {
                     break;
                 }
                 else{
-                    userID = data[i].id + 1;
+                    userID = data[i].id+1;
                 }
+                
             }
 
             if(newUser === true){
