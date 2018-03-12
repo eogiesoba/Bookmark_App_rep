@@ -118,12 +118,13 @@ module.exports = function (app) {
     });
   });
 
-  app.delete("/api/bookmarks", function (req, res) {
+  app.delete("/api/bookmarks/:id", function (req, res) {
+    console.log("in delete api", req.params.id);
     // Add sequelize code to delete a post where the id is equal to req.params.id, 
     // then return the result to the user using res.json
     db.Bookmark.destroy({
       where: {
-        id: req.param.userID
+        id: req.params.id
       }
     }).then(function(dbBookmark) {
       res.json(dbBookmark);

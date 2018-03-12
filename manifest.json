@@ -11,6 +11,10 @@
   "default_title": "Bookmark Popup"
 
   },
+
+  "content_scripts": [{
+      "js": ["public/js/jquery.min.js"]
+  }],
   
   "permissions": [
       "bookmarks", 
