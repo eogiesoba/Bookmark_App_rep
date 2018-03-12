@@ -16,19 +16,9 @@ $(document).ready(function () {
 
 
     document.drag = function (ev) {
-        var target = ev.target;
-        var dataArr = [];
-        var x = target.getAttribute("folderID");
-        dataArr.push(x);
-        var y = target.getAttribute("folderName");
-        dataArr.push(y);
-        console.log("dataArr", dataArr);
-        dataArr = JSON.stringify(dataArr);
-        console.log("stringDA", dataArr);
-        ev.dataTransfer.setData("text", dataArr);
-        ev.dataTransfer.effectAllowed = "copy";
-        console.log("dragging", x, y);
-
+        var x = ev.target.getAttribute("folderID");
+        ev.dataTransfer.setData("text", x);
+        console.log("dragging", x);
     }
 
     document.allowDrop = function (ev) {
@@ -38,21 +28,28 @@ $(document).ready(function () {
 
     document.drop = function (ev) {
         ev.preventDefault();
-        dataArr = [];
-        var target = ev.target;
-        ev.dataTransfer.dropEffect = "copy";
-        var data = ev.dataTransfer.getData("text");
-        console.log("dropping", data);
-        dataArr = JSON.parse(data);
-        console.log("parsed", dataArr);
-        document.getElementById("bookmarkDisplay").FolderId = dataArr[0];
-        $(target).attr("folderName", dataArr[1]);
-        $(target).append("<div class='folderNameDiv'>" + dataArr[1] + "</div>");
-        console.log("target", target);
+        var folderID = ev.dataTransfer.getData("text");
+        var bookmarkID = ev.target.id;
+        console.log("dropped this folderID", folderID);
+        console.log("in bookmarkID", bookmarkID);
+        //PUT REQUEST
+        var bookmarkData = {
+            id: bookmarkID,
+            FolderId: folderID
+        }
+        updateBookmarks(bookmarkData);
     }
 
-
-
+    function updateBookmarks(info) {
+        $.ajax({
+            method: "PUT",
+            url: "http://localhost:8080/api/bookmarks",
+            data: info
+        }).then(function (data) {
+            console.log("Your bookmark has been updated!");
+            renderBookmarks();
+        });
+    };
 
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Works!");
@@ -104,16 +101,13 @@ $(document).ready(function () {
             var bigBMDiv = $("<div>");
             bigBMDiv.addClass("col-md-2");
             bigBMDiv.addClass("bmBox");
-            bigBMDiv.attr("ondragover", "allowDrop(event)");
-            bigBMDiv.attr("ondrop", "drop(event)");
-
             var titleDiv = $("<div>");
             titleDiv.addClass("bmTitleDiv");
             var bmTitle = bookmarkData[j].title;
             console.log("This is title: ", bmTitle);
             titleDiv.append(bmTitle);
             bigBMDiv.append(titleDiv);
-
+            
             var btnDiv = $("<div>");
             btnDiv.attr("delete");
             btnDiv.addClass("btnStyle");
@@ -124,16 +118,22 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-            if (bookmarkData[j].FolderId !== null) {
+            folderDiv.attr("id", bookmarkData[j].id);
+            folderDiv.attr("ondragover", "allowDrop(event)");
+            folderDiv.attr("ondrop", "drop(event)");
 
-
-                //Where I'm currenty at in finishing project
-                folderDiv.append("<div id='folderNameDiv'>" + bookmarkData[j].FolderName + "</div>")
-            } else {
-                folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
-            }
+            //---------------------------------------------Get folder names for each bookmark
+            // if (bookmarkData[j].FolderId !== null) {
+            //     var Fid = { 
+            //         id: bookmarkData[j].FolderId
+            //     };
+            //     var BFN = getFolderName(Fid);
+            //     folderDiv.append("<div id='folderNameDiv'>" + BFN + "</div>")
+            // } else {
+            //     folderDiv.append("<div id='folderNameDiv'>" + 'Assign a Folder' + "</div");
+            // }
+            //------------------------------------------------------------------------------
             bigBMDiv.append(folderDiv);
-
             $("#bookmarksDisplay").append(bigBMDiv);
         }
     }
@@ -152,6 +152,17 @@ $(document).ready(function () {
 
     });
 
+    // function getFolderName(fid) {
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/BFN",
+    //         data: fid
+    //     }).then(function (data) {
+    //         var bfn = data.folder;
+    //     });
+    //     return bfn;
+    // };
+
     function postFolders(Folder) {
         console.log("in postFolder:", Folder);
         $.ajax({
@@ -160,25 +171,6 @@ $(document).ready(function () {
             data: Folder
         }).then(function (data) {
             getFolders();
-        });
-    };
-
-    // function loadFolderRows(folderData) {
-    //     var folderLine = $("<div>");
-    //     folderLine.addClass("folderList");
-    //     console.log(folderData.folder);
-    //     folderLine.append("<div>" + folderData.folder + "</div>");
-    //     $("#sidebar").append(folderLine);
-    // };
-
-    function updateBookmarks(info) {
-        $.ajax({
-            method: "PUT",
-            url: "http://localhost:8080/api/bookmarks",
-            data: info
-        }).then(function (data) {
-            console.log("Your bookmark has been updated");
-            renderBookmarks();
         });
     };
 

@@ -106,6 +106,16 @@ module.exports = function (app) {
 
   });
 
+  // app.get("/api/BFN", function (req, res) {
+  //   db.Folder.findAll({
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   }).then(function(results) {
+  //     res.json(results);
+  //   });
+  // });
+
   // DELETE route for deleting posts
   app.delete("/api/users", function (req, res) {
     // Add sequelize code to delete a post where the id is equal to req.params.id, 
