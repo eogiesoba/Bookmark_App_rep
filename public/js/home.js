@@ -120,11 +120,13 @@ $(document).ready(function () {
             bigBMDiv.append(titleDiv);
             
             var btnDiv = $("<div>");
+        
             btnDiv.attr("delete");
+            btnDiv.addClass("row");
             btnDiv.addClass("btnStyle");
 
-            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a>");
-            btnDiv.append("<button id='garbageBtn'><i class='fas fa-trash-alt'></i></button>");
+            btnDiv.append("<div class='col-md-8'><a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a></div>");
+            btnDiv.append("<div class='col-md-4'><button id='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
             bigBMDiv.append(btnDiv);
 
             var folderDiv = $("<div>");
@@ -235,4 +237,64 @@ $(document).ready(function () {
         $(".folderList").remove();
     }
 
+
+    document.getElementById("bookmarksDisplay").addEventListener('click', function(ev){
+        var x = ev.target.getAttribute("id");
+        console.log("canClicked", x);
+
+    })
+
+    document.getElementById("sidebar").addEventListener('click', function(ev){
+        var x = ev.target.getAttribute("folderID");
+        console.log("searchClicked", x);
+
+    })
+
+
+    // function getFolderID(folderData){
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/folders",
+    //     }).then(function (data) {
+
+    //         for(var i = 0; i < data.length; i++){
+
+    //             if(data[i] === folderData){
+    //                  ;
+    //                 console.log("This is GET folderID: ", data[i].id);
+    //                 return data[i].id;
+    //             } 
+    //         }
+    //     });
+    // };
+
+    // function updateFolderID(id){
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "http://localhost:8080/api/bookmarks/",
+    //         data: id
+    //     }).then(function (data) {
+    //         console.log("Update data: ", data);
+    //         return data;
+    //     });
+    // };
+
+    // function getBookmarkFolder(id) {//Renders bookmarks for userID associated with email
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/bookmarks/" + id,
+    //     }).then(function (data) {
+            
+
+    //     });
+    // };
+
+
 });
+
+
+
+
+
+
+

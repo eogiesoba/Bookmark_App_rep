@@ -15,21 +15,8 @@ $(document).ready(function () {
     var BookmarkArray = [];
     var UserInput = $("#userName");
     var folderArr = [];
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
 
-    // var dumpBookmarks = function(query) {
-    //   console.log("function");
-    // var bookmarkTreeNodes = chrome.bookmarks.getTree(
-    //   function(bookmarkTreeNodes) {
-    //       console.log("query", query);
-    //       console.log("iT", $('#bookmarks').innerText)
-    //       console.log("BTN", bookmarkTreeNodes);
-    //       console.log("BTN-0", bookmarkTreeNodes[0].children[0].children[0].title);
-    //       $('#bookmarks').append("<div>" + bookmarkTreeNodes[0].children[0].children[0].title + "</div>");
-    //       $('#bookmarks').append("<div>" + bookmarkTreeNodes[0].children[0].children[1].title + "</div>");
-    //   });
-    // };
-
-    // dumpBookmarks(query);
 
     var getBookmarks = function (query) {
         var newArr = [];
@@ -84,12 +71,14 @@ $(document).ready(function () {
 
     //     submitUser(UserPost);
     // })
-    var email; 
+    // var email = "faizan.s711@gmail.com"; 
+    var email = localStorage.getItem("BookmarkUserEmail");
 
     document.getElementById('newUserButton').addEventListener('click', function () {
 
         console.log("Works!");
         email = document.getElementById("userName").value;
+        localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
         var UserPost = {
             user: email
@@ -99,10 +88,22 @@ $(document).ready(function () {
 
     });
 
-    document.getElementById('addBookmark').addEventListener('click', function () {
-        console.log("buttonclicked");
-        // importUserData();
+    document.getElementById('addBookmark').addEventListener('click', function() {
+        console.log("bookmarkAddButton");
+        newBookmarkObj = {};
+        chrome.tabs.getSelected(null, function(tab) {
+            newBookmarkObj.id= tab.id;
+            newBookmarkObj.url = tab.url;
+            newBookmarkObj.title = document.querySelectorAll("#newBMTitle")[0].value;
+            
+        })
+        console.log("new", newBookmarkObj);
+        addNewBookmark(newBookmarkObj);
+
     });
+
+
+
 
     function submitUser(User) {
         $.ajax({
@@ -165,14 +166,6 @@ $(document).ready(function () {
         });
     }
 
-    // function relocate() {
-    //     $.ajax({
-    //         method: "GET",
-    //         url: "http://localhost:8080/api/bookmarks",
-    //     }).then(function () {
-    //         console.log("done!");
-    //     });
-    // }
 
     var postFolders = function (Folder) {
         $.ajax({
@@ -185,73 +178,32 @@ $(document).ready(function () {
         });
     }
 
-    function updateBookmark(newArr) {
+
+
+    function addNewBookmark(newArr) {
+        console.log("You are in the addNewBookmark function!")
         $.ajax({
-            method: "PUT",
-            url: "/api/posts",
-            data: BookmarkArray
-        })
-            .then(function () {
-                window.location.href = "/home";
-            });
-    }
+            method: "GET",
+            url: "http://localhost:8080/api/users",
+        }).then(function (data) {
+            // var UserID = data.id;
+            console.log(data);
+            // var newBookMarkObj = BookmarkArray;
+            for (var i = 0; i < data.length; i++){//Looks for userID associated with email
+                var userEmail = data[i].user;
+                if (userEmail === email) {
+                    userID = data[i].id
+                }
+            }
+            console.log()
+            console.log(userID);
+            console.log(newBookmarkObj);
 
-
-
-    // var deleteBookmark = function(newArr){
-    //     $.ajax({
-    //         method : "DELETE",
-    //         url: "/api/posts" + id,
-    //     }).then(function(){
-    //         console.log("Your Bookmark had been Deleted");
-    //     });
-    // }
-
-    // function updateBookmark(newArr) {
-    //     $.ajax({
-    //       method: "PUT",
-    //       url: "/api/posts",
-    //       data: BookmarkArray
-    //     })
-    //     .then(function() {
-    //       window.location.href = "/home";
-    //     });
-    // }
-
-    // var postFolders = function(newArr){
-    //     $.ajax({
-    //         method : "POST",
-    //         url: "/api/folders",
-    //     }).then(function(){
-
-    //     });
-    // }
-
-    // var deleteFolder = function(newArr){
-    //     $.ajax({
-    //         method : "DELETE",
-    //         url: "/api/folders" + id,
-    //     }).then(function(){
-    //         console.log("Your Folder had been Deleted");
-    //     });
-    // }
-
-    // var postUserData = function(newArr){
-    //     $.ajax({
-    //         method : "POST",
-    //         url: "/api/users",
-    //     }).then(function(){
-
-    //     });
-    // }
-
-    // var deleteUserData = function(newArr){
-    //     $.ajax({
-    //         method : "DELETE",
-    //         url: "/api/users" + id,
-    //     }).then(function(){
-    //         console.log("Your user had been Deleted");
-    //     });
-    // }
+                newBookmarkObj.userID = userID;
+                console.log("bookObj", newBookmarkObj);
+                bookObject = newBookmarkObj;
+                importBookmark(bookObject);
+            }
+        )};
 
 });
