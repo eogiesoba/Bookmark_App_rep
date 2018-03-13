@@ -128,18 +128,31 @@ $(document).ready(function () {
     })
 
     //on-click to delete a folder
-
-    document.querySelector("#bookmarksDisplay").addEventListener('click', function(ev){
+    $(document).on("click", "#trash", function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
-        console.log("ev", ev.target.getAttribute("id"));
-        var id = ev.target.getAttribute('id');
-        console.log("id", id);
+        console.log("ev", ev.target.getAttribute("gid"));
+        var id = ev.target.getAttribute('gid');
+        console.log("gid", id);
         deleteBookmark(id);
         // renderBookmark();
+    });
+    
+    // document.querySelector("#trash").addEventListener('click', function(ev){
+    //     console.log("garbageClicked");
+    //     console.log("event", ev.target);
+    //     console.log("ev", ev.target.getAttribute("id"));
+    //     var id = ev.target.getAttribute('id');
+    //     console.log("id", id);
+    //     deleteBookmark(id);
+    //     // renderBookmark();
 
+<<<<<<< HEAD
     })
     
+=======
+    // });
+>>>>>>> 6c5162f1d5c0540ae9f2d0c543e0c407fdc2265e
 
     //on-click to sort folders by foldername
 
@@ -220,15 +233,17 @@ $(document).ready(function () {
         var bookFID;
         var tableFID;
         var BFN;
+<<<<<<< HEAD
         $(".bmBox").remove();
+=======
+        $('.bmBox').remove();
+>>>>>>> 6c5162f1d5c0540ae9f2d0c543e0c407fdc2265e
 
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
             bigBMDiv.addClass("col-md-2");
             bigBMDiv.addClass("bmBox");
-            bigBMDiv.attr("draggable", true);
-            bigBMDiv.attr("ondragstart", "drag(event)");
             var titleDiv = $("<div>");
             titleDiv.addClass("bmTitleDiv");
             var bmTitle = bookmarkData[j].title;
@@ -274,7 +289,8 @@ $(document).ready(function () {
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
             garbageDiv.append("<div class='col-md-3'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
-            garbageDiv.attr("id", bookmarkData[j].id);
+            garbageDiv.attr("gid", bookmarkData[j].id);
+            garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
 
             $("#bookmarksDisplay").append(bigBMDiv);
