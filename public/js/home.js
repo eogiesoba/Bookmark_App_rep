@@ -84,10 +84,6 @@ $(document).ready(function () {
         email = document.getElementById("userName").value;
 
 
-        if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
-            alert("Please input your Gmail address.");
-        } else {}
-
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
         renderBookmarks();
