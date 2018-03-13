@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-    renderBookmarks();//This our bookmark render function that runs when page is loaded. 
+    validateUser();//This our bookmark render function that runs when page is loaded. 
     renderFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
@@ -45,9 +45,14 @@ $(document).ready(function () {
         console.log("Works!");
         clearDiv();
         email = document.getElementById("userName").value;
+
+        if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+            alert("Please input your Gmail address.");
+        } else {}
+
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
-        renderBookmarks();
+        validateUser();
         renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log(x);
@@ -91,7 +96,7 @@ $(document).ready(function () {
         console.log("user", UserId, "folder", FolderId);
             if (FolderId === "0") {
                 console.log( 'AllFoldersClicked');
-                renderBookmarks();
+                validateUser();
             } else {
                 console.log('FolderNameClicked', UserId, FolderId);
                 sortBookmarks(UserId, FolderId);
@@ -107,12 +112,12 @@ $(document).ready(function () {
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
             clearDiv();
-            renderBookmarks();
+            validateUser();
             renderFolders();
         });
     };
 
-    function renderBookmarks() {
+    function validateUser() {
         $.ajax({
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
@@ -281,7 +286,7 @@ $(document).ready(function () {
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
             clearDiv();
-            renderBookmarks();
+            validateUser();
             renderFolders();
         });  
     }
