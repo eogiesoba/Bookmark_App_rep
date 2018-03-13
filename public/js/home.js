@@ -78,7 +78,7 @@ $(document).ready(function () {
     document.getElementById('returnUserButtonModal').addEventListener('click', function () {
         console.log("Works!");
         clearDiv();
-        email = document.getElementById("userName").value;
+        email = document.getElementById("modaluserName").value;
 
 
         localStorage.setItem("BookmarkUserEmail", email);
