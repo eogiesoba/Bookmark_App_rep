@@ -15,6 +15,9 @@ $(document).ready(function () {
     var dragSrcEl = null;
 
 
+    //drag and drop for folder assignment
+
+
     document.drag = function (ev) {
         var x = ev.target.getAttribute("id");
         ev.dataTransfer.setData("text", x);
@@ -41,6 +44,8 @@ $(document).ready(function () {
     }
 
 
+    //onclick for returning user login
+
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Works!");
         clearDiv();
@@ -53,6 +58,8 @@ $(document).ready(function () {
         console.log(x);
 
     });
+
+//onclick to submit new folder
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
         console.log("folderButton pressed");
@@ -67,6 +74,25 @@ $(document).ready(function () {
         postFolders(folderObj);
 
     });
+
+    //keyup to search bookmarks by text input
+
+    document.getElementById("searchBookmarks").addEventListener("keyup", function(){
+        var input, window, bMark, x;
+        input = document.getElementById("searchBookmarks").value.toUpperCase();
+        window = document.getElementById("bookmarksDisplay");
+        bMark = window.getElementsByClassName("bmBox");
+        for (var i = 0; i < bMark.length; i++) {
+            x = bMark[i].getElementsByClassName("bmTitleDiv")[0];
+            // x = bMark[i].getElementsByTagName("a")[0];
+            if (x.innerHTML.toUpperCase().indexOf(input) > -1) {
+               bMark[i].style.display = "";
+            } 
+            else {
+               bMark[i].style.display = "none";
+            }
+        }
+    })
 
     //on-click to delete a folder
 
@@ -98,6 +124,9 @@ $(document).ready(function () {
             }
         
     })
+
+
+
 
     function updateBookmarks(info) {
         $.ajax({
@@ -316,23 +345,6 @@ $(document).ready(function () {
     }
 
 
-
-    document.getElementById("searchBookmarks").addEventListener("keyup", function(){
-        var input, window, bMark, x;
-        input = document.getElementById("searchBookmarks").value.toUpperCase();
-        window = document.getElementById("bookmarksDisplay");
-        bMark = window.getElementsByClassName("bmBox");
-        for (var i = 0; i < bMark.length; i++) {
-            x = bMark[i].getElementsByClassName("bmTitleDiv")[0];
-            // x = bMark[i].getElementsByTagName("a")[0];
-            if (x.innerHTML.toUpperCase().indexOf(input) > -1) {
-               bMark[i].style.display = "";
-            } 
-            else {
-               bMark[i].style.display = "none";
-            }
-        }
-    })
 
 });
 
