@@ -128,17 +128,26 @@ $(document).ready(function () {
     })
 
     //on-click to delete a folder
-
-    document.querySelector("#bookmarksDisplay").addEventListener('click', function(ev){
+    $(document).on("click", "#trash", function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
-        console.log("ev", ev.target.getAttribute("id"));
-        var id = ev.target.getAttribute('id');
-        console.log("id", id);
+        console.log("ev", ev.target.getAttribute("gid"));
+        var id = ev.target.getAttribute('gid');
+        console.log("gid", id);
         deleteBookmark(id);
         // renderBookmark();
+    });
+    
+    // document.querySelector("#trash").addEventListener('click', function(ev){
+    //     console.log("garbageClicked");
+    //     console.log("event", ev.target);
+    //     console.log("ev", ev.target.getAttribute("id"));
+    //     var id = ev.target.getAttribute('id');
+    //     console.log("id", id);
+    //     deleteBookmark(id);
+    //     // renderBookmark();
 
-    })
+    // });
 
     //on-click to sort folders by foldername
 
@@ -219,14 +228,13 @@ $(document).ready(function () {
         var bookFID;
         var tableFID;
         var BFN;
+        $('.bmBox').remove();
 
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
             bigBMDiv.addClass("col-md-2");
             bigBMDiv.addClass("bmBox");
-            bigBMDiv.attr("draggable", true);
-            bigBMDiv.attr("ondragstart", "drag(event)");
             var titleDiv = $("<div>");
             titleDiv.addClass("bmTitleDiv");
             var bmTitle = bookmarkData[j].title;
@@ -250,7 +258,7 @@ $(document).ready(function () {
             folderDiv.attr("ondrop", "drop(event)");
 
             //---------------------------------------------Get folder names for each bookmark
-            if (bookmarkData[j].FolderId !== null) {
+            if (bookmarkData[j].FolderId !== 0) {
                 bookFID = bookmarkData[j].FolderId;
                 for (var i = 0; i < folderData.length; i++) {
                     tableFID = folderData[i].id;
@@ -272,7 +280,8 @@ $(document).ready(function () {
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
             garbageDiv.append("<div class='col-md-3'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
-            garbageDiv.attr("id", bookmarkData[j].id);
+            garbageDiv.attr("gid", bookmarkData[j].id);
+            garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
 
             $("#bookmarksDisplay").append(bigBMDiv);

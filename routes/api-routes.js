@@ -29,7 +29,7 @@ module.exports = function (app) {
         title: Obj.title,
         url: Obj.url,
         UserId: Obj.userID,
-        FolderId: null
+        FolderId: 0
       }).then(function () {
         res.end();
       });
