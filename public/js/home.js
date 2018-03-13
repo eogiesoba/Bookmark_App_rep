@@ -158,7 +158,7 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-            folderDiv.attr("folderid", bookmarkData[j].id);
+            folderDiv.attr("id", bookmarkData[j].id);
             folderDiv.attr("ondragover", "allowDrop(event)");
             folderDiv.attr("ondrop", "drop(event)");
 
@@ -265,9 +265,7 @@ $(document).ready(function () {
             console.log("Your bookmark has been updated!");
             clearDiv();
             renderBookmarks();
-        });
-        
-        
+        });  
 
     }
 
@@ -275,9 +273,6 @@ $(document).ready(function () {
         $(".bmBox").remove();
         $(".folderList").remove();
     }
-
-
-
 
     document.getElementById("searchBookmarks").addEventListener("keyup", function(){
         var input, window, bMark, x;
@@ -296,7 +291,51 @@ $(document).ready(function () {
         }
     })
 
+
+
+
+
+    // function getFolderID(folderData){
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/folders",
+    //     }).then(function (data) {
+
+    //         for(var i = 0; i < data.length; i++){
+
+    //             if(data[i] === folderData){
+    //                  ;
+    //                 console.log("This is GET folderID: ", data[i].id);
+    //                 return data[i].id;
+    //             } 
+    //         }
+    //     });
+    // };
+
+    // function updateFolderID(id){
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "http://localhost:8080/api/bookmarks/",
+    //         data: id
+    //     }).then(function (data) {
+    //         console.log("Update data: ", data);
+    //         return data;
+    //     });
+    // };
+
+    // function getBookmarkFolder(id) {//Renders bookmarks for userID associated with email
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/bookmarks/" + id,
+    //     }).then(function (data) {
+            
+
+    //     });
+    // };
+
+
 });
+
 
 
 
