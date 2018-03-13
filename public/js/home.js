@@ -7,6 +7,8 @@ $(document).ready(function () {
 
     // console.log(userObj);
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
+    
     //Global variables
     var userID;//This is being used in a get request
     var email;
@@ -51,6 +53,22 @@ $(document).ready(function () {
         renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log(x);
+
+    });
+
+    document.getElementById('returnUserButtonModal').addEventListener('click', function () {
+        console.log("Works!");
+        clearDiv();
+        email = document.getElementById("userName").value;
+        localStorage.setItem("BookmarkUserEmail", email);
+        console.log(email);
+        renderBookmarks();
+        renderFolders();
+        var x = document.querySelectorAll("#bookmarksDisplay")[0];
+        console.log(x);
+        // $('#exampleModal').modal({
+        //     show: false
+        // });
 
     });
 
@@ -333,6 +351,8 @@ $(document).ready(function () {
             }
         }
     })
+
+    
 
 });
 
