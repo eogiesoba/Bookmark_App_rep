@@ -129,7 +129,7 @@ $(document).ready(function () {
 
     //on-click to delete a folder
 
-    document.querySelector("#bookmarksDisplay").addEventListener('click', function(ev){
+    document.getElementById("garbageid").addEventListener('click', function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
         console.log("ev", ev.target.getAttribute("id"));
@@ -272,6 +272,7 @@ $(document).ready(function () {
             garbageDiv.addClass("deleteStyle");
             garbageDiv.append("<div class='col-md-3'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
             garbageDiv.attr("id", bookmarkData[j].id);
+            garbageDiv.attr("garbageid", "trash");
             bigBMDiv.append(garbageDiv);
 
             $("#bookmarksDisplay").append(bigBMDiv);
