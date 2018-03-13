@@ -6,6 +6,8 @@ $(document).ready(function () {
     var UserInput = $("#userName");
     var folderArr = [];
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    document.getElementById("logoffButton").style.visibility = "hidden";
+    var loginEmail;
 
 
     var getBookmarks = function (query) {
@@ -79,13 +81,41 @@ $(document).ready(function () {
 
         // submitUser(UserPost);//Creates new user in DB
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
-        document.getElementById("userName").remove();
-        document.getElementById("newUserButton").remove();
+    });
 
+    UserInitialCheck();
 
-        document.getElementById("header_div").append("User: " + email + " has logged in");
+    function UserInitialCheck(){
+        
+        importUserData();
+        
+        console.log("login Email", loginEmail);
+        
+    }
+
+    document.getElementById('logoffButton').addEventListener('click', function () {
+        var email = "";
+
+        LogoffRender();
 
     });
+
+    function LogoffRender(){
+        document.getElementById("userName").style.visibility = "visible";
+        document.getElementById("newUserButton").style.visibility = "visible";
+        document.getElementById("logoffButton").style.visibility = "hidden";
+
+        document.getElementById("LogInUser").innerHTML = "";
+    }
+
+    function LoginRender(){
+        document.getElementById("userName").style.visibility = "hidden";
+        document.getElementById("newUserButton").style.visibility = "hidden";
+        document.getElementById("logoffButton").style.visibility = "visible";
+
+
+        document.getElementById("LogInUser").append("User: " + email + " has logged in");
+    }
 
     document.getElementById('addBookmark').addEventListener('click', function () {
         console.log("bookmarkAddButton");
@@ -105,7 +135,7 @@ $(document).ready(function () {
     function submitUser(User) {
         $.ajax({
             method: "POST",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
             data: User
         }).then(function () {
             // window.location.href = "http://localhost:8080/";
@@ -116,7 +146,7 @@ $(document).ready(function () {
         console.log("You are in the import function!")
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
             // var UserID = data.id;
             console.log(data);
@@ -131,6 +161,8 @@ $(document).ready(function () {
                 if (userEmail === email) {
                     userID = data[i].id;
                     newUser = false;
+                    loginEmail = userEmail;
+                    console.log("login Email: ", loginEmail);
                     break;
                 }
                 else {
@@ -151,6 +183,10 @@ $(document).ready(function () {
                 submitUser(UserPost);
             }
 
+            if(loginEmail === email){
+                LoginRender();
+            }
+
 
             console.log(userID);
             console.log(BookmarkArray);
@@ -166,7 +202,7 @@ $(document).ready(function () {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
-            url: "http://localhost:8080/api/bookmarks",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: newArr
         }).then(function () {
             console.log("You imported all Bookmarks!");
@@ -176,7 +212,7 @@ $(document).ready(function () {
     function getBookmarks() {
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/bookmarks",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
         }).then(function () {
             console.log("done!");
         });
@@ -186,7 +222,7 @@ $(document).ready(function () {
     var postFolders = function (Folder) {
         $.ajax({
             method: "POST",
-            url: "http://localhost:8080/api/folders",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
             data: Folder
         }).then(function (data) {
             console.log("Your folder has been made.")
@@ -200,7 +236,7 @@ $(document).ready(function () {
         console.log("You are in the addNewBookmark function!")
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
             // var UserID = data.id;
             console.log(data);

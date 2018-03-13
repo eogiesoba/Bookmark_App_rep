@@ -55,7 +55,7 @@ a {
     margin: 0 auto;
 }
 
-#newUserButton {
+#newUserButton, #logoffButton {
     background-color: orange;
     font-size: 15px;
     border-radius:6px;

@@ -20,15 +20,17 @@
 
         <header id="header_div">
             <h3>Bookmark Manager</h3>
-
+            <div class="row justify-content-center" id="LogInUser">
+            </div>
             <form>
                 <div class="form-group">
                     <input type="text" class="form-control" id="userName" placeholder="Input Gmail Address for Login">
                 </div>
             </form>
-
+            
             <div class="row justify-content-center">
                     <button type="button" class="btn btn-primary btn-lg" id="newUserButton">Register/Login</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="logoffButton">Log Off</button>
             </div>
 
         </header>
@@ -36,7 +38,7 @@
         <br/>
 
         <div class="row bookmarkButton">
-            <a href="http://localhost:8080/" target="_blank">
+            <a href="https://chrome-bookmark-app.herokuapp.com/" target="_blank">
                 <button type="button" class="btn btn-primary btn-lg" id="homeBookmark">To Bookmark Home</button>
             </a>
         </div>
