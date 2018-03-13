@@ -105,13 +105,14 @@ $(document).ready(function () {
         console.log("folderSortClicked");
         console.log("ev", ev.target.getAttribute('folderId'));
         var FolderId = ev.target.getAttribute('folderId');
-        console.log("folderId", FolderId);
-            if(FolderId === 0) {
-                console.log(true);
-                renderBookmark();
+        var UserId = ev.target.getAttribute('userNo');
+        console.log("user", UserId, "folder", FolderId);
+            if (FolderId === "0") {
+                console.log( 'AllFoldersClicked');
+                renderBookmarks();
             } else {
-                sortBookmark(FolderId);
-                // renderBookmark();
+                console.log('FolderNameClicked', UserId, FolderId);
+                sortBookmarks(UserId, FolderId);
             }
         
     })
@@ -189,7 +190,7 @@ $(document).ready(function () {
             btnDiv.attr("delete");
             btnDiv.addClass("btnStyle");
 
-            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a></div>");
+            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'><i class='fas fa-link'></i></button></a></div>");
 
             bigBMDiv.append(btnDiv);
 
@@ -271,7 +272,8 @@ $(document).ready(function () {
         folderLine.addClass("row");
         folderLine.addClass("folderList");
         // folderLine.attr("foldername", folderData.folder);
-        folderLine.attr("folderId", folderData.id)
+        folderLine.attr("folderId", folderData.id);
+        folderLine.attr("userNo", folderData.UserId);
 
         var folderLabelDiv = $("<div>");
         folderLabelDiv.addClass("col-sm-4");
@@ -298,23 +300,31 @@ $(document).ready(function () {
             console.log("Your bookmark has been updated!");
             clearDiv();
             renderBookmarks();
+            renderFolders();
         });  
-
     }
 
-    function sortBookmark(FolderId) {
-        console.log("in sortBookmark function", FolderId );
+
+    function sortBookmarks(UserId, FolderId) {
+        console.log("in sort bookmarks", UserId, FolderId)
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/bookmarks/" + FolderId
-            // data: info
-        }).then(function (data) {
-            console.log("Your bookmark has been updated!");
-            clearDiv();
-            renderBookmarks();
-        });  
-
-    }
+            url: "http://localhost:8080/api/bookmarks/" + UserId + "/" + FolderId
+        }).then(function (b_Data) {
+            console.log("sort ajax1", b_Data)
+            UserID = b_Data[0].UserId;
+            console.log("userID", UserID);
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/api/folders/" + UserId,
+            }).then(function (f_Data) {
+                console.log("ajax 2")
+                console.log("bkdata", b_Data, "folderData", f_Data);
+                $(".bmBox").remove();
+                createBookmarkDiv(b_Data, f_Data);
+            });
+        });
+    };
 
 
 
@@ -322,7 +332,6 @@ $(document).ready(function () {
         $(".bmBox").remove();
         $(".folderList").remove();
     }
-
 
 
 
