@@ -104,6 +104,7 @@ $(document).ready(function () {
         }
         console.log(folderObj);
         postFolders(folderObj);
+        document.getElementById("addFolder").value = "";
 
     });
 
@@ -145,7 +146,8 @@ $(document).ready(function () {
         console.log("folderSortClicked");
         console.log("ev", ev.target.getAttribute('folderId'));
         var FolderId = ev.target.getAttribute('folderId');
-        var UserId = ev.target.getAttribute('userNo');
+        //var UserId = ev.target.getAttribute('userNo');
+        var UserId = userID;
         console.log("user", UserId, "folder", FolderId);
             if (FolderId === "0") {
                 console.log( 'AllFoldersClicked');
@@ -156,8 +158,6 @@ $(document).ready(function () {
             }
         
     })
-
-
 
 
     function updateBookmarks(info) {
@@ -185,6 +185,7 @@ $(document).ready(function () {
                     userID = data[i].id;
                     getBNF_Tables(userID);
                     hideModel();
+                    document.getElementById("warning_mssg").innerHTML = "";
                     break;//This will end the loop when a userID match is found!
                 }
                 else{
