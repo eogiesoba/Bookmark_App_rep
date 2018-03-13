@@ -226,8 +226,6 @@ $(document).ready(function () {
             var bigBMDiv = $("<div>");
             bigBMDiv.addClass("col-md-2");
             bigBMDiv.addClass("bmBox");
-            bigBMDiv.attr("draggable", true);
-            bigBMDiv.attr("ondragstart", "drag(event)");
             var titleDiv = $("<div>");
             titleDiv.addClass("bmTitleDiv");
             var bmTitle = bookmarkData[j].title;
