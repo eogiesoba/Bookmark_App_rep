@@ -290,16 +290,18 @@ $(document).ready(function () {
         console.log("in sort bookmarks", UserId, FolderId)
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/bookmarks/" + UserId + "&" + FolderId
+            url: "http://localhost:8080/api/bookmarks/" + UserId + "/" + FolderId
         }).then(function (b_Data) {
             console.log("sort ajax1", b_Data)
-            userID = b_Data[0].UserId;
-            console.log("ajax1", userID);
+            UserID = b_Data[0].UserId;
+            console.log("userID", UserID);
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/api/folders/" + UserId,
             }).then(function (f_Data) {
                 console.log("ajax 2")
+                console.log("bkdata", b_Data, "folderData", f_Data);
+                $(".bmBox").remove();
                 createBookmarkDiv(b_Data, f_Data);
             });
         });

@@ -86,7 +86,7 @@ module.exports = function (app) {
 
   
 
-  app.get("/api/bookmarks/:UserId&FolderId", function(req, res) {
+  app.get("/api/bookmarks/:UserId/:FolderId", function(req, res) {
     console.log("in sort api", req.params.UserId, req.params.FolderId);
     db.Bookmark.findAll({
       where: {
