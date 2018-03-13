@@ -206,10 +206,12 @@ a {
 }
 
 .urlBtn {
-    height: 30px;
-    font-size: 16px;
-    margin-top: 12%;
+    height: 80%;
+    width: 90%;
+    font-size: 19px;
+    margin-top: 3%;
     margin-left: 5%;
+
 }
 
 .garbageBtn {
