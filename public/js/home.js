@@ -131,9 +131,9 @@ $(document).ready(function () {
     $(document).on("click", "#trash", function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
-        console.log("ev", ev.target.getAttribute("id"));
-        var id = ev.target.getAttribute('id');
-        console.log("id", id);
+        console.log("ev", ev.target.getAttribute("gid"));
+        var id = ev.target.getAttribute('gid');
+        console.log("gid", id);
         deleteBookmark(id);
         // renderBookmark();
     });
@@ -280,7 +280,7 @@ $(document).ready(function () {
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
             garbageDiv.append("<div class='col-md-3'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
-            garbageDiv.attr("id", bookmarkData[j].id);
+            garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
 
