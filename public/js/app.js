@@ -72,7 +72,7 @@ $(document).ready(function () {
         if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
             alert("Please input your Gmail address.");
         } else {}
-
+        
         localStorage.setItem("BookmarkUserEmail", email);
         console.log("email logged in: ", email);
         console.log(email);
@@ -100,8 +100,6 @@ $(document).ready(function () {
         addNewBookmark(newBookmarkObj);
 
     });
-
-
 
 
     function submitUser(User) {
