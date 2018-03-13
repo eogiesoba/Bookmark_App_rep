@@ -10,49 +10,152 @@ var db = require("../models"); //tyep db.Post when using sequelize.
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function (app) {
 
-  // GET route for getting all of the posts
-  app.get("/api/posts", function(req, res) {
-    // console.log(JSON.stringify(results));//Displays data that will be sent back to the front end.
-    // db.Post.findAll({}).then(results => res.json(results));
+  // POST route for adding a new user - used with chrome extension as an AJAX request
+  app.post("/api/users", function (req, res) {
+    db.User.create({
+      user: req.body.user
+    }).then(function () {
+      res.end();
+    });
   });
 
-  // Get route for returning posts of a specific category
-  app.get("/api/posts/category/:category", function(req, res) {
-    // db.Post.findAll({
-    //   where: {
-    //     category: req.params.category
-    //   }
-    // }).then(results => res.json(results));
+  // POST route for importing all users bookmarks on table in DB - used with chrome extension as an AJAX request
+  app.post("/api/bookmarks", function (req, res) {
+    console.log("Req.Body: ", req.body);
+    var Obj = req.body//Bookmark object
+      db.Bookmark.create({
+        title: Obj.title,
+        url: Obj.url,
+        UserId: Obj.userID,
+        FolderId: null
+      }).then(function () {
+        res.end();
+      });
   });
 
-  // Get route for retrieving a single post
-  app.get("/api/posts/:id", function(req, res) {
-    // db.Post.findOne({
-    //   where: {
-    //     category: req.params.id
-    //   }
-    // }).then(results => res.json(results));
+  // POST route for adding folders on table in DB
+  app.post("/api/folders", function (req, res) {
+    console.log("in api/folders route");
+    console.log(req.body.userID);
+    console.log(req.body.folder);
+
+    db.Folder.create({
+      folder: req.body.folder,
+      UserId: req.body.userID
+    }).then(function () {
+      res.end();
+    });
   });
 
-  // POST route for saving a new post
-  app.post("/api/posts", function(req, res) {
-    // console.log(req.body);
-    // db.Post.create({
-      
-    // })
+  // PUT route will update bookmark's folder
+  app.put("/api/bookmarks", function (req, res) {
+    db.Bookmark.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function () {
+        res.end();
+      });
   });
 
-  // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
+  // Get route for returning all users
+  app.get("/api/users", function (req, res) {
+
+    db.User.findAll({}).then(function (results, err) {
+      if(err){console.log(err)}
+      // console.log(results)
+      // results are available to us inside the .then
+      res.json(results);
+    });
+
+  });
+
+  app.get("/api/bookmarks/:id", function(req, res) {
+    db.Bookmark.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  
+
+  app.get("/api/bookmarks/:UserId/:FolderId", function(req, res) {
+    console.log("in sort api", req.params.UserId, req.params.FolderId);
+    db.Bookmark.findAll({
+      where: {
+        UserId: req.params.UserId,
+        FolderId: req.params.FolderId
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+
+  app.get("/api/folders/:id", function(req, res) {
+    db.Folder.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/folders", function (req, res) {
+    console.log("We are in GET folders");
+
+    db.Folder.findAll({}).then(function (results, err) {
+      // results are available to us inside the .then
+      if(err){console.log(err)}
+      res.json(results);
+    });
+
+  });
+
+  // DELETE route for deleting users
+  app.delete("/api/users", function (req, res) {
     // Add sequelize code to delete a post where the id is equal to req.params.id, 
     // then return the result to the user using res.json
+    db.User.destroy({
+      where: {
+        id: req.param.userID
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 
-  // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
-    // Add code here to update a post using the values in req.body, where the id is equal to
-    // req.body.id and return the result to the user using res.json
+  app.delete("/api/bookmarks/:id", function (req, res) {
+    console.log("in delete api", req.params.id);
+    // Add sequelize code to delete a post where the id is equal to req.params.id, 
+    // then return the result to the user using res.json
+    db.Bookmark.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbBookmark) {
+      res.json(dbBookmark);
+    });
   });
+
+  app.delete("/api/folders", function (req, res) {
+    // Add sequelize code to delete a post where the id is equal to req.params.id, 
+    // then return the result to the user using res.json
+    db.Folder.destroy({
+      where: {
+        folder: req.param
+      }
+    }).then(function(dbFolder) {
+      res.json(dbFolder);
+    });
+  });
+
 };
