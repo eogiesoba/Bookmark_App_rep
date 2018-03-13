@@ -279,22 +279,45 @@ $(document).ready(function () {
 
 
 
-    document.getElementById("searchBookmarks").addEventListener("keyup", function(){
-        var input, window, bMark, x;
-        input = document.getElementById("searchBookmarks").value.toUpperCase();
-        window = document.getElementById("bookmarksDisplay");
-        bMark = window.getElementsByClassName("bmBox");
-        for (var i = 0; i < bMark.length; i++) {
-            x = bMark[i].getElementsByClassName("bmTitleDiv")[0];
-            // x = bMark[i].getElementsByTagName("a")[0];
-            if (x.innerHTML.toUpperCase().indexOf(input) > -1) {
-               bMark[i].style.display = "";
-            } 
-            else {
-               bMark[i].style.display = "none";
-            }
-        }
-    })
+
+    // function getFolderID(folderData){
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/folders",
+    //     }).then(function (data) {
+
+    //         for(var i = 0; i < data.length; i++){
+
+    //             if(data[i] === folderData){
+    //                  ;
+    //                 console.log("This is GET folderID: ", data[i].id);
+    //                 return data[i].id;
+    //             } 
+    //         }
+    //     });
+    // };
+
+    // function updateFolderID(id){
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "http://localhost:8080/api/bookmarks/",
+    //         data: id
+    //     }).then(function (data) {
+    //         console.log("Update data: ", data);
+    //         return data;
+    //     });
+    // };
+
+    // function getBookmarkFolder(id) {//Renders bookmarks for userID associated with email
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "http://localhost:8080/api/bookmarks/" + id,
+    //     }).then(function (data) {
+            
+
+    //     });
+    // };
+
 
 });
 
