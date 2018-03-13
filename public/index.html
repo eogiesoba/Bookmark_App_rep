@@ -35,13 +35,21 @@
                         <button type="submit" class="btn btn-primary btn-sm" id="folderSubmitBtn">Submit Folder</button>
                     </div>
                 </li>
+                
+            <div class="folder-sidebar" id="listOfFolders">
+
                 <li>
-                    <div class="AllBookmarks" id="allBookmarksSearch">All Bookmarks</div>
+                    <div class="AllBookmarks" id="allBookmarksSearch" folderId="0">All Bookmarks</div>
                 </li>
+
                 <li>
-                    <div class="folderList"  id="folderIDNull">No Folder Assigned</div>
+                    <div class="AllBookmarks"  id="folderIDNull" folderId="null">No Folder Assigned</div>
                 </li>
-                <div id="folderTable"></div>
+
+                <div id="folderTable">
+
+                </div>
+            </div>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->

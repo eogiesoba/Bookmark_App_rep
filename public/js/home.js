@@ -68,6 +68,8 @@ $(document).ready(function () {
 
     });
 
+    //on-click to delete a folder
+
     document.querySelector("#bookmarksDisplay").addEventListener('click', function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
@@ -75,8 +77,25 @@ $(document).ready(function () {
         var id = ev.target.getAttribute('id');
         console.log("id", id);
         deleteBookmark(id);
-        renderBookmark();
+        // renderBookmark();
 
+    })
+
+    //on-click to sort folders by foldername
+
+    document.querySelector("#listOfFolders").addEventListener('click', function(ev){
+        console.log("folderSortClicked");
+        console.log("ev", ev.target.getAttribute('folderId'));
+        var FolderId = ev.target.getAttribute('folderId');
+        console.log("folderId", FolderId);
+            if(FolderId === 0) {
+                console.log(true);
+                renderBookmark();
+            } else {
+                sortBookmark(FolderId);
+                // renderBookmark();
+            }
+        
     })
 
 
@@ -177,7 +196,7 @@ $(document).ready(function () {
                 folderDiv.html(BFN);
             } 
             else {
-                folderDiv.append("<div class='folderNameDiv'>" + 'Assign a Folder' + "</div");
+                folderDiv.append("<div class='folderNameDiv'>" + 'No Folder Assigned' + "</div");
             }
             //------------------------------------------------------------------------------
             bigBMDiv.append(folderDiv);
@@ -234,9 +253,11 @@ $(document).ready(function () {
         var folderLine = $("<div>");
         folderLine.addClass("row");
         folderLine.addClass("folderList");
+        // folderLine.attr("foldername", folderData.folder);
+        folderLine.attr("folderId", folderData.id)
 
         var folderLabelDiv = $("<div>");
-        folderLabelDiv.addClass("col-sm-8");
+        folderLabelDiv.addClass("col-sm-4");
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
@@ -247,12 +268,6 @@ $(document).ready(function () {
         folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
 
-        // var searchIconDiv = $("<div>");
-        // searchIconDiv.addClass("col-sm-4 col-sm-offset-4");
-        // searchIconDiv.addClass("searchIcon");
-        // searchIconDiv.attr("data-folderID", folderData.id);
-        // searchIconDiv.attr("folderId", folderData.id);
-        // folderLine.append(searchIconDiv);
         $("#folderTable").append(folderLine);
     }; 
 
@@ -266,11 +281,25 @@ $(document).ready(function () {
             console.log("Your bookmark has been updated!");
             clearDiv();
             renderBookmarks();
-        });
-        
-        
+        });  
 
     }
+
+    function sortBookmark(FolderId) {
+        console.log("in sortBookmark function", FolderId );
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:8080/api/bookmarks/" + FolderId
+            // data: info
+        }).then(function (data) {
+            console.log("Your bookmark has been updated!");
+            clearDiv();
+            renderBookmarks();
+        });  
+
+    }
+
+
 
     function clearDiv() {
         $(".bmBox").remove();
@@ -296,6 +325,27 @@ $(document).ready(function () {
             }
         }
     })
+
+    // document.getElementById("listOfFolders").addEventListener("click", function(ev){
+    //     var input, window, bMark, x;
+    //     input = ev.target.getAttribute("foldername");
+    //     console.log("input", input);
+
+    //     if (input === "All Bookmarks") {
+    //         renderBookmarks();
+    //     } 
+    //     window = document.getElementById("bookmarksDisplay");
+    //     bMark = window.getElementsByClassName("bmBox");
+    //     console.log(bMark);
+    //     console.log(bMark.length);
+    //     for (var i = 0; i < bMark.length; i++) {
+    //         x = bMark[i].getElementsByClassName("bmFolderDiv");
+    //         console.log("x", x[i]);
+    //         console.log("xINT", x[i].innerText);
+
+    //     }
+        
+    // })
 
 });
 
