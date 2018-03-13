@@ -128,8 +128,7 @@ $(document).ready(function () {
     })
 
     //on-click to delete a folder
-
-    document.querySelector("#trash").addEventListener('click', function(ev){
+    $(document).on("click", "#trash", function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
         console.log("ev", ev.target.getAttribute("id"));
@@ -137,8 +136,18 @@ $(document).ready(function () {
         console.log("id", id);
         deleteBookmark(id);
         // renderBookmark();
+    });
+    
+    // document.querySelector("#trash").addEventListener('click', function(ev){
+    //     console.log("garbageClicked");
+    //     console.log("event", ev.target);
+    //     console.log("ev", ev.target.getAttribute("id"));
+    //     var id = ev.target.getAttribute('id');
+    //     console.log("id", id);
+    //     deleteBookmark(id);
+    //     // renderBookmark();
 
-    })
+    // });
 
     //on-click to sort folders by foldername
 
