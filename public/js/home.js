@@ -188,7 +188,7 @@ $(document).ready(function () {
                     break;//This will end the loop when a userID match is found!
                 }
                 else{
-                    $("#warning_mssg").innerHTML("Error: User does not exist, please type in existing user");
+                    document.getElementById("warning_mssg").innerHTML = "Error: User does not exist, please type in existing user";
                 }
             }
             console.log(userID);
