@@ -137,7 +137,7 @@ $(document).ready(function () {
     function submitUser(User) {
         $.ajax({
             method: "POST",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
             data: User
         }).then(function () {
             // window.location.href = "http://localhost:8080/";
@@ -148,7 +148,7 @@ $(document).ready(function () {
         console.log("You are in the import function!")
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
             // var UserID = data.id;
             console.log(data);
@@ -204,7 +204,7 @@ $(document).ready(function () {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
-            url: "http://localhost:8080/api/bookmarks",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: newArr
         }).then(function () {
             console.log("You imported all Bookmarks!");
@@ -214,7 +214,7 @@ $(document).ready(function () {
     function getBookmarks() {
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/bookmarks",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
         }).then(function () {
             console.log("done!");
         });
@@ -224,7 +224,7 @@ $(document).ready(function () {
     var postFolders = function (Folder) {
         $.ajax({
             method: "POST",
-            url: "http://localhost:8080/api/folders",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
             data: Folder
         }).then(function (data) {
             console.log("Your folder has been made.")
@@ -238,7 +238,7 @@ $(document).ready(function () {
         console.log("You are in the addNewBookmark function!")
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
             // var UserID = data.id;
             console.log(data);
