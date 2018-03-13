@@ -184,9 +184,7 @@ $(document).ready(function () {
                 if (userEmail === email) {
                     userID = data[i].id;
                     getBNF_Tables(userID);
-                    $('#exampleModal').modal({
-                        show: false
-                    });
+                    $('#exampleModal').hide();
                     // hideModel();
                     break;//This will end the loop when a userID match is found!
                 }
