@@ -6,6 +6,7 @@ $(document).ready(function () {
     var UserInput = $("#userName");
     var folderArr = [];
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    document.getElementById("logoffButton").style.visibility = "hidden";
     var loginEmail;
 
 
@@ -80,8 +81,6 @@ $(document).ready(function () {
 
         // submitUser(UserPost);//Creates new user in DB
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
-        LoginRender();
-
     });
 
     UserInitialCheck();
@@ -89,16 +88,33 @@ $(document).ready(function () {
     function UserInitialCheck(){
         
         importUserData();
+        
         console.log("login Email", loginEmail);
         
     }
 
+    document.getElementById('logoffButton').addEventListener('click', function () {
+        var email = "";
+
+        LogoffRender();
+
+    });
+
+    function LogoffRender(){
+        document.getElementById("userName").style.visibility = "visible";
+        document.getElementById("newUserButton").style.visibility = "visible";
+        document.getElementById("logoffButton").style.visibility = "hidden";
+
+        document.getElementById("LogInUser").innerHTML = "";
+    }
+
     function LoginRender(){
-        document.getElementById("userName").remove();
-        document.getElementById("newUserButton").remove();
+        document.getElementById("userName").style.visibility = "hidden";
+        document.getElementById("newUserButton").style.visibility = "hidden";
+        document.getElementById("logoffButton").style.visibility = "visible";
 
 
-        document.getElementById("header_div").append("User: " + email + " has logged in");
+        document.getElementById("LogInUser").append("User: " + email + " has logged in");
     }
 
     document.getElementById('addBookmark').addEventListener('click', function () {
