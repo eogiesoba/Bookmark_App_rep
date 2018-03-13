@@ -94,6 +94,32 @@
                     <p class="crtext">&copy Copyright 2018 EO-FS-SL</p>
                 </div>
 
+                <!-- Modal -->
+
+                <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Logging In</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>You are about to log into email. Please Click Login if your information is shown. If this is not your email please change it to your email. </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" id="modaluserName">
+                          </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary bpBtn" id="returnUserButtonModal" data-dismiss="modal">Login</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
 
 
             </div>
@@ -108,6 +134,10 @@
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+        });
+
+        $('#exampleModal').modal({
+            show: true
         });
     </script>
 
