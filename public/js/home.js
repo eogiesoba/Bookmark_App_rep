@@ -78,6 +78,23 @@ $(document).ready(function () {
 
     })
 
+    //on-click to sort folders by foldername
+
+    document.querySelector("#listOfFolders").addEventListener('click', function(ev){
+        console.log("folderSortClicked");
+        console.log("ev", ev.target.getAttribute('folderId'));
+        var FolderId = ev.target.getAttribute('folderId');
+        var UserId = ev.target.getAttribute('userNo');
+        console.log("user", UserId, "folder", FolderId);
+            if (FolderId === "0") {
+                console.log( 'AllFoldersClicked');
+                renderBookmarks();
+            } else {
+                console.log('FolderNameClicked', UserId, FolderId);
+                sortBookmarks(UserId, FolderId);
+            }
+        
+    })
 
     function updateBookmarks(info) {
         $.ajax({
@@ -152,7 +169,7 @@ $(document).ready(function () {
             btnDiv.attr("delete");
             btnDiv.addClass("btnStyle");
 
-            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'>Click to Page</button></a></div>");
+            btnDiv.append("<a href='" + bookmarkData[j].url + "' target='_blank'><button type='button' class='btn btn-sm urlBtn'><i class='fas fa-link'></i></button></a></div>");
 
             bigBMDiv.append(btnDiv);
 
@@ -232,6 +249,9 @@ $(document).ready(function () {
         var folderLine = $("<div>");
         folderLine.addClass("row");
         folderLine.addClass("folderList");
+        // folderLine.attr("foldername", folderData.folder);
+        folderLine.attr("folderId", folderData.id);
+        folderLine.attr("userNo", folderData.UserId);
 
         var folderLabelDiv = $("<div>");
         folderLabelDiv.addClass("col-sm-8");
@@ -265,17 +285,36 @@ $(document).ready(function () {
             console.log("Your bookmark has been updated!");
             clearDiv();
             renderBookmarks();
-        });
-        
-        
-
+            renderFolders();
+        });  
     }
+
+
+    function sortBookmarks(UserId, FolderId) {
+        console.log("in sort bookmarks", UserId, FolderId)
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:8080/api/bookmarks/" + UserId + "/" + FolderId
+        }).then(function (b_Data) {
+            console.log("sort ajax1", b_Data)
+            UserID = b_Data[0].UserId;
+            console.log("userID", UserID);
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/api/folders/" + UserId,
+            }).then(function (f_Data) {
+                console.log("ajax 2")
+                console.log("bkdata", b_Data, "folderData", f_Data);
+                $(".bmBox").remove();
+                createBookmarkDiv(b_Data, f_Data);
+            });
+        });
+    };
 
     function clearDiv() {
         $(".bmBox").remove();
         $(".folderList").remove();
     }
-
 
 
 
