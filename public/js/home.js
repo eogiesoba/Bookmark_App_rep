@@ -2,8 +2,8 @@
 
 $(document).ready(function () {
 
-    validateUser();//This our bookmark render function that runs when page is loaded. 
-    renderFolders();//This is our folder render function that runs when page is loaded.
+    //validateUser();//This our bookmark render function that runs when page is loaded. 
+    //renderFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
