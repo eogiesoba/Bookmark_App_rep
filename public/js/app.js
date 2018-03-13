@@ -185,14 +185,14 @@ $(document).ready(function () {
         });
     }
 
-    function getBookmarks() {
-        $.ajax({
-            method: "GET",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
-        }).then(function () {
-            console.log("done!");
-        });
-    }
+    // function getBookmarks() {
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
+    //     }).then(function () {
+    //         console.log("done!");
+    //     });
+    // }
 
 
     var postFolders = function (Folder) {
