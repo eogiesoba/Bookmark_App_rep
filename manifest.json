@@ -12,9 +12,9 @@
 
   },
 
-  "content_scripts": [{
-      "js": ["public/js/jquery.min.js"]
-  }],
+//   "content_scripts": [{
+//       "js": ["public/js/jquery.min.js"]
+//   }],
   
   "permissions": [
       "bookmarks", 
