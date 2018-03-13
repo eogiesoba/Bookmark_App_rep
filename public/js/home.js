@@ -138,21 +138,6 @@ $(document).ready(function () {
         // renderBookmark();
     });
     
-    // document.querySelector("#trash").addEventListener('click', function(ev){
-    //     console.log("garbageClicked");
-    //     console.log("event", ev.target);
-    //     console.log("ev", ev.target.getAttribute("id"));
-    //     var id = ev.target.getAttribute('id');
-    //     console.log("id", id);
-    //     deleteBookmark(id);
-    //     // renderBookmark();
-
-<<<<<<< HEAD
-    })
-    
-=======
-    // });
->>>>>>> 6c5162f1d5c0540ae9f2d0c543e0c407fdc2265e
 
     //on-click to sort folders by foldername
 
@@ -233,11 +218,7 @@ $(document).ready(function () {
         var bookFID;
         var tableFID;
         var BFN;
-<<<<<<< HEAD
-        $(".bmBox").remove();
-=======
         $('.bmBox').remove();
->>>>>>> 6c5162f1d5c0540ae9f2d0c543e0c407fdc2265e
 
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
