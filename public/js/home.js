@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 
     document.drag = function (ev) {
-        var x = ev.target.getAttribute("id");
+        var x = ev.target.getAttribute("folderID");
         ev.dataTransfer.setData("text", x);
         console.log("dragging", x);
     }
@@ -30,7 +30,6 @@ $(document).ready(function () {
         ev.preventDefault();
         var folderID = ev.dataTransfer.getData("text");
         var bookmarkID = ev.target.id;
-        console.log("evttgtid", bookmarkID);
         console.log("dropped this folderID", folderID);
         console.log("in bookmarkID", bookmarkID);
         var bookmarkData = {
@@ -68,8 +67,6 @@ $(document).ready(function () {
 
     });
 
-    //on-click to delete a folder
-
     document.querySelector("#bookmarksDisplay").addEventListener('click', function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
@@ -77,7 +74,7 @@ $(document).ready(function () {
         var id = ev.target.getAttribute('id');
         console.log("id", id);
         deleteBookmark(id);
-        // renderBookmark();
+        renderBookmark();
 
     })
 
@@ -102,7 +99,7 @@ $(document).ready(function () {
     function updateBookmarks(info) {
         $.ajax({
             method: "PUT",
-            url: "http://localhost:8080/api/bookmarks",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: info
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
@@ -115,7 +112,7 @@ $(document).ready(function () {
     function renderBookmarks() {
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/users",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
@@ -134,7 +131,7 @@ $(document).ready(function () {
     function getBNF_Tables(id) {//Renders bookmark and folder info for userID associated with email
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/bookmarks/" + id,
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + id,
         }).then(function (b_Data) {
             console.log(b_Data)
             console.log("done!");
@@ -142,7 +139,7 @@ $(document).ready(function () {
             console.log(userID);
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/api/folders/" + id,
+                url: "https://chrome-bookmark-app.herokuapp.com/api/folders/" + id,
             }).then(function (f_Data) {
                 createBookmarkDiv(b_Data, f_Data);
             });
@@ -178,8 +175,7 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-            folderDiv.attr("folderId", bookmarkData[j].FolderId);
-            folderDiv.attr("id", bookmarkData[j].id );
+            folderDiv.attr("folderid", bookmarkData[j].id);
             folderDiv.attr("ondragover", "allowDrop(event)");
             folderDiv.attr("ondrop", "drop(event)");
 
@@ -196,7 +192,7 @@ $(document).ready(function () {
                 folderDiv.html(BFN);
             } 
             else {
-                folderDiv.append("<div class='folderNameDiv'>" + 'No Folder Assigned' + "</div");
+                folderDiv.append("<div class='folderNameDiv'>" + 'Assign a Folder' + "</div");
             }
             //------------------------------------------------------------------------------
             bigBMDiv.append(folderDiv);
@@ -218,7 +214,7 @@ $(document).ready(function () {
         console.log("in postFolder:", Folder);
         $.ajax({
             method: "POST",
-            url: "http://localhost:8080/api/folders",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
             data: Folder
         }).then(function (data) {
             renderFolders();
@@ -228,7 +224,7 @@ $(document).ready(function () {
     function renderFolders() {
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/folders",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
         }).then(function (data) {
             $("#folderTable").empty();
             console.log(data)
@@ -258,17 +254,24 @@ $(document).ready(function () {
         folderLine.attr("userNo", folderData.UserId);
 
         var folderLabelDiv = $("<div>");
-        folderLabelDiv.addClass("col-sm-4");
+        folderLabelDiv.addClass("col-sm-8");
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
-        folderLabelDiv.attr("id", folderData.id);
+        folderLabelDiv.attr("folderID", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
 
         folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
 
+        var searchIconDiv = $("<div>");
+        searchIconDiv.addClass("col-sm-4");
+        searchIconDiv.addClass("searchIcon");
+        searchIconDiv.attr("data-folderID", folderData.id);
+        searchIconDiv.attr("folderId", folderData.id);
+        searchIconDiv.append("<button id='folderSort'><i class='fas fa-search'></i></button>");
+        folderLine.append(searchIconDiv);
         $("#folderTable").append(folderLine);
     }; 
 
@@ -276,7 +279,7 @@ $(document).ready(function () {
         console.log("in deleteBookmark function", id);
         $.ajax({
             method: "DELETE",
-            url: "http://localhost:8080/api/bookmarks/" + id
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + id
             // data: info
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
@@ -291,14 +294,14 @@ $(document).ready(function () {
         console.log("in sort bookmarks", UserId, FolderId)
         $.ajax({
             method: "GET",
-            url: "http://localhost:8080/api/bookmarks/" + UserId + "/" + FolderId
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + UserId + "/" + FolderId
         }).then(function (b_Data) {
             console.log("sort ajax1", b_Data)
             UserID = b_Data[0].UserId;
             console.log("userID", UserID);
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/api/folders/" + UserId,
+                url: "https://chrome-bookmark-app.herokuapp.com/api/folders/" + UserId,
             }).then(function (f_Data) {
                 console.log("ajax 2")
                 console.log("bkdata", b_Data, "folderData", f_Data);
@@ -307,8 +310,6 @@ $(document).ready(function () {
             });
         });
     };
-
-
 
     function clearDiv() {
         $(".bmBox").remove();
@@ -335,7 +336,6 @@ $(document).ready(function () {
     })
 
 });
-
 
 
 
