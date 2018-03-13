@@ -178,7 +178,7 @@ $(document).ready(function () {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
+            url: "https://cors-anywhere.herokuapp.com/https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: newArr
         }).then(function () {
             console.log("You imported all Bookmarks!");
