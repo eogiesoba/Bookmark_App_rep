@@ -219,6 +219,7 @@ $(document).ready(function () {
         var bookFID;
         var tableFID;
         var BFN;
+        $('.bmBox').remove();
 
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
