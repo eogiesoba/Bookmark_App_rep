@@ -18,11 +18,11 @@ describe("checkEmail", function(){
         expect(checkEmail("")).to.throw(Error);
     })
 
-    it("should throw an error if it is missing an @", function(){
+    it("should throw an error if it is missing an '@'", function(){
         expect(checkEmail("slippagmail.com")).to.throw(Error);
     })
 
-    it("should throw an error if it is missing an .", function(){
+    it("should throw an error if it is missing an '.'", function(){
         expect(checkEmail("slippa@gmailcom")).to.throw(Error);
     })
 
