@@ -53,11 +53,11 @@ $(document).ready(function () {
         });
     }
 
-    // function hideModel(){
-    //     $('#exampleModal').modal({
-    //         show: false
-    //     });
-    // }
+    function hideModel(){
+        $('#exampleModal').modal({
+            show: false
+        });
+    }
 
 
     document.getElementById('returnUserButton').addEventListener('click', function () {
@@ -185,7 +185,7 @@ $(document).ready(function () {
                     userID = data[i].id;
                     getBNF_Tables(userID);
                     $('#exampleModal').hide();
-                    // hideModel();
+                    hideModel();
                     break;//This will end the loop when a userID match is found!
                 }
                 else{
