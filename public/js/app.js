@@ -34,36 +34,8 @@ $(document).ready(function () {
     BookmarkArray = getBookmarks();
     console.log("Chrome bookmark extraction: ", BookmarkArray);
     console.log("hello");
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var link = document.getElementById('bookmarkWindow');
-    //     // onClick's logic below:
-    //     link.addEventListener('click', function() {
-    //         console.log("hello");
-    //         // var loginName = $("#userName")[0].value;
-    //         // alert(loginName);
-    //     });
-    // });
 
-    // document.querySelectorAll("#bookmarkWindow").addEvenListener("click", function (event){
-    //     event.preventDefault();
 
-    //     var loginName = $("#userName")[0].value;
-    //     alert(loginName);
-
-    //     //Conditional to check if user input data
-    //     if (!titleInput.val().trim()) {
-    //         return;
-    //     }
-
-    //     var UserPost ={
-    //         user: loginName
-    //     }
-
-    //     console.log(UserPost);
-
-    //     submitUser(UserPost);
-    // })
-    // var email = "faizan.s711@gmail.com"; 
     var email = localStorage.getItem("BookmarkUserEmail");
 
     document.getElementById('newUserButton').addEventListener('click', function () {
