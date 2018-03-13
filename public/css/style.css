@@ -113,7 +113,7 @@ a {
 }
 
 .folderLabelDiv {
-    margin: 0 auto;
+    margin-left: 5%;
 }
 
 
@@ -170,7 +170,7 @@ a {
 }
 
 .bmBox {
-    height: 310px;
+    height: 330px;
     background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(216, 216, 216));
     margin-top: 1%;
     margin-left: 2.5%;
@@ -206,10 +206,13 @@ a {
 }
 
 .urlBtn {
-    height: 30px;
-    font-size: 16px;
-    margin-top: 12%;
-    margin-left: 5%;
+    background-color: whitesmoke;
+    height: 80%;
+    width: 80%;
+    font-size: 19px;
+    margin-top: 3%;
+    margin-left: 10%;
+
 }
 
 .garbageBtn {
@@ -221,7 +224,7 @@ a {
 .bmFolderDiv {
     background: linear-gradient(to bottom, rgb(193, 255, 103), rgb(158, 208, 84));
     margin: 5% 0% 5% 0%;
-    height: 60px;
+    height: 80px;
     border-radius: 5px;
     text-align: center;
     overflow: scroll;

@@ -84,6 +84,22 @@ module.exports = function (app) {
     });
   });
 
+  
+
+  app.get("/api/bookmarks/:FolderId", function(req, res) {
+    console.log("in sort api", req.params.FolderId);
+    db.Bookmark.findAll({
+      where: {
+        FolderId: req.params.FolderId
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+
+
+
   app.get("/api/folders/:id", function(req, res) {
     db.Folder.findAll({
       where: {
@@ -105,7 +121,7 @@ module.exports = function (app) {
 
   });
 
-  // DELETE route for deleting posts
+  // DELETE route for deleting users
   app.delete("/api/users", function (req, res) {
     // Add sequelize code to delete a post where the id is equal to req.params.id, 
     // then return the result to the user using res.json

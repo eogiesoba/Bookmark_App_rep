@@ -8,21 +8,6 @@ $(document).ready(function () {
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
 
 
-
-    var checkEmail = function () {
-        if (document.querySelectorAll("#userName")[0].value === "" || (document.querySelectorAll("#userName")[0].value).indexOf("@") === -1 || (document.querySelectorAll("#userName")[0].value).indexOf(".") === -1) {
-            alert("Please input your Gmail address.");
-        } else {
-            confirmUserStatus();
-        }
-
-        checkEmail();
-
-    }
-
-
-
-
     var getBookmarks = function (query) {
         var newArr = [];
         for (i = 0; i < 200; i++) {
@@ -83,6 +68,11 @@ $(document).ready(function () {
 
         console.log("Works!");
         email = document.getElementById("userName").value;
+       
+        if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+            alert("Please input your Gmail address.");
+        } else {}
+
         localStorage.setItem("BookmarkUserEmail", email);
         console.log("email logged in: ", email);
         console.log(email);
