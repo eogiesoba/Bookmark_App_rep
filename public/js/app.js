@@ -6,6 +6,7 @@ $(document).ready(function () {
     var UserInput = $("#userName");
     var folderArr = [];
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    var loginEmail;
 
 
     var getBookmarks = function (query) {
@@ -79,13 +80,26 @@ $(document).ready(function () {
 
         // submitUser(UserPost);//Creates new user in DB
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
+        LoginRender();
+
+    });
+
+    UserInitialCheck();
+
+    function UserInitialCheck(){
+        
+        importUserData();
+        console.log("login Email", loginEmail);
+        
+    }
+
+    function LoginRender(){
         document.getElementById("userName").remove();
         document.getElementById("newUserButton").remove();
 
 
         document.getElementById("header_div").append("User: " + email + " has logged in");
-
-    });
+    }
 
     document.getElementById('addBookmark').addEventListener('click', function () {
         console.log("bookmarkAddButton");
@@ -133,6 +147,8 @@ $(document).ready(function () {
                 if (userEmail === email) {
                     userID = data[i].id;
                     newUser = false;
+                    loginEmail = userEmail;
+                    console.log("login Email: ", loginEmail);
                     break;
                 }
                 else {
@@ -151,6 +167,10 @@ $(document).ready(function () {
                     user: email
                 }
                 submitUser(UserPost);
+            }
+
+            if(loginEmail === email){
+                LoginRender();
             }
 
 
