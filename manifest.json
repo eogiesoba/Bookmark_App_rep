@@ -6,20 +6,16 @@
   "version": "1.0",
 
  "browser_action": {
-  "default_icon": "public/images/icon.png",
+  "default_icon": "public/images/bookmark.png",
   "default_popup": "public/extension.html",
   "default_title": "Bookmark Popup"
 
   },
-
-  "content_scripts": [{
-      "js": ["public/js/jquery.min.js"]
-  }],
   
-  "permissions": [
+ "permissions": [
       "bookmarks", 
       "activeTab",
-      "all_urls", 
+      "all_urls",
       "storage"
   ],
 
