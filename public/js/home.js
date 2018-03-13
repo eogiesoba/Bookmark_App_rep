@@ -82,7 +82,7 @@ $(document).ready(function () {
     function updateBookmarks(info) {
         $.ajax({
             method: "PUT",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
+            url: "http://localhost:8080/api/bookmarks",
             data: info
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
@@ -95,7 +95,7 @@ $(document).ready(function () {
     function renderBookmarks() {
         $.ajax({
             method: "GET",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/users",
+            url: "http://localhost:8080/api/users",
         }).then(function (data) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
@@ -114,7 +114,7 @@ $(document).ready(function () {
     function getBNF_Tables(id) {//Renders bookmark and folder info for userID associated with email
         $.ajax({
             method: "GET",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + id,
+            url: "http://localhost:8080/api/bookmarks/" + id,
         }).then(function (b_Data) {
             console.log(b_Data)
             console.log("done!");
@@ -122,7 +122,7 @@ $(document).ready(function () {
             console.log(userID);
             $.ajax({
                 method: "GET",
-                url: "https://chrome-bookmark-app.herokuapp.com/api/folders/" + id,
+                url: "http://localhost:8080/api/folders/" + id,
             }).then(function (f_Data) {
                 createBookmarkDiv(b_Data, f_Data);
             });
@@ -158,7 +158,7 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-            folderDiv.attr("id", bookmarkData[j].id);
+            folderDiv.attr("folderid", bookmarkData[j].id);
             folderDiv.attr("ondragover", "allowDrop(event)");
             folderDiv.attr("ondrop", "drop(event)");
 
@@ -197,7 +197,7 @@ $(document).ready(function () {
         console.log("in postFolder:", Folder);
         $.ajax({
             method: "POST",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
+            url: "http://localhost:8080/api/folders",
             data: Folder
         }).then(function (data) {
             renderFolders();
@@ -207,7 +207,7 @@ $(document).ready(function () {
     function renderFolders() {
         $.ajax({
             method: "GET",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
+            url: "http://localhost:8080/api/folders",
         }).then(function (data) {
             $("#folderTable").empty();
             console.log(data)
@@ -259,13 +259,15 @@ $(document).ready(function () {
         console.log("in deleteBookmark function", id);
         $.ajax({
             method: "DELETE",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + id
+            url: "http://localhost:8080/api/bookmarks/" + id
             // data: info
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
             clearDiv();
             renderBookmarks();
-        });  
+        });
+        
+        
 
     }
 
@@ -273,6 +275,9 @@ $(document).ready(function () {
         $(".bmBox").remove();
         $(".folderList").remove();
     }
+
+
+
 
     document.getElementById("searchBookmarks").addEventListener("keyup", function(){
         var input, window, bMark, x;
@@ -291,51 +296,7 @@ $(document).ready(function () {
         }
     })
 
-
-
-
-
-    // function getFolderID(folderData){
-    //     $.ajax({
-    //         method: "GET",
-    //         url: "http://localhost:8080/api/folders",
-    //     }).then(function (data) {
-
-    //         for(var i = 0; i < data.length; i++){
-
-    //             if(data[i] === folderData){
-    //                  ;
-    //                 console.log("This is GET folderID: ", data[i].id);
-    //                 return data[i].id;
-    //             } 
-    //         }
-    //     });
-    // };
-
-    // function updateFolderID(id){
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "http://localhost:8080/api/bookmarks/",
-    //         data: id
-    //     }).then(function (data) {
-    //         console.log("Update data: ", data);
-    //         return data;
-    //     });
-    // };
-
-    // function getBookmarkFolder(id) {//Renders bookmarks for userID associated with email
-    //     $.ajax({
-    //         method: "GET",
-    //         url: "http://localhost:8080/api/bookmarks/" + id,
-    //     }).then(function (data) {
-            
-
-    //     });
-    // };
-
-
 });
-
 
 
 
