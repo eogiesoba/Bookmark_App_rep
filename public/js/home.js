@@ -249,7 +249,7 @@ $(document).ready(function () {
             folderDiv.attr("ondrop", "drop(event)");
 
             //---------------------------------------------Get folder names for each bookmark
-            if (bookmarkData[j].FolderId !== null) {
+            if (bookmarkData[j].FolderId !== 0) {
                 bookFID = bookmarkData[j].FolderId;
                 for (var i = 0; i < folderData.length; i++) {
                     tableFID = folderData[i].id;
