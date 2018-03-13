@@ -59,7 +59,7 @@ $(document).ready(function () {
         });
     }
 
-
+    
     document.getElementById('returnUserButton').addEventListener('click', function () {
         console.log("Works!");
         clearDiv();
@@ -184,8 +184,8 @@ $(document).ready(function () {
                 if (userEmail === email) {
                     userID = data[i].id;
                     getBNF_Tables(userID);
-                    $('#exampleModal').hide();
-                    hideModel();
+                    $('#exampleModal').modal('hide');
+                    // hideModel();
                     break;//This will end the loop when a userID match is found!
                 }
                 else{
