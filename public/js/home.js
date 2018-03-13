@@ -129,7 +129,7 @@ $(document).ready(function () {
 
     //on-click to delete a folder
 
-    document.getElementById("trash").addEventListener('click', function(ev){
+    document.querySelector("#trash").addEventListener('click', function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
         console.log("ev", ev.target.getAttribute("id"));
