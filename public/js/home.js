@@ -53,11 +53,11 @@ $(document).ready(function () {
         });
     }
 
-    function hideModel(){
-        $('#exampleModal').modal({
-            show: false
-        });
-    }
+    // function hideModel(){
+    //     $('#exampleModal').modal({
+    //         show: false
+    //     });
+    // }
 
     
     document.getElementById('returnUserButton').addEventListener('click', function () {
