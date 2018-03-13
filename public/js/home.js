@@ -10,7 +10,7 @@ $(document).ready(function () {
     document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
     
     //Global variables
-    var userID;//This is being used in a get request
+    // var userID;//This is being used in a get request
     var email;
     var folderDetails = [];
     // console.log(userObj); 
@@ -43,6 +43,20 @@ $(document).ready(function () {
             FolderId: folderID
         }
         updateBookmarks(bookmarkData);//PUT REQUEST
+    }
+
+    initialLogIn();
+
+    function initialLogIn(){
+        $('#exampleModal').modal({
+            show: true
+        });
+    }
+
+    function hideModel(){
+        $('#exampleModal').modal({
+            show: false
+        });
     }
 
 
@@ -177,7 +191,11 @@ $(document).ready(function () {
                 if (userEmail === email) {
                     userID = data[i].id;
                     getBNF_Tables(userID);
+                    hideModel();
                     break;//This will end the loop when a userID match is found!
+                }
+                else{
+                    $("#warning_mssg").innerHTML("Error: User does not exist, please type in existing user");
                 }
             }
             console.log(userID);
