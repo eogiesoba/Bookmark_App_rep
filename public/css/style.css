@@ -206,11 +206,12 @@ a {
 }
 
 .urlBtn {
+    background-color: whitesmoke;
     height: 80%;
-    width: 90%;
+    width: 80%;
     font-size: 19px;
     margin-top: 3%;
-    margin-left: 5%;
+    margin-left: 10%;
 
 }
 

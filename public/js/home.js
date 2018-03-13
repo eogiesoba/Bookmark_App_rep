@@ -98,7 +98,6 @@ $(document).ready(function () {
         
     })
 
-
     function updateBookmarks(info) {
         $.ajax({
             method: "PUT",
@@ -325,27 +324,6 @@ $(document).ready(function () {
             }
         }
     })
-
-    // document.getElementById("listOfFolders").addEventListener("click", function(ev){
-    //     var input, window, bMark, x;
-    //     input = ev.target.getAttribute("foldername");
-    //     console.log("input", input);
-
-    //     if (input === "All Bookmarks") {
-    //         renderBookmarks();
-    //     } 
-    //     window = document.getElementById("bookmarksDisplay");
-    //     bMark = window.getElementsByClassName("bmBox");
-    //     console.log(bMark);
-    //     console.log(bMark.length);
-    //     for (var i = 0; i < bMark.length; i++) {
-    //         x = bMark[i].getElementsByClassName("bmFolderDiv");
-    //         console.log("x", x[i]);
-    //         console.log("xINT", x[i].innerText);
-
-    //     }
-        
-    // })
 
 });
 
