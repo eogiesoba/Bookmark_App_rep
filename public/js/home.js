@@ -265,9 +265,7 @@ $(document).ready(function () {
             console.log("Your bookmark has been updated!");
             clearDiv();
             renderBookmarks();
-        });
-        
-        
+        });  
 
     }
 
