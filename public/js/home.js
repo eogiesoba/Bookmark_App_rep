@@ -83,7 +83,7 @@ $(document).ready(function () {
 
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
-        renderBookmarks();
+        validateUser();
         renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log(x);
