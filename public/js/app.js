@@ -1,4 +1,4 @@
-var userID;
+var userID = 0;
 
 $(document).ready(function () {
 
