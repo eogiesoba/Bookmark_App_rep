@@ -1,4 +1,4 @@
-var userID;
+var userID = 1;
 
 $(document).ready(function () {
 
@@ -180,6 +180,7 @@ $(document).ready(function () {
             console.log("You imported all Bookmarks!");
         });
     }
+
 
     function getBookmarks() {
         $.ajax({
