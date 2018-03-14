@@ -43,7 +43,7 @@
                 </li>
 
                 <li>
-                    <div class="AllBookmarks"  id="folderIDNull" folderId="null">No Folder Assigned</div>
+                    <div class="AllBookmarks"  id="folderIDNull" folderId="Is Null">No Folder Assigned</div>
                 </li>
 
                 <div id="folderTable">
@@ -58,22 +58,22 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row header">
-                    <div class="col-md-2">
-                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Bookmarks Bar</a>
+                    <div class="col-sm-2">
+                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Folder Bar</a>
                     </div>
                     <div class="col-sm-4 emailForm">
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="userName" placeholder="Input Gmail Address for Login">
+                                <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" />
                             </div>
                         </form>
                     </div>
-                    <div class="col-sm-1 loginButton">
+                   <!-- <div class="col-sm-1 loginButton">
                         <button type="button" class="btn btn-primary bpBtn" id="returnUserButton">Login</button>
-                    </div>
-                    <div class="col-md-4">
+                    </div> -->
+                    <div class="col-sm-4 col-sm-offset-1">
                         <div class="form-group">
-                        <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" />
+                        <!-- <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" /> -->
                         </div>
                     </div>
 
@@ -92,6 +92,33 @@
                     <p class="crtext">&copy Copyright 2018 EO-FS-SL</p>
                 </div>
 
+                <!-- Modal -->
+
+                <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Logging In</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>You are about to log into the Bookmark App. Please click 'Login' if your email is shown. If it is not correct, please change it to your email. </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" id="modaluserName">
+                            <p id="warning_mssg"></p>
+                          </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary bpBtn" id="returnUserButtonModal">Login</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
 
 
             </div>
@@ -107,6 +134,8 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+
+        
     </script>
 
 

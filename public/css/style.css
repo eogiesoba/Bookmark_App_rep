@@ -22,7 +22,7 @@ h3 {
 
 header {
     background-color: transparent;
-    height: 125px;
+    height: auto;
 }
 #header_div{
     color:whitesmoke;
@@ -55,11 +55,13 @@ a {
     margin: 0 auto;
 }
 
-#newUserButton {
+#newUserButton, #logoffButton {
     background-color: orange;
+    width: 40%;
     font-size: 15px;
     border-radius:6px;
     margin: 0 auto;
+    margin-bottom: 5px;
 }
 
 #homeBookmark {
@@ -70,7 +72,6 @@ a {
 
 
 .bookmarkButton {
-    margin-top: 5px;
     margin-bottom: 5px;
 }
 

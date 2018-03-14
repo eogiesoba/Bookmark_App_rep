@@ -6,6 +6,8 @@ $(document).ready(function () {
     var UserInput = $("#userName");
     var folderArr = [];
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    document.getElementById("logoffButton").style.visibility = "hidden";
+    var loginEmail;
 
 
     var getBookmarks = function (query) {
@@ -32,36 +34,8 @@ $(document).ready(function () {
     BookmarkArray = getBookmarks();
     console.log("Chrome bookmark extraction: ", BookmarkArray);
     console.log("hello");
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var link = document.getElementById('bookmarkWindow');
-    //     // onClick's logic below:
-    //     link.addEventListener('click', function() {
-    //         console.log("hello");
-    //         // var loginName = $("#userName")[0].value;
-    //         // alert(loginName);
-    //     });
-    // });
 
-    // document.querySelectorAll("#bookmarkWindow").addEvenListener("click", function (event){
-    //     event.preventDefault();
 
-    //     var loginName = $("#userName")[0].value;
-    //     alert(loginName);
-
-    //     //Conditional to check if user input data
-    //     if (!titleInput.val().trim()) {
-    //         return;
-    //     }
-
-    //     var UserPost ={
-    //         user: loginName
-    //     }
-
-    //     console.log(UserPost);
-
-    //     submitUser(UserPost);
-    // })
-    // var email = "faizan.s711@gmail.com"; 
     var email = localStorage.getItem("BookmarkUserEmail");
 
     document.getElementById('newUserButton').addEventListener('click', function () {
@@ -72,20 +46,48 @@ $(document).ready(function () {
         if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
             alert("Please input your Gmail address.");
         } else {}
-
+        
         localStorage.setItem("BookmarkUserEmail", email);
         console.log("email logged in: ", email);
         console.log(email);
 
         // submitUser(UserPost);//Creates new user in DB
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
-        document.getElementById("userName").remove();
-        document.getElementById("newUserButton").remove();
+    });
 
+    UserInitialCheck();
 
-        document.getElementById("header_div").append("User: " + email + " has logged in");
+    function UserInitialCheck(){
+        
+        importUserData();
+        
+        console.log("login Email", loginEmail);
+        
+    }
+
+    document.getElementById('logoffButton').addEventListener('click', function () {
+        var email = "";
+
+        LogoffRender();
 
     });
+
+    function LogoffRender(){
+        document.getElementById("userName").style.visibility = "visible";
+        document.getElementById("newUserButton").style.visibility = "visible";
+        document.getElementById("logoffButton").style.visibility = "hidden";
+
+        document.getElementById("LogInUser").innerHTML = "";
+    }
+
+    function LoginRender(){
+        document.getElementById("userName").style.visibility = "hidden";
+        document.getElementById("newUserButton").style.visibility = "hidden";
+        document.getElementById("logoffButton").style.visibility = "visible";
+
+
+        document.getElementById("LogInUser").append("User: " + email + " has logged in");
+    }
 
     document.getElementById('addBookmark').addEventListener('click', function () {
         console.log("bookmarkAddButton");
@@ -100,8 +102,6 @@ $(document).ready(function () {
         addNewBookmark(newBookmarkObj);
 
     });
-
-
 
 
     function submitUser(User) {
@@ -133,6 +133,8 @@ $(document).ready(function () {
                 if (userEmail === email) {
                     userID = data[i].id;
                     newUser = false;
+                    loginEmail = userEmail;
+                    console.log("login Email: ", loginEmail);
                     break;
                 }
                 else {
@@ -153,6 +155,10 @@ $(document).ready(function () {
                 submitUser(UserPost);
             }
 
+            if(loginEmail === email){
+                LoginRender();
+            }
+
 
             console.log(userID);
             console.log(BookmarkArray);
@@ -168,21 +174,22 @@ $(document).ready(function () {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
-            url: "https://cors-anywhere.herokuapp.com/https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: newArr
         }).then(function () {
             console.log("You imported all Bookmarks!");
         });
     }
 
-    // function getBookmarks() {
-    //     $.ajax({
-    //         method: "GET",
-    //         url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
-    //     }).then(function () {
-    //         console.log("done!");
-    //     });
-    // }
+
+    function getBookmarks() {
+        $.ajax({
+            method: "GET",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
+        }).then(function () {
+            console.log("done!");
+        });
+    }
 
 
     var postFolders = function (Folder) {
