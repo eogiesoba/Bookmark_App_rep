@@ -1,7 +1,7 @@
 # Bookmark_App
 
 <https://chrome-bookmark-app.herokuapp.com/> \
-Varsion 1.0
+Version 1.0
 Deployment Date: March 20, 2018
 Contributors: Efosa Ogiesoba, Faizan Salman & Susan Lippa
 
