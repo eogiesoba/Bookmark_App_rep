@@ -60,10 +60,10 @@ $(document).ready(function () {
     // }
 
     
-    document.getElementById('returnUserButton').addEventListener('click', function () {
-        console.log("Works!");
-        clearDiv();
-        email = document.getElementById("userName").value;
+    // document.getElementById('returnUserButton').addEventListener('click', function () {
+    //     console.log("Works!");
+    //     clearDiv();
+    //     email = document.getElementById("userName").value;
 
 
         localStorage.setItem("BookmarkUserEmail", email);
