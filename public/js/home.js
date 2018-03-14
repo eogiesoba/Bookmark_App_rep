@@ -64,23 +64,19 @@ $(document).ready(function () {
     //     console.log("Works!");
     //     clearDiv();
     //     email = document.getElementById("userName").value;
+    //     localStorage.setItem("BookmarkUserEmail", email);
+    //     console.log(email);
+    //     validateUser();
+    //     renderFolders();
+    //     var x = document.querySelectorAll("#bookmarksDisplay")[0];
+    //     console.log(x);
 
-
-        localStorage.setItem("BookmarkUserEmail", email);
-        console.log(email);
-        validateUser();
-        renderFolders();
-        var x = document.querySelectorAll("#bookmarksDisplay")[0];
-        console.log(x);
-
-    });
+    // });
 
     document.getElementById('returnUserButtonModal').addEventListener('click', function () {
         console.log("Works!");
         clearDiv();
         email = document.getElementById("modaluserName").value;
-
-
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
         validateUser();
