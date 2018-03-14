@@ -2,7 +2,7 @@
 
 <https://chrome-bookmark-app.herokuapp.com/> \
 Version 1.0
-Deployment Date: March 20, 2018
+Deployment Date: March 20, 2018 \
 Contributors: Efosa Ogiesoba, Faizan Salman & Susan Lippa
 
 #Purpose
@@ -16,7 +16,6 @@ Once you one log in from the Chrome extension, press the 'To Bookmark Home' butt
 
 By clicking the 'Folder Bar' button in the upper left hand corner of the page, a list of Folders is revealed. You can assign a folder to a bookmark by dragging the folder line over to the green section on the bookmark. You can see all of the bookmarks assigned to a specific folder by clicking on the folder's line. 
 
-That is all there is to it! 
 
 #Getting Started
 
