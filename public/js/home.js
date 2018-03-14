@@ -6,7 +6,7 @@ $(document).ready(function () {
     //renderFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
-    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    // document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
     document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
     
     //Global variables
@@ -60,20 +60,20 @@ $(document).ready(function () {
     // }
 
     
-    document.getElementById('returnUserButton').addEventListener('click', function () {
-        console.log("Works!");
-        clearDiv();
-        email = document.getElementById("userName").value;
+    // document.getElementById('returnUserButton').addEventListener('click', function () {
+    //     console.log("Works!");
+    //     clearDiv();
+    //     email = document.getElementById("userName").value;
 
 
-        localStorage.setItem("BookmarkUserEmail", email);
-        console.log(email);
-        validateUser();
-        renderFolders();
-        var x = document.querySelectorAll("#bookmarksDisplay")[0];
-        console.log(x);
+    //     localStorage.setItem("BookmarkUserEmail", email);
+    //     console.log(email);
+    //     validateUser();
+    //     renderFolders();
+    //     var x = document.querySelectorAll("#bookmarksDisplay")[0];
+    //     console.log(x);
 
-    });
+    // });
 
     document.getElementById('returnUserButtonModal').addEventListener('click', function () {
         console.log("Works!");
@@ -90,7 +90,6 @@ $(document).ready(function () {
         // $('#exampleModal').modal({
         //     show: false
         // });
-
     });
 
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
