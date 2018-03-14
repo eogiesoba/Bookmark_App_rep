@@ -265,7 +265,7 @@ $(document).ready(function () {
             garbageDiv = $("<div>");
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
-        garbageDiv.append("<div class='col-md-3' gid='" + bookmarkData[j].id + "'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
+        garbageDiv.append("<div class='col-md-3'><button class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "'><i class='fas fa-trash-alt'></i></button></div>");
             garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
@@ -324,8 +324,6 @@ $(document).ready(function () {
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
         folderLabelDiv.attr("id", folderData.id);
-    folderLabelDiv.attr("folderId", folderData.id);
-    folderLabelDiv.attr("userNo", folderData.UserId);    
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
 
