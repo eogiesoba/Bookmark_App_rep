@@ -64,11 +64,6 @@ $(document).ready(function () {
     //     console.log("Works!");
     //     clearDiv();
     //     email = document.getElementById("userName").value;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 77e7bec8f3a0d0ac25610f1855ef878f20db5485
     //     localStorage.setItem("BookmarkUserEmail", email);
     //     console.log(email);
     //     validateUser();

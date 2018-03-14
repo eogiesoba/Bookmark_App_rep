@@ -29,14 +29,15 @@
                 </li>
                 <li>
                     <div class="form-group">
-                        <textarea type="input" class="form-control" id="addFolder" placeholder="Add Folder Name" rows="1"></textarea>
+                        <input type="text" class="form-control" id="addFolder" placeholder="Add Folder Name" rows="1"></input>
                     </div>
                     <div class="folderSubmitDiv">
                         <button type="submit" class="btn btn-primary btn-sm" id="folderSubmitBtn">Submit Folder</button>
                     </div>
                 </li>
+            </ul>
                 
-            <div class="folder-sidebar" id="listOfFolders">
+            <ul class="folder-sidebar" id="listOfFolders">
 
                 <li>
                     <div class="AllBookmarks" id="allBookmarksSearch" folderId="0">All Bookmarks</div>
@@ -45,12 +46,10 @@
                 <li>
                     <div class="AllBookmarks"  id="folderIDNull" folderId="Is Null">No Folder Assigned</div>
                 </li>
-
-                <div id="folderTable">
-
-                </div>
-            </div>
             </ul>
+            <div id="folderTable">
+
+            </div>
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -64,7 +63,7 @@
                     <div class="col-sm-4 emailForm">
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" />
+                                <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks"/>
                             </div>
                         </form>
                     </div>
@@ -89,7 +88,7 @@
 
 
                 <div class="row footer">
-                    <p class="crtext">&copy Copyright 2018 EO-FS-SL</p>
+                    <p class="crtext">&copy; Copyright 2018 EO-FS-SL</p>
                 </div>
 
                 <!-- Modal -->
@@ -110,7 +109,7 @@
                             <label for="recipient-name" class="col-form-label">Email:</label>
                             <input type="text" class="form-control" id="modaluserName">
                             <p id="warning_mssg"></p>
-                          </div>
+                        </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-primary bpBtn" id="returnUserButtonModal">Login</button>
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
