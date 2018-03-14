@@ -64,8 +64,11 @@ $(document).ready(function () {
     //     console.log("Works!");
     //     clearDiv();
     //     email = document.getElementById("userName").value;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 77e7bec8f3a0d0ac25610f1855ef878f20db5485
     //     localStorage.setItem("BookmarkUserEmail", email);
     //     console.log(email);
     //     validateUser();
@@ -79,14 +82,12 @@ $(document).ready(function () {
         console.log("Works!");
         clearDiv();
         email = document.getElementById("modaluserName").value;
-
-
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
         validateUser();
         renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
-        console.log(x);
+        console.log("x from the modal login", x);
         // $('#exampleModal').modal({
         //     show: false
         // });
@@ -176,7 +177,7 @@ $(document).ready(function () {
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
-            console.log(data);
+            console.log("validating user", data);
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
                 if (userEmail === email) {
@@ -268,7 +269,7 @@ $(document).ready(function () {
             garbageDiv = $("<div>");
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
-            garbageDiv.append("<div class='col-md-3'><button class='garbageBtn'><i class='fas fa-trash-alt'></i></button></div>");
+        garbageDiv.append("<div class='col-md-3'><button class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "'><i class='fas fa-trash-alt'></i></button></div>");
             garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
