@@ -35,20 +35,14 @@ header {
     text-align: center;
 }
 
-#userName, #newBMTitle, #newBMURL {
-    width: 90%;
+#userName, #newBMTitle {
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-/* #bookmarkWindow {
-    background-color: slategray;
-    border-radius: 12px;
-    margin: 0 auto;
-    text-align: center;
-} */
 
 .sidebar-brand {
     background-color: transparent;
@@ -83,13 +77,6 @@ header {
     margin-bottom: 10px;
 }
 
-#newURLSubmit {
-    background-color:rgb(4, 140, 21);;
-    font-size: 15px;
-    border-radius:6px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-}
 
 /* Bookmarkts HTML SideBar */
 

@@ -265,7 +265,7 @@ $(document).ready(function () {
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
         // garbageDiv.append("<div class='col-md-3'><button class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "'><i class='fas fa-trash-alt'></i></button></div>");
-            garbageDiv.append("<img class='garbageBtn' src='../images/Garbage2.png' />");
+            garbageDiv.append("<img class='garbageBtn' id='trash' gid='"+ bookmarkData[j].id + "' src='../images/Garbage2.png' />");
             garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
@@ -325,14 +325,14 @@ $(document).ready(function () {
         folderLabelDiv.attr("id", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
-        folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
+        folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
 
         folderSearchDiv = $("<div>")
         // folderSearchDiv.addClass("col-sm-2 col-sm-offset-6");
         folderLine.attr("folderId", folderData.id);
         folderLine.attr("userNo", folderData.UserId);
-        folderSearchDiv.append("<img src='../images/Search1.png'/>");
+        folderSearchDiv.append("<img folderId='" + folderData.id+ "' src='../images/Search1.png'/>");
         folderLine.append(folderSearchDiv);
 
         $("#folderTable").append(folderLine);
