@@ -54,7 +54,7 @@ $(document).ready(function () {
 
     function UserloginRender(){
 
-
+        document.getElementById("userEmail").innerHTML = "";
         document.getElementById("userEmail").append("User: " + email + " has logged in");
     }
 
