@@ -43,12 +43,12 @@ header {
     margin-bottom: 10px;
 }
 
-#bookmarkWidow {
+/* #bookmarkWindow {
     background-color: slategray;
     border-radius: 12px;
     margin: 0 auto;
     text-align: center;
-}
+} */
 
 .sidebar-brand {
     background-color: transparent;
@@ -144,19 +144,20 @@ header {
     margin-top: 9% 10%;
     border-radius: 6px;
 }
-.emailForm {
+
+/* .emailForm {
     margin-right: 0px;
     padding-right: 0px;
-}
+} */
 
 #userName {
     margin-top: 5%;
 }
 
-.loginButton {
+/* .loginButton {
     margin-left: 0px;
     padding-left: 0px;
-}
+} */
 
 #returnUserButton {
     background-color: rgb(4, 140, 21);
@@ -179,7 +180,7 @@ header {
     background-position: center center;
     background-size: cover;
     vertical-align: middle;
-    height: 650px;
+    height: 700px;
     overflow: scroll;
 }
 
@@ -187,7 +188,7 @@ header {
     height: 330px;
     background: linear-gradient(to bottom, #40a5fb8a, #000b40);
     margin-top: 1%;
-    margin-left: 2.5%;
+    margin-left: 2%;
     border-radius: 3px;
     border: 2px solid rgb(35, 33, 139);
     box-shadow: 5px 10px 6px rgb(24, 24, 24);
