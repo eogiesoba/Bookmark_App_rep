@@ -4,7 +4,7 @@ $(document).ready(function () {
     //renderFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
-    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    // document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
     document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
     
     //Global variables
