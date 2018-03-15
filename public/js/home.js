@@ -45,7 +45,10 @@ $(document).ready(function () {
 
     //Initial Login pops the modal as the page is loaded
     initialLogIn();
-    chrome.storage.sync.get(['Email'], function(items) {document.getElementById("modaluserName").value = items;});
+    StorageArea.get('Email', function(items) {
+        console.log("google local storage sync: ",items);
+        document.getElementById("modaluserName").value = items;
+    });
 
     function initialLogIn(){
         console.log("modal");

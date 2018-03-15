@@ -166,7 +166,7 @@ $(document).ready(function () {
                 chrome.storage.sync.set({
                     'Email': loginEmail 
                 }, function() {
-                    console.log('Settings saved');
+                    console.log('Settings saved: ', loginEmail);
                 });
             }
             console.log(userID);
