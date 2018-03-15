@@ -18,8 +18,6 @@ $(document).ready(function () {
 
 
     //drag and drop for folder assignment
-
-
     document.drag = function (ev) {
         var x = ev.target.getAttribute("id");
         ev.dataTransfer.setData("text", x);
@@ -45,9 +43,13 @@ $(document).ready(function () {
         updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
+    //Initial Login pops the modal as the page is loaded
     initialLogIn();
 
     function initialLogIn(){
+        chrome.storage.sync.get(['Email'], function(items) {
+            document.getElementById("modaluserName").value = items;
+          });
         $('#exampleModal').modal({
             show: true
         });
