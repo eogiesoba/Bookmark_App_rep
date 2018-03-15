@@ -122,9 +122,10 @@ a {
 
 
 .header {
-  background-color: rgb(35, 33, 139);
+  background-color: linear-gradient(rgba(24, 44, 224, 0.6), rgba(4, 18, 139, 0.6));
   border-bottom-color: black;
   margin: 0 auto;
+  padding: 0px 0px 10px;
 }
 
 #menu-toggle {
