@@ -264,7 +264,8 @@ $(document).ready(function () {
             garbageDiv = $("<div>");
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
-        garbageDiv.append("<div class='col-md-3'><button class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "'><i class='fas fa-trash-alt'></i></button></div>");
+        // garbageDiv.append("<div class='col-md-3'><button class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "'><i class='fas fa-trash-alt'></i></button></div>");
+            garbageDiv.append("<img src='../images/Garbage.png' />");
             garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
@@ -313,6 +314,7 @@ $(document).ready(function () {
         var folderLine = $("<div>");
         folderLine.addClass("row");
         folderLine.addClass("folderList");
+        folderLine.append("<img src='../images/Search.svg' />");
         // folderLine.attr("foldername", folderData.folder);
         folderLine.attr("folderId", folderData.id);
         folderLine.attr("userNo", folderData.UserId);
