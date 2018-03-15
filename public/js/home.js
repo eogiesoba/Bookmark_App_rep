@@ -332,7 +332,7 @@ $(document).ready(function () {
         // folderSearchDiv.addClass("col-sm-2 col-sm-offset-6");
         folderLine.attr("folderId", folderData.id);
         folderLine.attr("userNo", folderData.UserId);
-        folderSearchDiv.append("<img folderId='" + folderData.id+ "' src='../images/Search1.png'/>");
+        folderSearchDiv.append("<img folderId='" + folderData.id+ "' src='../images/Search2.png'/>");
         folderLine.append(folderSearchDiv);
 
         $("#folderTable").append(folderLine);

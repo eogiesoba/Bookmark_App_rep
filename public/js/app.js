@@ -82,7 +82,7 @@ $(document).ready(function () {
         document.getElementById("logoffButton").style.visibility = "visible";
 
 
-        document.getElementById("LogInUser").append("User:  " + email + "  is logged in");
+        document.getElementById("LogInUser").append("Logged In:" + email);
     }
 
     document.getElementById('addBookmark').addEventListener('click', function () {
