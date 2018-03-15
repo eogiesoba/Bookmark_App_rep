@@ -4,8 +4,8 @@ $(document).ready(function () {
     //renderFolders();//This is our folder render function that runs when page is loaded.
 
     // console.log(userObj);
-    // document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
-    // document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
+    document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
     
     //Global variables
     // var userID;//This is being used in a get request
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     //Initial Login pops the modal as the page is loaded
     initialLogIn();
-    console.log(chrome.extension.getBackgroundPage());
+    // console.log(chrome.extension.getBackgroundPage());
 
     function initialLogIn(){
         console.log("modal");
@@ -51,6 +51,13 @@ $(document).ready(function () {
             show: true
         });
     }
+
+    function UserloginRender(){
+
+
+        document.getElementById("userEmail").append("User: " + email + " has logged in");
+    }
+
 
     // function hideModel(){
     //     $('#exampleModal').modal({
@@ -82,6 +89,7 @@ $(document).ready(function () {
         renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log("x from the modal login", x);
+        UserloginRender();
         // $('#exampleModal').modal({
         //     show: false
         // });
