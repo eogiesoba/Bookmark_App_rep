@@ -233,9 +233,8 @@ header {
 }
 
 .garbageBtn {
-    font-size: 18px;
-    margin-left: 10%;
-    margin-top: 25%;
+    background-position: center;
+    margin: 0 auto;
 }
 
 .bmFolderDiv {

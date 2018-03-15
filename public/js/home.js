@@ -265,7 +265,7 @@ $(document).ready(function () {
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
         // garbageDiv.append("<div class='col-md-3'><button class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "'><i class='fas fa-trash-alt'></i></button></div>");
-            garbageDiv.append("<img src='../images/garbage1.png' />");
+            garbageDiv.append("<img class='garbageBtn' src='../images/Garbage2.png' />");
             garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
