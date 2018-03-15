@@ -64,7 +64,6 @@ $(document).ready(function () {
     //     console.log("Works!");
     //     clearDiv();
     //     email = document.getElementById("userName").value;
-
     //     localStorage.setItem("BookmarkUserEmail", email);
     //     console.log(email);
     //     validateUser();
