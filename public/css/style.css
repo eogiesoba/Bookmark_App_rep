@@ -129,7 +129,9 @@ header {
 .form-control{
     background-color: rgb(223, 242, 255);
 }
-
+.imageClass {
+    color: white;
+}
 
 /* Bookmarks HTML Main Content */
 
