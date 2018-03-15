@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     // console.log(userObj);
     // document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
-    document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
+    // document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
     
     //Global variables
     // var userID;//This is being used in a get request
@@ -45,11 +45,10 @@ $(document).ready(function () {
 
     //Initial Login pops the modal as the page is loaded
     initialLogIn();
+    chrome.storage.sync.get(['Email'], function(items) {document.getElementById("modaluserName").value = items;});
 
     function initialLogIn(){
-        chrome.storage.sync.get(['Email'], function(items) {
-            document.getElementById("modaluserName").value = items;
-          });
+        console.log("modal");
         $('#exampleModal').modal({
             show: true
         });
