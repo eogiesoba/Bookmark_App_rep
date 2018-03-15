@@ -330,6 +330,9 @@ $(document).ready(function () {
         folderLine.append(folderLabelDiv);
 
         folderSearchDiv = $("<div>")
+        folderSearchDiv.addClass("col-sm-2 col-sm-offset-6");
+        folderLine.attr("folderId", folderData.id);
+        folderLine.attr("userNo", folderData.UserId);
         folderSearchDiv.append("<img src='../images/Search1.png'/>");
         folderLine.append(folderSearchDiv);
 

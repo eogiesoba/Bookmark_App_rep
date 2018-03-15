@@ -233,12 +233,12 @@ header {
 }
 
 .garbageBtn {
-    background-position: center;
     margin: 0 auto;
 }
 
 .bmFolderDiv {
     margin: 5% 0% 5% 0%;
+    vertical-align: middle;
     height: 80px;
     border-radius: 5px;
     border: #ffffff69 1px solid;
