@@ -318,19 +318,18 @@ $(document).ready(function () {
         folderLine.attr("userNo", folderData.UserId);
 
         var folderLabelDiv = $("<div>");
-        folderLabelDiv.addClass("col-sm-4");
+        // folderLabelDiv.addClass("col-sm-4");
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
         folderLabelDiv.attr("id", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
-
         folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
 
         folderSearchDiv = $("<div>")
-        folderSearchDiv.addClass("col-sm-2 col-sm-offset-6");
+        // folderSearchDiv.addClass("col-sm-2 col-sm-offset-6");
         folderLine.attr("folderId", folderData.id);
         folderLine.attr("userNo", folderData.UserId);
         folderSearchDiv.append("<img src='../images/Search1.png'/>");
