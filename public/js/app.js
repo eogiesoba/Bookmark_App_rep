@@ -163,7 +163,7 @@ $(document).ready(function () {
             }
             if(loginEmail === email){
                 LoginRender();
-                chrome.storage.sync.set({
+                chrome.storage.local.set({
                     'Email': loginEmail 
                 }, function() {
                     console.log('Settings saved: ', loginEmail);

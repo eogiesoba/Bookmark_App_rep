@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
     //validateUser();//This our bookmark render function that runs when page is loaded. 
@@ -45,7 +43,7 @@ $(document).ready(function () {
 
     //Initial Login pops the modal as the page is loaded
     initialLogIn();
-    chrome.storage.sync.get('Email', function(items) {
+    chrome.storage.local.get('Email', function(items) {
         console.log("google local storage sync: ",items);
         document.getElementById("modaluserName").value = items;
     });
