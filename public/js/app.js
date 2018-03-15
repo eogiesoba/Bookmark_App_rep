@@ -164,7 +164,7 @@ $(document).ready(function () {
             if(loginEmail === email){
                 LoginRender();
                 chrome.storage.local.set({
-                    'Email': loginEmail 
+                    'email': loginEmail 
                 }, function() {
                     console.log('Settings saved: ', loginEmail);
                 });
