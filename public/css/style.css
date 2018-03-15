@@ -228,7 +228,7 @@ a {
     height: 80px;
     border-radius: 5px;
     text-align: center;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 .deleteStyle {
