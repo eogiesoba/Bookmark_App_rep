@@ -43,10 +43,7 @@ $(document).ready(function () {
 
     //Initial Login pops the modal as the page is loaded
     initialLogIn();
-    chrome.extension.storage.local.get(['email'], function(items) {
-        console.log("google local storage sync: ",items.email);
-        document.getElementById("modaluserName").value = items.email;
-    });
+    console.log(chrome.extension.getBackgroundPage());
 
     function initialLogIn(){
         console.log("modal");
