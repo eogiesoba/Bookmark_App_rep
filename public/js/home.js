@@ -86,19 +86,13 @@ $(document).ready(function () {
 
     //keyup to search bookmarks by text input
 
-    // document.getElementById("searchBookmarks").addEventListener("keyup", function(){
-    
-    document.getElementById("searchBookmarks").addEventListener("keypress", function(e){
-        var key = e.which || e.keyCode;
-        console.log("key", key);
-        if (key === 13) {
-            e.preventDefault();
+    document.getElementById("searchBookmarks").addEventListener("keyup", function() {
         var input, window, bMark, x;
         input = document.getElementById("searchBookmarks").value.toUpperCase();
         window = document.getElementById("bookmarksDisplay");
         bMark = window.getElementsByClassName("bmBox");
         for (var i = 0; i < bMark.length; i++) {
-            // e.preventDefault();
+    
             x = bMark[i].getElementsByClassName("bmTitleDiv")[0];
             if (x.innerHTML.toUpperCase().indexOf(input) > -1) {
                bMark[i].style.display = "";
@@ -107,9 +101,15 @@ $(document).ready(function () {
                bMark[i].style.display = "none";
             }
         }
-    }
 
     })
+
+    document.getElementById("searchBookmarks").addEventListener("keypress", function(e){
+        var key = e.which || e.keyCode;
+        if (key === 13) {
+            e.preventDefault();
+        }
+    });
 
     //on-click to delete a folder
 
