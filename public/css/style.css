@@ -344,4 +344,6 @@ header {
     width: 75%;
     margin: auto;
 }
-
+.loginP{
+    text-align: center;
+}
