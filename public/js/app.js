@@ -16,10 +16,6 @@ $(document).ready(function () {
             var x = i.toString();
             var bookmarks = chrome.bookmarks.get(x,
                 function (bookmarks) {
-                    // console.log("Bookmarks", bookmarks);
-                    // var newDiv = $("<div>")
-                    // newDiv
-                    // $('#bookmarks').append("<div>" + bookmarks[0].title + "</div>");
                     if (bookmarks[0] !== undefined) {
                         if (bookmarks[0].title !== undefined && bookmarks[0].url !== undefined) {
                             newArr.push(bookmarks[0]);
@@ -94,7 +90,7 @@ $(document).ready(function () {
         document.getElementById("logoffButton").style.visibility = "visible";
 
 
-        document.getElementById("LogInUser").append("User: " + email + " has logged in");
+        document.getElementById("LogInUser").append("Logged In:" + email);
     }
 
     //On click for adding the current page to user bookmarks
