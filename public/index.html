@@ -142,7 +142,12 @@
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
-            $("#page-content-wrapper").toggleClass("WidthChange");
+            $("#page-content-wrapper").toggle(function(){
+                $(this).css("width", "150vh");
+            },
+            function(){
+                $(this).css("width", "180vh");
+            });
         });
 
         
