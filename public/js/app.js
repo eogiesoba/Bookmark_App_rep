@@ -90,7 +90,7 @@ $(document).ready(function () {
         document.getElementById("logoffButton").style.visibility = "visible";
 
 
-        document.getElementById("LogInUser").append("Logged In:" + email);
+        document.getElementById("LogInUser").append("Logged In: " + email);
     }
 
     //On click for adding the current page to user bookmarks
