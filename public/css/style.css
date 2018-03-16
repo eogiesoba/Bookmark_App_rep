@@ -282,5 +282,11 @@ header {
 }
 
 
-
+/* Modal Styling */
+.warning_mssg {
+    color: red;
+}
+.modal{
+    color: linear-gradient(to bottom, rgb(4, 65, 151), rgb(2, 12, 146));
+}
 
