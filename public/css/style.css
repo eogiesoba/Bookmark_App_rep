@@ -51,7 +51,8 @@ header {
 }
 
 #userEmail{
-    color: #eee;
+    color: #fff;
+    margin: 0px;
 }
 #newUserButton, #logoffButton {
     background-color: orange;
@@ -247,7 +248,7 @@ header {
 }
 
 .deleteStyle {
-    background: linear-gradient(to bottom, rgb(239, 68, 7), rgb(97, 27, 1));
+    background: linear-gradient(to bottom, rgb(189, 52, 2), rgb(64, 18, 1));
     margin: 5% 0% 5% 0%;
     height: 40px;
     border-radius: 5px;
