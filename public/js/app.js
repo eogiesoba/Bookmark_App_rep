@@ -9,7 +9,7 @@ $(document).ready(function () {
     document.getElementById("logoffButton").style.visibility = "hidden";
     var loginEmail;
 
-
+    //Uses the chrome bookmark API to get all the users bookmarks
     var getBookmarks = function (query) {
         var newArr = [];
         for (i = 0; i < 200; i++) {
@@ -28,12 +28,14 @@ $(document).ready(function () {
     };
 
     BookmarkArray = getBookmarks();
+    //conosle.logs to help test and see if the bookmarks are being extracted
     console.log("Chrome bookmark extraction: ", BookmarkArray);
     console.log("hello");
 
-
+    //This gets local user email if initially logged in
     var email = localStorage.getItem("BookmarkUserEmail");
 
+    //On clikc for Log In
     document.getElementById('newUserButton').addEventListener('click', function () {
 
         console.log("Works!");
@@ -51,8 +53,10 @@ $(document).ready(function () {
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
     });
 
+    //Initial Check to see if the user in the local storage is an existing user
     UserInitialCheck();
 
+    //Initial check
     function UserInitialCheck(){
         
         importUserData();
@@ -61,6 +65,8 @@ $(document).ready(function () {
         
     }
 
+
+    //On Click for log off button
     document.getElementById('logoffButton').addEventListener('click', function () {
         var email = "";
 
@@ -68,6 +74,7 @@ $(document).ready(function () {
 
     });
 
+    //Renders Logoff info, hides the div and shows the log in button and input form
     function LogoffRender(){
         document.getElementById("userName").style.visibility = "visible";
         document.getElementById("newUserButton").style.visibility = "visible";
@@ -76,6 +83,7 @@ $(document).ready(function () {
         document.getElementById("LogInUser").innerHTML = "";
     }
 
+    //hides the input and loggin button and shows log off button
     function LoginRender(){
         document.getElementById("userName").style.visibility = "hidden";
         document.getElementById("newUserButton").style.visibility = "hidden";
@@ -85,6 +93,7 @@ $(document).ready(function () {
         document.getElementById("LogInUser").append("Logged In:" + email);
     }
 
+    //On click for adding the current page to user bookmarks
     document.getElementById('addBookmark').addEventListener('click', function () {
         console.log("bookmarkAddButton");
         newBookmarkObj = {};
@@ -99,7 +108,7 @@ $(document).ready(function () {
 
     });
 
-
+    //POST function for a new user
     function submitUser(User) {
         $.ajax({
             method: "POST",
@@ -110,23 +119,23 @@ $(document).ready(function () {
         });
     }
 
+    //GET function 
     function importUserData() {
         console.log("You are in the import function!")
         $.ajax({
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
-            // var UserID = data.id;
             console.log(data);
             var newUser = true;
-            // var newBookMarkObj = BookmarkArray;
+           
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
 
                 console.log("User Data Emails: ", userEmail);
                 console.log("email: ", email);
 
-                if (userEmail === email) {
+                if (userEmail === email) {//compares email to user emails to see if it exists
                     userID = data[i].id;
                     newUser = false;
                     loginEmail = userEmail;
@@ -136,9 +145,7 @@ $(document).ready(function () {
                 else {
                     userID = data[i].id + 1;
                 }
-
             }
-
             if (newUser === true) {
                 for (var i = 0; i < BookmarkArray.length; i++) {//imports all bookmarks 1 at a time.
                     BookmarkArray[i].userID = userID;
@@ -150,22 +157,20 @@ $(document).ready(function () {
                 }
                 submitUser(UserPost);
             }
-
             if(loginEmail === email){
                 LoginRender();
+                chrome.storage.sync.set({
+                    'email': loginEmail 
+                }, function() {
+                    console.log('Settings saved: ', loginEmail);
+                });
             }
-
-
             console.log(userID);
             console.log(BookmarkArray);
         });
     }
-    //associate this with our folder and our bookmarks
 
-    // var UserObjectArray = getUserData();
-    // console.log(UserObjectArray);
-
-
+    //POST for the users existing bookmark
     var importBookmark = function (newArr) {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
@@ -176,7 +181,7 @@ $(document).ready(function () {
             console.log("You imported all Bookmarks!");
         });
     }
-
+    //GET for getting a single bookmark
     function getBookmarks() {
         $.ajax({
             method: "GET",
@@ -186,7 +191,7 @@ $(document).ready(function () {
         });
     }
 
-
+    //POST for the folders
     var postFolders = function (Folder) {
         $.ajax({
             method: "POST",
@@ -199,7 +204,7 @@ $(document).ready(function () {
     }
 
 
-
+    //function that checks bookmarks and the posts the new bookmark onto the tables
     function addNewBookmark(newArr) {
         console.log("You are in the addNewBookmark function!")
         $.ajax({
@@ -224,5 +229,11 @@ $(document).ready(function () {
             importBookmark(bookObject);
         });
     }
+
+    chrome.storage.sync.set({
+        'Email': loginEmail 
+        }, function() {
+        console.log('Settings saved');
+      });
 
 });

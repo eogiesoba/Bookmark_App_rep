@@ -1,7 +1,5 @@
-
-
 $(document).ready(function () {
-
+    console.log("chrome is", chrome);
     //validateUser();//This our bookmark render function that runs when page is loaded. 
     //renderFolders();//This is our folder render function that runs when page is loaded.
 
@@ -18,8 +16,6 @@ $(document).ready(function () {
 
 
     //drag and drop for folder assignment
-
-
     document.drag = function (ev) {
         var x = ev.target.getAttribute("id");
         ev.dataTransfer.setData("text", x);
@@ -45,13 +41,23 @@ $(document).ready(function () {
         updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
+    //Initial Login pops the modal as the page is loaded
     initialLogIn();
+    // console.log(chrome.extension.getBackgroundPage());
 
     function initialLogIn(){
+        console.log("modal");
         $('#exampleModal').modal({
             show: true
         });
     }
+
+    function UserloginRender(){
+
+        document.getElementById("userEmail").innerHTML = "";
+        document.getElementById("userEmail").append("User: " + email + " has logged in");
+    }
+
 
     // function hideModel(){
     //     $('#exampleModal').modal({
@@ -83,6 +89,7 @@ $(document).ready(function () {
         renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log("x from the modal login", x);
+        UserloginRender();
         // $('#exampleModal').modal({
         //     show: false
         // });
@@ -319,7 +326,6 @@ $(document).ready(function () {
         folderLine.attr("userNo", folderData.UserId);
 
         var folderLabelDiv = $("<div>");
-        // folderLabelDiv.addClass("col-sm-4");
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
@@ -329,12 +335,6 @@ $(document).ready(function () {
         folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
 
-        // folderSearchDiv = $("<div>")
-        // folderSearchDiv.addClass("searchIconStyle");
-        // folderLine.attr("folderId", folderData.id);
-        // folderLine.attr("userNo", folderData.UserId);
-        // folderSearchDiv.append("<img folderId='" + folderData.id+ "' class='searchIcon' src='../images/Search2.png'/>");
-        // folderLine.append(folderSearchDiv);
 
         $("#folderTable").append(folderLine);
     }; 

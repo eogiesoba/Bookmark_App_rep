@@ -47,9 +47,12 @@ header {
 .sidebar-brand {
     background-color: transparent;
     margin: 0 2%;
-    color: white;
+    color: #eee;;
 }
 
+#userEmail{
+    color: #eee;
+}
 #newUserButton, #logoffButton {
     background-color: orange;
     width: 40%;
@@ -101,6 +104,10 @@ header {
     height: 50px;
 }
 
+.folderList:hover {
+    background-color: #3d444b;
+}
+
 .folderLabelDiv {
     margin: 0 auto;
 }
@@ -119,6 +126,11 @@ header {
 
 .imageClass {
     color: #0A0A0A;
+}
+
+.searchImg{
+    height: 20px;
+    width: 20px;
 }
 
 /* Bookmarks HTML Main Content */
