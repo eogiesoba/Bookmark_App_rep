@@ -89,7 +89,6 @@ $(document).ready(function () {
     // document.getElementById("searchBookmarks").addEventListener("keyup", function(){
     
     document.getElementById("searchBookmarks").addEventListener("keypress", function(e){
-        e.preventDefault();
         var key = e.which || e.keyCode;
         console.log("key", key);
         if (key === 13) {
@@ -98,6 +97,7 @@ $(document).ready(function () {
         window = document.getElementById("bookmarksDisplay");
         bMark = window.getElementsByClassName("bmBox");
         for (var i = 0; i < bMark.length; i++) {
+            e.preventDefault();
             x = bMark[i].getElementsByClassName("bmTitleDiv")[0];
             if (x.innerHTML.toUpperCase().indexOf(input) > -1) {
                bMark[i].style.display = "";
