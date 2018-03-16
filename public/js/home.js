@@ -129,6 +129,13 @@ $(document).ready(function () {
         }
     })
 
+    document.getElementById("searchBookmarks").addEventListener("keypress", function(e){
+        var key = e.which || e.keyCode;
+        if (key === 13){
+            e.preventDefault();
+        }
+    })
+
     //on-click to delete a folder
     $(document).on("click", "#trash", function(ev){
         console.log("garbageClicked");
