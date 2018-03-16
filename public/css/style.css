@@ -88,7 +88,7 @@ header {
 }
 
 .form-group {
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -139,7 +139,7 @@ header {
 .header {
   background-color: rgb(4, 0, 34);
   margin: 0 auto;
-  padding: 1% 0;
+  padding: 0.8%;
 }
 
 #menu-toggle {
@@ -147,10 +147,9 @@ header {
     border-radius: 6px;
 }
 
-/* .emailForm {
-    margin-right: 0px;
-    padding-right: 0px;
-} */
+.emailForm {
+    margin: auto;
+}
 
 #userName {
     margin-top: 5%;
