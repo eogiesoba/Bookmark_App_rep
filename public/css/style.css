@@ -305,6 +305,7 @@ header {
     /* background: linear-gradient(to right, red , yellow); */
     background: linear-gradient(#053cb7, #05247d);
     color: white;
+    padding: 5% 0% 10%;
 }
 .modal-footer {
     display: -webkit-box;
@@ -340,6 +341,7 @@ header {
     margin: 6.75rem auto;
 }
 #returnUserButtonModal{
-    width: 67%;
+    width: 75%;
+    margin: auto;
 }
 
