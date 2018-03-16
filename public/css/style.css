@@ -41,20 +41,14 @@ header {
     text-align: center;
 }
 
-#userName, #newBMTitle, #newBMURL {
-    width: 90%;
+#userName, #newBMTitle {
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-/* #bookmarkWindow {
-    background-color: slategray;
-    border-radius: 12px;
-    margin: 0 auto;
-    text-align: center;
-} */
 
 .sidebar-brand {
     background-color: transparent;
@@ -92,13 +86,6 @@ header {
     margin-bottom: 10px;
 }
 
-#newURLSubmit {
-    background-color:rgb(4, 140, 21);;
-    font-size: 15px;
-    border-radius:6px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-}
 
 /* Bookmarkts HTML SideBar */
 
@@ -128,7 +115,7 @@ header {
 }
 
 .folderLabelDiv {
-    margin-left: 5%;
+    margin: 0 auto;
 }
 
 .folderSubmitDiv {
@@ -142,6 +129,7 @@ header {
 .form-control{
     background-color: rgb(223, 242, 255);
 }
+
 .imageClass {
     color: #0A0A0A;
 }
@@ -195,6 +183,7 @@ header {
     margin-left: -10px;
 }
 
+
 .main {
     background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url("../images/bookshelf.jpeg");
     background-position: center center;
@@ -205,7 +194,7 @@ header {
 }
 
 .bmBox {
-    height: 330px;
+    height: 340px;
     background: linear-gradient(to bottom, #40a5fb8a, #000b40);
     margin-top: 1%;
     margin-left: 2%;
@@ -251,13 +240,12 @@ header {
 }
 
 .garbageBtn {
-    font-size: 18px;
-    margin-left: 10%;
-    margin-top: 25%;
+    margin: 0 auto;
 }
 
 .bmFolderDiv {
     margin: 5% 0% 5% 0%;
+    vertical-align: middle;
     height: 80px;
     border-radius: 5px;
     border: #ffffff69 1px solid;
