@@ -102,7 +102,7 @@ header {
 }
 
 .folderLabelDiv {
-    margin-left: 5%;
+    text-align: center;
 }
 
 .folderSubmitDiv {
@@ -116,6 +116,7 @@ header {
 .form-control{
     background-color: rgb(223, 242, 255);
 }
+
 .imageClass {
     color: #0A0A0A;
 }
@@ -163,6 +164,7 @@ header {
     margin-top: 25%;
     margin-left: -10px;
 }
+
 
 .main {
     background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url("../images/bookshelf.jpeg");

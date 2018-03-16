@@ -305,6 +305,7 @@ $(document).ready(function () {
                     createFolderRows(foldername);
                 }
             }
+
         });
     };
 
@@ -328,12 +329,12 @@ $(document).ready(function () {
         folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
 
-        folderSearchDiv = $("<div>")
-        // folderSearchDiv.addClass("col-sm-2 col-sm-offset-6");
-        folderLine.attr("folderId", folderData.id);
-        folderLine.attr("userNo", folderData.UserId);
-        folderSearchDiv.append("<img folderId='" + folderData.id+ "' src='../images/Search2.png'/>");
-        folderLine.append(folderSearchDiv);
+        // folderSearchDiv = $("<div>")
+        // folderSearchDiv.addClass("searchIconStyle");
+        // folderLine.attr("folderId", folderData.id);
+        // folderLine.attr("userNo", folderData.UserId);
+        // folderSearchDiv.append("<img folderId='" + folderData.id+ "' class='searchIcon' src='../images/Search2.png'/>");
+        // folderLine.append(folderSearchDiv);
 
         $("#folderTable").append(folderLine);
     }; 
