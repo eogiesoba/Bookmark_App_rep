@@ -89,6 +89,7 @@ $(document).ready(function () {
     // document.getElementById("searchBookmarks").addEventListener("keyup", function(){
     
     document.getElementById("searchBookmarks").addEventListener("keypress", function(e){
+        e.preventDefault();
         var key = e.which || e.keyCode;
         console.log("key", key);
         if (key === 13) {
