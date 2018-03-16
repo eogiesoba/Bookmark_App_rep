@@ -1,7 +1,5 @@
-
-
 $(document).ready(function () {
-
+    console.log("chrome is", chrome);
     //validateUser();//This our bookmark render function that runs when page is loaded. 
     //renderFolders();//This is our folder render function that runs when page is loaded.
 
@@ -18,8 +16,6 @@ $(document).ready(function () {
 
 
     //drag and drop for folder assignment
-
-
     document.drag = function (ev) {
         var x = ev.target.getAttribute("id");
         ev.dataTransfer.setData("text", x);
@@ -45,13 +41,23 @@ $(document).ready(function () {
         updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
+    //Initial Login pops the modal as the page is loaded
     initialLogIn();
+    // console.log(chrome.extension.getBackgroundPage());
 
     function initialLogIn(){
+        console.log("modal");
         $('#exampleModal').modal({
             show: true
         });
     }
+
+    function UserloginRender(){
+
+        document.getElementById("userEmail").innerHTML = "";
+        document.getElementById("userEmail").append("User: " + email + " has logged in");
+    }
+
 
     // function hideModel(){
     //     $('#exampleModal').modal({
@@ -83,6 +89,7 @@ $(document).ready(function () {
         renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log("x from the modal login", x);
+        UserloginRender();
         // $('#exampleModal').modal({
         //     show: false
         // });
@@ -265,7 +272,7 @@ $(document).ready(function () {
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
         // garbageDiv.append("<div class='col-md-3'><button class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "'><i class='fas fa-trash-alt'></i></button></div>");
-            garbageDiv.append("<img src='../images/Garbage.png' />");
+            garbageDiv.append("<img class='garbageBtn' id='trash' gid='"+ bookmarkData[j].id + "' src='../images/Garbage2.png' />");
             garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
@@ -305,6 +312,7 @@ $(document).ready(function () {
                     createFolderRows(foldername);
                 }
             }
+
         });
     };
 
@@ -314,22 +322,19 @@ $(document).ready(function () {
         var folderLine = $("<div>");
         folderLine.addClass("row");
         folderLine.addClass("folderList");
-        folderLine.append("<img src='../images/Search.svg' />");
-        // folderLine.attr("foldername", folderData.folder);
         folderLine.attr("folderId", folderData.id);
         folderLine.attr("userNo", folderData.UserId);
 
         var folderLabelDiv = $("<div>");
-        folderLabelDiv.addClass("col-sm-4");
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
         folderLabelDiv.attr("id", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
-
-        folderLabelDiv.append("<p class='folderLabelDivText'>" + folderData.folder + "</p>");
+        folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
         folderLine.append(folderLabelDiv);
+
 
         $("#folderTable").append(folderLine);
     }; 
