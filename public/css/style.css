@@ -117,7 +117,7 @@ header {
     height: 50px;
 }
 
-.folderList:hover {
+.folderList:hover , .AllBookmarks:hover {
     background-color: #3d444b;
 }
 
