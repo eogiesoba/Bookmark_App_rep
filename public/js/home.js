@@ -86,7 +86,12 @@ $(document).ready(function () {
 
     //keyup to search bookmarks by text input
 
-    document.getElementById("searchBookmarks").addEventListener("keyup", function(){
+    // document.getElementById("searchBookmarks").addEventListener("keyup", function(){
+    
+    document.getElementById("searchBookmarks").addEventListener("keypress", function(e){
+        var key = e.which || e.keyCode;
+        console.log("key", key);
+        if (key === 13) {
         var input, window, bMark, x;
         input = document.getElementById("searchBookmarks").value.toUpperCase();
         window = document.getElementById("bookmarksDisplay");
@@ -100,6 +105,8 @@ $(document).ready(function () {
                bMark[i].style.display = "none";
             }
         }
+    }
+
     })
 
     //on-click to delete a folder
