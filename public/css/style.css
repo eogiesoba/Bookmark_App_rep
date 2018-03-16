@@ -31,6 +31,12 @@ header {
     margin-top: 20px;
 }
 
+#page-content-wrapper {
+    width: 365vh;
+    position: absolute;
+    padding: 15px;
+}
+
 .userLabel {
     text-align: center;
 }
