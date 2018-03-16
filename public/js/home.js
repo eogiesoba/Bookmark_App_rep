@@ -92,12 +92,13 @@ $(document).ready(function () {
         var key = e.which || e.keyCode;
         console.log("key", key);
         if (key === 13) {
+            e.preventDefault();
         var input, window, bMark, x;
         input = document.getElementById("searchBookmarks").value.toUpperCase();
         window = document.getElementById("bookmarksDisplay");
         bMark = window.getElementsByClassName("bmBox");
         for (var i = 0; i < bMark.length; i++) {
-            e.preventDefault();
+            // e.preventDefault();
             x = bMark[i].getElementsByClassName("bmTitleDiv")[0];
             if (x.innerHTML.toUpperCase().indexOf(input) > -1) {
                bMark[i].style.display = "";
