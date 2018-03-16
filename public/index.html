@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="images/bookmark.png" type="image/png" sizes="16x16" />    
-    
+    <link rel="icon" href="images/bookmark.png" type="image/png" sizes="16x16" />
+
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -29,7 +29,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav" id="sidebar">
                 <li class="sidebar-brand">
-                   Bookmarks Bar
+                    Bookmarks Bar
                 </li>
                 <li>
                     <div class="form-group">
@@ -41,21 +41,21 @@
                         <button type="submit" class="btn btn-primary btn-sm" id="folderSubmitBtn">Submit Folder</button>
                     </div>
                 </li>
-                
-            <div class="folder-sidebar" id="listOfFolders">
 
-                <li>
-                    <div class="AllBookmarks" id="allBookmarksSearch" folderId="0">All Bookmarks</div>
-                </li>
+                <div class="folder-sidebar" id="listOfFolders">
 
-                <li>
-                    <div class="AllBookmarks"  id="folderIDNull" folderId="Is Null">No Folder Assigned</div>
-                </li>
+                    <li>
+                        <div class="AllBookmarks" id="allBookmarksSearch" folderId="0">All Bookmarks</div>
+                    </li>
 
-                <div id="folderTable">
+                    <li>
+                        <div class="AllBookmarks" id="folderIDNull" folderId="Is Null">No Folder Assigned</div>
+                    </li>
 
+                    <div id="folderTable">
+
+                    </div>
                 </div>
-            </div>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -64,23 +64,23 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row header">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 emailForm">
                         <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Folder Bar</a>
                     </div>
                     <div class="col-sm-8 emailForm">
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks"/>
+                                <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" />
                             </div>
                         </form>
                     </div>
-                   <!-- <div class="col-sm-1 loginButton">
+                    <!-- <div class="col-sm-1 loginButton">
                         <button type="button" class="btn btn-primary bpBtn" id="returnUserButton">Login</button>
                     </div> -->
                     <!-- <div class="col-sm-4 col-sm-offset-1">
                         <div class="form-group"> -->
-                        <!-- <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" /> -->
-                        <!-- </div>
+                    <!-- <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" /> -->
+                    <!-- </div>
                     </div> -->
                     <div class="col-sm-2 UserSignIn">
                         <p id="userEmail"></p>
@@ -105,28 +105,24 @@
 
                 <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Logging In</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Login In <i class="fas fa-book"></i></h5>
+                            </div>
+                            <div class="modal-body">
+                                <p class="loginP">You are about to log into the Bookmark App. Please click 'Login' if your email is shown.
+                                    If it is not correct, please change it to your email. </p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="modaluserName" placeholder="Email Address">
+                                <p id="warning_mssg"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary bpBtn" id="returnUserButtonModal">Login</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                          <p>You are about to log into the Bookmark App. Please click 'Login' if your email is shown. If it is not correct, please change it to your email. </p>
-                        </div>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Email:</label>
-                            <input type="text" class="form-control" id="modaluserName">
-                            <p id="warning_mssg"></p>
-                          </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary bpBtn" id="returnUserButtonModal">Login</button>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
 
 
 
@@ -144,7 +140,7 @@
             $("#wrapper").toggleClass("toggled");
         });
 
-        
+
     </script>
 
 
