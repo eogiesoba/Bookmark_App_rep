@@ -321,7 +321,7 @@ $(document).ready(function () {
         var folderLine = $("<div>");
         folderLine.addClass("row");
         folderLine.addClass("folderList");
-        folderLine.append("<img src='../images/Search.svg' />");
+        folderLine.append("<img class='searchImg' src='../images/Search.svg' />");
         // folderLine.attr("foldername", folderData.folder);
         folderLine.attr("folderId", folderData.id);
         folderLine.attr("userNo", folderData.UserId);
