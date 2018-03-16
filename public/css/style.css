@@ -32,9 +32,13 @@ header {
 }
 
 #page-content-wrapper {
-    width: 365vh;
+    width: 180vh;
     position: absolute;
     padding: 15px;
+}
+
+.WidthChange{
+    width: 150vh;
 }
 
 .userLabel {
