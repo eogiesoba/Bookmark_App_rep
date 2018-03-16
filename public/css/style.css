@@ -31,15 +31,17 @@ header {
     margin-top: 20px;
 }
 
-#page-content-wrapper {
+.page-content-wrapper {
     width: 180vh;
     position: absolute;
     padding: 15px;
 }
 
-/* .WidthChange{
+.WidthChange{
     width: 150vh;
-} */
+    position: absolute;
+    padding: 15px;
+}
 
 .userLabel {
     text-align: center;
