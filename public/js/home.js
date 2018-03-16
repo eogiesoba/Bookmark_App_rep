@@ -84,6 +84,13 @@ $(document).ready(function () {
 
     });
 
+    document.getElementById('addFolder').addEventListener("keypress", function(e){
+        var key = e.which || e.keyCode;
+        if (key === 13) {
+            e.preventDefault();
+        }
+    });
+
     //keyup to search bookmarks by text input
 
     document.getElementById("searchBookmarks").addEventListener("keyup", function() {
