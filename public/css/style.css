@@ -31,6 +31,18 @@ header {
     margin-top: 20px;
 }
 
+.page-content-wrapper {
+    width: 180vh;
+    position: absolute;
+    padding: 15px;
+}
+
+.WidthChange{
+    width: 150vh;
+    position: absolute;
+    padding: 15px;
+}
+
 .userLabel {
     text-align: center;
 }
@@ -105,7 +117,7 @@ header {
     height: 50px;
 }
 
-.folderList:hover {
+.folderList:hover , .AllBookmarks:hover {
     background-color: #3d444b;
 }
 
