@@ -55,7 +55,7 @@ header {
     margin: 0px;
 }
 #newUserButton, #logoffButton {
-    background-color: orange;
+    background-color: #004085;;
     width: 40%;
     font-size: 15px;
     border-radius:6px;
