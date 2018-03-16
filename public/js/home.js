@@ -61,7 +61,6 @@ $(document).ready(function () {
         localStorage.setItem("BookmarkUserEmail", email);
         console.log(email);
         validateUser();
-        renderFolders();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log("x from the modal login", x);
         UserloginRender();
@@ -158,7 +157,6 @@ $(document).ready(function () {
             console.log("Your bookmark has been updated!");
             clearDiv();
             validateUser();
-            renderFolders();
         });
     };
 
@@ -173,6 +171,7 @@ $(document).ready(function () {
                 if (userEmail === email) {
                     userID = data[i].id;
                     getBNF_Tables(userID);
+                    renderFolders();
                     $('#exampleModal').modal('hide');
                     // hideModel();
                     break;//This will end the loop when a userID match is found!
