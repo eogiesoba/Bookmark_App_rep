@@ -288,5 +288,6 @@ header {
 }
 .modal{
     color: linear-gradient(to bottom, rgb(4, 65, 151), rgb(2, 12, 146));
+    text-align: center;
 }
 
