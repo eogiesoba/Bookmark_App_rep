@@ -50,10 +50,7 @@ header {
 }
 
 
-#userEmail{
-    color: #fff;
-    margin: 0px;
-}
+
 #newUserButton, #logoffButton {
     background-color: #004085;;
     width: 40%;

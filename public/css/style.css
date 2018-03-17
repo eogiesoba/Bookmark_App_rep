@@ -27,12 +27,9 @@ html, body{
     margin-top: 5%;
 }
 
-
-#returnUserButton {
-    background-color: rgb(4, 140, 21);
-    margin-top: 23%;
-    font-size: 16px;
-    border-radius: 6px;
+#userEmail{
+    color: #fff;
+    margin: 0px;
 }
 
 #searchBookmarks {
