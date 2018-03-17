@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     //drag and drop for folder assignment
     document.drag = function (ev) {
-        var x = ev.target.getAttribute("id");
+        var x = ev.target.getAttribute("folderId");
         ev.dataTransfer.setData("text", x);
     }
 
@@ -321,7 +321,7 @@ $(document).ready(function () {
 
         var deleteFolderBtn = $("<button> - </button>");
         deleteFolderBtn.addClass("deleteFolderBtn");
-        deleteFolderBtn.attr("folderid", folderData.id);
+        deleteFolderBtn.attr("folderId", folderData.id);
 
         folderLine.append(deleteFolderBtn);
         folderLine.append(folderLabelDiv);
