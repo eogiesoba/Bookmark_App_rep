@@ -1,96 +1,154 @@
 
-/* Chrome Extension */
+/* Bookmarks HTML Main Content */
 
-/* html, body{
+html, body{
     width: 400px;
     height: 100%;
     background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
     font-family: 'Lato', sans-serif;
 }
 
-.btn-primary:hover {
-    transform: scale(1.1, 1.1);
+.header {
+  background-color: rgb(4, 0, 34);
+  margin: 0 auto;
+  padding: 0.8%;
 }
 
-h3 {
-    color:whitesmoke;
-    font-size: 25px;
-    text-align: center;
-    margin-top: 20px; 
+#menu-toggle {
+    margin-top: 9% 10%;
+    border-radius: 6px;
 }
 
-header {
-    background-color: transparent;
-    height: auto;
-}
-#header_div{
-    color:whitesmoke;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 20px;
-}
-.page-content-wrapper {
-    width: 180vh;
-    position: absolute;
-    padding: 0px 15px;
-}  
-
-.WidthChange{
-    width: 150vh;
-    position: absolute;
-    padding: 0px 15px;
-}
-
-.userLabel {
-    text-align: center;
-}
-
-#userName, #newBMTitle {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-/* 
-.sidebar-brand {
-    background-color: transparent;
-    margin: 0 2%;
-    color: #eee;;
-} */
-/* 
-#userEmail{
-    color: #fff;
-    margin: 0px;
-}
-#newUserButton, #logoffButton {
-    background-color: #004085;;
-    width: 40%;
-    font-size: 15px;
-    border-radius:6px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-}
-
-#homeBookmark {
-    background-color: transparent;
-    border-radius: 12px;
-    margin: 0 auto;
-}
-
-
-.bookmarkButton {
+.emailForm {
     margin: auto;
 }
 
-#addBookmark {
-    background-color: transparent;
-    border-radius: 12px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-} */
+#userName {
+    margin-top: 5%;
+}
 
+
+#returnUserButton {
+    background-color: rgb(4, 140, 21);
+    margin-top: 23%;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+#searchBookmarks {
+    margin-top: 2% 8%;
+}
+
+#searchBookmarksBtn {
+    margin-top: 25%;
+    margin-left: -10px;
+}
+
+
+.main {
+    background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url("../images/bookshelf.jpeg");
+    background-position: center center;
+    background-size: cover;
+    vertical-align: middle;
+    height: 700px;
+    overflow-y: scroll;
+    margin-left: 4%;
+}
+
+.bmBox {
+    height: 330px;
+    background: linear-gradient(to bottom, #40a5fb8a, #000b40);
+    margin-top: 2%;
+    margin-left: 2%;
+    border-radius: 3px;
+    border: 2px solid rgb(35, 33, 139);
+    box-shadow: 5px 10px 6px rgb(24, 24, 24);
+    transition: all 0.3s ease-in-out;
+    color: white;
+}
+
+.bmBox:hover {
+    transform: scale(1.10, 1.10);
+    }
+
+.bmTitleDiv {
+    margin: 5% 0% 5% 0%;
+    height: 100px;
+    border-radius: 5px;
+    text-align: center;
+    overflow: auto;
+}
+
+.bmTitle{
+    font-size: 20px;
+}
+
+.btnStyle {
+    background: linear-gradient(to bottom, rgb(95, 148, 223), rgb(7, 96, 223));
+    margin: 5% 0% 5% 0%;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.urlBtn {
+    background-color: whitesmoke;
+    height: 80%;
+    width: 60%;
+    font-size: 19px;
+    margin-top: 3%;
+    margin-left: 20%;
+
+}
+
+.garbageBtn {
+    margin: 0 auto;
+}
+
+.bmFolderDiv {
+    margin: 5% 0% 5% 0%;
+    vertical-align: middle;
+    height: 80px;
+    border-radius: 5px;
+    border: #ffffff69 1px solid;
+    text-align: center;
+    overflow: auto;
+}
+
+.deleteStyle {
+    background: linear-gradient(to bottom, rgb(189, 52, 2), rgb(64, 18, 1));
+    margin: 5% 0% 5% 0%;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+}
+.deleteStyle:hover {
+    cursor: pointer;
+}
+
+.deleteFolderBtn{
+    background: rgba(255, 255, 255, 0);
+    padding: 0 3%;
+    margin-left: 2%;
+    border: 0px white solid;
+    color: white;
+    border-radius: 5px;
+}
+.deleteFolderBtn:hover {
+    cursor: pointer;
+    background: rgba(255, 0, 0, 0.603);
+}
+
+.folderList, .AllBookmarks {
+    color: whitesmoke;
+    font-size: 20px;
+    text-align: center;
+}
+.folderList{
+    margin-bottom: 2%;
+}
+.AllBookmarks {
+    border-radius: 5px;
+}
 
 /* Bookmarkts HTML SideBar */
 
@@ -181,163 +239,6 @@ header {
     width: 20px;
 }
 
-
-/* Bookmarks HTML Main Content */
-
-html, body{
-    width: 400px;
-    height: 100%;
-    background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
-    font-family: 'Lato', sans-serif;
-}
-
-.header {
-  background-color: rgb(4, 0, 34);
-  margin: 0 auto;
-  padding: 0.8%;
-}
-
-#menu-toggle {
-    margin-top: 9% 10%;
-    border-radius: 6px;
-}
-
-.emailForm {
-    margin: auto;
-}
-
-#userName {
-    margin-top: 5%;
-}
-
-/* .loginButton {
-    margin-left: 0px;
-    padding-left: 0px;
-} */
-
-#returnUserButton {
-    background-color: rgb(4, 140, 21);
-    margin-top: 23%;
-    font-size: 16px;
-    border-radius: 6px;
-}
-
-#searchBookmarks {
-    margin-top: 2% 8%;
-}
-
-#searchBookmarksBtn {
-    margin-top: 25%;
-    margin-left: -10px;
-}
-
-
-.main {
-    background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url("../images/bookshelf.jpeg");
-    background-position: center center;
-    background-size: cover;
-    vertical-align: middle;
-    height: 700px;
-    overflow-y: scroll;
-    margin-left: 4%;
-}
-
-.bmBox {
-    height: 330px;
-    background: linear-gradient(to bottom, #40a5fb8a, #000b40);
-    margin-top: 2%;
-    margin-left: 2%;
-    border-radius: 3px;
-    border: 2px solid rgb(35, 33, 139);
-    box-shadow: 5px 10px 6px rgb(24, 24, 24);
-    transition: all 0.3s ease-in-out;
-    color: white;
-}
-
-.bmBox:hover {
-    transform: scale(1.10, 1.10);
-    }
-
-.bmTitleDiv {
-    margin: 5% 0% 5% 0%;
-    height: 100px;
-    border-radius: 5px;
-    text-align: center;
-    overflow: auto;
-}
-
-.bmTitle{
-    font-size: 20px;
-}
-
-.btnStyle {
-    background: linear-gradient(to bottom, rgb(95, 148, 223), rgb(7, 96, 223));
-    margin: 5% 0% 5% 0%;
-    height: 60px;
-    border-radius: 5px;
-    /* margin: 0 auto; */
-}
-
-.urlBtn {
-    background-color: whitesmoke;
-    height: 80%;
-    width: 60%;
-    font-size: 19px;
-    margin-top: 3%;
-    margin-left: 20%;
-
-}
-
-.garbageBtn {
-    margin: 0 auto;
-}
-
-.bmFolderDiv {
-    margin: 5% 0% 5% 0%;
-    vertical-align: middle;
-    height: 80px;
-    border-radius: 5px;
-    border: #ffffff69 1px solid;
-    text-align: center;
-    overflow: auto;
-}
-
-.deleteStyle {
-    background: linear-gradient(to bottom, rgb(189, 52, 2), rgb(64, 18, 1));
-    margin: 5% 0% 5% 0%;
-    height: 40px;
-    border-radius: 5px;
-    text-align: center;
-}
-.deleteStyle:hover {
-    cursor: pointer;
-}
-
-.deleteFolderBtn{
-    background: rgba(255, 255, 255, 0);
-    padding: 0 3%;
-    margin-left: 2%;
-    border: 0px white solid;
-    color: white;
-    border-radius: 5px;
-}
-.deleteFolderBtn:hover {
-    cursor: pointer;
-    background: rgba(255, 0, 0, 0.603);
-}
-
-.folderList, .AllBookmarks {
-    color: whitesmoke;
-    font-size: 20px;
-    text-align: center;
-}
-.folderList{
-    margin-bottom: 2%;
-}
-.AllBookmarks {
-    border-radius: 5px;
-}
-
 /* Bookmarks HTML Footer */
 
 .footer {
@@ -360,9 +261,11 @@ html, body{
 
 
 /* Modal Styling */
+
 .warning_mssg {
     color: red;
 }
+
 .modal-content {
     position: relative;
     display: -webkit-box;
@@ -374,12 +277,10 @@ html, body{
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    /* background-color: #0360c3; */
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: .3rem;
     outline: 0;
-    /* background: linear-gradient(to right, red , yellow); */
     background: linear-gradient(#053cb7, #05247d);
     color: white;
     padding: 5% 0% 10%;
