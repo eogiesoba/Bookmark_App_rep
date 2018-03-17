@@ -54,7 +54,7 @@ Once you have loaded and clicked the Bookmark_Extension icon, the following wind
 
 ![Bookmark_Extension Open Window](public/images/Chrome_ExtensionInitial.png)
 
-
+\
 You will need to:
 
 1) Input your Gmail address - This register's your email to our database. It becomes your login going forward. Your email will be saved so you should not have to re-enter it into this page. 
@@ -115,18 +115,24 @@ At this time, we are not able to import your existing Chrome folders. All bookma
 
 ![ New Folder](public/images/CreateFolder.png)
 
-
+\
 Once folder have been created, you can assign them to bookmarks by dragging the line of the folder over into the folder section on the bookmark. 
 
 
 
 ![Folder Assign](public/images/FolderAssign.png)
 
-
-To search by a particular folder, just click on the name and all the folders will that designation will appear in the window.
+\
+To search by a particular folder, just click on the name and all the folders with that designation will appear in the window.
 
 ![Folder Search](public/images/FolderSearch.png)
 
+\
+To delete a folder, click on the "-" sign to the left of the folder name. You will get an alert that will inform you that deleting a folder will also delete all of its associated bookmarks. If you do not wish to delete the bookmarks, you will have to reassign them to a different folder. 
+
+![Folder Delete](public/images/FolderDelete.png)
+
+\
 That is all there is too it. Enjoy using our Bookmark_Extension.
 
 
