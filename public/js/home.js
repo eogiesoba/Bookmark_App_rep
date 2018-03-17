@@ -47,7 +47,6 @@ $(document).ready(function () {
     }
 
     function UserloginRender() {
-
         document.getElementById("userEmail").innerHTML = "";
         document.getElementById("userEmail").append("Logged In: " + email);
     }
@@ -63,7 +62,6 @@ $(document).ready(function () {
         validateUser();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
         console.log("x from the modal login", x);
-        UserloginRender();
     });
 
     //click to create new folder
@@ -186,6 +184,7 @@ $(document).ready(function () {
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id;
+                    UserloginRender();
                     getBNF_Tables(userID);
                     renderFolders();
                     $('#exampleModal').modal('hide');
