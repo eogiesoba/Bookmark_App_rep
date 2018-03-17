@@ -1,4 +1,4 @@
-# Bookmark_Extension
+# Bookmark Extension
 
 <https://chrome-bookmark-app.herokuapp.com/> \
 Version 1.0 \
@@ -8,12 +8,12 @@ Contributors: Efosa Ogiesoba, Faizan Salman & Susan Lippa
 \
 #Purpose
 
-Bookmark_Extension is an application that makes a database copy of your Google Chrome bookmarks and then renders them in a personal library.  From the library you can search for a Bookmark by its title, access a bookmark's web page,  create folders, assign the folders to the bookmarks and sort them accordingly.  
+Bookmark Extension is an application that makes a database copy of your Google Chrome bookmarks and then renders them in a personal library.  From the library you can search for a Bookmark by its title, access a bookmark's web page,  create folders, assign the folders to the bookmarks and sort them accordingly.  
 
 
 # Getting Started
 
-In order to use the Bookmark_Extension, you will need to install our Chrome extension.
+In order to use the Bookmark Extension, you will need to install our Chrome extension.
 
 Until we publish on the Chrome Extension Store, you will need to clone our Github repository to your desktop.
 
@@ -32,7 +32,7 @@ Using the Finder, navigate to the repository file and click "Select".
 The Bookmark Extension will be loaded onto you Extension list and the Bookmark Extension icon will appear next to your Chrome search bar. 
 
 
-![Bookmark_Extension Icon](public/images/ChromeExtIcon.png)
+![Bookmark Extension Icon](public/images/ChromeExtIcon.png)
 
 
 Click the icon and you are on your way.
@@ -44,15 +44,15 @@ Click the icon and you are on your way.
 #Login
 
 \
-To start, click the Bookmark_Extension icon located in the upper right-hand corner of your Chrome Window.
+To start, click the Bookmark Extension icon located in the upper right-hand corner of your Chrome Window.
 
-![Bookmark_Extension Icon](public/images/ChromeExtIcon.png)
+![Bookmark Extension Icon](public/images/ChromeExtIcon.png)
 
 \
-Once you have loaded and clicked the Bookmark_Extension icon, the following window will appear:
+Once you have loaded and clicked the Bookmark Extension icon, the following window will appear:
 
 
-![Bookmark_Extension Open Window](public/images/Chrome_ExtensionInitial.png)
+![Bookmark Extension Open Window](public/images/Chrome_ExtensionInitial.png)
 
 \
 You will need to:
@@ -61,10 +61,10 @@ You will need to:
 
 2) Click the 'Register/Login' button - This downloads your bookmarks into our database.
 
-3) Click the 'To Bookmark Home' button - This will take you to your Bookmark_Extension library.
+3) Click the 'To Bookmark Home' button - This will take you to your Bookmark Extension library.
 
 
-![Bookmark_Extension Window](public/images/Chrome_ExtensionRegister.png)
+![Bookmark Extension Window](public/images/Chrome_ExtensionRegister.png)
 
 \
 When the 'To Bookmark Home' button is clicked, the following modal will appear. We ask you to input the same email that you used to register on the Chrome extension page. This allows us to link the bookmarks that were downloaded to the display you are about to see.
@@ -77,7 +77,7 @@ When the 'To Bookmark Home' button is clicked, the following modal will appear. 
 #Bookmarks
 
 \
-From the modal login, you will be taken to the main Bookmark_Extension homepage. Here you will see a rendering of all your bookmarks. Each bookmark is comprised of 4 sections: the title, the link the web page, the folder section and the delete section. 
+From the modal login, you will be taken to the main Bookmark Extension homepage. Here you will see a rendering of all your bookmarks. Each bookmark is comprised of 4 sections: the title, the link the web page, the folder section and the delete section. 
 
 
 ![Bookmark Page](public/images/BookmarkPageFull.png)
@@ -104,7 +104,7 @@ To add a new Bookmark, first add a title for the bookmark in the form area. Then
 #Folders
 
 \
- To access the 'Folder' section of the Bookmark_Extension, click on the 'Folder Bar' button located in the upper left hand corner of the homepage. You can click on the 'Folder Bar' button again to hide the folder section. 
+ To access the 'Folder' section of the Bookmark Extension, click on the 'Folder Bar' button located in the upper left hand corner of the homepage. You can click on the 'Folder Bar' button again to hide the folder section. 
 
 
 ![Folder Bar](public/images/FolderBar.png)
@@ -133,7 +133,7 @@ To delete a folder, click on the "-" sign to the left of the folder name. You wi
 ![Folder Delete](public/images/FolderDelete.png)
 
 \
-That is all there is too it. Enjoy using our Bookmark_Extension.
+That is all there is too it. Enjoy using our Bookmark Extension.
 
 
 # Built Using
