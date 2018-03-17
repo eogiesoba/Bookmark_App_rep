@@ -119,10 +119,12 @@ header {
 
 .folderList:hover , .AllBookmarks:hover {
     background-color: #3d444b;
+    cursor: pointer;
 }
 
 .folderLabelDiv {
     margin: 0 auto;
+    display: inline-block;
 }
 
 .folderSubmitDiv {
@@ -265,6 +267,9 @@ header {
     height: 40px;
     border-radius: 5px;
     text-align: center;
+}
+.deleteStyle:hover {
+    cursor: pointer;
 }
 
 
