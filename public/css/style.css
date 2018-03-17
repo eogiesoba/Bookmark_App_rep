@@ -274,6 +274,12 @@ header {
     cursor: pointer;
 }
 
+.deleteFolderBtn{
+    background: rgba(255, 0, 0, 0.623);
+    padding: auto 5%;
+    margin-left: 2%;
+    border: 0px white solid;
+}
 
 .folderList, .AllBookmarks {
     color: whitesmoke;

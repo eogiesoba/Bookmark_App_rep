@@ -147,24 +147,6 @@ $(document).ready(function () {
     });
 
 
-
-    // document.querySelector("#listOfFolders").addEventListener('click', function(ev){
-    //     console.log("folderSortClicked");
-    //     console.log("ev", ev.target.getAttribute('folderId'));
-    //     var FolderId = ev.target.getAttribute('folderId');
-    //     var UserId = userID;
-    //     console.log("user", UserId, "folder", FolderId);
-    //         if (FolderId === "0") {
-    //             console.log( 'AllFoldersClicked');
-    //             validateUser();
-    //         } else {
-    //             console.log('FolderNameClicked', UserId, FolderId);
-    //             sortBookmarks(UserId, FolderId);
-    //         }
-        
-    // })
-
-
     function updateBookmarks(info) {
         $.ajax({
             method: "PUT",
@@ -337,9 +319,9 @@ $(document).ready(function () {
         folderLabelDiv.attr("ondragstart", "drag(event)");
         folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
 
-        var deleteFolderBtn = $("<span> - </span>");
+        var deleteFolderBtn = $("<button> - </button>");
         deleteFolderBtn.addClass("deleteFolderBtn");
-        deleteFolderBtn.attr("id", folderData.id);
+        deleteFolderBtn.attr("folderid", folderData.id);
 
         folderLine.append(deleteFolderBtn);
         folderLine.append(folderLabelDiv);
