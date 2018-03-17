@@ -296,9 +296,7 @@ header {
     font-size: 20px;
     text-align: center;
 }
-#folderTable{
-    overflow: auto;
-}
+
 .AllBookmarks {
     border-radius: 5px;
 }
