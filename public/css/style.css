@@ -112,7 +112,7 @@ header {
 
 .folderLabelDiv {
     margin: 0 auto;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .folderSubmitDiv {
