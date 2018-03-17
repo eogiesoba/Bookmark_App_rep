@@ -204,11 +204,11 @@ header {
     background-size: cover;
     vertical-align: middle;
     height: 700px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .bmBox {
-    height: 340px;
+    height: 330px;
     background: linear-gradient(to bottom, #40a5fb8a, #000b40);
     margin-top: 1%;
     margin-left: 2%;
@@ -316,6 +316,9 @@ header {
     color: whitesmoke;
     margin: 0 auto;
     margin-top: 10px;
+}
+#bookmarksDisplay {
+    width: 100%;
 }
 
 
