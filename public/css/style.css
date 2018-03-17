@@ -297,7 +297,9 @@ header {
     font-size: 20px;
     text-align: center;
 }
-
+.folderList{
+    margin-bottom: 2%;
+}
 .AllBookmarks {
     border-radius: 5px;
 }

@@ -117,8 +117,7 @@ $(document).ready(function () {
         }
     });
 
-    //on-click to delete a folder
-
+    //on-click to delete a bookmark
     $(document).on("click", "#trash", function(ev){
         console.log("garbageClicked");
         console.log("event", ev.target);
@@ -127,6 +126,22 @@ $(document).ready(function () {
         console.log("gid", id);
         deleteBookmark(id);
     });
+
+    //on-click to delete a bookmark
+    $(document).on("click", "#trash", function(ev){
+        var id = ev.target.getAttribute('folderid');
+        deleteFolder(id);
+    });
+
+    function deleteFolder(id) {
+        $.ajax({
+            method: "DELETE",
+            url: "https://chrome-bookmark-app.herokuapp.com/api/folders/" + id
+        }).then(function (data) {
+            clearDiv();
+            validateUser();
+        });  
+    }
     
 
     //on-click to sort folders by foldername
