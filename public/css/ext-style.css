@@ -1,7 +1,7 @@
 
 /* Chrome Extension */
 
-body{
+html, body{
     width: 400px;
     height: auto;
     background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
