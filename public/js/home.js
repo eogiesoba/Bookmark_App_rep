@@ -321,9 +321,9 @@ $(document).ready(function () {
         var deleteFolderBtn = $("<button> - </button>");
         deleteFolderBtn.addClass("deleteFolderBtn");
         deleteFolderBtn.attr("folderid", folderData.id);
-        
-        folderLabelDiv.append(deleteFolderBtn);
-        folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
+
+        // folderLabelDiv.append(deleteFolderBtn);
+        folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + deleteFolderBtn + folderData.folder + "</p>");
 
         folderLine.append(folderLabelDiv);
 
