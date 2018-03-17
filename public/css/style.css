@@ -1,7 +1,7 @@
 
 /* Chrome Extension */
 
-html, body{
+/* html, body{
     width: 400px;
     height: 100%;
     background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
@@ -17,7 +17,6 @@ h3 {
     font-size: 25px;
     text-align: center;
     margin-top: 20px; 
-
 }
 
 header {
@@ -30,12 +29,11 @@ header {
     text-align: center;
     margin-top: 20px;
 }
-
 .page-content-wrapper {
     width: 180vh;
     position: absolute;
     padding: 0px 15px;
-}
+}  
 
 .WidthChange{
     width: 150vh;
@@ -55,13 +53,13 @@ header {
     margin-bottom: 20px;
 }
 
-
+/* 
 .sidebar-brand {
     background-color: transparent;
     margin: 0 2%;
     color: #eee;;
-}
-
+} */
+/* 
 #userEmail{
     color: #fff;
     margin: 0px;
@@ -91,12 +89,41 @@ header {
     border-radius: 12px;
     margin: 0 auto;
     margin-bottom: 10px;
-}
+} */
 
 
 /* Bookmarkts HTML SideBar */
 
+
+.page-content-wrapper {
+    width: 180vh;
+    position: absolute;
+    padding: 0px 15px;
+}  
+
+
+.WidthChange{
+    width: 150vh;
+    position: absolute;
+    padding: 0px 15px;
+}
+
+.userLabel {
+    text-align: center;
+}
+
+#userName, #newBMTitle {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
 .sidebar-brand {
+    background-color: transparent;
+    margin: 0 2%;
+    color: #eee;
     text-align: center;
 }
 
@@ -153,6 +180,7 @@ header {
     height: 20px;
     width: 20px;
 }
+
 
 /* Bookmarks HTML Main Content */
 

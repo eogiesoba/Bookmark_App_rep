@@ -31,7 +31,7 @@ header {
     margin-top: 20px;
 }
 
-.page-content-wrapper {
+/* .page-content-wrapper {
     width: 180vh;
     position: absolute;
     padding: 15px;
@@ -41,11 +41,11 @@ header {
     width: 150vh;
     position: absolute;
     padding: 15px;
-}
+} */
 
-.userLabel {
+/* .userLabel {
     text-align: center;
-}
+} */
 
 #userName, #newBMTitle {
     width: 100%;
@@ -55,12 +55,16 @@ header {
     margin-bottom: 20px;
 }
 
+#userName {
+    margin-top: 5%;
+}
 
-.sidebar-brand {
+
+/* .sidebar-brand {
     background-color: transparent;
     margin: 0 2%;
     color: #eee;;
-}
+} */
 
 #userEmail{
     color: #fff;
@@ -96,16 +100,16 @@ header {
 
 /* Bookmarkts HTML SideBar */
 
-.sidebar-brand {
+/* .sidebar-brand {
     text-align: center;
-}
+} */
 
 .form-group {
     width: 70%;
     margin: 0 auto;
 }
 
-#folderSubmitBtn {
+/* #folderSubmitBtn {
     background-color: rgb(138, 4, 33);
     border-radius: 5px;
     border-color: rgb(138, 4, 33);
@@ -144,12 +148,12 @@ header {
 .searchImg{
     height: 20px;
     width: 20px;
-}
+} */
 
 /* Bookmarks HTML Main Content */
 
 
-.header {
+/* .header {
   background-color: rgb(4, 0, 34);
   margin: 0 auto;
   padding: 0.8%;
@@ -162,18 +166,15 @@ header {
 
 .emailForm {
     margin: auto;
-}
+} */
 
-#userName {
-    margin-top: 5%;
-}
 
 /* .loginButton {
     margin-left: 0px;
     padding-left: 0px;
 } */
 
-#returnUserButton {
+/*#returnUserButton {
     background-color: rgb(4, 140, 21);
     margin-top: 23%;
     font-size: 16px;
@@ -185,7 +186,7 @@ header {
 }
 
 #searchBookmarksBtn {
-    margin-top: 25%;
+     margin-top: 25%;
     margin-left: -10px;
 }
 
@@ -209,9 +210,9 @@ header {
     box-shadow: 5px 10px 6px rgb(24, 24, 24);
     transition: all 0.3s ease-in-out;
     color: white;
-}
+} */
 
-.bmBox:hover {
+/* .bmBox:hover {
     transform: scale(1.10, 1.10);
     }
 
@@ -232,7 +233,7 @@ header {
     margin: 5% 0% 5% 0%;
     height: 60px;
     border-radius: 5px;
-    /* margin: 0 auto; */
+    /* margin: 0 auto; 
 }
 
 .urlBtn {
@@ -243,7 +244,7 @@ header {
     margin-top: 3%;
     margin-left: 20%;
 
-}
+} 
 
 .garbageBtn {
     margin: 0 auto;
@@ -272,13 +273,13 @@ header {
     color: whitesmoke;
     font-size: 20px;
     text-align: center;
-}
+} */
 
 
 
 /* Bookmarks HTML Footer */
 
-.footer {
+/* .footer {
     width: 100%;
     margin: 0 auto;
     background-color: rgb(4, 0, 34);
@@ -291,11 +292,11 @@ header {
     color: whitesmoke;
     margin: 0 auto;
     margin-top: 10px;
-}
+} */
 
 
 /* Modal Styling */
-.warning_mssg {
+/* .warning_mssg {
     color: red;
 }
 .modal-content {
@@ -308,14 +309,14 @@ header {
     -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
-    pointer-events: auto;
+    pointer-events: auto; */
     /* background-color: #0360c3; */
-    background-clip: padding-box;
+    /* background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: .3rem;
-    outline: 0;
+    outline: 0; */
     /* background: linear-gradient(to right, red , yellow); */
-    background: linear-gradient(#053cb7, #05247d);
+    /* background: linear-gradient(#053cb7, #05247d);
     color: white;
     padding: 5% 0% 10%;
 }
@@ -358,4 +359,4 @@ header {
 }
 .loginP{
     text-align: center;
-}
+}  */
