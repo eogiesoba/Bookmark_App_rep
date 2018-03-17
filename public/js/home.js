@@ -304,7 +304,7 @@ $(document).ready(function () {
 
     function createFolderRows(folderData) {
         console.log(folderData);
-        console.log("matching folder!")
+        console.log("matching folder!");
         var folderLine = $("<div>");
         folderLine.addClass("row");
         folderLine.addClass("folderList");
@@ -319,6 +319,12 @@ $(document).ready(function () {
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
         folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
+
+        // var deleteFolderBtn = $("<button>");
+        // deleteFolderBtn.addClass("deleteFolderBtn");
+        // deleteFolderBtn.attr("id", folderData.id);
+
+        // folderLine.append(deleteFolderBtn);
         folderLine.append(folderLabelDiv);
 
 
