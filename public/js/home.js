@@ -131,7 +131,7 @@ $(document).ready(function () {
 
     //on-click to sort folders by foldername
 
-    document.querySelector("#listOfFolders").addEventListener('click', function(ev){
+    $(document).on("click", ".folderLabelDiv",".AllBookmarks", function(ev){
         console.log("folderSortClicked");
         console.log("ev", ev.target.getAttribute('folderId'));
         var FolderId = ev.target.getAttribute('folderId');
@@ -144,8 +144,25 @@ $(document).ready(function () {
                 console.log('FolderNameClicked', UserId, FolderId);
                 sortBookmarks(UserId, FolderId);
             }
+    });
+
+
+
+    // document.querySelector("#listOfFolders").addEventListener('click', function(ev){
+    //     console.log("folderSortClicked");
+    //     console.log("ev", ev.target.getAttribute('folderId'));
+    //     var FolderId = ev.target.getAttribute('folderId');
+    //     var UserId = userID;
+    //     console.log("user", UserId, "folder", FolderId);
+    //         if (FolderId === "0") {
+    //             console.log( 'AllFoldersClicked');
+    //             validateUser();
+    //         } else {
+    //             console.log('FolderNameClicked', UserId, FolderId);
+    //             sortBookmarks(UserId, FolderId);
+    //         }
         
-    })
+    // })
 
 
     function updateBookmarks(info) {
@@ -155,8 +172,8 @@ $(document).ready(function () {
             data: info
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
-            // clearDiv();
-            // validateUser();
+            clearDiv();
+            validateUser();
         });
     };
 
@@ -315,12 +332,12 @@ $(document).ready(function () {
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
-        folderLabelDiv.attr("id", folderData.id);
+        folderLabelDiv.attr("folderId", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
         folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
 
-        var deleteFolderBtn = $("<button> - </button>");
+        var deleteFolderBtn = $("<span> - </span>");
         deleteFolderBtn.addClass("deleteFolderBtn");
         deleteFolderBtn.attr("id", folderData.id);
 

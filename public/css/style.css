@@ -118,14 +118,15 @@ header {
 }
 
 .folderLabelDiv:hover , .AllBookmarks:hover {
-    background-color: #3d444b;
+    background-color: #e2e8ef3b;
     cursor: pointer;
 }
 
 .folderLabelDiv {
     margin: 0 10% 0;
     display: inline-block;
-    padding: 0 10%;
+    padding: 3% 10%;
+    border-radius: 5px;
 }
 
 .folderSubmitDiv {
@@ -279,8 +280,9 @@ header {
     font-size: 20px;
     text-align: center;
 }
-
-
+.AllBookmarks {
+    border-radius: 5px;
+}
 
 /* Bookmarks HTML Footer */
 
