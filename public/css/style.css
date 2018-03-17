@@ -123,10 +123,14 @@ header {
 }
 
 .folderLabelDiv {
-    margin: 0 10% 0 0;
+    margin: 0;
     display: inline-block;
-    padding: 3% 10%;
+    padding: 3% 8%;
     border-radius: 5px;
+    font-size: 16px;
+}
+.folderLabelDivText{
+    margin-top: 5px;
 }
 
 .folderSubmitDiv {
@@ -276,10 +280,11 @@ header {
 
 .deleteFolderBtn{
     background: rgba(255, 255, 255, 0);
-    padding: 0 5%;
+    padding: 0 3%;
     margin-left: 2%;
     border: 0px white solid;
     color: white;
+    border-radius: 5px;
 }
 .deleteFolderBtn:hover {
     cursor: pointer;
@@ -290,7 +295,6 @@ header {
     color: whitesmoke;
     font-size: 20px;
     text-align: center;
-    margin-bottom: 3%;
 }
 #folderTable{
     overflow: auto;
