@@ -123,7 +123,7 @@ Once folder have been created, you can assign them to bookmarks by dragging the 
 ![Folder Assign](public/images/FolderAssign.png)
 
 \
-To search by a particular folder, just click on the name and all the folders will that designation will appear in the window.
+To search by a particular folder, just click on the name and all the folders with that designation will appear in the window.
 
 ![Folder Search](public/images/FolderSearch.png)
 
