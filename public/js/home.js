@@ -320,7 +320,7 @@ $(document).ready(function () {
         folderLabelDiv.attr("ondragstart", "drag(event)");
         folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
 
-        var deleteFolderBtn = $("<button>");
+        var deleteFolderBtn = $("<button> - </button>");
         deleteFolderBtn.addClass("deleteFolderBtn");
         deleteFolderBtn.attr("id", folderData.id);
 
