@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     // document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
     document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
-    
+
     //Global variables
     // var userID;//This is being used in a get request
     var email;
@@ -39,20 +39,20 @@ $(document).ready(function () {
     initialLogIn();
     // console.log(chrome.extension.getBackgroundPage());
 
-    function initialLogIn(){
+    function initialLogIn() {
         console.log("modal");
         $('#exampleModal').modal({
             show: true
         });
     }
 
-    function UserloginRender(){
+    function UserloginRender() {
 
         document.getElementById("userEmail").innerHTML = "";
         document.getElementById("userEmail").append("Logged In: " + email);
     }
 
-    
+
 
     document.getElementById('returnUserButtonModal').addEventListener('click', function () {
         console.log("Works!");
@@ -83,7 +83,7 @@ $(document).ready(function () {
 
     });
 
-    document.getElementById('addFolder').addEventListener("keypress", function(e){
+    document.getElementById('addFolder').addEventListener("keypress", function (e) {
         var key = e.which || e.keyCode;
         if (key === 13) {
             e.preventDefault();
@@ -92,25 +92,25 @@ $(document).ready(function () {
 
     //keyup to search bookmarks by text input
 
-    document.getElementById("searchBookmarks").addEventListener("keyup", function() {
+    document.getElementById("searchBookmarks").addEventListener("keyup", function () {
         var input, window, bMark, x;
         input = document.getElementById("searchBookmarks").value.toUpperCase();
         window = document.getElementById("bookmarksDisplay");
         bMark = window.getElementsByClassName("bmBox");
         for (var i = 0; i < bMark.length; i++) {
-    
+
             x = bMark[i].getElementsByClassName("bmTitleDiv")[0];
             if (x.innerHTML.toUpperCase().indexOf(input) > -1) {
-               bMark[i].style.display = "";
-            } 
+                bMark[i].style.display = "";
+            }
             else {
-               bMark[i].style.display = "none";
+                bMark[i].style.display = "none";
             }
         }
 
     })
 
-    document.getElementById("searchBookmarks").addEventListener("keypress", function(e){
+    document.getElementById("searchBookmarks").addEventListener("keypress", function (e) {
         var key = e.which || e.keyCode;
         if (key === 13) {
             e.preventDefault();
@@ -118,7 +118,7 @@ $(document).ready(function () {
     });
 
     //on-click to delete a bookmark
-    $(document).on("click", "#trash", function(ev){
+    $(document).on("click", "#trash", function (ev) {
         console.log("garbageClicked");
         console.log("event", ev.target);
         console.log("ev", ev.target.getAttribute("gid"));
@@ -128,9 +128,11 @@ $(document).ready(function () {
     });
 
     //on-click to delete a bookmark
-    $(document).on("click", ".deleteFolderBtn", function(ev){
-        var id = ev.target.getAttribute('folderid');
-        deleteFolder(id);
+    $(document).on("click", ".deleteFolderBtn", function (ev) {
+        if (confirm("Warning: Folder & All associated bookmarks will be deleted. Press OK to continue.")) {
+            var id = ev.target.getAttribute('folderid');
+            deleteFolder(id);
+        }
     });
 
     function deleteFolder(id) {
@@ -140,25 +142,25 @@ $(document).ready(function () {
         }).then(function (data) {
             clearDiv();
             validateUser();
-        });  
+        });
     }
-    
+
 
     //on-click to sort folders by foldername
 
-    $(document).on("click", ".folderLabelDiv, .AllBookmarks", function(ev){
+    $(document).on("click", ".folderLabelDiv, .AllBookmarks", function (ev) {
         console.log("folderSortClicked");
         console.log("ev", ev.target.getAttribute('folderId'));
         var FolderId = ev.target.getAttribute('folderId');
         var UserId = userID;
         console.log("user", UserId, "folder", FolderId);
-            if (FolderId === "0") {
-                console.log( 'AllFoldersClicked');
-                validateUser();
-            } else {
-                console.log('FolderNameClicked', UserId, FolderId);
-                sortBookmarks(UserId, FolderId);
-            }
+        if (FolderId === "0") {
+            console.log('AllFoldersClicked');
+            validateUser();
+        } else {
+            console.log('FolderNameClicked', UserId, FolderId);
+            sortBookmarks(UserId, FolderId);
+        }
     });
 
 
@@ -190,7 +192,7 @@ $(document).ready(function () {
                     // hideModel();
                     break;//This will end the loop when a userID match is found!
                 }
-                else{
+                else {
                     document.getElementById("warning_mssg").innerHTML = "Error: User does not exist, please type in existing user";
                 }
             }
@@ -234,7 +236,7 @@ $(document).ready(function () {
             var bmTitle = bookmarkData[j].title;
             titleDiv.append(bmTitle);
             bigBMDiv.append(titleDiv);
-            
+
             var btnDiv = $("<div>");
             btnDiv.attr("delete");
             btnDiv.addClass("btnStyle");
@@ -246,7 +248,7 @@ $(document).ready(function () {
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
             folderDiv.attr("folderId", bookmarkData[j].FolderId);
-            folderDiv.attr("id", bookmarkData[j].id );
+            folderDiv.attr("id", bookmarkData[j].id);
             folderDiv.attr("ondragover", "allowDrop(event)");
             folderDiv.attr("ondrop", "drop(event)");
 
@@ -261,18 +263,18 @@ $(document).ready(function () {
                     }
                 }
                 folderDiv.html(BFN);
-            } 
+            }
             else {
                 folderDiv.append("<div class='folderNameDiv'>" + 'No Folder Assigned' + "</div");
             }
             //------------------------------------------------------------------------------
             bigBMDiv.append(folderDiv);
-            
-            
+
+
             garbageDiv = $("<div>");
             garbageDiv.addClass("row")
             garbageDiv.addClass("deleteStyle");
-            garbageDiv.append("<img class='garbageBtn' id='trash' gid='"+ bookmarkData[j].id + "' src='../images/Garbage2.png' />");
+            garbageDiv.append("<img class='garbageBtn' id='trash' gid='" + bookmarkData[j].id + "' src='../images/Garbage2.png' />");
             garbageDiv.attr("gid", bookmarkData[j].id);
             garbageDiv.attr("id", "trash");
             bigBMDiv.append(garbageDiv);
@@ -343,7 +345,7 @@ $(document).ready(function () {
 
 
         $("#folderTable").append(folderLine);
-    }; 
+    };
 
     function deleteBookmark(id) {
         console.log("in deleteBookmark function", id);
@@ -356,7 +358,7 @@ $(document).ready(function () {
             clearDiv();
             validateUser();
             renderFolders();
-        });  
+        });
     }
 
 
