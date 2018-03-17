@@ -146,12 +146,18 @@ module.exports = function (app) {
     });
   });
 
-  app.delete("/api/folders", function (req, res) {
-    // Add sequelize code to delete a post where the id is equal to req.params.id, 
-    // then return the result to the user using res.json
+  app.delete("/api/folders/:id", function (req, res) {
+    db.Bookmark.destroy({
+      where: {
+        FolderId: req.params.id
+      }
+    }).then(function(dbBookmark) {
+      res.json(dbBookmark);
+    });
+
     db.Folder.destroy({
       where: {
-        folder: req.param
+        id: req.params.id
       }
     }).then(function(dbFolder) {
       res.json(dbFolder);

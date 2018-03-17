@@ -1,9 +1,9 @@
 
 /* Chrome Extension */
 
-body{
+html, body{
     width: 400px;
-    height: auto;
+    height: 100%;
     background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
     font-family: 'Lato', sans-serif;
 }
@@ -34,13 +34,13 @@ header {
 .page-content-wrapper {
     width: 180vh;
     position: absolute;
-    padding: 15px;
+    padding: 0px 15px;
 }
 
 .WidthChange{
     width: 150vh;
     position: absolute;
-    padding: 15px;
+    padding: 0px 15px;
 }
 
 .userLabel {
@@ -117,12 +117,20 @@ header {
     height: 50px;
 }
 
-.folderList:hover , .AllBookmarks:hover {
-    background-color: #3d444b;
+.folderLabelDiv:hover , .AllBookmarks:hover {
+    background-color: #e2e8ef3b;
+    cursor: pointer;
 }
 
 .folderLabelDiv {
-    margin: 0 auto;
+    margin: 0;
+    display: inline-block;
+    padding: 3% 8%;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.folderLabelDivText{
+    margin-top: 5px;
 }
 
 .folderSubmitDiv {
@@ -196,13 +204,14 @@ header {
     background-size: cover;
     vertical-align: middle;
     height: 700px;
-    overflow: scroll;
+    overflow-y: scroll;
+    margin-left: 4%;
 }
 
 .bmBox {
-    height: 340px;
+    height: 330px;
     background: linear-gradient(to bottom, #40a5fb8a, #000b40);
-    margin-top: 1%;
+    margin-top: 2%;
     margin-left: 2%;
     border-radius: 3px;
     border: 2px solid rgb(35, 33, 139);
@@ -266,15 +275,34 @@ header {
     border-radius: 5px;
     text-align: center;
 }
+.deleteStyle:hover {
+    cursor: pointer;
+}
 
+.deleteFolderBtn{
+    background: rgba(255, 255, 255, 0);
+    padding: 0 3%;
+    margin-left: 2%;
+    border: 0px white solid;
+    color: white;
+    border-radius: 5px;
+}
+.deleteFolderBtn:hover {
+    cursor: pointer;
+    background: rgba(255, 0, 0, 0.603);
+}
 
 .folderList, .AllBookmarks {
     color: whitesmoke;
     font-size: 20px;
     text-align: center;
 }
-
-
+.folderList{
+    margin-bottom: 2%;
+}
+.AllBookmarks {
+    border-radius: 5px;
+}
 
 /* Bookmarks HTML Footer */
 
@@ -291,6 +319,9 @@ header {
     color: whitesmoke;
     margin: 0 auto;
     margin-top: 10px;
+}
+#bookmarksDisplay {
+    width: 100%;
 }
 
 
