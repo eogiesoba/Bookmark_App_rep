@@ -128,7 +128,7 @@ $(document).ready(function () {
     });
 
     //on-click to delete a bookmark
-    $(document).on("click", "#trash", function(ev){
+    $(document).on("click", ".deleteFolderBtn", function(ev){
         var id = ev.target.getAttribute('folderid');
         deleteFolder(id);
     });
