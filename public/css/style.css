@@ -1,9 +1,9 @@
 
 /* Chrome Extension */
 
-body{
+html, body{
     width: 400px;
-    height: auto;
+    height: 100%;
     background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
     font-family: 'Lato', sans-serif;
 }
@@ -205,6 +205,7 @@ header {
     vertical-align: middle;
     height: 700px;
     overflow-y: scroll;
+    margin-left: 4%;
 }
 
 .bmBox {
