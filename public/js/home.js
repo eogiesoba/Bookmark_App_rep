@@ -131,7 +131,7 @@ $(document).ready(function () {
 
     //on-click to sort folders by foldername
 
-    $(document).on("click", ".folderLabelDiv .AllBookmarks", function(ev){
+    $(document).on("click", ".folderLabelDiv, .AllBookmarks", function(ev){
         console.log("folderSortClicked");
         console.log("ev", ev.target.getAttribute('folderId'));
         var FolderId = ev.target.getAttribute('folderId');
