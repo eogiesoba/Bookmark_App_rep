@@ -317,14 +317,13 @@ $(document).ready(function () {
         folderLabelDiv.attr("folderId", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
+        folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
 
         var deleteFolderBtn = $("<button> - </button>");
         deleteFolderBtn.addClass("deleteFolderBtn");
         deleteFolderBtn.attr("folderid", folderData.id);
 
-        // folderLabelDiv.append(deleteFolderBtn);
-        folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + deleteFolderBtn + folderData.folder + "</p>");
-
+        folderLine.append(deleteFolderBtn);
         folderLine.append(folderLabelDiv);
 
 
