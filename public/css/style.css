@@ -34,13 +34,13 @@ header {
 .page-content-wrapper {
     width: 180vh;
     position: absolute;
-    padding: 15px;
+    padding: 0px 15px;
 }
 
 .WidthChange{
     width: 150vh;
     position: absolute;
-    padding: 15px;
+    padding: 0px 15px;
 }
 
 .userLabel {
