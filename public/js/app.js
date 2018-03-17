@@ -1,4 +1,4 @@
-var userID;
+var userID = 1;
 
 $(document).ready(function () {
 
@@ -181,6 +181,7 @@ $(document).ready(function () {
             console.log("You imported all Bookmarks!");
         });
     }
+
     //GET for getting a single bookmark
     function getBookmarks() {
         $.ajax({

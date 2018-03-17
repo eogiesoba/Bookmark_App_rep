@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     //drag and drop for folder assignment
     document.drag = function (ev) {
-        var x = ev.target.getAttribute("id");
+        var x = ev.target.getAttribute("folderID");
         ev.dataTransfer.setData("text", x);
     }
 
@@ -231,8 +231,7 @@ $(document).ready(function () {
 
             var folderDiv = $("<div>");
             folderDiv.addClass("bmFolderDiv");
-            folderDiv.attr("folderId", bookmarkData[j].FolderId);
-            folderDiv.attr("id", bookmarkData[j].id );
+            folderDiv.attr("folderid", bookmarkData[j].id);
             folderDiv.attr("ondragover", "allowDrop(event)");
             folderDiv.attr("ondrop", "drop(event)");
 
@@ -249,7 +248,7 @@ $(document).ready(function () {
                 folderDiv.html(BFN);
             } 
             else {
-                folderDiv.append("<div class='folderNameDiv'>" + 'No Folder Assigned' + "</div");
+                folderDiv.append("<div class='folderNameDiv'>" + 'Assign a Folder' + "</div");
             }
             //------------------------------------------------------------------------------
             bigBMDiv.append(folderDiv);
@@ -315,7 +314,7 @@ $(document).ready(function () {
         folderLabelDiv.addClass("folderLabelDiv");
         folderLabelDiv.attr("userID", folderData.UserId);
         folderLabelDiv.attr("folderName", folderData.folder);
-        folderLabelDiv.attr("id", folderData.id);
+        folderLabelDiv.attr("folderID", folderData.id);
         folderLabelDiv.attr("draggable", true);
         folderLabelDiv.attr("ondragstart", "drag(event)");
         folderLabelDiv.append("<p class='folderLabelDivText' folderId='" + folderData.id + "' >" + folderData.folder + "</p>");
@@ -326,8 +325,6 @@ $(document).ready(function () {
 
         // folderLine.append(deleteFolderBtn);
         folderLine.append(folderLabelDiv);
-
-
         $("#folderTable").append(folderLine);
     }; 
 
@@ -367,8 +364,6 @@ $(document).ready(function () {
         });
     };
 
-
-
     function clearDiv() {
         $(".bmBox").remove();
         $(".folderList").remove();
@@ -377,7 +372,6 @@ $(document).ready(function () {
 
 
 });
-
 
 
 
