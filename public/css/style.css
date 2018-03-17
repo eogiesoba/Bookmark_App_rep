@@ -117,14 +117,15 @@ header {
     height: 50px;
 }
 
-.folderList:hover , .AllBookmarks:hover {
+.folderLabelDiv:hover , .AllBookmarks:hover {
     background-color: #3d444b;
     cursor: pointer;
 }
 
 .folderLabelDiv {
-    margin: 0 auto;
+    margin: 0 10% 0;
     display: inline-block;
+    padding: 0 10%;
 }
 
 .folderSubmitDiv {

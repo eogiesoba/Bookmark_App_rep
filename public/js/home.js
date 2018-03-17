@@ -155,8 +155,8 @@ $(document).ready(function () {
             data: info
         }).then(function (data) {
             console.log("Your bookmark has been updated!");
-            clearDiv();
-            validateUser();
+            // clearDiv();
+            // validateUser();
         });
     };
 
