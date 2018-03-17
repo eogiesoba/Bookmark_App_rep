@@ -35,28 +35,27 @@ header {
     text-align: center;
 }
 
-#userName, #newBMTitle, #newBMURL {
-    width: 90%;
+#userName, #newBMTitle {
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-#bookmarkWidow {
-    background-color: slategray;
-    border-radius: 12px;
-    margin: 0 auto;
-    text-align: center;
-}
 
-a {
+.sidebar-brand {
     background-color: transparent;
-    margin: 0 auto;
+    margin: 0 2%;
+    color: #eee;;
 }
 
+#userEmail{
+    color: #fff;
+    margin: 0px;
+}
 #newUserButton, #logoffButton {
-    background-color: orange;
+    background-color: #004085;;
     width: 40%;
     font-size: 15px;
     border-radius:6px;
@@ -72,7 +71,7 @@ a {
 
 
 .bookmarkButton {
-    margin-bottom: 5px;
+    margin: auto;
 }
 
 #addBookmark {
@@ -82,13 +81,6 @@ a {
     margin-bottom: 10px;
 }
 
-#newURLSubmit {
-    background-color:rgb(4, 140, 21);;
-    font-size: 15px;
-    border-radius:6px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-}
 
 /* Bookmarkts HTML SideBar */
 
@@ -97,53 +89,79 @@ a {
 }
 
 .form-group {
-    width: 100%;
+    width: 70%;
     margin: 0 auto;
 }
 
 #folderSubmitBtn {
-    background-color: slategray;
-    border-radius: 6px;
-    width: 40%;
-    margin-left: 25%;
-    margin-top: 10px;
+    background-color: rgb(138, 4, 33);
+    border-radius: 5px;
+    border-color: rgb(138, 4, 33);
+    width: 70%;
+    margin: 2% auto;
 }
 
 .folderList, .AllBookmarks {
     height: 50px;
 }
 
-.folderLabelDiv {
-    margin-left: 5%;
+.folderList:hover, .AllBookmarks:hover {
+    background-color: #3d444b;
+    cursor: pointer;
 }
 
+.folderLabelDiv {
+    margin: 0 auto;
+    /* display: inline-block; */
+}
+
+.folderSubmitDiv {
+    width: 65%;
+    margin: 2% auto;
+}
+.folder-sidebar{
+    width: 80%;
+    margin: auto;
+}
+.form-control{
+    background-color: rgb(223, 242, 255);
+}
+
+.imageClass {
+    color: #0A0A0A;
+}
+
+.searchImg{
+    height: 20px;
+    width: 20px;
+}
 
 /* Bookmarks HTML Main Content */
 
 
 .header {
-  background-color: rgb(35, 33, 139);
-  border-bottom-color: black;
+  background-color: rgb(4, 0, 34);
   margin: 0 auto;
+  padding: 0.8%;
 }
 
 #menu-toggle {
-    margin-top: 10%;
+    margin-top: 9% 10%;
     border-radius: 6px;
 }
+
 .emailForm {
-    margin-right: 0px;
-    padding-right: 0px;
+    margin: auto;
 }
 
 #userName {
     margin-top: 5%;
 }
 
-.loginButton {
+/* .loginButton {
     margin-left: 0px;
     padding-left: 0px;
-}
+} */
 
 #returnUserButton {
     background-color: rgb(4, 140, 21);
@@ -153,7 +171,7 @@ a {
 }
 
 #searchBookmarks {
-    margin-top: 5%;
+    margin-top: 2% 8%;
 }
 
 #searchBookmarksBtn {
@@ -161,24 +179,26 @@ a {
     margin-left: -10px;
 }
 
+
 .main {
     background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url("../images/bookshelf.jpeg");
     background-position: center center;
     background-size: cover;
     vertical-align: middle;
-    height: 650px;
+    height: 700px;
     overflow: scroll;
 }
 
 .bmBox {
-    height: 330px;
-    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(216, 216, 216));
+    height: 340px;
+    background: linear-gradient(to bottom, #40a5fb8a, #000b40);
     margin-top: 1%;
-    margin-left: 2.5%;
+    margin-left: 2%;
     border-radius: 3px;
-    border: 2px solid rgb(35, 33, 139); 
+    border: 2px solid rgb(35, 33, 139);
     box-shadow: 5px 10px 6px rgb(24, 24, 24);
     transition: all 0.3s ease-in-out;
+    color: white;
 }
 
 .bmBox:hover {
@@ -186,12 +206,11 @@ a {
     }
 
 .bmTitleDiv {
-    background: linear-gradient(to bottom, rgb(237, 147, 115), rgb(237, 80, 22));
     margin: 5% 0% 5% 0%;
     height: 100px;
     border-radius: 5px;
     text-align: center;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .bmTitle{
@@ -217,26 +236,28 @@ a {
 }
 
 .garbageBtn {
-    font-size: 18px;
-    margin-left: 10%;
-    margin-top: 25%;
+    margin: 0 auto;
 }
 
 .bmFolderDiv {
-    background: linear-gradient(to bottom, rgb(193, 255, 103), rgb(158, 208, 84));
     margin: 5% 0% 5% 0%;
+    vertical-align: middle;
     height: 80px;
     border-radius: 5px;
+    border: #ffffff69 1px solid;
     text-align: center;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .deleteStyle {
-    background: linear-gradient(to bottom, rgb(237, 147, 115), rgb(237, 80, 22));
+    background: linear-gradient(to bottom, rgb(189, 52, 2), rgb(64, 18, 1));
     margin: 5% 0% 5% 0%;
     height: 40px;
     border-radius: 5px;
     text-align: center;
+}
+.deleteStyle:hover {
+    cursor: pointer;
 }
 
 
@@ -248,12 +269,13 @@ a {
 
 
 
+
 /* Bookmarks HTML Footer */
 
 .footer {
     width: 100%;
     margin: 0 auto;
-    background-color: rgb(35, 33, 139);
+    background-color: rgb(4, 0, 34);
     height: 50px;
     bottom: 0;
 }
@@ -266,5 +288,68 @@ a {
 }
 
 
-
-
+/* Modal Styling */
+.warning_mssg {
+    color: red;
+}
+.modal-content {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    /* background-color: #0360c3; */
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+    /* background: linear-gradient(to right, red , yellow); */
+    background: linear-gradient(#053cb7, #05247d);
+    color: white;
+    padding: 5% 0% 10%;
+}
+.modal-footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 0px solid #e9ecef00; 
+}
+.modal-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; 
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 0px solid #e9ecef00;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+    margin: auto;
+}
+.modal-dialog {
+    max-width: 500px;
+    margin: 6.75rem auto;
+}
+#returnUserButtonModal{
+    width: 75%;
+    margin: auto;
+}
+.loginP{
+    text-align: center;
+}
