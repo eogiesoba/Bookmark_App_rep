@@ -1,0 +1,79 @@
+
+/* Chrome Extension */
+
+html, body{
+    width: 400px;
+    height: auto;
+    background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
+    font-family: 'Lato', sans-serif;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1, 1.1);
+}
+
+h3 {
+    color:whitesmoke;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px; 
+
+}
+
+.form-group {
+    width: 70%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: transparent;
+    height: auto;
+}
+
+#header_div{
+    color:whitesmoke;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#userName, #newBMTitle {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#userName {
+    margin-top: 5%;
+}
+
+
+
+#newUserButton, #logoffButton {
+    background-color: #004085;;
+    width: 40%;
+    font-size: 15px;
+    border-radius:6px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+#homeBookmark {
+    background-color: transparent;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
+
+.bookmarkButton {
+    margin: auto;
+}
+
+#addBookmark {
+    background-color: transparent;
+    border-radius: 12px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}

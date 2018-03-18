@@ -1,153 +1,12 @@
 
-/* Chrome Extension */
+/* Bookmarks HTML Main Content */
 
-body{
+html, body{
     width: 400px;
-    height: auto;
+    height: 100%;
     background-image: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.6)), url("../images/bookshelf.jpeg");
     font-family: 'Lato', sans-serif;
 }
-
-.btn-primary:hover {
-    transform: scale(1.1, 1.1);
-}
-
-h3 {
-    color:whitesmoke;
-    font-size: 25px;
-    text-align: center;
-    margin-top: 20px; 
-
-}
-
-header {
-    background-color: transparent;
-    height: auto;
-}
-#header_div{
-    color:whitesmoke;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.page-content-wrapper {
-    width: 180vh;
-    position: absolute;
-    padding: 15px;
-}
-
-.WidthChange{
-    width: 150vh;
-    position: absolute;
-    padding: 15px;
-}
-
-.userLabel {
-    text-align: center;
-}
-
-#userName, #newBMTitle {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-
-.sidebar-brand {
-    background-color: transparent;
-    margin: 0 2%;
-    color: #eee;;
-}
-
-#userEmail{
-    color: #fff;
-    margin: 0px;
-}
-#newUserButton, #logoffButton {
-    background-color: #004085;;
-    width: 40%;
-    font-size: 15px;
-    border-radius:6px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-}
-
-#homeBookmark {
-    background-color: transparent;
-    border-radius: 12px;
-    margin: 0 auto;
-}
-
-
-.bookmarkButton {
-    margin: auto;
-}
-
-#addBookmark {
-    background-color: transparent;
-    border-radius: 12px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-}
-
-
-/* Bookmarkts HTML SideBar */
-
-.sidebar-brand {
-    text-align: center;
-}
-
-.form-group {
-    width: 70%;
-    margin: 0 auto;
-}
-
-#folderSubmitBtn {
-    background-color: rgb(138, 4, 33);
-    border-radius: 5px;
-    border-color: rgb(138, 4, 33);
-    width: 70%;
-    margin: 2% auto;
-}
-
-.folderList, .AllBookmarks {
-    height: 50px;
-}
-
-.folderList:hover {
-    background-color: #3d444b;
-}
-
-.folderLabelDiv {
-    margin: 0 auto;
-}
-
-.folderSubmitDiv {
-    width: 65%;
-    margin: 2% auto;
-}
-.folder-sidebar{
-    width: 80%;
-    margin: auto;
-}
-.form-control{
-    background-color: rgb(223, 242, 255);
-}
-
-.imageClass {
-    color: #0A0A0A;
-}
-
-.searchImg{
-    height: 20px;
-    width: 20px;
-}
-
-/* Bookmarks HTML Main Content */
-
 
 .header {
   background-color: rgb(4, 0, 34);
@@ -168,16 +27,9 @@ header {
     margin-top: 5%;
 }
 
-/* .loginButton {
-    margin-left: 0px;
-    padding-left: 0px;
-} */
-
-#returnUserButton {
-    background-color: rgb(4, 140, 21);
-    margin-top: 23%;
-    font-size: 16px;
-    border-radius: 6px;
+#userEmail{
+    color: #fff;
+    margin: 0px;
 }
 
 #searchBookmarks {
@@ -196,13 +48,14 @@ header {
     background-size: cover;
     vertical-align: middle;
     height: 700px;
-    overflow: scroll;
+    overflow-y: scroll;
+    margin-left: 4%;
 }
 
 .bmBox {
-    height: 340px;
+    height: 330px;
     background: linear-gradient(to bottom, #40a5fb8a, #000b40);
-    margin-top: 1%;
+    margin-top: 2%;
     margin-left: 2%;
     border-radius: 3px;
     border: 2px solid rgb(35, 33, 139);
@@ -232,7 +85,6 @@ header {
     margin: 5% 0% 5% 0%;
     height: 60px;
     border-radius: 5px;
-    /* margin: 0 auto; */
 }
 
 .urlBtn {
@@ -266,15 +118,123 @@ header {
     border-radius: 5px;
     text-align: center;
 }
+.deleteStyle:hover {
+    cursor: pointer;
+}
 
+.deleteFolderBtn{
+    background: rgba(255, 255, 255, 0);
+    padding: 0 3%;
+    margin-left: 2%;
+    border: 0px white solid;
+    color: white;
+    border-radius: 5px;
+}
+.deleteFolderBtn:hover {
+    cursor: pointer;
+    background: rgba(255, 0, 0, 0.603);
+}
 
 .folderList, .AllBookmarks {
     color: whitesmoke;
     font-size: 20px;
     text-align: center;
 }
+.folderList{
+    margin-bottom: 2%;
+}
+.AllBookmarks {
+    border-radius: 5px;
+}
+
+/* Bookmarkts HTML SideBar */
 
 
+.page-content-wrapper {
+    width: 180vh;
+    position: absolute;
+    padding: 0px 15px;
+}  
+
+
+.WidthChange{
+    width: 150vh;
+    position: absolute;
+    padding: 0px 15px;
+}
+
+.userLabel {
+    text-align: center;
+}
+
+#userName, #newBMTitle {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.sidebar-brand {
+    background-color: transparent;
+    margin: 0 2%;
+    color: #eee;
+    text-align: center;
+}
+
+.form-group {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#folderSubmitBtn {
+    background-color: rgb(138, 4, 33);
+    border-radius: 5px;
+    border-color: rgb(138, 4, 33);
+    width: 70%;
+    margin: 2% auto;
+}
+
+.folderList, .AllBookmarks {
+    height: 50px;
+}
+
+.folderLabelDiv:hover , .AllBookmarks:hover {
+    background-color: #e2e8ef3b;
+    cursor: pointer;
+}
+
+.folderLabelDiv {
+    margin: 0;
+    display: inline-block;
+    padding: 3% 8%;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.folderLabelDivText{
+    margin-top: 5px;
+}
+
+.folderSubmitDiv {
+    width: 65%;
+    margin: 2% auto;
+}
+.folder-sidebar{
+    width: 80%;
+    margin: auto;
+}
+.form-control{
+    background-color: rgb(223, 242, 255);
+}
+
+.imageClass {
+    color: #0A0A0A;
+}
+
+.searchImg{
+    height: 20px;
+    width: 20px;
+}
 
 /* Bookmarks HTML Footer */
 
@@ -292,12 +252,17 @@ header {
     margin: 0 auto;
     margin-top: 10px;
 }
+#bookmarksDisplay {
+    width: 100%;
+}
 
 
 /* Modal Styling */
+
 .warning_mssg {
     color: red;
 }
+
 .modal-content {
     position: relative;
     display: -webkit-box;
@@ -309,12 +274,10 @@ header {
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    /* background-color: #0360c3; */
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: .3rem;
     outline: 0;
-    /* background: linear-gradient(to right, red , yellow); */
     background: linear-gradient(#053cb7, #05247d);
     color: white;
     padding: 5% 0% 10%;

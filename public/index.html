@@ -15,7 +15,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <!-- <script src="js/app.js"></script> -->
     <script src="js/home.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/simple-sidebar.css" />
@@ -33,7 +32,7 @@
                 </li>
                 <li>
                     <div class="form-group">
-                        <textarea type="input" class="form-control" id="addFolder" placeholder="Add Folder Name" rows="1"></textarea>
+                        <input type="input" class="form-control" id="addFolder" placeholder="Add Folder Name" rows="1"></input>
                     </div>
                 </li>
                 <li>
@@ -49,7 +48,8 @@
                     </li>
 
                     <li>
-                        <div class="AllBookmarks" id="folderIDNull" folderId="Is Null">No Folder Assigned</div>
+                        <div class="AllBookmarks" id="folderIDNull" folderId="Is Null" draggable="true"
+                        ondragstart="drag(event)">No Folder Assigned</div>
                     </li>
 
                     <div id="folderTable">
@@ -58,7 +58,8 @@
                 </div>
             </ul>
         </div>
-        <!-- /#sidebar-wrapper -->
+
+
 
         <!-- Page Content -->
         <div class="page-content-wrapper">
@@ -78,14 +79,6 @@
                             </div>
                         </form>
                     </div>
-                    <!-- <div class="col-sm-1 loginButton">
-                        <button type="button" class="btn btn-primary bpBtn" id="returnUserButton">Login</button>
-                    </div> -->
-                    <!-- <div class="col-sm-4 col-sm-offset-1">
-                        <div class="form-group"> -->
-                    <!-- <input type="text" class="form-control" id="searchBookmarks" placeholder="Search Bookmarks" /> -->
-                    <!-- </div>
-                    </div> -->
                     <div class="col-sm-2 UserSignIn">
                         <p id="userEmail"></p>
                     </div>
@@ -128,14 +121,11 @@
                     </div>
                 </div>
 
-
-
             </div>
-            <!-- container-fluid -->
+
         </div>
-        <!-- /#page-content-wrapper -->
+
     </div>
-    <!-- /#wrapper -->
 
     <!-- Menu Toggle Script -->
     <script>

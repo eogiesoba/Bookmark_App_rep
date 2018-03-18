@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
- "name": "Bookmarks_Extension",
+ "name": "Bookmark Extension",
   "description": "This extension displays your Chrome Bookmarks",
-  "version": "1.0",
+  "version": "1.1",
 
  "browser_action": {
   "default_icon": "public/images/bookmark.png",
