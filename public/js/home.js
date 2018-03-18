@@ -223,6 +223,7 @@ $(document).ready(function () {
         var tableFID;
         var BFN;
         $('.bmBox').remove();
+        bar.animate(1.0);
 
         console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
@@ -420,7 +421,7 @@ $(document).ready(function () {
         }
     });
 
-    bar.animate(1.0);
+    
 
 });
 
