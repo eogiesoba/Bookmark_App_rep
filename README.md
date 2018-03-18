@@ -17,18 +17,19 @@ In order to use the Bookmark Extension, you will need to install our Chrome exte
 
 Go to the Chrome Extension Web Store using the following link and then click 'Add to Chrome' in the upper
 
-https://chrome.google.com/webstore/detail/bookmarksextension/bmcedhkdcpghcododeoabjphojpigcoe?hl=en-US&gl=US 
+<a href="https://chrome.google.com/webstore/detail/bookmarksextension/bmcedhkdcpghcododeoabjphojpigcoe?hl=en-US&gl=US" target="_blank">Chrome Extension Load URL</a>
 
 
 
 ![Chrome_Extension Store](public/images/ChromeExtensionLoadPage.png)
 
-
+\
 A window will put up confirming the Extension Load. Click 'Add Extension".
 
 
 ![Bookmark Extension Icon](public/images/ChromeExtenstionAdd.png)
 
+\
 Another box will appear when the Extension has loaded. Click on the X in the upper right hand corner of the box to close the popup. You will notice that a new Extension icon will appear on your Chrome page. You are ready to being using the Bookmark Extension. 
 
 ![Bookmark Extension Icon](public/images/ExtensionLoadConfirm.png)
