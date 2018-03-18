@@ -3,7 +3,6 @@ $(document).ready(function () {
     //validateUser();//This our bookmark render function that runs when page is loaded. 
     //renderFolders();//This is our folder render function that runs when page is loaded.
 
-
     // document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
     document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
 
