@@ -54,8 +54,8 @@ $(document).ready(function () {
     (function initialLogIn() {
         console.log("modal");
         $('#exampleModal').modal({
-            show: true,
-            keyboard: false,
+            show: true
+            // keyboard: false
         });
     })();
 
