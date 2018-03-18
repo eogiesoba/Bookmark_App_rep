@@ -13,16 +13,15 @@ $(document).ready(function () {
     var dragSrcEl = null;
 
 
+    //drag and drop for folder assignment
     document.drag = function (ev) {
         var x = ev.target.getAttribute("folderId");
         ev.dataTransfer.setData("text", x);
     }
 
-  
     document.allowDrop = function (ev) {
         ev.preventDefault();
     }
-
 
     document.drop = function (ev) {
         ev.preventDefault();
@@ -35,15 +34,17 @@ $(document).ready(function () {
         updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
-
     //Initial Login pops the modal as the page is loaded
-    (function initialLogIn() {
+    initialLogIn();
+    // console.log(chrome.extension.getBackgroundPage());
+
+    function initialLogIn() {
         console.log("modal");
         $('#exampleModal').modal({
-            show: true,
-            // keyboard: false
+            show: true
         });
-    })();
+    }
+
 
 
     function UserloginRender() {
