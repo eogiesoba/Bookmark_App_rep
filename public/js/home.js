@@ -56,7 +56,6 @@ $(document).ready(function () {
         $('#exampleModal').modal({
             show: true,
             keyboard: false,
-            backdrop: 'static'
         });
     })();
 
