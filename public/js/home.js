@@ -13,15 +13,16 @@ $(document).ready(function () {
     var dragSrcEl = null;
 
 
-    //drag and drop for folder assignment
     document.drag = function (ev) {
         var x = ev.target.getAttribute("folderId");
         ev.dataTransfer.setData("text", x);
     }
 
+  
     document.allowDrop = function (ev) {
         ev.preventDefault();
     }
+
 
     document.drop = function (ev) {
         ev.preventDefault();
@@ -44,7 +45,6 @@ $(document).ready(function () {
             show: true
         });
     }
-
 
 
     function UserloginRender() {
