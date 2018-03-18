@@ -32,6 +32,9 @@ html, body{
     margin: 0px;
 }
 
+#LogInUser{
+    padding-top: 20px;
+}
 #searchBookmarks {
     margin-top: 2% 8%;
 }
