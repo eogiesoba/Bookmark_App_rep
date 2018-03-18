@@ -49,12 +49,14 @@ $(document).ready(function () {
         updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
-    
+
     //Initial Login pops the modal as the page is loaded
     (function initialLogIn() {
         console.log("modal");
         $('#exampleModal').modal({
-            show: true
+            show: true,
+            keyboard: false,
+            backdrop: 'static'
         });
     })();
 
