@@ -1,43 +1,28 @@
 $(document).ready(function () {
-    
-    /** 
-     * This will store user's email in local storage.
-    */
+    console.log("chrome is", chrome);
+    //validateUser();//This our bookmark render function that runs when page is loaded. 
+    //renderFolders();//This is our folder render function that runs when page is loaded.
+
+    // document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
     document.getElementById("modaluserName").value = localStorage.getItem("BookmarkUserEmail");
 
-    /** 
-     * Global variables are declared.
-    */
+    //Global variables
+    // var userID;//This is being used in a get request
     var email;
     var folderDetails = [];
     var dragSrcEl = null;
 
 
-    /** 
-     * Function will collect data of element being currently dragged in webpage.
-     * @param {obj} event - Data on the event that just took place
-     * @return {undefined}
-    */
+    //drag and drop for folder assignment
     document.drag = function (ev) {
         var x = ev.target.getAttribute("folderId");
         ev.dataTransfer.setData("text", x);
     }
 
-    /** 
-     * The default reponse is surpressed on element recieving another dropped element.
-     * @param {obj} event - Data on the event that just took place
-     * @return {undefined}
-    */
     document.allowDrop = function (ev) {
         ev.preventDefault();
     }
 
-    /** 
-     * This function will get folderId data of element when the elements class is clicked.
-     * It will then only display bookmarks that are associated with element's folderId.
-     * @param {obj} event - Data on the event that just took place
-     * @return {undefined}
-    */
     document.drop = function (ev) {
         ev.preventDefault();
         var folderID = ev.dataTransfer.getData("text");
@@ -49,16 +34,16 @@ $(document).ready(function () {
         updateBookmarks(bookmarkData);//PUT REQUEST
     }
 
-
     //Initial Login pops the modal as the page is loaded
-    (function initialLogIn() {
+    initialLogIn();
+    // console.log(chrome.extension.getBackgroundPage());
+
+    function initialLogIn() {
         console.log("modal");
         $('#exampleModal').modal({
             show: true
-            // keyboard: false
         });
-    })();
-
+    }
 
     function UserloginRender() {
         document.getElementById("userEmail").innerHTML = "";
@@ -158,12 +143,8 @@ $(document).ready(function () {
     }
 
 
-    /** 
-     * This function will get folderId data of element when the elements class is clicked.
-     * It will then only display bookmarks that are associated with element's folderId.
-     * @param {obj} event - Data on the event that just took place
-     * @return {undefined}
-    */
+    //on-click to sort folders by foldername
+
     $(document).on("click", ".folderLabelDiv, .AllBookmarks", function (ev) {
         console.log("folderSortClicked");
         console.log("ev", ev.target.getAttribute('folderId'));
