@@ -13,31 +13,17 @@ $(document).ready(function () {
     var dragSrcEl = null;
 
 
-    /** 
-     * Function will collect data of element being currently dragged in webpage.
-     * @param {obj} ev - Data on the event that just took place
-     * @return {undefined}
-    */
     document.drag = function (ev) {
         var x = ev.target.getAttribute("folderId");
         ev.dataTransfer.setData("text", x);
     }
 
-    /** 
-     * The default reponse is surpressed on element recieving another dropped element.
-     * @param {obj} ev - Data on the event that just took place
-     * @return {undefined}
-    */
+  
     document.allowDrop = function (ev) {
         ev.preventDefault();
     }
 
-    /** 
-     * This function will get folderId data of element when the elements class is clicked.
-     * It will then only display bookmarks that are associated with element's folderId.
-     * @param {obj} ev - Data on the event that just took place
-     * @return {undefined}
-    */
+
     document.drop = function (ev) {
         ev.preventDefault();
         var folderID = ev.dataTransfer.getData("text");
