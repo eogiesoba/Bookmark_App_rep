@@ -154,6 +154,7 @@ html, body{
     width: 180vh;
     position: absolute;
     padding: 0px 15px;
+    transition: all 0.3s ease-in-out;
 }  
 
 
@@ -161,6 +162,7 @@ html, body{
     width: 150vh;
     position: absolute;
     padding: 0px 15px;
+    transition: all 0.3s ease-in-out;
 }
 
 .userLabel {

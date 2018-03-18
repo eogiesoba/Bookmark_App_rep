@@ -7,6 +7,8 @@ var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
+var ProgressBar = require('progressbar.js')
+var line = new ProgressBar.Line('#container');
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
