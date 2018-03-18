@@ -15,27 +15,24 @@ Bookmark Extension is an application that makes a database copy of your Google C
 
 In order to use the Bookmark Extension, you will need to install our Chrome extension.
 
-Until we publish on the Chrome Extension Store, you will need to clone our Github repository to your desktop.
+Go to the Chrome Extension Web Store using the following link and then click 'Add to Chrome' in the upper
 
-To clone the repository, visit <https://github.com/eogiesoba/Bookmark_App_rep>
-
-Once the repository is cloned to your computer, open Google Chrome and visit   <chrome://extensions/>
-
-From there, make sure "Developer Mode" is on, and then click "Load Unpacked" 
+https://chrome.google.com/webstore/detail/bookmarksextension/bmcedhkdcpghcododeoabjphojpigcoe?hl=en-US&gl=US 
 
 
-![Chrome_Extension Developer Page](public/images/ChromeExtensionLoadPage.png)
+
+![Chrome_Extension Store](public/images/ChromeExtensionLoadPage.png)
 
 
-Using the Finder, navigate to the repository file and click "Select". 
-
-The Bookmark Extension will be loaded onto you Extension list and the Bookmark Extension icon will appear next to your Chrome search bar. 
+A window will put up confirming the Extension Load. Click 'Add Extension".
 
 
-![Bookmark Extension Icon](public/images/ChromeExtIcon.png)
+![Bookmark Extension Icon](public/images/ChromeExtenstionAdd.png)
 
+Another box will appear when the Extension has loaded. Click on the X in the upper right hand corner of the box to close the popup. You will notice that a new Extension icon will appear on your Chrome page. You are ready to being using the Bookmark Extension. 
 
-Click the icon and you are on your way.
+![Bookmark Extension Icon](public/images/ExtensionLoadConfirm.png)
+
 
 
 # Instructions
