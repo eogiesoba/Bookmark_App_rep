@@ -5,7 +5,7 @@
 // Dependencies
 // =============================================================
 
-// Requiring our Todo model
+// Requiring our models from our DB
 var db = require("../models"); //tyep db.Post when using sequelize. 
 
 // Routes
@@ -37,10 +37,6 @@ module.exports = function (app) {
 
   // POST route for adding folders on table in DB
   app.post("/api/folders", function (req, res) {
-    console.log("in api/folders route");
-    console.log(req.body.userID);
-    console.log(req.body.folder);
-
     db.Folder.create({
       folder: req.body.folder,
       UserId: req.body.userID
@@ -64,14 +60,10 @@ module.exports = function (app) {
 
   // Get route for returning all users
   app.get("/api/users", function (req, res) {
-
     db.User.findAll({}).then(function (results, err) {
       if(err){console.log(err)}
-      // console.log(results)
-      // results are available to us inside the .then
       res.json(results);
     });
-
   });
 
   app.get("/api/bookmarks/:id", function(req, res) {
@@ -83,8 +75,6 @@ module.exports = function (app) {
       res.json(results);
     });
   });
-
-  
 
   app.get("/api/bookmarks/:UserId/:FolderId", function(req, res) {
     console.log("in sort api", req.params.UserId, req.params.FolderId);
@@ -110,20 +100,15 @@ module.exports = function (app) {
   });
 
   app.get("/api/folders", function (req, res) {
-    console.log("We are in GET folders");
-
     db.Folder.findAll({}).then(function (results, err) {
       // results are available to us inside the .then
       if(err){console.log(err)}
       res.json(results);
     });
-
   });
 
   // DELETE route for deleting users
   app.delete("/api/users", function (req, res) {
-    // Add sequelize code to delete a post where the id is equal to req.params.id, 
-    // then return the result to the user using res.json
     db.User.destroy({
       where: {
         id: req.param.userID
@@ -134,9 +119,6 @@ module.exports = function (app) {
   });
 
   app.delete("/api/bookmarks/:id", function (req, res) {
-    console.log("in delete api", req.params.id);
-    // Add sequelize code to delete a post where the id is equal to req.params.id, 
-    // then return the result to the user using res.json
     db.Bookmark.destroy({
       where: {
         id: req.params.id
