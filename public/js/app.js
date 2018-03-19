@@ -1,4 +1,5 @@
-var userID;
+//global variable to try and get the extension to communicate with the index but no luck ICEBOX
+//var userID;
 
 $(document).ready(function () {
     //Global Variables
@@ -96,10 +97,10 @@ $(document).ready(function () {
     }
 
     //On click for adding the current page to user bookmarks
-    document.getElementById('addBookmark').addEventListener('click', function () {
+    document.getElementById('addBookmark').addEventListener('click',  () => {
         console.log("bookmarkAddButton");
         newBookmarkObj = {};
-        chrome.tabs.getSelected(null, function (tab) {
+        chrome.tabs.getSelected(null, (tab) => {
             newBookmarkObj.id = tab.id;
             newBookmarkObj.url = tab.url;
             newBookmarkObj.title = document.querySelectorAll("#newBMTitle")[0].value;
@@ -116,7 +117,7 @@ $(document).ready(function () {
             method: "POST",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
             data: User
-        }).then(function () {
+        }).then( () => {
             // window.location.href = "http://localhost:8080/";
         });
     }
@@ -127,7 +128,7 @@ $(document).ready(function () {
         $.ajax({
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
-        }).then(function (data) {
+        }).then((data) => {
             console.log(data);
             var newUser = true; //this stays true if it is new User
            
@@ -177,13 +178,13 @@ $(document).ready(function () {
     }
 
     //POST for the users existing bookmark
-    var importBookmark = function (newArr) {
+    var importBookmark =  (newArr) => {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: newArr
-        }).then(function () {
+        }).then(() => {
             //console.log("You imported all Bookmarks!");
         });
     }
@@ -199,7 +200,7 @@ $(document).ready(function () {
     }
 
     //POST for the folders
-    var postFolders = function (Folder) {
+    var postFolders = (Folder) => {
         $.ajax({
             method: "POST",
             url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
