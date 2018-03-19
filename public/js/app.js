@@ -13,7 +13,7 @@ $(document).ready(function () {
     //Uses the chrome bookmark API to get all the users bookmarks
     var getBookmarks = (query) => {
         var newArr = [];
-        for (i = 0; i < 200; i++) { //forloop for getting each individule bookmsrk from the chrome API
+        for (i = 0; i < 500; i++) { //forloop for getting each individule bookmsrk from the chrome API
             var x = i.toString();
             var bookmarks = chrome.bookmarks.get(x,
                 function (bookmarks) {
@@ -29,7 +29,7 @@ $(document).ready(function () {
     };
 
     BookmarkArray = getBookmarks(); //Gets Bookmarks calls the function on top
-    //conosle.logs to help test and see if the bookmarks are being extracted
+    //console.logs to help test and see if the bookmarks are being extracted
     //console.log("Chrome bookmark extraction: ", BookmarkArray);
     //console.log("hello");
 
