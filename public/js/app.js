@@ -1,18 +1,18 @@
 var userID;
 
 $(document).ready(function () {
-
-    var BookmarkArray = [];
+    //Global Variables
+    var BookmarkArray = []; 
     var UserInput = $("#userName");
     var folderArr = [];
-    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail");
-    document.getElementById("logoffButton").style.visibility = "hidden";
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); //Gets previous item from extension local stoarage and attaches it to the log in form
+    document.getElementById("logoffButton").style.visibility = "hidden"; //hides the logoff button
     var loginEmail;
 
     //Uses the chrome bookmark API to get all the users bookmarks
-    var getBookmarks = function (query) {
+    var getBookmarks = (query) => {
         var newArr = [];
-        for (i = 0; i < 200; i++) {
+        for (i = 0; i < 200; i++) { //forloop for getting each individule bookmsrk from the chrome API
             var x = i.toString();
             var bookmarks = chrome.bookmarks.get(x,
                 function (bookmarks) {
@@ -24,19 +24,19 @@ $(document).ready(function () {
                 });
         }
         // console.log("Chrome bookmark extraction: ", newArr);
-        return newArr;
+        return newArr; //returns all the bookmarks in an array
     };
 
-    BookmarkArray = getBookmarks();
+    BookmarkArray = getBookmarks(); //Gets Bookmarks calls the function on top
     //conosle.logs to help test and see if the bookmarks are being extracted
-    console.log("Chrome bookmark extraction: ", BookmarkArray);
-    console.log("hello");
+    //console.log("Chrome bookmark extraction: ", BookmarkArray);
+    //console.log("hello");
 
     //This gets local user email if initially logged in
     var email = localStorage.getItem("BookmarkUserEmail");
 
-    //On clikc for Log In
-    document.getElementById('newUserButton').addEventListener('click', function () {
+    //On clikc for Log In chrome extension does not allow us to use jquery so we have to code in vanilla JS
+    document.getElementById('newUserButton').addEventListener('click', () => {
 
         console.log("Works!");
         email = document.getElementById("userName").value;
@@ -46,8 +46,8 @@ $(document).ready(function () {
         } else {}
         
         localStorage.setItem("BookmarkUserEmail", email);
-        console.log("email logged in: ", email);
-        console.log(email);
+       //console.log("email logged in: ", email);
+        //console.log(email);
 
         // submitUser(UserPost);//Creates new user in DB
         importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
@@ -59,9 +59,9 @@ $(document).ready(function () {
     //Initial check
     function UserInitialCheck(){
         
-        importUserData();
+        importUserData();//calls import data function 
         
-        console.log("login Email", loginEmail);
+        //console.log("login Email", loginEmail);
         
     }
 
@@ -105,7 +105,7 @@ $(document).ready(function () {
             newBookmarkObj.title = document.querySelectorAll("#newBMTitle")[0].value;
 
         })
-        console.log("new", newBookmarkObj);
+        //console.log("new", newBookmarkObj);
         addNewBookmark(newBookmarkObj);
 
     });
@@ -129,46 +129,50 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
             console.log(data);
-            var newUser = true;
+            var newUser = true; //this stays true if it is new User
            
-            for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
+            for (var i = 0; i < data.length; i++) {//Looks for userID associated with email through a for loop
                 var userEmail = data[i].user;
 
-                console.log("User Data Emails: ", userEmail);
-                console.log("email: ", email);
+                //console.log("User Data Emails: ", userEmail);
+                //console.log("email: ", email);
 
                 if (userEmail === email) {//compares email to user emails to see if it exists
                     userID = data[i].id;
-                    newUser = false;
-                    loginEmail = userEmail;
-                    console.log("login Email: ", loginEmail);
+                    newUser = false; //this being false will not allow user bookmarks to be reposted
+                    //loginEmail = userEmail; //this was used to allow the login user to save on the the chrome storage but this is still in the works
+                    //console.log("login Email: ", loginEmail);
                     break;
                 }
                 else {
                     userID = data[i].id + 1;
                 }
             }
+            //Adds the new user and there bookmark to the databse
             if (newUser === true) {
                 for (var i = 0; i < BookmarkArray.length; i++) {//imports all bookmarks 1 at a time.
                     BookmarkArray[i].userID = userID;
                     var bookObject = BookmarkArray[i];
+                    //Post request for the bookmarks
                     importBookmark(bookObject);
                 }
                 var UserPost = {
                     user: email
                 }
+                //Post request for the user
                 submitUser(UserPost);
             }
-            if(loginEmail === email){
-                LoginRender();
-                chrome.storage.sync.set({
-                    'email': loginEmail 
-                }, function() {
-                    console.log('Settings saved: ', loginEmail);
-                });
-            }
-            console.log(userID);
-            console.log(BookmarkArray);
+            //This was used to add the user email t the chrome storage API but would not work
+            // if(loginEmail === email){
+            //     LoginRender();
+            //     chrome.storage.sync.set({
+            //         'email': loginEmail 
+            //     }, function() {
+            //         console.log('Settings saved: ', loginEmail);
+            //     });
+            // }
+            //console.log(userID);
+            //console.log(BookmarkArray);
         });
     }
 
@@ -180,7 +184,7 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: newArr
         }).then(function () {
-            console.log("You imported all Bookmarks!");
+            //console.log("You imported all Bookmarks!");
         });
     }
     //GET for getting a single bookmark
@@ -189,7 +193,8 @@ $(document).ready(function () {
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
         }).then(function () {
-            console.log("done!");
+            //console.log to see if working
+            //console.log("done!");
         });
     }
 
@@ -200,7 +205,8 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
             data: Folder
         }).then(function (data) {
-            console.log("Your folder has been made.")
+            //console log to see if the code is working
+            //console.log("Your folder has been made.")
 
         });
     }
@@ -214,7 +220,7 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
             // var UserID = data.id;
-            console.log(data);
+            //console.log(data);
             // var newBookMarkObj = BookmarkArray;
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
@@ -222,20 +228,21 @@ $(document).ready(function () {
                     userID = data[i].id
                 }
             }
-            console.log(userID);
-            console.log(newBookmarkObj);
+            //console.log(userID);
+            //console.log(newBookmarkObj);
 
             newBookmarkObj.userID = userID;
-            console.log("bookObj", newBookmarkObj);
+            //console.log("bookObj", newBookmarkObj);
             bookObject = newBookmarkObj;
             importBookmark(bookObject);
         });
     }
 
-    chrome.storage.sync.set({
-        'Email': loginEmail 
-        }, function() {
-        console.log('Settings saved');
-      });
+    // //Chrome API set function ICEBOX
+    // chrome.storage.sync.set({
+    //     'Email': loginEmail 
+    //     }, function() {
+    //     //console.log('Settings saved');
+    //   });
 
 });
