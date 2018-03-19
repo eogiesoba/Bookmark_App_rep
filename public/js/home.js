@@ -209,7 +209,7 @@ $(document).ready(function () {
     /** 
      * This function will get folderId data of element when the elements class is clicked.
      * It will then only display bookmarks that are associated with element's folderId.
-     * @param {obj} event - Data on the event that just took place
+     * @param {obj} ev - Data on the event that just took place
      * @return {undefined}
     */
     $(document).on("click", ".folderLabelDiv, .AllBookmarks", function (ev) {
@@ -227,7 +227,11 @@ $(document).ready(function () {
         }
     });
 
-
+    /** 
+     * Function will make a PUT request to DB updating the bookmark's folderId data.
+     * Bookmarks and Folders will then be re-rendered to the page.
+     * @return {undefined}
+    */
     function updateBookmarks(info) {
         $.ajax({
             method: "PUT",
@@ -240,6 +244,12 @@ $(document).ready(function () {
         });
     };
 
+    /** 
+     * Function will make a GET request to DB to check if user is registered in DB. 
+     * Bookmarks and Folders will then be rendered to the page if true.
+     * If user is not found an error message is sent to user.
+     * @return {undefined}
+    */
     function validateUser() {
         $.ajax({
             method: "GET",
@@ -265,8 +275,12 @@ $(document).ready(function () {
         });
     }
 
-
-    function getBNF_Tables(id) {//Renders bookmark and folder info for userID associated with email
+    /** 
+     * Function will get Bookmark and Folder data associated with input user ID.
+     * @param {number} id - user's ID number
+     * @return {undefined}
+    */
+    function getBNF_Tables(id) {
         $.ajax({
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + id,
@@ -284,7 +298,12 @@ $(document).ready(function () {
         });
     };
 
-
+    /** 
+     * Function use Bookmark and Folder data associated with user and render bookmark divs to webpage.
+     * @param {array} bookmarkData - An array of user's bookmarks stored as objects in the array.
+     * @param {array} folderData - An array of user's folders stored as objects in the array.
+     * @return {undefined}
+    */
     function createBookmarkDiv(bookmarkData, folderData) {
         var bookFID;
         var tableFID;
@@ -348,7 +367,11 @@ $(document).ready(function () {
         }
     }
 
-
+    /** 
+     * Function will add a new folder associated with user to the DB
+     * @param {obj} Folder - User's new folder objects with name of folder and user's ID.
+     * @return {undefined}
+    */
     function postFolders(Folder) {
         console.log("in postFolder:", Folder);
         $.ajax({
@@ -360,6 +383,10 @@ $(document).ready(function () {
         });
     };
 
+    /** 
+     * Function will get all folders from DB and render only user's folder to page.
+     * @return {undefined}
+    */
     function renderFolders() {
         $.ajax({
             method: "GET",
@@ -383,6 +410,11 @@ $(document).ready(function () {
         });
     };
 
+    /** 
+     * Function wil take in an object of data for 1 folder and render div with folder name to page.
+     * @param {obj} folderData - User's new folder objects with name of folder and user's ID.
+     * @return {undefined}
+    */
     function createFolderRows(folderData) {
         console.log(folderData);
         console.log("matching folder!")
@@ -412,6 +444,11 @@ $(document).ready(function () {
         $("#folderTable").append(folderLine);
     };
 
+    /** 
+     * Function will delete bookmark associated with the bookmark's id
+     * @param {number} id - bookmark's ID number.
+     * @return {undefined}
+    */
     function deleteBookmark(id) {
         console.log("in deleteBookmark function", id);
         $.ajax({
@@ -426,7 +463,12 @@ $(document).ready(function () {
         });
     }
 
-
+    /** 
+     * Function sorts bookmark associated with the bookmark's folderID.
+     * @param {number} UserId - User's ID number
+     * @param {number} FolderId - Folder's ID number.
+     * @return {undefined}
+    */
     function sortBookmarks(UserId, FolderId) {
         console.log("in sort bookmarks", UserId, FolderId)
         $.ajax({
@@ -449,13 +491,15 @@ $(document).ready(function () {
     };
 
 
-
+    /** 
+     * Function clear last bookmarks and folders that were previously rendered to page to prevent overlapping 
+     * of rendered content each time bookmarks and folders are rendered.
+     * @return {undefined}
+    */
     function clearDiv() {
         $(".bmBox").remove();
         $(".folderList").remove();
     }
-
-
 
 });
 
