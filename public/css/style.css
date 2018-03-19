@@ -37,7 +37,8 @@ html, body{
 }
 
 #LogInUser{
-    padding-top: 20px;
+    position: fixed;
+    left: 108px;
 }
 
 #searchBookmarksBtn {
