@@ -14,8 +14,8 @@ $(document).ready(function () {
 
 
     /** 
-     * Function will collect data of element being currently dragged in webpage.
-     * @param {obj} ev - Data on the event that just took place
+     * Function will collect folderId attribute of element being currently dragged in webpage.
+     * @param {obj} ev - Data on the event that just took place.
      * @return {undefined}
     */
     document.drag = function (ev) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     /** 
      * The default reponse is surpressed on element recieving another dropped element.
-     * @param {obj} ev - Data on the event that just took place
+     * @param {obj} ev - Data on the event that just took place.
      * @return {undefined}
     */
     document.allowDrop = function (ev) {
@@ -34,8 +34,8 @@ $(document).ready(function () {
 
     /** 
      * This function will get folderId data of element when the elements class is clicked.
-     * It will then only display bookmarks that are associated with element's folderId.
-     * @param {obj} ev - Data on the event that just took place
+     * It will then only render bookmarks that are associated with element's folderId.
+     * @param {obj} ev - Data on the event that just took place.
      * @return {undefined}
     */
     document.drop = function (ev) {
@@ -46,16 +46,20 @@ $(document).ready(function () {
             id: bookmarkID,
             FolderId: folderID
         }
-        updateBookmarks(bookmarkData);//PUT REQUEST
+        updateBookmarks(bookmarkData);
     }
 
-
-    //Initial Login pops the modal as the page is loaded
+    /** 
+     * This function will run when user first lands on webapp homepage.
+    */
     initialLogIn();
-    // console.log(chrome.extension.getBackgroundPage());
 
+    /** 
+     * Function will open modal window when called, in order for user to log in.
+     * Modal window is prevented from being closed as well, and can only be closed on login.
+     * @return {undefined}
+    */
     function initialLogIn() {
-        console.log("modal");
         $('#exampleModal').modal({
             show: true,
             keyboard: false,
@@ -63,14 +67,23 @@ $(document).ready(function () {
         });
     }
 
-
+    /** 
+     * Function will render whichever user has logged in upper right hand corner of main webpage.
+     * @return {undefined}
+    */
     function UserloginRender() {
         document.getElementById("userEmail").innerHTML = "";
         document.getElementById("userEmail").append("Logged In: " + email);
     }
 
 
-
+    /** 
+     * When element ID is clicked function will check if user is in DB.
+     * Then it will render all user's bookmark, and folder data if true.
+     * Their email will also be stored in local storage.
+     * If user is not in DB an error message will be displayed. 
+     * @return {undefined}
+    */
     document.getElementById('returnUserButtonModal').addEventListener('click', function () {
         console.log("Works!");
         clearDiv();
@@ -82,8 +95,12 @@ $(document).ready(function () {
         console.log("x from the modal login", x);
     });
 
-    //click to create new folder
-
+   
+    /** 
+     * When element ID is clicked function will submit an new folder associated with user in DB.
+     * New folder will then be rendered to the page.  
+     * @return {undefined}
+    */
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
         console.log("folderButton pressed");
         var newFolder = document.getElementById("addFolder").value;
@@ -99,6 +116,10 @@ $(document).ready(function () {
 
     });
 
+    /** 
+     * Function will prevent user from using the enter key when submitting a new folder.   
+     * @return {undefined}
+    */
     document.getElementById('addFolder').addEventListener("keypress", function (e) {
         var key = e.which || e.keyCode;
         if (key === 13) {
@@ -106,8 +127,11 @@ $(document).ready(function () {
         }
     });
 
-    //keyup to search bookmarks by text input
 
+    /** 
+     * Function will sort bookmarks according to the text input in the search bar window.   
+     * @return {undefined}
+    */
     document.getElementById("searchBookmarks").addEventListener("keyup", function () {
         var input, window, bMark, x;
         input = document.getElementById("searchBookmarks").value.toUpperCase();
@@ -126,6 +150,10 @@ $(document).ready(function () {
 
     })
 
+    /** 
+     * Function will prevent user using the enter key when searching for bookmarks.  
+     * @return {undefined}
+    */
     document.getElementById("searchBookmarks").addEventListener("keypress", function (e) {
         var key = e.which || e.keyCode;
         if (key === 13) {
@@ -133,7 +161,12 @@ $(document).ready(function () {
         }
     });
 
-    //on-click to delete a bookmark
+    /** 
+     * This function will get garbageID (gid) of element when the element's ID is clicked.
+     * It will then delete the bookmark in the DB with the id that matches the gid.
+     * @param {obj} ev - Data on the event that just took place.
+     * @return {undefined}
+    */
     $(document).on("click", "#trash", function (ev) {
         console.log("garbageClicked");
         console.log("event", ev.target);
@@ -143,7 +176,12 @@ $(document).ready(function () {
         deleteBookmark(id);
     });
 
-    //on-click to delete a bookmark
+    /** 
+     * This function will get the folderid of element when the element's ID is clicked.
+     * It will then delete the folder with that folderid and all other bookmarks linked to tht folder.
+     * @param {obj} ev - Data on the event that just took place.
+     * @return {undefined}
+    */
     $(document).on("click", ".deleteFolderBtn", function (ev) {
         if (confirm("Warning: Folder & All associated bookmarks will be deleted. Press OK to continue.")) {
             var id = ev.target.getAttribute('folderid');
@@ -151,6 +189,12 @@ $(document).ready(function () {
         }
     });
 
+    /** 
+     * Function will delete the folder with that have the same argument id.
+     * It will also delete all other bookmarks linked to that folder.
+     * @param {number} id - Folder ID number
+     * @return {undefined}
+    */
     function deleteFolder(id) {
         $.ajax({
             method: "DELETE",
