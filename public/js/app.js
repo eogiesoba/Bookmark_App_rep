@@ -1,5 +1,3 @@
-//global variable to try and get the extension to communicate with the index but no luck ICEBOX
-//var userID;
 
 $(document).ready(function () {
 
@@ -41,7 +39,6 @@ $(document).ready(function () {
                     }
                 });
         }
-        // console.log("Chrome bookmark extraction: ", newArr);
         return newArr; //returns all the bookmarks in an array
     };
 
@@ -49,10 +46,6 @@ $(document).ready(function () {
      * This calls the getBookmarks function and saves the returned array to Bookmark Array
     */
     BookmarkArray = getBookmarks(); 
-
-    //conosle.logs to help test and see if the bookmarks are being extracted
-    //console.log("Chrome bookmark extraction: ", BookmarkArray);
-    //console.log("hello");
 
     /**
      *This gets local user email if initially logged in
@@ -74,10 +67,6 @@ $(document).ready(function () {
         } else {}
         localStorage.setItem("BookmarkUserEmail", email);
 
-        //console.log("email logged in: ", email);
-        //console.log(email);
-
-        //submitUser(UserPost);//Creates new user in DB
         importUserData();
     });
 
@@ -92,13 +81,8 @@ $(document).ready(function () {
      * @return {undefined}
      */
     function UserInitialCheck(){
-        
-        importUserData();//calls import data function 
-        
-        //console.log("login Email", loginEmail);
-        
+        importUserData();//calls import data function  
     }
-
 
     /** 
      * When element ID is clicked function will logoff
@@ -108,9 +92,7 @@ $(document).ready(function () {
     */
     document.getElementById('logoffButton').addEventListener('click', function () {
         var email = "";
-
         LogoffRender();
-
     });
 
     /** 
@@ -140,7 +122,6 @@ $(document).ready(function () {
         document.getElementById("newUserButton").style.height = 0;
         document.getElementById("logoffButton").style.visibility = "visible";
 
-
         document.getElementById("LogInUser").append("Logged In: " + email);
     }
 
@@ -158,7 +139,6 @@ $(document).ready(function () {
             newBookmarkObj.title = document.querySelectorAll("#newBMTitle")[0].value;
 
         })
-        //console.log("new", newBookmarkObj);
         addNewBookmark(newBookmarkObj);
 
     });
@@ -174,7 +154,7 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
             data: User
         }).then( () => {
-            // window.location.href = "http://localhost:8080/";
+    
         });
     }
 
@@ -196,14 +176,9 @@ $(document).ready(function () {
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email through a for loop
                 var userEmail = data[i].user;
 
-                //console.log("User Data Emails: ", userEmail);
-                //console.log("email: ", email);
-
                 if (userEmail === email) {//compares email to user emails to see if it exists
                     userID = data[i].id;
                     newUser = false; //this being false will not allow user bookmarks to be reposted
-                    //loginEmail = userEmail; //this was used to allow the login user to save on the the chrome storage but this is still in the works
-                    //console.log("login Email: ", loginEmail);
                     break;
                 }
                 else {
@@ -224,17 +199,6 @@ $(document).ready(function () {
                 //Post request for the user
                 submitUser(UserPost);
             }
-            //This was used to add the user email t the chrome storage API but would not work
-            // if(loginEmail === email){
-            //     LoginRender();
-            //     chrome.storage.sync.set({
-            //         'email': loginEmail 
-            //     }, function() {
-            //         console.log('Settings saved: ', loginEmail);
-            //     });
-            // }
-            //console.log(userID);
-            //console.log(BookmarkArray);
         });
     }
 
@@ -250,11 +214,9 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: newArr
         }).then(() => {
-            //console.log("You imported all Bookmarks!");
+    
         });
     }
-
-
 
     /** 
      * Function will get Bookmark and add onto the databse with its associated userID.
@@ -267,30 +229,15 @@ $(document).ready(function () {
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
-            // var UserID = data.id;
-            //console.log(data);
-            // var newBookMarkObj = BookmarkArray;
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
                 if (userEmail === email) {
                     userID = data[i].id
                 }
             }
-            //console.log(userID);
-            //console.log(newBookmarkObj);
-
             newBookmarkObj.userID = userID;
-            //console.log("bookObj", newBookmarkObj);
             bookObject = newBookmarkObj;
             importBookmark(bookObject);
         });
     }
-
-    // //Chrome API set function ICEBOX
-    // chrome.storage.sync.set({
-    //     'Email': loginEmail 
-    //     }, function() {
-    //     //console.log('Settings saved');
-    //   });
-
 });
