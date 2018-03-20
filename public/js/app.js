@@ -51,6 +51,7 @@ $(document).ready(function () {
     BookmarkArray = getBookmarks(); 
 
     //conosle.logs to help test and see if the bookmarks are being extracted
+
     //console.log("Chrome bookmark extraction: ", BookmarkArray);
     //console.log("hello");
 
