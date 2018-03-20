@@ -2,18 +2,35 @@
 //var userID;
 
 $(document).ready(function () {
-    //Global Variables
+
+    /** 
+     * Global variables are declared.
+    */
     var BookmarkArray = []; 
     var UserInput = $("#userName");
     var folderArr = [];
-    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); //Gets previous item from extension local stoarage and attaches it to the log in form
-    document.getElementById("logoffButton").style.visibility = "hidden"; //hides the logoff button
     var loginEmail;
 
+    /**
+     * This will get user email to local storage and fill input with previous user email
+    */
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); 
+
+    /**
+     * This eill hide the logoff button
+    */
+    document.getElementById("logoffButton").style.visibility = "hidden"; 
+    
+
     //Uses the chrome bookmark API to get all the users bookmarks
+    /** 
+     * This function uses the chrome bookmark API to get all the users bookmarks.
+     * @param {obj} query 
+     * @return {array} newArr 
+    */
     var getBookmarks = (query) => {
         var newArr = [];
-        for (i = 0; i < 200; i++) { //forloop for getting each individule bookmsrk from the chrome API
+        for (i = 0; i < 500; i++) { //forloop for getting each individule bookmsrk from the chrome API
             var x = i.toString();
             var bookmarks = chrome.bookmarks.get(x,
                 function (bookmarks) {
@@ -28,36 +45,52 @@ $(document).ready(function () {
         return newArr; //returns all the bookmarks in an array
     };
 
-    BookmarkArray = getBookmarks(); //Gets Bookmarks calls the function on top
+    /**
+     * This calls the getBookmarks function and saves the returned array to Bookmark Array
+    */
+    BookmarkArray = getBookmarks(); 
+
     //conosle.logs to help test and see if the bookmarks are being extracted
     //console.log("Chrome bookmark extraction: ", BookmarkArray);
     //console.log("hello");
 
-    //This gets local user email if initially logged in
+    /**
+     *This gets local user email if initially logged in
+    */
     var email = localStorage.getItem("BookmarkUserEmail");
 
-    //On clikc for Log In chrome extension does not allow us to use jquery so we have to code in vanilla JS
+    /**
+     * When element ID is clicked function will check if user is in DB or if it is an actual email.
+     * Then it will call the import function to POST new user bookmarks
+     * Their email will also be stored in local storage.
+     * If user is not in DB it will post users email and bookarks to DB 
+     * @return {undefined}
+    */
     document.getElementById('newUserButton').addEventListener('click', () => {
-
         console.log("Works!");
         email = document.getElementById("userName").value;
-       
         if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
             alert("Please input your Gmail address.");
         } else {}
-        
         localStorage.setItem("BookmarkUserEmail", email);
-       //console.log("email logged in: ", email);
+
+        //console.log("email logged in: ", email);
         //console.log(email);
 
-        // submitUser(UserPost);//Creates new user in DB
-        importUserData();//Gets ID of user and imports user's bookmarks linked to their ID into the DB
+        //submitUser(UserPost);//Creates new user in DB
+        importUserData();
     });
 
-    //Initial Check to see if the user in the local storage is an existing user
+    /**
+     * Initial Check call function to see if the user in the local storage is an existing user
+    */
     UserInitialCheck();
 
-    //Initial check
+    /**
+     * Initial check fucntion
+     * Checks to see if the user is existing in local storahe
+     * @return {undefined}
+     */
     function UserInitialCheck(){
         
         importUserData();//calls import data function 
@@ -67,7 +100,12 @@ $(document).ready(function () {
     }
 
 
-    //On Click for log off button
+    /** 
+     * When element ID is clicked function will logoff
+     * log off render function will be called
+     * email will be set back to an empty strong  
+     * @return {undefined}
+    */
     document.getElementById('logoffButton').addEventListener('click', function () {
         var email = "";
 
@@ -75,7 +113,12 @@ $(document).ready(function () {
 
     });
 
-    //Renders Logoff info, hides the div and shows the log in button and input form
+    /** 
+     * Log off render function
+     * User input form and login button will be visible
+     * logoff button will be hidden and innerHtml will be removed
+     * @return {undefined}
+    */
     function LogoffRender(){
         document.getElementById("userName").style.visibility = "visible";
         document.getElementById("newUserButton").style.visibility = "visible";
@@ -85,7 +128,12 @@ $(document).ready(function () {
         document.getElementById("LogInUser").innerHTML = "";
     }
 
-    //hides the input and loggin button and shows log off button
+    /** 
+     * Login Render function.
+     * User input form and login button will be hidden
+     * logoff button will be visible and innerHtml will render the users email  
+     * @return {undefined}
+    */
     function LoginRender(){
         document.getElementById("userName").style.visibility = "hidden";
         document.getElementById("newUserButton").style.visibility = "hidden";
@@ -96,7 +144,11 @@ $(document).ready(function () {
         document.getElementById("LogInUser").append("Logged In: " + email);
     }
 
-    //On click for adding the current page to user bookmarks
+     /** 
+     * When element ID is clicked function checks the active chrome tab and gets selected data.
+     * New Bookmark is then Posted into the database. 
+     * @return {undefined}
+    */
     document.getElementById('addBookmark').addEventListener('click',  () => {
         console.log("bookmarkAddButton");
         newBookmarkObj = {};
@@ -111,7 +163,11 @@ $(document).ready(function () {
 
     });
 
-    //POST function for a new user
+    /** 
+     * Function will Post user data into the use database using the user id.
+     * @param {number} User- user's data
+     * @return {undefined}
+    */
     function submitUser(User) {
         $.ajax({
             method: "POST",
@@ -122,7 +178,12 @@ $(document).ready(function () {
         });
     }
 
-    //GET function 
+    /** 
+     * Function will get User Data associated with user ID.
+     * this function will also check to see if the users email is a new user or existing user
+     * will also call the post function for bookmarks and post user information if new user.r
+     * @return {undefined}
+    */
     function importUserData() {
         console.log("You are in the import function!")
         $.ajax({
@@ -177,7 +238,11 @@ $(document).ready(function () {
         });
     }
 
-    //POST for the users existing bookmark
+    /** 
+     * Function will Post Bookmark array onto the database.
+     * @param {array} newArr - Arr of Bookmark information
+     * @return {undefined}
+    */
     var importBookmark =  (newArr) => {
         console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
@@ -188,32 +253,14 @@ $(document).ready(function () {
             //console.log("You imported all Bookmarks!");
         });
     }
-    //GET for getting a single bookmark
-    function getBookmarks() {
-        $.ajax({
-            method: "GET",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
-        }).then(function () {
-            //console.log to see if working
-            //console.log("done!");
-        });
-    }
-
-    //POST for the folders
-    var postFolders = (Folder) => {
-        $.ajax({
-            method: "POST",
-            url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
-            data: Folder
-        }).then(function (data) {
-            //console log to see if the code is working
-            //console.log("Your folder has been made.")
-
-        });
-    }
 
 
-    //function that checks bookmarks and the posts the new bookmark onto the tables
+
+    /** 
+     * Function will get Bookmark and add onto the databse with its associated userID.
+     * @param {array} newArr - New Bookmark array
+     * @return {undefined}
+    */
     function addNewBookmark(newArr) {
         console.log("You are in the addNewBookmark function!")
         $.ajax({
