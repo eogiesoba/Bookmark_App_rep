@@ -96,7 +96,6 @@ $(document).ready(function () {
     function LogoffRender(){
         document.getElementById("userName").style.visibility = "visible";
         document.getElementById("newUserButton").style.visibility = "visible";
-        document.getElementById("newUserButton").style.height = 38;
         document.getElementById("logoffButton").style.visibility = "hidden";
 
         document.getElementById("LogInUser").innerHTML = "";
@@ -111,7 +110,6 @@ $(document).ready(function () {
     function LoginRender(){
         document.getElementById("userName").style.visibility = "hidden";
         document.getElementById("newUserButton").style.visibility = "hidden";
-        document.getElementById("newUserButton").style.height = 0;
         document.getElementById("logoffButton").style.visibility = "visible";
 
         document.getElementById("LogInUser").append("Logged In: " + email);
