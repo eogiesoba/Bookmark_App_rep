@@ -47,14 +47,11 @@ $(document).ready(function () {
     */
     BookmarkArray = getBookmarks(); 
 
-<<<<<<< HEAD
-=======
     //conosle.logs to help test and see if the bookmarks are being extracted
 
     //console.log("Chrome bookmark extraction: ", BookmarkArray);
     //console.log("hello");
 
->>>>>>> 5186a309fe0eb4673fe428777cd765aa519fd6f1
     /**
      *This gets local user email if initially logged in
     */
