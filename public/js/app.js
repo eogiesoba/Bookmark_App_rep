@@ -1,22 +1,15 @@
 
 $(document).ready(function () {
 
-    /** 
-     * Global variables are declared.
-    */
+
     var BookmarkArray = []; 
     var UserInput = $("#userName");
     var folderArr = [];
     var loginEmail;
 
-    /**
-     * This will get user email to local storage and fill input with previous user email
-    */
-    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); 
 
-    /**
-     * This will hide the logoff button
-    */
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); 
+   
     document.getElementById("logoffButton").style.visibility = "hidden"; 
     
 
