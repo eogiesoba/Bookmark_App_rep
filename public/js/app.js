@@ -40,7 +40,6 @@ $(document).ready(function () {
     */
     BookmarkArray = getBookmarks(); 
 
-
     /**
      *This gets local user email if initially logged in
     */
