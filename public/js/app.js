@@ -15,7 +15,7 @@ $(document).ready(function () {
     document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); 
 
     /**
-     * This eill hide the logoff button
+     * This will hide the logoff button
     */
     document.getElementById("logoffButton").style.visibility = "hidden"; 
     
@@ -28,7 +28,7 @@ $(document).ready(function () {
     */
     var getBookmarks = (query) => {
         var newArr = [];
-        for (i = 0; i < 500; i++) { //forloop for getting each individule bookmsrk from the chrome API
+        for (i = 0; i < 500; i++) { //forloop for getting each individual bookmarks from the chrome API
             var x = i.toString();
             var bookmarks = chrome.bookmarks.get(x,
                 function (bookmarks) {
@@ -47,14 +47,7 @@ $(document).ready(function () {
     */
     BookmarkArray = getBookmarks(); 
 
-<<<<<<< HEAD
-=======
-    //conosle.logs to help test and see if the bookmarks are being extracted
 
-    //console.log("Chrome bookmark extraction: ", BookmarkArray);
-    //console.log("hello");
-
->>>>>>> 5186a309fe0eb4673fe428777cd765aa519fd6f1
     /**
      *This gets local user email if initially logged in
     */
@@ -64,11 +57,10 @@ $(document).ready(function () {
      * When element ID is clicked function will check if user is in DB or if it is an actual email.
      * Then it will call the import function to POST new user bookmarks
      * Their email will also be stored in local storage.
-     * If user is not in DB it will post users email and bookarks to DB 
+     * If user is not in DB it will post users email and bookmarks to DB 
      * @return {undefined}
     */
     document.getElementById('newUserButton').addEventListener('click', () => {
-        console.log("Works!");
         email = document.getElementById("userName").value;
         if (email === "" || email.indexOf("@") === -1 || email.indexOf(".") === -1) {
             alert("Please input your Gmail address.");
@@ -84,8 +76,8 @@ $(document).ready(function () {
     UserInitialCheck();
 
     /**
-     * Initial check fucntion
-     * Checks to see if the user is existing in local storahe
+     * Initial check function
+     * Checks to see if the user is existing in local storage
      * @return {undefined}
      */
     function UserInitialCheck(){
@@ -173,12 +165,11 @@ $(document).ready(function () {
      * @return {undefined}
     */
     function importUserData() {
-        console.log("You are in the import function!")
         $.ajax({
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then((data) => {
-            console.log(data);
+            //console.log(data);
             var newUser = true; //this stays true if it is new User
            
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email through a for loop
@@ -216,7 +207,6 @@ $(document).ready(function () {
      * @return {undefined}
     */
     var importBookmark =  (newArr) => {
-        console.log("you're in the import function and new Arr is: ", newArr);
         $.ajax({
             method: "POST",
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
@@ -232,7 +222,6 @@ $(document).ready(function () {
      * @return {undefined}
     */
     function addNewBookmark(newArr) {
-        console.log("You are in the addNewBookmark function!")
         $.ajax({
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
