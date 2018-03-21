@@ -14,9 +14,6 @@ module.exports = function(sequelize, DataTypes) {
         Folder.belongsTo(models.User, {
           constraints: false
         });
-        // Folder.hasMany(models.Bookmark, {
-        //   onDelete: "cascade"
-        // });
     };
     
     return Folder;
