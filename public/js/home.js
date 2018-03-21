@@ -85,14 +85,11 @@ $(document).ready(function () {
      * @return {undefined}
     */
     document.getElementById('returnUserButtonModal').addEventListener('click', function () {
-        console.log("Works!");
         clearDiv();
         email = document.getElementById("modaluserName").value;
         localStorage.setItem("BookmarkUserEmail", email);
-        console.log(email);
         validateUser();
         var x = document.querySelectorAll("#bookmarksDisplay")[0];
-        console.log("x from the modal login", x);
     });
 
    
@@ -102,18 +99,13 @@ $(document).ready(function () {
      * @return {undefined}
     */
     document.getElementById('folderSubmitBtn').addEventListener('click', function () {
-        console.log("folderButton pressed");
         var newFolder = document.getElementById("addFolder").value;
-        console.log("newFolderName", newFolder);
-        console.log("userID", userID);
         var folderObj = {
             folder: newFolder,
             userID: userID
         }
-        console.log(folderObj);
         postFolders(folderObj);
         document.getElementById("addFolder").value = "";
-
     });
 
     /** 
@@ -147,7 +139,6 @@ $(document).ready(function () {
                 bMark[i].style.display = "none";
             }
         }
-
     })
 
     /** 
@@ -168,11 +159,7 @@ $(document).ready(function () {
      * @return {undefined}
     */
     $(document).on("click", "#trash", function (ev) {
-        console.log("garbageClicked");
-        console.log("event", ev.target);
-        console.log("ev", ev.target.getAttribute("gid"));
         var id = ev.target.getAttribute('gid');
-        console.log("gid", id);
         deleteBookmark(id);
     });
 
@@ -213,16 +200,11 @@ $(document).ready(function () {
      * @return {undefined}
     */
     $(document).on("click", ".folderLabelDiv, .AllBookmarks", function (ev) {
-        console.log("folderSortClicked");
-        console.log("ev", ev.target.getAttribute('folderId'));
         var FolderId = ev.target.getAttribute('folderId');
         var UserId = userID;
-        console.log("user", UserId, "folder", FolderId);
         if (FolderId === "0") {
-            console.log('AllFoldersClicked');
             validateUser();
         } else {
-            console.log('FolderNameClicked', UserId, FolderId);
             sortBookmarks(UserId, FolderId);
         }
     });
@@ -238,7 +220,6 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks",
             data: info
         }).then(function (data) {
-            console.log("Your bookmark has been updated!");
             clearDiv();
             validateUser();
         });
@@ -255,7 +236,6 @@ $(document).ready(function () {
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/users",
         }).then(function (data) {
-            console.log("validating user", data);
             for (var i = 0; i < data.length; i++) {//Looks for userID associated with email
                 var userEmail = data[i].user;
                 if (userEmail === email) {
@@ -271,7 +251,6 @@ $(document).ready(function () {
                     document.getElementById("warning_mssg").innerHTML = "Error: User does not exist, please type in existing user";
                 }
             }
-            console.log(userID);
         });
     }
 
@@ -285,10 +264,7 @@ $(document).ready(function () {
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + id,
         }).then(function (b_Data) {
-            console.log(b_Data)
-            console.log("done!");
             userID = b_Data[0].UserId;
-            console.log(userID);
             $.ajax({
                 method: "GET",
                 url: "https://chrome-bookmark-app.herokuapp.com/api/folders/" + id,
@@ -310,7 +286,6 @@ $(document).ready(function () {
         var BFN;
         $('.bmBox').remove();
 
-        console.log("bookData", bookmarkData);
         for (var j = 0; j < bookmarkData.length; j++) {
             var bigBMDiv = $("<div>");
             bigBMDiv.addClass("col-md-2");
@@ -373,7 +348,6 @@ $(document).ready(function () {
      * @return {undefined}
     */
     function postFolders(Folder) {
-        console.log("in postFolder:", Folder);
         $.ajax({
             method: "POST",
             url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
@@ -393,20 +367,14 @@ $(document).ready(function () {
             url: "https://chrome-bookmark-app.herokuapp.com/api/folders",
         }).then(function (data) {
             $("#folderTable").empty();
-            console.log(data)
-            console.log("got arrays!");
             for (var i = 0; i < data.length; i++) {
                 var folderUserID = data[i].UserId;
-                console.log("this is folderUserID: ", folderUserID);
-                console.log("this is UserID: ", userID);
-                console.log("Folder Name: ", data[i].folder);
                 var foldername = data[i];
 
                 if (folderUserID === userID) {
                     createFolderRows(foldername);
                 }
             }
-
         });
     };
 
@@ -416,8 +384,6 @@ $(document).ready(function () {
      * @return {undefined}
     */
     function createFolderRows(folderData) {
-        console.log(folderData);
-        console.log("matching folder!")
         var folderLine = $("<div>");
         folderLine.addClass("row");
         folderLine.addClass("folderList");
@@ -450,13 +416,12 @@ $(document).ready(function () {
      * @return {undefined}
     */
     function deleteBookmark(id) {
-        console.log("in deleteBookmark function", id);
+        
         $.ajax({
             method: "DELETE",
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + id
             // data: info
         }).then(function (data) {
-            console.log("Your bookmark has been updated!");
             clearDiv();
             validateUser();
             renderFolders();
@@ -470,20 +435,16 @@ $(document).ready(function () {
      * @return {undefined}
     */
     function sortBookmarks(UserId, FolderId) {
-        console.log("in sort bookmarks", UserId, FolderId)
+        
         $.ajax({
             method: "GET",
             url: "https://chrome-bookmark-app.herokuapp.com/api/bookmarks/" + UserId + "/" + FolderId
         }).then(function (b_Data) {
-            console.log("sort ajax1", b_Data)
             UserID = b_Data[0].UserId;
-            console.log("userID", UserID);
             $.ajax({
                 method: "GET",
                 url: "https://chrome-bookmark-app.herokuapp.com/api/folders/" + UserId,
             }).then(function (f_Data) {
-                console.log("ajax 2")
-                console.log("bkdata", b_Data, "folderData", f_Data);
                 $(".bmBox").remove();
                 createBookmarkDiv(b_Data, f_Data);
             });
