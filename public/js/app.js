@@ -1,22 +1,15 @@
 
 $(document).ready(function () {
 
-    /** 
-     * Global variables are declared.
-    */
+
     var BookmarkArray = []; 
     var UserInput = $("#userName");
     var folderArr = [];
     var loginEmail;
 
-    /**
-     * This will get user email to local storage and fill input with previous user email
-    */
-    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); 
 
-    /**
-     * This will hide the logoff button
-    */
+    document.getElementById("userName").value = localStorage.getItem("BookmarkUserEmail"); 
+   
     document.getElementById("logoffButton").style.visibility = "hidden"; 
     
 
@@ -176,7 +169,8 @@ $(document).ready(function () {
 
                 if (userEmail === email) {//compares email to user emails to see if it exists
                     userID = data[i].id;
-                    newUser = false; //this being false will not allow user bookmarks to be reposted
+                    newUser = false; //this being false will not allow user bookmarks to be re-posted
+                    LoginRender();
                     break;
                 }
                 else {
@@ -216,7 +210,7 @@ $(document).ready(function () {
     }
 
     /** 
-     * Function will get Bookmark and add onto the databse with its associated userID.
+     * Function will get Bookmark and add onto the database with its associated userID.
      * @param {array} newArr - New Bookmark array
      * @return {undefined}
     */
